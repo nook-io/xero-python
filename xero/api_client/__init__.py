@@ -65,7 +65,7 @@ class ApiClient:
         to the API
     """
 
-    BASE_TYPES = (float, bool, bytes, str, int, Decimal)
+    PRIMITIVE_TYPES = (float, bool, bytes, str, int)
     NATIVE_TYPES_MAPPING = {
         "int": int,
         "float": float,
@@ -310,8 +310,10 @@ class ApiClient:
             return None
         elif isinstance(obj, SecretStr):
             return obj.get_secret_value()
-        elif isinstance(obj, self.BASE_TYPES):
+        elif isinstance(obj, self.PRIMITIVE_TYPES):
             return obj
+        elif isinstance(obj, Decimal):
+            return float(obj)
         elif isinstance(obj, Enum):
             return obj.value
         elif isinstance(obj, list):
