@@ -16,6 +16,7 @@ import mimetypes
 import os
 import re
 import tempfile
+from decimal import Decimal
 from enum import Enum
 from functools import cached_property
 from urllib.parse import quote
@@ -311,6 +312,8 @@ class ApiClient:
             return obj.get_secret_value()
         elif isinstance(obj, self.PRIMITIVE_TYPES):
             return obj
+        elif isinstance(obj, Decimal):
+            return float(obj)
         elif isinstance(obj, Enum):
             return obj.value
         elif isinstance(obj, list):
@@ -331,10 +334,7 @@ class ApiClient:
             if hasattr(obj, "to_dict") and callable(getattr(obj, "to_dict")):
                 obj_dict = obj.to_dict()
             else:
-                if hasattr(obj, '__dict__'):
-                    obj_dict = obj.__dict__
-                else:
-                    return None
+                obj_dict = obj.__dict__
 
         return {
             key: self.sanitize_for_serialization(val) for key, val in obj_dict.items()
