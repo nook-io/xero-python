@@ -35,6 +35,7 @@ from xero.exceptions import (
     OAuth2TokenGetterError,
     OAuth2TokenSaverError,
 )
+from xero.models import BaseModel
 
 
 class ModelFinder:
@@ -306,7 +307,16 @@ class ApiClient:
         :param obj: The data to serialize.
         :return: The serialized form of data.
         """
-        if obj is None:
+        if isinstance(obj, BaseModel):
+            serialized = {}
+            for attr_name, attr_type in obj.openapi_types.items():
+                attr_value = getattr(obj, attr_name)
+                if attr_value is not None:  # TODO how do you null given field
+                    key = obj.attribute_map[attr_name]
+                    attr_value = self.sanitize_for_serialization(attr_value)
+                    serialized[key] = attr_value
+            return serialized
+        elif obj is None:
             return None
         elif isinstance(obj, SecretStr):
             return obj.get_secret_value()
