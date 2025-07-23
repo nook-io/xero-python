@@ -368,7 +368,7 @@ class ApiClient:
 
         # fetch data from response object
         try:
-            data = json.loads(response.data)
+            data = json.loads(response.text, parse_float=Decimal)
         except ValueError:
             data = response.data
 
