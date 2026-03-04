@@ -10,6 +10,7 @@ dependencies = [
     "aiohttp>=3.0.0",
     "certifi",
     "setuptools>=75.1.0",
+    "multidict>=6.0.0",
 ]
 requires-python = ">=3.8"
 

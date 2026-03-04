@@ -1,5 +1,7 @@
 from typing import TYPE_CHECKING
 
+from multidict import CIMultiDictProxy
+
 if TYPE_CHECKING:
     from xero.rest import RESTResponse
 
@@ -8,35 +10,31 @@ class OpenApiException(Exception):
     pass
 
 
-class ApiException(OpenApiException):
+class HTTPStatusException(OpenApiException):
     def __init__(
         self,
-        status: int | None = None,
-        reason: str | None = None,
-        http_resp: "RESTResponse | None" = None,
+        http_resp: "RESTResponse",
     ):
-        self._status = status
-        self._reason = reason
         self.http_resp = http_resp
 
     @property
-    def status(self) -> int | None:
-        return self._status or getattr(self.http_resp, "status", None)
+    def status(self) -> int:
+        return self.http_resp.status
 
     @property
     def reason(self) -> str | None:
-        return self._reason or getattr(self.http_resp, "reason", None)
+        return self.http_resp.reason
 
     @property
     def body(self) -> str | None:
-        data = getattr(self.http_resp, "data", None)
-        if data is not None:
-            return data.decode("utf-8")
-        return None
+        data = self.http_resp.data
+        if data is None:
+            return None
+        return data.decode("utf-8")
 
     @property
-    def headers(self) -> list[tuple[str, str]] | None:
-        return self.http_resp.getheaders() if self.http_resp else None
+    def headers(self) -> CIMultiDictProxy[str]:
+        return self.http_resp.getheaders()
 
     @property
     def error_message(self) -> str:
@@ -49,10 +47,6 @@ class ApiException(OpenApiException):
         if self.body:
             error_message += "HTTP response body: {0}\n".format(self.body)
         return error_message
-
-
-class HTTPStatusException(ApiException):
-    pass
 
 
 class OAuth2Error(OpenApiException):

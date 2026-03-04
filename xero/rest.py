@@ -8,7 +8,7 @@ from urllib.parse import urlencode
 import aiohttp
 from multidict import CIMultiDictProxy
 
-from xero.exceptions import ApiException, ApiValueError, HTTPStatusException
+from xero.exceptions import ApiValueError, HTTPStatusException
 
 logger = logging.getLogger(__name__)
 
@@ -104,7 +104,7 @@ class RESTClientObject:
                 msg = """Cannot prepare a request message for provided
                          arguments. Please check that your arguments match
                          declared content type."""
-                raise ApiException(status=0, reason=msg)
+                raise ApiValueError(msg)
         r = await self.pool_manager.request(**args)
         if _preload_content:
             data = await r.read()
