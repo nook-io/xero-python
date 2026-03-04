@@ -36,15 +36,6 @@ class ModelFinder:
 
 class ApiClient:
     PRIMITIVE_TYPES = (float, bool, bytes, str, int)
-    NATIVE_TYPES_MAPPING = {
-        "int": int,
-        "float": float,
-        "str": str,
-        "bool": bool,
-        "date": datetime.date,
-        "datetime": datetime.datetime,
-        "object": object,
-    }
 
     def __init__(
         self,

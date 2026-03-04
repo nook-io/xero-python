@@ -28,7 +28,7 @@ class RESTResponse(io.IOBase):
 
 
 class RESTClientObject:
-    def __init__(self, configuration, pools_size=4, maxsize=None) -> None:
+    def __init__(self, configuration, maxsize=None) -> None:
         if maxsize is None:
             maxsize = configuration.connection_pool_maxsize
         ssl_context = ssl.create_default_context(cafile=configuration.ssl_ca_cert)
