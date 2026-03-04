@@ -4,9 +4,11 @@ import logging
 import re
 import ssl
 from urllib.parse import urlencode
+
 import aiohttp
 from multidict import CIMultiDictProxy
-from xero.exceptions import ApiException, ApiValueError
+
+from xero.exceptions import ApiException, ApiValueError, HTTPStatusException
 
 logger = logging.getLogger(__name__)
 
@@ -109,7 +111,7 @@ class RESTClientObject:
             r = RESTResponse(r, data)
             logger.debug("response body: %s", r.data)
             if not 200 <= r.status <= 299:
-                raise ApiException(http_resp=r)
+                raise HTTPStatusException(http_resp=r)
         return r
 
     async def get_request(

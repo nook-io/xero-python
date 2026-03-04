@@ -51,15 +51,12 @@ class ApiException(OpenApiException):
         return error_message
 
 
-class ApiSSLException(ApiException):
+class HTTPStatusException(ApiException):
     pass
 
 
 class OAuth2Error(OpenApiException):
     pass
-
-
-from .http_status_exceptions import *
 
 
 class AccessTokenExpiredError(OAuth2Error):
@@ -92,15 +89,6 @@ class ApiValueError(OpenApiException, ValueError):
         if path_to_item:
             full_msg = "{0} at {1}".format(msg, render_path(path_to_item))
         super(ApiValueError, self).__init__(full_msg)
-
-
-class ApiKeyError(OpenApiException, KeyError):
-    def __init__(self, msg, path_to_item=None):
-        self.path_to_item = path_to_item
-        full_msg = msg
-        if path_to_item:
-            full_msg = "{0} at {1}".format(msg, render_path(path_to_item))
-        super(ApiKeyError, self).__init__(full_msg)
 
 
 def render_path(path_to_item):
