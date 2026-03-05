@@ -1,32 +1,5 @@
 # xero-python
 
-[![PyPI version](https://badge.fury.io/py/xero-python.svg)](https://badge.fury.io/py/xero-python)
-[![Github forks](https://img.shields.io/github/forks/XeroAPI/xero-python.svg)](https://github.com/XeroAPI/xero-python/network)
-[![Github stars](https://img.shields.io/github/stars/XeroAPI/xero-python.svg)](https://github.com/XeroAPI/xero-python/stargazers)
-[![Downloads](https://pepy.tech/badge/xero-python)](https://pepy.tech/project/xero-python)
-
-The xero-python SDK makes it easy for developers to access Xero's APIs in their python code, and build robust applications and software using small business & general ledger accounting data.
-
-# Table of Contents
-
--   [API Client documentation](#api-client-documentation)
--   [Sample Applications](#sample-applications)
--   [Xero Account Requirements](#xero-account-requirements)
--   [Installation](#installation)
--   [Configuration](#configuration)
--   [Authentication](#authentication)
--   [Custom Connections](#custom-connections)
--   [App Store Subscriptions](#app-store-subscriptions)
--   [API Clients](#api-clients)
--   [Helper Methods](#helper-methods)
--   [Usage Examples](#usage-examples)
--   [SDK conventions](#sdk-conventions)
--   [Running Test(s) in Local](#running-tests-in-local)
--   [Participating in Xero’s developer community](#participating-in-xeros-developer-community)
--   [Contributing](#contributing)
-
-<hr>
-
 ## API Client documentation
 
 This SDK supports full method coverage for the following Xero API sets:
@@ -45,32 +18,13 @@ This SDK supports full method coverage for the following Xero API sets:
 
 <hr>
 
-## Sample Applications
-
-Sample apps can get you started quickly with simple auth flows and advanced usage examples.
-
-| Sample App                                                                                        | Description                                                                                                                                                                      | Screenshot                                                             |
-| ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| [`starter-app`](https://github.com/XeroAPI/xero-python-oauth2-starter)                            | Basic getting started code samples                                                                                                                                               | <img src="https://i.imgur.com/gJA93yT.png" alt="drawing" width="200"/> |
-| [`full-app`](https://github.com/XeroAPI/xero-python-oauth2-app)                                   | Complete app with more complex examples                                                                                                                                          | <img src="https://i.imgur.com/1YRqMmc.png" alt="drawing" width="500"/> |
-| [`custom-connections-starter`](https://github.com/XeroAPI/xero-python-custom-connections-starter) | Basic app showing Custom Connections - a Xero [premium option](https://developer.xero.com/documentation/oauth2/custom-connections) for building M2M integrations to a single org | <img src="https://i.imgur.com/uOlaWg8.png" alt="drawing" width="300"/> |
-
-<hr>
 
 ## Xero Account Requirements
 
--   Create a [free Xero user account](https://www.xero.com/us/signup/api/)
--   Login to your Xero developer [dashboard](https://developer.xero.com/app/manage) and create an API application
--   Copy the credentials from your API app and store them using a secure ENV variable strategy
--   Decide the [neccesary scopes](https://developer.xero.com/documentation/oauth2/scopes) for your app's functionality
-
-# Installation
-
-To install this SDK in your project:
-
-```
-pip install xero-python
-```
+- Create a [free Xero user account](https://www.xero.com/us/signup/api/)
+- Login to your Xero developer [dashboard](https://developer.xero.com/app/manage) and create an API application
+- Copy the credentials from your API app and store them using a secure ENV variable strategy
+- Decide the [necessary scopes](https://developer.xero.com/documentation/oauth2/scopes) for your app's functionality
 
 ---
 
@@ -96,7 +50,6 @@ from xero.api_client.configuration import Configuration
 from xero.api_client.oauth2 import OAuth2Token
 from xero.exceptions import AccountingBadRequestException, PayrollUkBadRequestException
 from xero.identity import IdentityApi
-from xero.utils import getvalue
 import logging_settings
 from utils import jsonify, serialize_model
 
@@ -257,104 +210,6 @@ Example Token Set JSON:
 
 ---
 
-## Custom Connections
-
-Custom Connections are a Xero [premium option](https://developer.xero.com/documentation/oauth2/custom-connections) used for building M2M integrations to a single organisation. A custom connection uses OAuth 2.0's [`client_credentials`](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/) grant which eliminates the step of exchanging the temporary code for a token set.
-
-To use this SDK with a Custom Connections:
-
-```python
-import os
-from functools import wraps
-from io import BytesIO
-from logging.config import dictConfig
-from flask import Flask, url_for, render_template, session, redirect, json, send_file
-from flask_session import Session
-from xero.accounting import AccountingApi, ContactPerson, Contact, Contacts
-from xero.api_client import ApiClient, serialize
-from xero.api_client.configuration import Configuration
-from xero.api_client.oauth2 import OAuth2Token
-from xero.exceptions import AccountingBadRequestException
-from xero.identity import IdentityApi
-from xero.utils import getvalue
-import logging_settings
-from utils import jsonify, serialize_model
-
-dictConfig(logging_settings.default_settings)
-
-# configure main flask application
-app = Flask(__name__)
-app.config.from_object("default_settings")
-app.config.from_pyfile("config.py", silent=True)
-
-# configure persistent session cache
-Session(app)
-
-# configure xero-python sdk client
-api_client = ApiClient(
-    Configuration(
-        debug=app.config["DEBUG"],
-        oauth2_token=OAuth2Token(
-            client_id=app.config["CLIENT_ID"], client_secret=app.config["CLIENT_SECRET"]
-        ),
-    ),
-    pool_threads=1,
-)
-
-# configure token persistence and exchange point between app session and xero-python
-@api_client.oauth2_token_getter
-def obtain_xero_oauth2_token():
-    return session.get("token")
-
-@api_client.oauth2_token_saver
-def store_xero_oauth2_token(token):
-    session["token"] = token
-    session.modified = True
-
-@app.route("/get_token")
-def get_token():
-    try:
-        # no user auth flow, no exchanging temp code for token
-        xero_token = api_client.get_client_credentials_token()
-    except Exception as e:
-        print(e)
-        raise
-    # todo validate state value
-    if xero_token is None or xero_token.get("access_token") is None:
-        return "Access denied: response=%s" % xero_token
-    store_xero_oauth2_token(xero_token)
-    return redirect(url_for("index", _external=True))
-
-@app.route("/accounting_invoice_read_all")
-@xero_token_required
-def accounting_invoice_read_all():
-    code = get_code_snippet("INVOICES","READ_ALL")
-
-    #[INVOICES:READ_ALL]
-    accounting_api = AccountingApi(api_client)
-
-    try:
-        invoices_read = accounting_api.get_invoices('')
-    except AccountingBadRequestException as exception:
-        output = "Error: " + exception.reason
-        json = jsonify(exception.error_data)
-    else:
-        output = "Total invoices found:  {}.".format(len(invoices_read.invoices)
-        )
-        json = serialize_model(invoices_read)
-    #[/INVOICES:READ_ALL]
-
-    return render_template(
-        "output.html", title="Invoices",code=code, output=output, json=json, len = 0, set="accounting", endpoint="invoice", action="read_all"
-    )
-```
-
-Because Custom Connections are only valid for a single organisation you don't need to pass the xero-tenant-id as the first parameter to every method, or more specifically for this SDK xeroTenantId can be an empty string.
-
-> Because the SDK is generated from the OpenAPI spec the parameter remains. For now you are required to pass an empty string to use this SDK with a Custom Connection.
-
----
-
 ## App Store Subscriptions
 
 If you are implementing subscriptions to participate in Xero's App Store you will need to setup [App Store subscriptions](https://developer.xero.com/documentation/guides/how-to-guides/xero-app-store-referrals/) endpoints.
@@ -510,13 +365,12 @@ A full list of the SDK client's methods:
 
 ```python
 from xero.accounting import AccountingApi
-from xero.utils import getvalue
 
 accounting_api = AccountingApi(api_client)
 
 # Get Accounts
 read_accounts = accounting_api.get_accounts(xero_tenant_id)
-account_id = getvalue(read_accounts, "accounts.0.account_id", "")
+account_id = read_accounts["accounts"][0]["account_id"]
 
 # Get Account by ID
 read_one_account = accounting_api.get_account(xero_tenant_id, account_id)
@@ -524,13 +378,13 @@ read_one_account = accounting_api.get_account(xero_tenant_id, account_id)
 # Create Invoice
 # get contact
 read_contacts = accounting_api.get_contacts(xero_tenant_id)
-contact_id = getvalue(read_contacts, "contacts.0.contact_id", "")
+contact_id = read_contacts["contacts"][0]["contact_id"]
 # get account
 where = "Type==\"SALES\"&&Status==\"ACTIVE\""
 read_accounts = accounting_api.get_accounts(
     xero_tenant_id, where=where
 )
-account_id = getvalue(read_accounts, "accounts.0.account_id", "")
+account_id = read_accounts["accounts"][0]["account_id"]
 # build Invoices
 contact = Contact(
     contact_id=contact_id
@@ -550,7 +404,7 @@ invoice = Invoice(
 )
 invoices = Invoices(invoices=[invoice])
 created_invoices = accounting_api.create_invoices(xero_tenant_id, invoices=invoices)
-invoice_id = getvalue(read_invoices, "invoices.0.invoice_id", "")
+invoice_id = read_invoices["invoices"][0]["invoice_id"]
 
 # Create Attachment
 include_online = True
@@ -571,9 +425,6 @@ created_invoice_attachments_by_file_name = accounting_api.create_invoice_attachm
 
 ---
 
-## SDK conventions
-
----
 
 ## Running Test(s) in Local
 
@@ -585,7 +436,7 @@ Steps to Run Test(s)
 -   Navigate to **tests--> utils--> ** folder in the terminal
 -   Execute the script **./start-prism.sh**
 -   This will start the PRISM Server in Local
--   Run **pytest** to run the dotnet test cases.
+-   Run **pytest** to run the test cases
 
 ### Querying & Filtering
 
@@ -635,28 +486,3 @@ api_response = api_instance.get_invoices(
     summary_only
 )
 ```
-
----
-
-## Participating in Xero’s developer community
-
-This SDK is one of a number of SDK’s that the Xero Developer team builds and maintains. We are grateful for all the contributions that the community makes.
-
-Here are a few things you should be aware of as a contributor:
-
--   Xero has adopted the Contributor Covenant [Code of Conduct](https://github.com/XeroAPI/xero-python/blob/master/CODE_OF_CONDUCT.md), we expect all contributors in our community to adhere to it
--   If you raise an issue then please make sure to fill out the Github issue template, doing so helps us help you
--   You’re welcome to raise PRs. As our SDKs are generated we may use your code in the core SDK build instead of merging your code
--   We have a [contribution guide](https://github.com/XeroAPI/xero-python/blob/master/CONTRIBUTING.md) for you to follow when contributing to this SDK
--   Curious about how we generate our SDK’s? Have a [read of our process](https://devblog.xero.com/building-sdks-for-the-future-b79ff726dfd6) and have a look at our [OpenAPISpec](https://github.com/XeroAPI/Xero-OpenAPI)
--   This software is published under the [MIT License](https://github.com/XeroAPI/xero-python/blob/master/LICENSE)
-
-For questions that aren’t related to SDKs please refer to our [developer support page](https://developer.xero.com/support/).
-
-### Contributing
-
-PRs, issues, and discussion are highly appreciated and encouraged. Note that the majority of this project is generated code based on [Xero's OpenAPI specs](https://github.com/XeroAPI/Xero-OpenAPI) - PR's will be evaluated and pre-merge will be incorporated into the root generation templates.
-
-### Versioning
-
-We do our best to keep OS industry `semver` standards, but we can make mistakes! If something is not accurately reflected in a version's release notes please let the team know.

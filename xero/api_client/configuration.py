@@ -1,21 +1,8 @@
 import copy
 import http.client as httplib
 import logging
-import sys
-from .oauth2 import OAuth2Token
 
-JSON_SCHEMA_VALIDATION_KEYWORDS = {
-    "multipleOf",
-    "maximum",
-    "exclusiveMaximum",
-    "minimum",
-    "exclusiveMinimum",
-    "maxLength",
-    "minLength",
-    "pattern",
-    "maxItems",
-    "minItems",
-}
+from .oauth2 import OAuth2Token
 
 
 class Configuration:
@@ -60,7 +47,6 @@ class Configuration:
         self.logger = {}
         self.logger["package_logger"] = logging.getLogger("xero.accounting")
         self.logger_format = "%(asctime)s %(levelname)s %(message)s"
-        self.logger_stream_handler = None
         self.logger_file_handler = None
         self.logger_file = None
         self.debug = False
@@ -68,15 +54,11 @@ class Configuration:
         self.ssl_ca_cert = ssl_ca_cert
         self.cert_file = None
         self.key_file = None
-        self.assert_hostname = None
-        self.tls_server_name = None
         self.connection_pool_maxsize = 100
         self.proxy = None
         self.proxy_headers = None
         self.safe_chars_for_path_param = ""
-        self.retries = None
         self.client_side_validation = True
-        self.socket_options = None
         self.datetime_format = "%Y-%m-%dT%H:%M:%S.%f%z"
         self.date_format = "%Y-%m-%d"
 
@@ -94,14 +76,6 @@ class Configuration:
 
     def __setattr__(self, name, value):
         object.__setattr__(self, name, value)
-
-    @classmethod
-    def set_default(cls, default):
-        cls._default = default
-
-    @classmethod
-    def get_default_copy(cls):
-        return cls.get_default()
 
     @classmethod
     def get_default(cls):
@@ -147,19 +121,6 @@ class Configuration:
         self.__logger_format = value
         self.logger_formatter = logging.Formatter(self.__logger_format)
 
-    def get_api_key_with_prefix(self, identifier, alias=None):
-        if self.refresh_api_key_hook is not None:
-            self.refresh_api_key_hook(self)
-        key = self.api_key.get(
-            identifier, self.api_key.get(alias) if alias is not None else None
-        )
-        if key:
-            prefix = self.api_key_prefix.get(identifier)
-            if prefix:
-                return "%s %s" % (prefix, key)
-            else:
-                return key
-
     async def auth_settings(self):
         auth = {}
         if self.access_token is not None:
@@ -174,15 +135,6 @@ class Configuration:
         elif self.oauth2_token is not None:
             return {"OAuth2": self.oauth2_token.get_auth_settings()}
         return auth
-
-    def to_debug_report(self):
-        return (
-            "Python SDK Debug Report:\n"
-            "OS: {env}\n"
-            "Python Version: {pyversion}\n"
-            "Version of the API: 6.3.0\n"
-            "SDK Package Version: 1.0.0".format(env=sys.platform, pyversion=sys.version)
-        )
 
     def get_host_settings(self):
         return [

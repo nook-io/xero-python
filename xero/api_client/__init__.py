@@ -6,17 +6,15 @@ import re
 import tempfile
 from decimal import Decimal
 from enum import Enum
-from functools import cached_property
 from urllib.parse import quote
-from dateutil.parser import parse
+
 from pydantic import SecretStr
+
 from xero import rest
 from xero.api_client.api_response import ApiResponse
 from xero.api_client.configuration import Configuration
 from xero.api_client.deserializer import deserialize
 from xero.exceptions import (
-    AccessTokenExpiredError,
-    ApiException,
     ApiValueError,
     OAuth2TokenGetterError,
     OAuth2TokenSaverError,
@@ -34,15 +32,6 @@ class ModelFinder:
 
 class ApiClient:
     PRIMITIVE_TYPES = (float, bool, bytes, str, int)
-    NATIVE_TYPES_MAPPING = {
-        "int": int,
-        "float": float,
-        "str": str,
-        "bool": bool,
-        "date": datetime.date,
-        "datetime": datetime.datetime,
-        "object": object,
-    }
 
     def __init__(
         self,
@@ -100,10 +89,6 @@ class ApiClient:
         if cls._default is None:
             cls._default = ApiClient()
         return cls._default
-
-    @classmethod
-    def set_default(cls, default):
-        cls._default = default
 
     async def __call_api(
         self,
@@ -176,7 +161,6 @@ class ApiClient:
             _preload_content=_preload_content,
             _request_timeout=_request_timeout,
         )
-        self.last_response = response_data
         return_data = None
         if not _preload_content:
             return response_data

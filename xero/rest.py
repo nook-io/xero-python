@@ -4,9 +4,11 @@ import logging
 import re
 import ssl
 from urllib.parse import urlencode
+
 import aiohttp
 from multidict import CIMultiDictProxy
-from xero.exceptions import ApiException, ApiValueError
+
+from xero.exceptions import ApiValueError, HTTPStatusException
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +28,7 @@ class RESTResponse(io.IOBase):
 
 
 class RESTClientObject:
-    def __init__(self, configuration, pools_size=4, maxsize=None) -> None:
+    def __init__(self, configuration, maxsize=None) -> None:
         if maxsize is None:
             maxsize = configuration.connection_pool_maxsize
         ssl_context = ssl.create_default_context(cafile=configuration.ssl_ca_cert)
@@ -102,14 +104,14 @@ class RESTClientObject:
                 msg = """Cannot prepare a request message for provided
                          arguments. Please check that your arguments match
                          declared content type."""
-                raise ApiException(status=0, reason=msg)
+                raise ApiValueError(msg)
         r = await self.pool_manager.request(**args)
         if _preload_content:
             data = await r.read()
             r = RESTResponse(r, data)
             logger.debug("response body: %s", r.data)
             if not 200 <= r.status <= 299:
-                raise ApiException(http_resp=r)
+                raise HTTPStatusException(http_resp=r)
         return r
 
     async def get_request(

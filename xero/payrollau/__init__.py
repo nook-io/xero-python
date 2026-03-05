@@ -1,9 +1,9 @@
 from xero.payrollau.api.payroll_au_api import PayrollAuApi
-from xero.payrollau.models.api_exception import APIException
 from xero.payrollau.models.account import Account
 from xero.payrollau.models.account_type import AccountType
 from xero.payrollau.models.allowance_category import AllowanceCategory
 from xero.payrollau.models.allowance_type import AllowanceType
+from xero.payrollau.models.api_exception import APIException
 from xero.payrollau.models.bank_account import BankAccount
 from xero.payrollau.models.calendar_type import CalendarType
 from xero.payrollau.models.country_of_residence import CountryOfResidence
@@ -98,10 +98,10 @@ from xero.payrollau.models.superannuation_contribution_type import (
     SuperannuationContributionType,
 )
 from xero.payrollau.models.superannuation_line import SuperannuationLine
-from xero.payrollau.models.tfn_exemption_type import TFNExemptionType
 from xero.payrollau.models.tax_declaration import TaxDeclaration
 from xero.payrollau.models.tax_line import TaxLine
 from xero.payrollau.models.tax_scale_type import TaxScaleType
+from xero.payrollau.models.tfn_exemption_type import TFNExemptionType
 from xero.payrollau.models.timesheet import Timesheet
 from xero.payrollau.models.timesheet_line import TimesheetLine
 from xero.payrollau.models.timesheet_object import TimesheetObject
