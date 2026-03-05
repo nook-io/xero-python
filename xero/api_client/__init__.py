@@ -6,10 +6,8 @@ import re
 import tempfile
 from decimal import Decimal
 from enum import Enum
-from functools import cached_property
 from urllib.parse import quote
 
-from dateutil.parser import parse
 from pydantic import SecretStr
 
 from xero import rest
@@ -17,8 +15,6 @@ from xero.api_client.api_response import ApiResponse
 from xero.api_client.configuration import Configuration
 from xero.api_client.deserializer import deserialize
 from xero.exceptions import (
-    AccessTokenExpiredError,
-    ApiException,
     ApiValueError,
     OAuth2TokenGetterError,
     OAuth2TokenSaverError,

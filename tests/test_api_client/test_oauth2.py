@@ -4,13 +4,12 @@ import time
 
 import pytest
 
-from tests import FakeMethod, FakeClass
+from tests import FakeClass, FakeMethod
 from tests.conftest import get_token_value
 from xero.api_client import ApiClient
 from xero.api_client.configuration import Configuration
-from xero.api_client.oauth2 import TokenApi, OAuth2Token
+from xero.api_client.oauth2 import OAuth2Token, TokenApi
 from xero.exceptions import AccessTokenExpiredError
-
 
 # from os.path import join, dirname
 
@@ -85,7 +84,7 @@ def test_auth2_get_valid_token():
     assert oauth2_token.get_valid_access_token() == token
 
 
-def test_auth2_get_invalid_token():
+async def test_auth2_get_invalid_token():
     # given OAuth2Token with invalid access_token
     token = "access token value"
     expires_at = time.time() - 4
@@ -94,9 +93,9 @@ def test_auth2_get_invalid_token():
     oauth2_token.expires_at = expires_at
     # Then correct access token value expected
     with pytest.raises(AccessTokenExpiredError):
-        oauth2_token.get_valid_access_token()
+        await oauth2_token.get_valid_access_token()
     with pytest.raises(AccessTokenExpiredError):
-        oauth2_token.get_valid_access_token(at_time=expires_at + 1)
+        await oauth2_token.get_valid_access_token(at_time=expires_at + 1)
 
 
 def test_auth2_refresh_access_token():
