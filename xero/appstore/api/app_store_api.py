@@ -1,16 +1,15 @@
 import importlib
-from typing import Optional
+from typing import Annotated
+
 from pydantic import Field, StrictStr
-from typing_extensions import Annotated
+
 from xero.api_client import ApiClient, ApiResponse, ModelFinder
 from xero.appstore.models.create_usage_record import CreateUsageRecord
 from xero.appstore.models.subscription import Subscription
 from xero.appstore.models.update_usage_record import UpdateUsageRecord
 from xero.appstore.models.usage_record import UsageRecord
 from xero.appstore.models.usage_records_list import UsageRecordsList
-from xero.exceptions import (
-    ApiTypeError,
-)
+from xero.exceptions import ApiTypeError
 
 
 class AppStoreApi:
@@ -63,8 +62,8 @@ class AppStoreApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_subscription" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_subscription"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -142,8 +141,8 @@ class AppStoreApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_usage_records" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_usage_records"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -201,7 +200,7 @@ class AppStoreApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -237,7 +236,7 @@ class AppStoreApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -264,8 +263,8 @@ class AppStoreApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method post_usage_records" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method post_usage_records"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -339,7 +338,7 @@ class AppStoreApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -380,7 +379,7 @@ class AppStoreApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -408,8 +407,8 @@ class AppStoreApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method put_usage_records" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method put_usage_records"
                 )
             _params[_key] = _val
         del _params["kwargs"]

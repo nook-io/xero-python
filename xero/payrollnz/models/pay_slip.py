@@ -330,9 +330,7 @@ class PaySlip(BaseModel):
         if payment_method:
             if payment_method not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `payment_method` ({0}), must be one of {1}".format(
-                        payment_method, allowed_values
-                    )
+                    f"Invalid value for `payment_method` ({payment_method}), must be one of {allowed_values}"
                 )
         self._payment_method = payment_method
 

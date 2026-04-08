@@ -38,14 +38,14 @@ class HTTPStatusException(OpenApiException):
 
     @property
     def error_message(self) -> str:
-        return "({0})\nReason: {1}".format(self.status, self.reason)
+        return f"({self.status})\nReason: {self.reason}"
 
     def __str__(self) -> str:
         error_message = self.error_message + "\n"
         if self.headers:
-            error_message += "HTTP response headers: {0}\n".format(self.headers)
+            error_message += f"HTTP response headers: {self.headers}\n"
         if self.body:
-            error_message += "HTTP response body: {0}\n".format(self.body)
+            error_message += f"HTTP response body: {self.body}\n"
         return error_message
 
 
@@ -72,8 +72,8 @@ class ApiTypeError(OpenApiException, TypeError):
         self.key_type = key_type
         full_msg = msg
         if path_to_item:
-            full_msg = "{0} at {1}".format(msg, render_path(path_to_item))
-        super(ApiTypeError, self).__init__(full_msg)
+            full_msg = f"{msg} at {render_path(path_to_item)}"
+        super().__init__(full_msg)
 
 
 class ApiValueError(OpenApiException, ValueError):
@@ -81,15 +81,15 @@ class ApiValueError(OpenApiException, ValueError):
         self.path_to_item = path_to_item
         full_msg = msg
         if path_to_item:
-            full_msg = "{0} at {1}".format(msg, render_path(path_to_item))
-        super(ApiValueError, self).__init__(full_msg)
+            full_msg = f"{msg} at {render_path(path_to_item)}"
+        super().__init__(full_msg)
 
 
 def render_path(path_to_item):
     result = ""
     for pth in path_to_item:
         if isinstance(pth, int):
-            result += "[{0}]".format(pth)
+            result += f"[{pth}]"
         else:
-            result += "['{0}']".format(pth)
+            result += f"['{pth}']"
     return result

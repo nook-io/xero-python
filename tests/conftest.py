@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
     pytest global configuration file.
     Create your global fixtures in this file.
@@ -151,10 +150,9 @@ def oauth2_refresh_token(oauth2_token, xero_refresh_token):
     """
     similar to valid oauth2_token with expired access token
     """
-    oauth2_refresh_token = dict(
+    return dict(
         oauth2_token, expires_in=1800, expires_at=time.time() - 1
     )
-    return oauth2_refresh_token
 
 
 @pytest.fixture

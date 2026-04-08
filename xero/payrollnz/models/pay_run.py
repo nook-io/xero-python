@@ -150,9 +150,7 @@ class PayRun(BaseModel):
         if pay_run_status:
             if pay_run_status not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `pay_run_status` ({0}), must be one of {1}".format(
-                        pay_run_status, allowed_values
-                    )
+                    f"Invalid value for `pay_run_status` ({pay_run_status}), must be one of {allowed_values}"
                 )
         self._pay_run_status = pay_run_status
 
@@ -171,9 +169,7 @@ class PayRun(BaseModel):
         if pay_run_type:
             if pay_run_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `pay_run_type` ({0}), must be one of {1}".format(
-                        pay_run_type, allowed_values
-                    )
+                    f"Invalid value for `pay_run_type` ({pay_run_type}), must be one of {allowed_values}"
                 )
         self._pay_run_type = pay_run_type
 

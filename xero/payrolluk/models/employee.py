@@ -174,9 +174,7 @@ class Employee(BaseModel):
         if gender:
             if gender not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `gender` ({0}), must be one of {1}".format(
-                        gender, allowed_values
-                    )
+                    f"Invalid value for `gender` ({gender}), must be one of {allowed_values}"
                 )
         self._gender = gender
 

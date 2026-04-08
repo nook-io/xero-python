@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
 import pytest
-
 from xero_python.api_client import ApiClient
 from xero_python.identity import IdentityApi, models
 from xero_python.rest import RESTClientObject

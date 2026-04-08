@@ -186,9 +186,7 @@ class Account(BaseModel):
         if status:
             if status not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `status` ({0}), must be one of {1}".format(
-                        status, allowed_values
-                    )
+                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
                 )
         self._status = status
 
@@ -217,9 +215,7 @@ class Account(BaseModel):
         if bank_account_type:
             if bank_account_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `bank_account_type` ({0}), must be one of {1}".format(
-                        bank_account_type, allowed_values
-                    )
+                    f"Invalid value for `bank_account_type` ({bank_account_type}), must be one of {allowed_values}"
                 )
         self._bank_account_type = bank_account_type
 
@@ -272,9 +268,7 @@ class Account(BaseModel):
         if _class:
             if _class not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `_class` ({0}), must be one of {1}".format(
-                        _class, allowed_values
-                    )
+                    f"Invalid value for `_class` ({_class}), must be one of {allowed_values}"
                 )
         self.__class = _class
 
@@ -311,9 +305,7 @@ class Account(BaseModel):
         if system_account:
             if system_account not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `system_account` ({0}), must be one of {1}".format(
-                        system_account, allowed_values
-                    )
+                    f"Invalid value for `system_account` ({system_account}), must be one of {allowed_values}"
                 )
         self._system_account = system_account
 

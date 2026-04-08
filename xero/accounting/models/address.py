@@ -82,9 +82,7 @@ class Address(BaseModel):
         if address_type:
             if address_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `address_type` ({0}), must be one of {1}".format(
-                        address_type, allowed_values
-                    )
+                    f"Invalid value for `address_type` ({address_type}), must be one of {allowed_values}"
                 )
         self._address_type = address_type
 

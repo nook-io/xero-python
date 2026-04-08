@@ -11,14 +11,12 @@ def single_dispatch_str(func=None, key=None):
     def default_get_key(*args, **kwargs):
         if not args:
             raise TypeError(
-                "{} requires at least 1 positional argument".format(func_name)
+                f"{func_name} requires at least 1 positional argument"
             )
         key = args[0]
         if not isinstance(key, str):
             raise TypeError(
-                "{} requires first positional argument to be string type".format(
-                    func_name
-                )
+                f"{func_name} requires first positional argument to be string type"
             )
         return key
 
@@ -34,11 +32,11 @@ def single_dispatch_str(func=None, key=None):
     def register(key, func=None):
         if not isinstance(key, str):
             raise TypeError(
-                "{} requires string type key for register".format(func_name)
+                f"{func_name} requires string type key for register"
             )
         if not key:
             raise ValueError(
-                "{} requires non empty string type key for register".format(func_name)
+                f"{func_name} requires non empty string type key for register"
             )
         if func is None:
             return lambda f: register(key, f)
@@ -48,7 +46,7 @@ def single_dispatch_str(func=None, key=None):
     def wrapper(*args, **kw):
         key = get_key(*args, **kw)
         if not isinstance(key, str):
-            raise TypeError("{} requires key value to be string type".format(func_name))
+            raise TypeError(f"{func_name} requires key value to be string type")
         return dispatch(key)(*args, **kw)
 
     registry[""] = func

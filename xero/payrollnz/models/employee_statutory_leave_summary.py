@@ -87,9 +87,7 @@ class EmployeeStatutoryLeaveSummary(BaseModel):
         if type:
             if type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `type` ({0}), must be one of {1}".format(
-                        type, allowed_values
-                    )
+                    f"Invalid value for `type` ({type}), must be one of {allowed_values}"
                 )
         self._type = type
 
@@ -127,8 +125,6 @@ class EmployeeStatutoryLeaveSummary(BaseModel):
         if status:
             if status not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `status` ({0}), must be one of {1}".format(
-                        status, allowed_values
-                    )
+                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
                 )
         self._status = status

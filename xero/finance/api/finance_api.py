@@ -1,26 +1,16 @@
 import importlib
-from typing import Optional
-from pydantic import (
-    Field,
-    StrictBool,
-    StrictStr,
-    conlist,
-)
-from typing_extensions import Annotated
+from typing import Annotated
+
+from pydantic import Field, StrictBool, StrictStr
+
 from xero.api_client import ApiClient, ApiResponse, ModelFinder
-from xero.exceptions import (
-    ApiTypeError,
-)
+from xero.exceptions import ApiTypeError
 from xero.finance.models.account_usage_response import AccountUsageResponse
 from xero.finance.models.balance_sheet_response import BalanceSheetResponse
-from xero.finance.models.bank_statement_accounting_response import (
-    BankStatementAccountingResponse,
-)
+from xero.finance.models.bank_statement_accounting_response import BankStatementAccountingResponse
 from xero.finance.models.cash_validation_response import CashValidationResponse
 from xero.finance.models.cashflow_response import CashflowResponse
-from xero.finance.models.income_by_contact_response import (
-    IncomeByContactResponse,
-)
+from xero.finance.models.income_by_contact_response import IncomeByContactResponse
 from xero.finance.models.lock_history_response import LockHistoryResponse
 from xero.finance.models.profit_and_loss_response import ProfitAndLossResponse
 from xero.finance.models.report_history_response import ReportHistoryResponse
@@ -47,13 +37,13 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         start_month: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="date, yyyy-MM                 If no parameter is provided, the month 12 months prior to the end month will be used.                Account usage for up to 12 months from this date will be returned."
             ),
         ] = None,
         end_month: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="date, yyyy-MM                 If no parameter is provided, the current month will be used.                Account usage for up to 12 months prior to this date will be returned."
             ),
@@ -74,13 +64,13 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         start_month: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="date, yyyy-MM                 If no parameter is provided, the month 12 months prior to the end month will be used.                Account usage for up to 12 months from this date will be returned."
             ),
         ] = None,
         end_month: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="date, yyyy-MM                 If no parameter is provided, the current month will be used.                Account usage for up to 12 months prior to this date will be returned."
             ),
@@ -102,8 +92,8 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_accounting_activity_account_usage" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_accounting_activity_account_usage"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -154,7 +144,7 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         end_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="date, yyyy-MM-dd                 If no parameter is provided, the current date will be used.                Any changes to hard or soft lock dates that were made within the period up to 12 months before this date will be returned.                Please be aware that there may be a delay of up to 3 days before a change is visible from this API."
             ),
@@ -175,7 +165,7 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         end_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="date, yyyy-MM-dd                 If no parameter is provided, the current date will be used.                Any changes to hard or soft lock dates that were made within the period up to 12 months before this date will be returned.                Please be aware that there may be a delay of up to 3 days before a change is visible from this API."
             ),
@@ -197,8 +187,8 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_accounting_activity_lock_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_accounting_activity_lock_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -247,7 +237,7 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         end_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="date, yyyy-MM-dd                 If no parameter is provided, the current date will be used.                Any reports that were published within the period up to 12 months before this date will be returned.                Please be aware that there may be a delay of up to 3 days before a published report is visible from this API."
             ),
@@ -268,7 +258,7 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         end_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="date, yyyy-MM-dd                 If no parameter is provided, the current date will be used.                Any reports that were published within the period up to 12 months before this date will be returned.                Please be aware that there may be a delay of up to 3 days before a published report is visible from this API."
             ),
@@ -290,8 +280,8 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_accounting_activity_report_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_accounting_activity_report_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -340,7 +330,7 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         data_month: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="date, yyyy-MM                 The specified month must be complete (in the past); The current month cannot be specified since it is not complete.                If no parameter is provided, the month immediately previous to the current month will be used.                Any user activities occurring within the specified month will be returned.                Please be aware that there may be a delay of up to 3 days before a user activity is visible from this API."
             ),
@@ -361,7 +351,7 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         data_month: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="date, yyyy-MM                 The specified month must be complete (in the past); The current month cannot be specified since it is not complete.                If no parameter is provided, the month immediately previous to the current month will be used.                Any user activities occurring within the specified month will be returned.                Please be aware that there may be a delay of up to 3 days before a user activity is visible from this API."
             ),
@@ -383,8 +373,8 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_accounting_activity_user_activities" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_accounting_activity_user_activities"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -450,7 +440,7 @@ class FinanceApi:
             ),
         ],
         summary_only: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="boolean, true/false    The default value is true if no parameter is provided.    In summary mode, the response will exclude the computation-heavy LineItems fields from bank transaction, invoice, credit note, prepayment and overpayment data, making the API calls quicker and more efficient."
             ),
@@ -488,7 +478,7 @@ class FinanceApi:
             ),
         ],
         summary_only: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="boolean, true/false    The default value is true if no parameter is provided.    In summary mode, the response will exclude the computation-heavy LineItems fields from bank transaction, invoice, credit note, prepayment and overpayment data, making the API calls quicker and more efficient."
             ),
@@ -516,8 +506,8 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_bank_statement_accounting" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_bank_statement_accounting"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -572,19 +562,19 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         balance_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="date, yyyy-MM-dd     If no parameter is provided, the current date will be used.    The ‘balance date’ will return transactions based on the accounting date entered by the user.  Transactions before the balanceDate will be included.  The user has discretion as to which accounting period the transaction relates to.    The ‘balance date’  will control the latest maximum date of transactions included in the aggregate numbers.  Balance date does not affect the CurrentStatement object, as this will always return the most recent statement before asAtSystemDate (if specified)"
             ),
         ] = None,
         as_at_system_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="date, yyyy-MM-dd     If no parameter is provided, the current date will be used.    The ‘as at’ date will return transactions based on the  creation date.  It reflects the date the transactions were entered into Xero, not the accounting date.  The ‘as at’ date can not be overridden by the user.  This can be used to estimate a ‘historical frequency of reconciliation’.    The ‘as at’ date will affect the current statement in the response, as any candidate statements created after this date will be filtered out.  Thus the current statement returned will be the most recent statement prior to the specified ‘as at’ date.  Be aware that neither the begin date, nor the balance date, will affect the current statement.    Note;  information is only presented when system architecture allows, meaning historical cash validation information will be an estimate. In addition, delete events are not aware of the ‘as at’ functionality in this endpoint, meaning that transactions deleted at the time the API is accessed will be considered to always have been deleted."
             ),
         ] = None,
         begin_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="date, yyyy-MM-dd     If no parameter is provided, the aggregate results will be drawn from the user’s total history.    The ‘begin date’ will return transactions based on the accounting date entered by the user. Transactions after the beginDate will be included.  The user has discretion as to which accounting period the transaction relates to."
             ),
@@ -605,19 +595,19 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         balance_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="date, yyyy-MM-dd     If no parameter is provided, the current date will be used.    The ‘balance date’ will return transactions based on the accounting date entered by the user.  Transactions before the balanceDate will be included.  The user has discretion as to which accounting period the transaction relates to.    The ‘balance date’  will control the latest maximum date of transactions included in the aggregate numbers.  Balance date does not affect the CurrentStatement object, as this will always return the most recent statement before asAtSystemDate (if specified)"
             ),
         ] = None,
         as_at_system_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="date, yyyy-MM-dd     If no parameter is provided, the current date will be used.    The ‘as at’ date will return transactions based on the  creation date.  It reflects the date the transactions were entered into Xero, not the accounting date.  The ‘as at’ date can not be overridden by the user.  This can be used to estimate a ‘historical frequency of reconciliation’.    The ‘as at’ date will affect the current statement in the response, as any candidate statements created after this date will be filtered out.  Thus the current statement returned will be the most recent statement prior to the specified ‘as at’ date.  Be aware that neither the begin date, nor the balance date, will affect the current statement.    Note;  information is only presented when system architecture allows, meaning historical cash validation information will be an estimate. In addition, delete events are not aware of the ‘as at’ functionality in this endpoint, meaning that transactions deleted at the time the API is accessed will be considered to always have been deleted."
             ),
         ] = None,
         begin_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="date, yyyy-MM-dd     If no parameter is provided, the aggregate results will be drawn from the user’s total history.    The ‘begin date’ will return transactions based on the accounting date entered by the user. Transactions after the beginDate will be included.  The user has discretion as to which accounting period the transaction relates to."
             ),
@@ -644,8 +634,8 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_cash_validation" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_cash_validation"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -698,7 +688,7 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         balance_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Specifies the date for balance sheet report.    Format yyyy-MM-dd. If no parameter is provided, the current date will be used."
             ),
@@ -719,7 +709,7 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         balance_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Specifies the date for balance sheet report.    Format yyyy-MM-dd. If no parameter is provided, the current date will be used."
             ),
@@ -741,8 +731,8 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_financial_statement_balance_sheet" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_financial_statement_balance_sheet"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -792,13 +782,13 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         start_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Date e.g. yyyy-MM-dd    Specifies the start date for cash flow report.    If no parameter is provided, the date of 12 months before the end date will be used."
             ),
         ] = None,
         end_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Date e.g. yyyy-MM-dd    Specifies the end date for cash flow report.    If no parameter is provided, the current date will be used."
             ),
@@ -819,13 +809,13 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         start_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Date e.g. yyyy-MM-dd    Specifies the start date for cash flow report.    If no parameter is provided, the date of 12 months before the end date will be used."
             ),
         ] = None,
         end_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Date e.g. yyyy-MM-dd    Specifies the end date for cash flow report.    If no parameter is provided, the current date will be used."
             ),
@@ -847,8 +837,8 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_financial_statement_cashflow" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_financial_statement_cashflow"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -900,25 +890,25 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         contact_ids: Annotated[
-            Optional[conlist(StrictStr)],
+            list[StrictStr] | None,
             Field(
                 description="Specifies the customer contacts to be included in the report.    If no parameter is provided, all customer contacts will be included"
             ),
         ] = None,
         include_manual_journals: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="Specifies whether to include the manual journals in the report.                If no parameter is provided, manual journals will not be included."
             ),
         ] = None,
         start_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Date yyyy-MM-dd    Specifies the start date for the report.                If no parameter is provided, the date of 12 months before the end date will be used.                It is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency."
             ),
         ] = None,
         end_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Date yyyy-MM-dd    Specifies the end date for the report.    If no parameter is provided, the current date will be used.                It is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency."
             ),
@@ -944,25 +934,25 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         contact_ids: Annotated[
-            Optional[conlist(StrictStr)],
+            list[StrictStr] | None,
             Field(
                 description="Specifies the customer contacts to be included in the report.    If no parameter is provided, all customer contacts will be included"
             ),
         ] = None,
         include_manual_journals: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="Specifies whether to include the manual journals in the report.                If no parameter is provided, manual journals will not be included."
             ),
         ] = None,
         start_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Date yyyy-MM-dd    Specifies the start date for the report.                If no parameter is provided, the date of 12 months before the end date will be used.                It is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency."
             ),
         ] = None,
         end_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Date yyyy-MM-dd    Specifies the end date for the report.    If no parameter is provided, the current date will be used.                It is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency."
             ),
@@ -990,8 +980,8 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_financial_statement_contacts_expense" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_financial_statement_contacts_expense"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1049,25 +1039,25 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         contact_ids: Annotated[
-            Optional[conlist(StrictStr)],
+            list[StrictStr] | None,
             Field(
                 description="Specifies the customer contacts to be included in the report.    If no parameter is provided, all customer contacts will be included"
             ),
         ] = None,
         include_manual_journals: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="Specifies whether to include the manual journals in the report.                If no parameter is provided, manual journals will not be included."
             ),
         ] = None,
         start_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Date yyyy-MM-dd    Specifies the start date for the report.                If no parameter is provided, the date of 12 months before the end date will be used.                It is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency."
             ),
         ] = None,
         end_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Date yyyy-MM-dd    Specifies the end date for the report.    If no parameter is provided, the current date will be used.                It is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency."
             ),
@@ -1093,25 +1083,25 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         contact_ids: Annotated[
-            Optional[conlist(StrictStr)],
+            list[StrictStr] | None,
             Field(
                 description="Specifies the customer contacts to be included in the report.    If no parameter is provided, all customer contacts will be included"
             ),
         ] = None,
         include_manual_journals: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="Specifies whether to include the manual journals in the report.                If no parameter is provided, manual journals will not be included."
             ),
         ] = None,
         start_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Date yyyy-MM-dd    Specifies the start date for the report.                If no parameter is provided, the date of 12 months before the end date will be used.                It is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency."
             ),
         ] = None,
         end_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Date yyyy-MM-dd    Specifies the end date for the report.    If no parameter is provided, the current date will be used.                It is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency."
             ),
@@ -1139,8 +1129,8 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_financial_statement_contacts_revenue" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_financial_statement_contacts_revenue"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1198,13 +1188,13 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         start_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Date e.g. yyyy-MM-dd    Specifies the start date for profit and loss report    If no parameter is provided, the date of 12 months before the end date will be used."
             ),
         ] = None,
         end_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Date e.g. yyyy-MM-dd    Specifies the end date for profit and loss report     If no parameter is provided, the current date will be used."
             ),
@@ -1225,13 +1215,13 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         start_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Date e.g. yyyy-MM-dd    Specifies the start date for profit and loss report    If no parameter is provided, the date of 12 months before the end date will be used."
             ),
         ] = None,
         end_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Date e.g. yyyy-MM-dd    Specifies the end date for profit and loss report     If no parameter is provided, the current date will be used."
             ),
@@ -1253,8 +1243,8 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_financial_statement_profit_and_loss" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_financial_statement_profit_and_loss"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1305,7 +1295,7 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         end_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Date e.g. yyyy-MM-dd     Specifies the end date for trial balance report     If no parameter is provided, the current date will be used."
             ),
@@ -1326,7 +1316,7 @@ class FinanceApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         end_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Date e.g. yyyy-MM-dd     Specifies the end date for trial balance report     If no parameter is provided, the current date will be used."
             ),
@@ -1348,8 +1338,8 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_financial_statement_trial_balance" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_financial_statement_trial_balance"
                 )
             _params[_key] = _val
         del _params["kwargs"]

@@ -122,9 +122,7 @@ class Benefit(BaseModel):
         if category:
             if category not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `category` ({0}), must be one of {1}".format(
-                        category, allowed_values
-                    )
+                    f"Invalid value for `category` ({category}), must be one of {allowed_values}"
                 )
         self._category = category
 
@@ -182,9 +180,7 @@ class Benefit(BaseModel):
         if calculation_type:
             if calculation_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `calculation_type` ({0}), must be one of {1}".format(
-                        calculation_type, allowed_values
-                    )
+                    f"Invalid value for `calculation_type` ({calculation_type}), must be one of {allowed_values}"
                 )
         self._calculation_type = calculation_type
 

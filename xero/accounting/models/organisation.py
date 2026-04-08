@@ -272,9 +272,7 @@ class Organisation(BaseModel):
         if version:
             if version not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `version` ({0}), must be one of {1}".format(
-                        version, allowed_values
-                    )
+                    f"Invalid value for `version` ({version}), must be one of {allowed_values}"
                 )
         self._version = version
 
@@ -303,9 +301,7 @@ class Organisation(BaseModel):
         if organisation_type:
             if organisation_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `organisation_type` ({0}), must be one of {1}".format(
-                        organisation_type, allowed_values
-                    )
+                    f"Invalid value for `organisation_type` ({organisation_type}), must be one of {allowed_values}"
                 )
         self._organisation_type = organisation_type
 
@@ -401,9 +397,7 @@ class Organisation(BaseModel):
         if sales_tax_basis:
             if sales_tax_basis not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `sales_tax_basis` ({0}), must be one of {1}".format(
-                        sales_tax_basis, allowed_values
-                    )
+                    f"Invalid value for `sales_tax_basis` ({sales_tax_basis}), must be one of {allowed_values}"
                 )
         self._sales_tax_basis = sales_tax_basis
 
@@ -434,9 +428,7 @@ class Organisation(BaseModel):
         if sales_tax_period:
             if sales_tax_period not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `sales_tax_period` ({0}), must be one of {1}".format(
-                        sales_tax_period, allowed_values
-                    )
+                    f"Invalid value for `sales_tax_period` ({sales_tax_period}), must be one of {allowed_values}"
                 )
         self._sales_tax_period = sales_tax_period
 
@@ -513,9 +505,7 @@ class Organisation(BaseModel):
         if organisation_entity_type:
             if organisation_entity_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `organisation_entity_type` ({0}), must be one of {1}".format(
-                        organisation_entity_type, allowed_values
-                    )
+                    f"Invalid value for `organisation_entity_type` ({organisation_entity_type}), must be one of {allowed_values}"
                 )
         self._organisation_entity_type = organisation_entity_type
 
@@ -560,9 +550,7 @@ class Organisation(BaseModel):
         if _class:
             if _class not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `_class` ({0}), must be one of {1}".format(
-                        _class, allowed_values
-                    )
+                    f"Invalid value for `_class` ({_class}), must be one of {allowed_values}"
                 )
         self.__class = _class
 
@@ -576,9 +564,7 @@ class Organisation(BaseModel):
         if edition:
             if edition not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `edition` ({0}), must be one of {1}".format(
-                        edition, allowed_values
-                    )
+                    f"Invalid value for `edition` ({edition}), must be one of {allowed_values}"
                 )
         self._edition = edition
 

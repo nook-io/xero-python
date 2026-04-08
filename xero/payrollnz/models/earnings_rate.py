@@ -114,9 +114,7 @@ class EarningsRate(BaseModel):
         if earnings_type:
             if earnings_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `earnings_type` ({0}), must be one of {1}".format(
-                        earnings_type, allowed_values
-                    )
+                    f"Invalid value for `earnings_type` ({earnings_type}), must be one of {allowed_values}"
                 )
         self._earnings_type = earnings_type
 
@@ -137,9 +135,7 @@ class EarningsRate(BaseModel):
         if rate_type:
             if rate_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `rate_type` ({0}), must be one of {1}".format(
-                        rate_type, allowed_values
-                    )
+                    f"Invalid value for `rate_type` ({rate_type}), must be one of {allowed_values}"
                 )
         self._rate_type = rate_type
 

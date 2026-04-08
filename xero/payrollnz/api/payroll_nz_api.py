@@ -1,18 +1,11 @@
 import importlib
 from datetime import date
-from typing import Optional
-from pydantic import (
-    Field,
-    StrictBool,
-    StrictInt,
-    StrictStr,
-    conlist,
-)
-from typing_extensions import Annotated
+from typing import Annotated
+
+from pydantic import Field, StrictBool, StrictInt, StrictStr
+
 from xero.api_client import ApiClient, ApiResponse, ModelFinder
-from xero.exceptions import (
-    ApiTypeError,
-)
+from xero.exceptions import ApiTypeError
 from xero.payrollnz.models.benefit import Benefit
 from xero.payrollnz.models.deduction import Deduction
 from xero.payrollnz.models.deduction_object import DeductionObject
@@ -23,27 +16,19 @@ from xero.payrollnz.models.earnings_rates import EarningsRates
 from xero.payrollnz.models.earnings_template import EarningsTemplate
 from xero.payrollnz.models.earnings_template_object import EarningsTemplateObject
 from xero.payrollnz.models.employee import Employee
-from xero.payrollnz.models.employee_earnings_templates import (
-    EmployeeEarningsTemplates,
-)
+from xero.payrollnz.models.employee_earnings_templates import EmployeeEarningsTemplates
 from xero.payrollnz.models.employee_leave import EmployeeLeave
 from xero.payrollnz.models.employee_leave_balances import EmployeeLeaveBalances
 from xero.payrollnz.models.employee_leave_object import EmployeeLeaveObject
 from xero.payrollnz.models.employee_leave_setup import EmployeeLeaveSetup
-from xero.payrollnz.models.employee_leave_setup_object import (
-    EmployeeLeaveSetupObject,
-)
+from xero.payrollnz.models.employee_leave_setup_object import EmployeeLeaveSetupObject
 from xero.payrollnz.models.employee_leave_type import EmployeeLeaveType
-from xero.payrollnz.models.employee_leave_type_object import (
-    EmployeeLeaveTypeObject,
-)
+from xero.payrollnz.models.employee_leave_type_object import EmployeeLeaveTypeObject
 from xero.payrollnz.models.employee_leave_types import EmployeeLeaveTypes
 from xero.payrollnz.models.employee_leaves import EmployeeLeaves
 from xero.payrollnz.models.employee_object import EmployeeObject
 from xero.payrollnz.models.employee_opening_balance import EmployeeOpeningBalance
-from xero.payrollnz.models.employee_opening_balances_object import (
-    EmployeeOpeningBalancesObject,
-)
+from xero.payrollnz.models.employee_opening_balances_object import EmployeeOpeningBalancesObject
 from xero.payrollnz.models.employee_pay_templates import EmployeePayTemplates
 from xero.payrollnz.models.employee_tax import EmployeeTax
 from xero.payrollnz.models.employee_tax_object import EmployeeTaxObject
@@ -53,9 +38,7 @@ from xero.payrollnz.models.employee_working_pattern_with_working_weeks_object im
 from xero.payrollnz.models.employee_working_pattern_with_working_weeks_request import (
     EmployeeWorkingPatternWithWorkingWeeksRequest,
 )
-from xero.payrollnz.models.employee_working_patterns_object import (
-    EmployeeWorkingPatternsObject,
-)
+from xero.payrollnz.models.employee_working_patterns_object import EmployeeWorkingPatternsObject
 from xero.payrollnz.models.employees import Employees
 from xero.payrollnz.models.employment import Employment
 from xero.payrollnz.models.employment_object import EmploymentObject
@@ -81,9 +64,7 @@ from xero.payrollnz.models.salary_and_wage import SalaryAndWage
 from xero.payrollnz.models.salary_and_wage_object import SalaryAndWageObject
 from xero.payrollnz.models.salary_and_wages import SalaryAndWages
 from xero.payrollnz.models.settings import Settings
-from xero.payrollnz.models.statutory_deduction_object import (
-    StatutoryDeductionObject,
-)
+from xero.payrollnz.models.statutory_deduction_object import StatutoryDeductionObject
 from xero.payrollnz.models.statutory_deductions import StatutoryDeductions
 from xero.payrollnz.models.superannuation_object import SuperannuationObject
 from xero.payrollnz.models.superannuations import Superannuations
@@ -117,7 +98,7 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Identifier for the timesheet")
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -141,7 +122,7 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Identifier for the timesheet")
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -163,8 +144,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method approve_timesheet" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method approve_timesheet"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -216,7 +197,7 @@ class PayrollNzApi:
         ],
         deduction: Deduction,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -238,7 +219,7 @@ class PayrollNzApi:
         ],
         deduction: Deduction,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -260,8 +241,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_deduction" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_deduction"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -319,7 +300,7 @@ class PayrollNzApi:
         ],
         earnings_rate: EarningsRate,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -341,7 +322,7 @@ class PayrollNzApi:
         ],
         earnings_rate: EarningsRate,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -363,8 +344,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_earnings_rate" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_earnings_rate"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -422,7 +403,7 @@ class PayrollNzApi:
         ],
         employee: Employee,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -444,7 +425,7 @@ class PayrollNzApi:
         ],
         employee: Employee,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -466,8 +447,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_employee" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_employee"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -528,7 +509,7 @@ class PayrollNzApi:
         ],
         earnings_template: EarningsTemplate,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -553,7 +534,7 @@ class PayrollNzApi:
         ],
         earnings_template: EarningsTemplate,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -580,8 +561,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_employee_earnings_template" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_employee_earnings_template"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -644,7 +625,7 @@ class PayrollNzApi:
         ],
         employee_leave: EmployeeLeave,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -669,7 +650,7 @@ class PayrollNzApi:
         ],
         employee_leave: EmployeeLeave,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -696,8 +677,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_employee_leave" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_employee_leave"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -760,7 +741,7 @@ class PayrollNzApi:
         ],
         employee_leave_setup: EmployeeLeaveSetup,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -785,7 +766,7 @@ class PayrollNzApi:
         ],
         employee_leave_setup: EmployeeLeaveSetup,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -812,8 +793,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_employee_leave_setup" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_employee_leave_setup"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -876,7 +857,7 @@ class PayrollNzApi:
         ],
         employee_leave_type: EmployeeLeaveType,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -901,7 +882,7 @@ class PayrollNzApi:
         ],
         employee_leave_type: EmployeeLeaveType,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -928,8 +909,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_employee_leave_type" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_employee_leave_type"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -990,9 +971,9 @@ class PayrollNzApi:
         employee_id: Annotated[
             StrictStr, Field(..., description="Employee id for single object")
         ],
-        employee_opening_balance: conlist(EmployeeOpeningBalance),
+        employee_opening_balance: Annotated[list[EmployeeOpeningBalance], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1019,9 +1000,9 @@ class PayrollNzApi:
         employee_id: Annotated[
             StrictStr, Field(..., description="Employee id for single object")
         ],
-        employee_opening_balance: conlist(EmployeeOpeningBalance),
+        employee_opening_balance: Annotated[list[EmployeeOpeningBalance], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1048,8 +1029,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_employee_opening_balances" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_employee_opening_balances"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1112,7 +1093,7 @@ class PayrollNzApi:
         ],
         payment_method: PaymentMethod,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1137,7 +1118,7 @@ class PayrollNzApi:
         ],
         payment_method: PaymentMethod,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1164,8 +1145,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_employee_payment_method" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_employee_payment_method"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1228,7 +1209,7 @@ class PayrollNzApi:
         ],
         salary_and_wage: SalaryAndWage,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1253,7 +1234,7 @@ class PayrollNzApi:
         ],
         salary_and_wage: SalaryAndWage,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1280,8 +1261,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_employee_salary_and_wage" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_employee_salary_and_wage"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1344,7 +1325,7 @@ class PayrollNzApi:
         ],
         employee_working_pattern_with_working_weeks_request: EmployeeWorkingPatternWithWorkingWeeksRequest,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1373,7 +1354,7 @@ class PayrollNzApi:
         ],
         employee_working_pattern_with_working_weeks_request: EmployeeWorkingPatternWithWorkingWeeksRequest,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1400,8 +1381,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_employee_working_pattern" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_employee_working_pattern"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1466,7 +1447,7 @@ class PayrollNzApi:
         ],
         employment: Employment,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1491,7 +1472,7 @@ class PayrollNzApi:
         ],
         employment: Employment,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1513,8 +1494,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_employment" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_employment"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1574,7 +1555,7 @@ class PayrollNzApi:
         ],
         leave_type: LeaveType,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1596,7 +1577,7 @@ class PayrollNzApi:
         ],
         leave_type: LeaveType,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1618,8 +1599,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_leave_type" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_leave_type"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1678,9 +1659,9 @@ class PayrollNzApi:
         employee_id: Annotated[
             StrictStr, Field(..., description="Employee id for single object")
         ],
-        earnings_template: conlist(EarningsTemplate),
+        earnings_template: Annotated[list[EarningsTemplate], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1703,9 +1684,9 @@ class PayrollNzApi:
         employee_id: Annotated[
             StrictStr, Field(..., description="Employee id for single object")
         ],
-        earnings_template: conlist(EarningsTemplate),
+        earnings_template: Annotated[list[EarningsTemplate], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1732,8 +1713,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_multiple_employee_earnings_template" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_multiple_employee_earnings_template"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1793,7 +1774,7 @@ class PayrollNzApi:
         ],
         pay_run: PayRun,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1815,7 +1796,7 @@ class PayrollNzApi:
         ],
         pay_run: PayRun,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1837,8 +1818,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_pay_run" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_pay_run"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1896,7 +1877,7 @@ class PayrollNzApi:
         ],
         pay_run_calendar: PayRunCalendar,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1918,7 +1899,7 @@ class PayrollNzApi:
         ],
         pay_run_calendar: PayRunCalendar,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1940,8 +1921,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_pay_run_calendar" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_pay_run_calendar"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1999,7 +1980,7 @@ class PayrollNzApi:
         ],
         reimbursement: Reimbursement,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2021,7 +2002,7 @@ class PayrollNzApi:
         ],
         reimbursement: Reimbursement,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2043,8 +2024,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_reimbursement" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_reimbursement"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2102,7 +2083,7 @@ class PayrollNzApi:
         ],
         benefit: Benefit,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2124,7 +2105,7 @@ class PayrollNzApi:
         ],
         benefit: Benefit,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2146,8 +2127,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_superannuation" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_superannuation"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2205,7 +2186,7 @@ class PayrollNzApi:
         ],
         timesheet: Timesheet,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2227,7 +2208,7 @@ class PayrollNzApi:
         ],
         timesheet: Timesheet,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2249,8 +2230,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_timesheet" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_timesheet"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2311,7 +2292,7 @@ class PayrollNzApi:
         ],
         timesheet_line: TimesheetLine,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2336,7 +2317,7 @@ class PayrollNzApi:
         ],
         timesheet_line: TimesheetLine,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2363,8 +2344,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_timesheet_line" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_timesheet_line"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2468,8 +2449,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_employee_earnings_template" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_employee_earnings_template"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2562,8 +2543,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_employee_leave" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_employee_leave"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2656,8 +2637,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_employee_salary_and_wage" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_employee_salary_and_wage"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2752,8 +2733,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_employee_working_pattern" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_employee_working_pattern"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2843,8 +2824,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_timesheet" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_timesheet"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2936,8 +2917,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_timesheet_line" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_timesheet_line"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3025,8 +3006,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_deduction" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_deduction"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3074,7 +3055,7 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
@@ -3093,7 +3074,7 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
@@ -3115,8 +3096,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_deductions" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_deductions"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3201,8 +3182,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_earnings_rate" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_earnings_rate"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3250,7 +3231,7 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
@@ -3271,7 +3252,7 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
@@ -3293,8 +3274,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_earnings_rates" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_earnings_rates"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3379,8 +3360,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_employee" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_employee"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3465,8 +3446,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_employee_leave_balances" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_employee_leave_balances"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3517,10 +3498,10 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Employee id for single object")
         ],
         start_date: Annotated[
-            Optional[date], Field(description="Filter by start date")
+            date | None, Field(description="Filter by start date")
         ] = None,
         end_date: Annotated[
-            Optional[date], Field(description="Filter by end date")
+            date | None, Field(description="Filter by end date")
         ] = None,
         **kwargs,
     ) -> LeavePeriods:
@@ -3541,10 +3522,10 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Employee id for single object")
         ],
         start_date: Annotated[
-            Optional[date], Field(description="Filter by start date")
+            date | None, Field(description="Filter by start date")
         ] = None,
         end_date: Annotated[
-            Optional[date], Field(description="Filter by end date")
+            date | None, Field(description="Filter by end date")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -3563,8 +3544,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_employee_leave_periods" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_employee_leave_periods"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3674,8 +3655,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_employee_leave_types" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_employee_leave_types"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3761,8 +3742,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_employee_leaves" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_employee_leaves"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3847,8 +3828,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_employee_opening_balances" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_employee_opening_balances"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3933,8 +3914,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_employee_pay_templates" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_employee_pay_templates"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4020,8 +4001,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_employee_payment_method" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_employee_payment_method"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4115,8 +4096,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_employee_salary_and_wage" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_employee_salary_and_wage"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4169,7 +4150,7 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Employee id for single object")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
@@ -4193,7 +4174,7 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Employee id for single object")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
@@ -4215,8 +4196,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_employee_salary_and_wages" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_employee_salary_and_wages"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4304,8 +4285,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_employee_tax" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_employee_tax"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4398,8 +4379,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_employee_working_pattern" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_employee_working_pattern"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4488,8 +4469,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_employee_working_patterns" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_employee_working_patterns"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4537,11 +4518,11 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         filter: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="Filter by first name and/or lastname"),
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
@@ -4562,11 +4543,11 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         filter: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="Filter by first name and/or lastname"),
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
@@ -4588,8 +4569,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_employees" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_employees"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4677,8 +4658,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_leave_type" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_leave_type"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4726,13 +4707,13 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
         ] = None,
         active_only: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="Filters leave types by active status. By default the API returns all leave types."
             ),
@@ -4753,13 +4734,13 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
         ] = None,
         active_only: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="Filters leave types by active status. By default the API returns all leave types."
             ),
@@ -4781,8 +4762,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_leave_types" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_leave_types"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4869,8 +4850,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_pay_run" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_pay_run"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4955,8 +4936,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_pay_run_calendar" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_pay_run_calendar"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -5004,7 +4985,7 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
@@ -5025,7 +5006,7 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
@@ -5047,8 +5028,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_pay_run_calendars" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_pay_run_calendars"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -5096,13 +5077,13 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
         ] = None,
         status: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="By default get payruns will return all the payruns for an organization. You can add GET https://api.xero.com/payroll.xro/2.0/payRuns?statu={PayRunStatus} to filter the payruns by status."
             ),
@@ -5123,13 +5104,13 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
         ] = None,
         status: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="By default get payruns will return all the payruns for an organization. You can add GET https://api.xero.com/payroll.xro/2.0/payRuns?statu={PayRunStatus} to filter the payruns by status."
             ),
@@ -5151,8 +5132,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_pay_runs" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_pay_runs"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -5239,8 +5220,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_pay_slip" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_pay_slip"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -5295,7 +5276,7 @@ class PayrollNzApi:
             ),
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
@@ -5323,7 +5304,7 @@ class PayrollNzApi:
             ),
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
@@ -5345,8 +5326,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_pay_slips" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_pay_slips"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -5433,8 +5414,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_reimbursement" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_reimbursement"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -5482,7 +5463,7 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
@@ -5503,7 +5484,7 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
@@ -5525,8 +5506,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_reimbursements" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_reimbursements"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -5603,8 +5584,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_settings" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_settings"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -5687,8 +5668,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_statutory_deduction" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_statutory_deduction"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -5736,7 +5717,7 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
@@ -5757,7 +5738,7 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
@@ -5779,8 +5760,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_statutory_deductions" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_statutory_deductions"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -5865,8 +5846,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_superannuation" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_superannuation"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -5914,7 +5895,7 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
@@ -5935,7 +5916,7 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
@@ -5957,8 +5938,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_superannuations" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_superannuations"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -6043,8 +6024,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_timesheet" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_timesheet"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -6092,35 +6073,35 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
         ] = None,
         filter: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="Filter by employeeId and/or payrollCalendarId"),
         ] = None,
         status: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="filter results by any timesheets with a matching timesheet status"
             ),
         ] = None,
         start_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="filter results by any timesheets with a startDate on or after the provided date"
             ),
         ] = None,
         end_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="filter results by any timesheets with a endDate on or before the provided date"
             ),
         ] = None,
         sort: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="sort the order of timesheets returned. The default is based on the timesheets createdDate, sorted oldest to newest. Currently, the only other option is to reverse the order based on the timesheets startDate, sorted newest to oldest."
             ),
@@ -6141,35 +6122,35 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
         ] = None,
         filter: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="Filter by employeeId and/or payrollCalendarId"),
         ] = None,
         status: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="filter results by any timesheets with a matching timesheet status"
             ),
         ] = None,
         start_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="filter results by any timesheets with a startDate on or after the provided date"
             ),
         ] = None,
         end_date: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="filter results by any timesheets with a endDate on or before the provided date"
             ),
         ] = None,
         sort: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="sort the order of timesheets returned. The default is based on the timesheets createdDate, sorted oldest to newest. Currently, the only other option is to reverse the order based on the timesheets startDate, sorted newest to oldest."
             ),
@@ -6199,8 +6180,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_timesheets" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_timesheets"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -6289,8 +6270,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_tracking_categories" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_tracking_categories"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -6339,7 +6320,7 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Identifier for the timesheet")
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6363,7 +6344,7 @@ class PayrollNzApi:
             StrictStr, Field(..., description="Identifier for the timesheet")
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6385,8 +6366,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method revert_timesheet" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method revert_timesheet"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -6441,7 +6422,7 @@ class PayrollNzApi:
         ],
         employee: Employee,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6466,7 +6447,7 @@ class PayrollNzApi:
         ],
         employee: Employee,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6488,8 +6469,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_employee" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_employee"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -6556,7 +6537,7 @@ class PayrollNzApi:
         ],
         earnings_template: EarningsTemplate,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6590,7 +6571,7 @@ class PayrollNzApi:
         ],
         earnings_template: EarningsTemplate,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6618,8 +6599,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_employee_earnings_template" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_employee_earnings_template"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -6687,7 +6668,7 @@ class PayrollNzApi:
         ],
         employee_leave: EmployeeLeave,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6720,7 +6701,7 @@ class PayrollNzApi:
         ],
         employee_leave: EmployeeLeave,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6748,8 +6729,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_employee_leave" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_employee_leave"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -6818,7 +6799,7 @@ class PayrollNzApi:
         ],
         salary_and_wage: SalaryAndWage,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6852,7 +6833,7 @@ class PayrollNzApi:
         ],
         salary_and_wage: SalaryAndWage,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6880,8 +6861,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_employee_salary_and_wage" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_employee_salary_and_wage"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -6946,7 +6927,7 @@ class PayrollNzApi:
         ],
         employee_tax: EmployeeTax,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6971,7 +6952,7 @@ class PayrollNzApi:
         ],
         employee_tax: EmployeeTax,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6998,8 +6979,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_employee_tax" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_employee_tax"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -7061,7 +7042,7 @@ class PayrollNzApi:
         ],
         pay_run: PayRun,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -7086,7 +7067,7 @@ class PayrollNzApi:
         ],
         pay_run: PayRun,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -7108,8 +7089,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_pay_run" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_pay_run"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -7172,7 +7153,7 @@ class PayrollNzApi:
         ],
         pay_slip: PaySlip,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -7197,7 +7178,7 @@ class PayrollNzApi:
         ],
         pay_slip: PaySlip,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -7219,8 +7200,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_pay_slip_line_items" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_pay_slip_line_items"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -7286,7 +7267,7 @@ class PayrollNzApi:
         ],
         timesheet_line: TimesheetLine,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -7319,7 +7300,7 @@ class PayrollNzApi:
         ],
         timesheet_line: TimesheetLine,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -7347,8 +7328,8 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_timesheet_line" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_timesheet_line"
                 )
             _params[_key] = _val
         del _params["kwargs"]

@@ -70,8 +70,6 @@ class LeavePeriod(BaseModel):
         if period_status:
             if period_status not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `period_status` ({0}), must be one of {1}".format(
-                        period_status, allowed_values
-                    )
+                    f"Invalid value for `period_status` ({period_status}), must be one of {allowed_values}"
                 )
         self._period_status = period_status

@@ -1,16 +1,9 @@
 import importlib
-import io
 from datetime import date, datetime
-from typing import Optional, Union
-from pydantic import (
-    Field,
-    StrictBool,
-    StrictBytes,
-    StrictInt,
-    StrictStr,
-    conlist,
-)
-from typing_extensions import Annotated
+from typing import Annotated
+
+from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr
+
 from xero.accounting.models.account import Account
 from xero.accounting.models.accounts import Accounts
 from xero.accounting.models.actions import Actions
@@ -20,9 +13,7 @@ from xero.accounting.models.attachments import Attachments
 from xero.accounting.models.bank_transactions import BankTransactions
 from xero.accounting.models.bank_transfers import BankTransfers
 from xero.accounting.models.batch_payment_delete import BatchPaymentDelete
-from xero.accounting.models.batch_payment_delete_by_url_param import (
-    BatchPaymentDeleteByUrlParam,
-)
+from xero.accounting.models.batch_payment_delete_by_url_param import BatchPaymentDeleteByUrlParam
 from xero.accounting.models.batch_payments import BatchPayments
 from xero.accounting.models.branding_themes import BrandingThemes
 from xero.accounting.models.budgets import Budgets
@@ -67,9 +58,7 @@ from xero.accounting.models.tracking_option import TrackingOption
 from xero.accounting.models.tracking_options import TrackingOptions
 from xero.accounting.models.users import Users
 from xero.api_client import ApiClient, ApiResponse, ModelFinder
-from xero.exceptions import (
-    ApiTypeError,
-)
+from xero.exceptions import ApiTypeError
 
 
 class AccountingApi:
@@ -94,7 +83,7 @@ class AccountingApi:
             Account, Field(..., description="Account object in body of request")
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -118,7 +107,7 @@ class AccountingApi:
             Account, Field(..., description="Account object in body of request")
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -140,8 +129,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_account" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_account"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -204,11 +193,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -235,11 +224,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -267,8 +256,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_account_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_account_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -290,7 +279,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -343,11 +332,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -385,11 +374,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -417,8 +406,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_bank_transaction_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_bank_transaction_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -440,7 +429,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -497,7 +486,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -536,7 +525,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -563,8 +552,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_bank_transaction_history_record" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_bank_transaction_history_record"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -630,19 +619,19 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -675,19 +664,19 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -715,8 +704,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_bank_transactions" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_bank_transactions"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -784,7 +773,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -812,7 +801,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -834,8 +823,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_bank_transfer" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_bank_transfer"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -901,11 +890,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -935,11 +924,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -967,8 +956,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_bank_transfer_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_bank_transfer_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -990,7 +979,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -1046,7 +1035,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1080,7 +1069,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1107,8 +1096,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_bank_transfer_history_record" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_bank_transfer_history_record"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1174,13 +1163,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1208,13 +1197,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1241,8 +1230,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_batch_payment" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_batch_payment"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1311,7 +1300,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1342,7 +1331,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1369,8 +1358,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_batch_payment_history_record" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_batch_payment_history_record"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1439,7 +1428,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1474,7 +1463,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1501,8 +1490,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_branding_theme_payment_services" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_branding_theme_payment_services"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1567,11 +1556,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1598,11 +1587,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1630,8 +1619,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_contact_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_contact_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1653,7 +1642,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -1702,7 +1691,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1729,7 +1718,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1751,8 +1740,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_contact_group" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_contact_group"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1819,7 +1808,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1850,7 +1839,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1877,8 +1866,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_contact_group_contacts" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_contact_group_contacts"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1947,7 +1936,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1978,7 +1967,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2005,8 +1994,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_contact_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_contact_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2072,13 +2061,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2106,13 +2095,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2139,8 +2128,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_contacts" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_contacts"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2209,13 +2198,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2251,13 +2240,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2285,8 +2274,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_credit_note_allocation" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_credit_note_allocation"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2353,17 +2342,17 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         include_online: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="Allows an attachment to be seen by the end customer within their online invoice"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2396,17 +2385,17 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         include_online: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="Allows an attachment to be seen by the end customer within their online invoice"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2435,8 +2424,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_credit_note_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_credit_note_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2460,7 +2449,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -2513,7 +2502,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2544,7 +2533,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2571,8 +2560,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_credit_note_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_credit_note_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2638,19 +2627,19 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2683,19 +2672,19 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2723,8 +2712,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_credit_notes" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_credit_notes"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2788,7 +2777,7 @@ class AccountingApi:
             Currency, Field(..., description="Currency object in the body of request")
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2812,7 +2801,7 @@ class AccountingApi:
             Currency, Field(..., description="Currency object in the body of request")
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2834,8 +2823,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_currency" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_currency"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2898,13 +2887,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2932,13 +2921,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2965,8 +2954,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_employees" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_employees"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3035,7 +3024,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3066,7 +3055,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3093,8 +3082,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_expense_claim_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_expense_claim_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3159,7 +3148,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3187,7 +3176,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3209,8 +3198,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_expense_claims" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_expense_claims"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3273,17 +3262,17 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         include_online: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="Allows an attachment to be seen by the end customer within their online invoice"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3316,17 +3305,17 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         include_online: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="Allows an attachment to be seen by the end customer within their online invoice"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3355,8 +3344,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_invoice_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_invoice_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3380,7 +3369,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -3433,7 +3422,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3464,7 +3453,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3491,8 +3480,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_invoice_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_invoice_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3558,19 +3547,19 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3603,19 +3592,19 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3643,8 +3632,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_invoices" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_invoices"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3715,7 +3704,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3746,7 +3735,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3773,8 +3762,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_item_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_item_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3839,19 +3828,19 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3879,19 +3868,19 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3919,8 +3908,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_items" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_items"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3985,7 +3974,7 @@ class AccountingApi:
             Field(..., description="LinkedTransaction object in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -4010,7 +3999,7 @@ class AccountingApi:
             Field(..., description="LinkedTransaction object in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -4032,8 +4021,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_linked_transaction" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_linked_transaction"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4096,11 +4085,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -4132,11 +4121,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -4164,8 +4153,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_manual_journal_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_manual_journal_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4187,7 +4176,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -4240,7 +4229,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -4275,7 +4264,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -4302,8 +4291,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_manual_journal_history_record" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_manual_journal_history_record"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4369,13 +4358,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -4403,13 +4392,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -4436,8 +4425,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_manual_journals" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_manual_journals"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4506,13 +4495,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -4548,13 +4537,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -4582,8 +4571,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_overpayment_allocations" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_overpayment_allocations"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4654,7 +4643,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -4685,7 +4674,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -4712,8 +4701,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_overpayment_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_overpayment_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4775,7 +4764,7 @@ class AccountingApi:
             Payment, Field(..., description="Request body with a single Payment object")
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -4799,7 +4788,7 @@ class AccountingApi:
             Payment, Field(..., description="Request body with a single Payment object")
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -4821,8 +4810,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_payment" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_payment"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4889,7 +4878,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -4920,7 +4909,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -4947,8 +4936,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_payment_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_payment_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -5014,7 +5003,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -5042,7 +5031,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -5064,8 +5053,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_payment_service" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_payment_service"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -5128,13 +5117,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -5161,13 +5150,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -5194,8 +5183,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_payments" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_payments"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -5264,13 +5253,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -5306,13 +5295,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -5340,8 +5329,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_prepayment_allocations" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_prepayment_allocations"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -5412,7 +5401,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -5443,7 +5432,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -5470,8 +5459,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_prepayment_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_prepayment_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -5536,11 +5525,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -5572,11 +5561,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -5604,8 +5593,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_purchase_order_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_purchase_order_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -5627,7 +5616,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -5680,7 +5669,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -5715,7 +5704,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -5742,8 +5731,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_purchase_order_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_purchase_order_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -5809,13 +5798,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -5843,13 +5832,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -5876,8 +5865,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_purchase_orders" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_purchase_orders"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -5942,11 +5931,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -5973,11 +5962,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6005,8 +5994,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_quote_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_quote_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -6028,7 +6017,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -6081,7 +6070,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6112,7 +6101,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6139,8 +6128,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_quote_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_quote_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -6206,13 +6195,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6240,13 +6229,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6273,8 +6262,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_quotes" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_quotes"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -6340,13 +6329,13 @@ class AccountingApi:
             ),
         ],
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6374,13 +6363,13 @@ class AccountingApi:
             ),
         ],
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6402,8 +6391,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_receipt" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_receipt"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -6468,11 +6457,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6499,11 +6488,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6531,8 +6520,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_receipt_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_receipt_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -6554,7 +6543,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -6607,7 +6596,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6638,7 +6627,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6665,8 +6654,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_receipt_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_receipt_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -6732,11 +6721,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6771,11 +6760,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6803,8 +6792,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_repeating_invoice_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_repeating_invoice_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -6826,7 +6815,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -6880,7 +6869,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6916,7 +6905,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -6943,8 +6932,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_repeating_invoice_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_repeating_invoice_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -7010,13 +6999,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -7048,13 +7037,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -7081,8 +7070,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_repeating_invoices" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_repeating_invoices"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -7147,7 +7136,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -7174,7 +7163,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -7196,8 +7185,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_tax_rates" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_tax_rates"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -7258,7 +7247,7 @@ class AccountingApi:
             Field(..., description="TrackingCategory object in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -7283,7 +7272,7 @@ class AccountingApi:
             Field(..., description="TrackingCategory object in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -7305,8 +7294,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_tracking_category" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_tracking_category"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -7371,7 +7360,7 @@ class AccountingApi:
             Field(..., description="TrackingOption object in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -7404,7 +7393,7 @@ class AccountingApi:
             Field(..., description="TrackingOption object in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -7431,8 +7420,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_tracking_options" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_tracking_options"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -7528,8 +7517,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_account" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_account"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -7579,7 +7568,7 @@ class AccountingApi:
         ],
         batch_payment_delete: BatchPaymentDelete,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -7601,7 +7590,7 @@ class AccountingApi:
         ],
         batch_payment_delete: BatchPaymentDelete,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -7623,8 +7612,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_batch_payment" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_batch_payment"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -7685,7 +7674,7 @@ class AccountingApi:
         ],
         batch_payment_delete_by_url_param: BatchPaymentDeleteByUrlParam,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -7714,7 +7703,7 @@ class AccountingApi:
         ],
         batch_payment_delete_by_url_param: BatchPaymentDeleteByUrlParam,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -7741,8 +7730,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_batch_payment_by_url_param" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_batch_payment_by_url_param"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -7844,8 +7833,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_contact_group_contact" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_contact_group_contact"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -7930,8 +7919,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_contact_group_contacts" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_contact_group_contacts"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -8017,8 +8006,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_credit_note_allocations" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_credit_note_allocations"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -8103,8 +8092,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_item" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_item"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -8189,8 +8178,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_linked_transaction" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_linked_transaction"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -8279,8 +8268,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_overpayment_allocations" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_overpayment_allocations"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -8334,7 +8323,7 @@ class AccountingApi:
         ],
         payment_delete: PaymentDelete,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -8359,7 +8348,7 @@ class AccountingApi:
         ],
         payment_delete: PaymentDelete,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -8386,8 +8375,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_payment" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_payment"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -8489,8 +8478,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_prepayment_allocations" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_prepayment_allocations"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -8579,8 +8568,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_tracking_category" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_tracking_category"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -8674,8 +8663,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_tracking_options" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_tracking_options"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -8730,7 +8719,7 @@ class AccountingApi:
         ],
         request_empty: RequestEmpty,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -8755,7 +8744,7 @@ class AccountingApi:
         ],
         request_empty: RequestEmpty,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -8782,8 +8771,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method email_invoice" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method email_invoice"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -8876,8 +8865,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_account" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_account"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -8982,8 +8971,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_account_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_account_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -9092,8 +9081,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_account_attachment_by_id" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_account_attachment_by_id"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -9182,8 +9171,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_account_attachments" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_account_attachments"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -9231,16 +9220,16 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         **kwargs,
     ) -> Accounts:
@@ -9258,16 +9247,16 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -9286,8 +9275,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_accounts" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_accounts"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -9346,7 +9335,7 @@ class AccountingApi:
             ),
         ],
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
@@ -9374,7 +9363,7 @@ class AccountingApi:
             ),
         ],
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
@@ -9396,8 +9385,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_bank_transaction" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_bank_transaction"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -9517,8 +9506,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_bank_transaction_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_bank_transaction_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -9640,8 +9629,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_bank_transaction_attachment_by_id" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_bank_transaction_attachment_by_id"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -9738,8 +9727,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_bank_transaction_attachments" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_bank_transaction_attachments"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -9787,31 +9776,31 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Up to 100 bank transactions will be returned in a single API call with line items details"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         page_size: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(description="Number of records to retrieve per page"),
         ] = None,
         **kwargs,
@@ -9837,31 +9826,31 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Up to 100 bank transactions will be returned in a single API call with line items details"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         page_size: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(description="Number of records to retrieve per page"),
         ] = None,
         **kwargs,
@@ -9889,8 +9878,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_bank_transactions" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_bank_transactions"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -9993,8 +9982,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_bank_transactions_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_bank_transactions_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -10085,8 +10074,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_bank_transfer" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_bank_transfer"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -10202,8 +10191,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_bank_transfer_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_bank_transfer_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -10323,8 +10312,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_bank_transfer_attachment_by_id" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_bank_transfer_attachment_by_id"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -10419,8 +10408,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_bank_transfer_attachments" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_bank_transfer_attachments"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -10511,8 +10500,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_bank_transfer_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_bank_transfer_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -10560,16 +10549,16 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         **kwargs,
     ) -> BankTransfers:
@@ -10587,16 +10576,16 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -10615,8 +10604,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_bank_transfers" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_bank_transfers"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -10705,8 +10694,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_batch_payment" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_batch_payment"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -10791,8 +10780,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_batch_payment_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_batch_payment_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -10840,16 +10829,16 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         **kwargs,
     ) -> BatchPayments:
@@ -10867,16 +10856,16 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -10895,8 +10884,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_batch_payments" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_batch_payments"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -10985,8 +10974,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_branding_theme" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_branding_theme"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -11071,8 +11060,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_branding_theme_payment_services" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_branding_theme_payment_services"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -11149,8 +11138,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_branding_themes" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_branding_themes"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -11199,10 +11188,10 @@ class AccountingApi:
             StrictStr, Field(..., description="Unique identifier for Budgets")
         ],
         date_to: Annotated[
-            Optional[date], Field(description="Filter by start date")
+            date | None, Field(description="Filter by start date")
         ] = None,
         date_from: Annotated[
-            Optional[date], Field(description="Filter by end date")
+            date | None, Field(description="Filter by end date")
         ] = None,
         **kwargs,
     ) -> Budgets:
@@ -11223,10 +11212,10 @@ class AccountingApi:
             StrictStr, Field(..., description="Unique identifier for Budgets")
         ],
         date_to: Annotated[
-            Optional[date], Field(description="Filter by start date")
+            date | None, Field(description="Filter by start date")
         ] = None,
         date_from: Annotated[
-            Optional[date], Field(description="Filter by end date")
+            date | None, Field(description="Filter by end date")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -11245,8 +11234,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_budget" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_budget"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -11318,16 +11307,16 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         ids: Annotated[
-            Optional[conlist(StrictStr)],
+            list[StrictStr] | None,
             Field(
                 description="Filter by BudgetID. Allows you to retrieve a specific individual budget."
             ),
         ] = None,
         date_to: Annotated[
-            Optional[date], Field(description="Filter by start date")
+            date | None, Field(description="Filter by start date")
         ] = None,
         date_from: Annotated[
-            Optional[date], Field(description="Filter by end date")
+            date | None, Field(description="Filter by end date")
         ] = None,
         **kwargs,
     ) -> Budgets:
@@ -11345,16 +11334,16 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         ids: Annotated[
-            Optional[conlist(StrictStr)],
+            list[StrictStr] | None,
             Field(
                 description="Filter by BudgetID. Allows you to retrieve a specific individual budget."
             ),
         ] = None,
         date_to: Annotated[
-            Optional[date], Field(description="Filter by start date")
+            date | None, Field(description="Filter by start date")
         ] = None,
         date_from: Annotated[
-            Optional[date], Field(description="Filter by end date")
+            date | None, Field(description="Filter by end date")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -11373,8 +11362,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_budgets" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_budgets"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -11484,8 +11473,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_contact" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_contact"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -11590,8 +11579,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_contact_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_contact_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -11700,8 +11689,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_contact_attachment_by_id" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_contact_attachment_by_id"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -11790,8 +11779,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_contact_attachments" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_contact_attachments"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -11884,8 +11873,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_contact_by_contact_number" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_contact_by_contact_number"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -11970,8 +11959,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_contact_cis_settings" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_contact_cis_settings"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -12056,8 +12045,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_contact_group" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_contact_group"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -12105,10 +12094,10 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         **kwargs,
     ) -> ContactGroups:
@@ -12126,10 +12115,10 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -12148,8 +12137,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_contact_groups" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_contact_groups"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -12236,8 +12225,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_contact_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_contact_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -12285,49 +12274,49 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         ids: Annotated[
-            Optional[conlist(StrictStr)],
+            list[StrictStr] | None,
             Field(
                 description="Filter by a comma separated list of ContactIDs. Allows you to retrieve a specific set of contacts in a single call."
             ),
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 - Up to 100 contacts will be returned in a single API call."
             ),
         ] = None,
         include_archived: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="e.g. includeArchived=true - Contacts with a status of ARCHIVED will be included in the response"
             ),
         ] = None,
         summary_only: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="Use summaryOnly=true in GET Contacts and Invoices endpoint to retrieve a smaller version of the response object. This returns only lightweight fields, excluding computation-heavy fields from the response, making the API calls quick and efficient."
             ),
         ] = None,
         search_term: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Search parameter that performs a case-insensitive text search across the Name, FirstName, LastName, ContactNumber and EmailAddress fields."
             ),
         ] = None,
         page_size: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(description="Number of records to retrieve per page"),
         ] = None,
         **kwargs,
@@ -12356,49 +12345,49 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         ids: Annotated[
-            Optional[conlist(StrictStr)],
+            list[StrictStr] | None,
             Field(
                 description="Filter by a comma separated list of ContactIDs. Allows you to retrieve a specific set of contacts in a single call."
             ),
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 - Up to 100 contacts will be returned in a single API call."
             ),
         ] = None,
         include_archived: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="e.g. includeArchived=true - Contacts with a status of ARCHIVED will be included in the response"
             ),
         ] = None,
         summary_only: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="Use summaryOnly=true in GET Contacts and Invoices endpoint to retrieve a smaller version of the response object. This returns only lightweight fields, excluding computation-heavy fields from the response, making the API calls quick and efficient."
             ),
         ] = None,
         search_term: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Search parameter that performs a case-insensitive text search across the Name, FirstName, LastName, ContactNumber and EmailAddress fields."
             ),
         ] = None,
         page_size: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(description="Number of records to retrieve per page"),
         ] = None,
         **kwargs,
@@ -12429,8 +12418,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_contacts" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_contacts"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -12498,7 +12487,7 @@ class AccountingApi:
             StrictStr, Field(..., description="Unique identifier for a Credit Note")
         ],
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
@@ -12522,7 +12511,7 @@ class AccountingApi:
             StrictStr, Field(..., description="Unique identifier for a Credit Note")
         ],
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
@@ -12544,8 +12533,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_credit_note" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_credit_note"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -12632,8 +12621,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_credit_note_as_pdf" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_credit_note_as_pdf"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -12738,8 +12727,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_credit_note_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_credit_note_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -12853,8 +12842,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_credit_note_attachment_by_id" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_credit_note_attachment_by_id"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -12943,8 +12932,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_credit_note_attachments" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_credit_note_attachments"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -13029,8 +13018,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_credit_note_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_credit_note_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -13078,31 +13067,31 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 credit notes will be returned in a single API call with line items shown for each credit note"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         page_size: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(description="Number of records to retrieve per page"),
         ] = None,
         **kwargs,
@@ -13128,31 +13117,31 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 credit notes will be returned in a single API call with line items shown for each credit note"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         page_size: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(description="Number of records to retrieve per page"),
         ] = None,
         **kwargs,
@@ -13180,8 +13169,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_credit_notes" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_credit_notes"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -13239,10 +13228,10 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         **kwargs,
     ) -> Currencies:
@@ -13260,10 +13249,10 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -13282,8 +13271,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_currencies" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_currencies"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -13370,8 +13359,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_employee" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_employee"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -13419,16 +13408,16 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         **kwargs,
     ) -> Employees:
@@ -13446,16 +13435,16 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -13474,8 +13463,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_employees" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_employees"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -13564,8 +13553,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_expense_claim" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_expense_claim"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -13650,8 +13639,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_expense_claim_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_expense_claim_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -13699,16 +13688,16 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         **kwargs,
     ) -> ExpenseClaims:
@@ -13726,16 +13715,16 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -13754,8 +13743,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_expense_claims" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_expense_claims"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -13810,7 +13799,7 @@ class AccountingApi:
             StrictStr, Field(..., description="Unique identifier for an Invoice")
         ],
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
@@ -13834,7 +13823,7 @@ class AccountingApi:
             StrictStr, Field(..., description="Unique identifier for an Invoice")
         ],
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
@@ -13856,8 +13845,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_invoice" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_invoice"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -13944,8 +13933,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_invoice_as_pdf" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_invoice_as_pdf"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -14050,8 +14039,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_invoice_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_invoice_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -14160,8 +14149,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_invoice_attachment_by_id" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_invoice_attachment_by_id"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -14250,8 +14239,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_invoice_attachments" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_invoice_attachments"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -14336,8 +14325,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_invoice_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_invoice_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -14414,8 +14403,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_invoice_reminders" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_invoice_reminders"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -14461,71 +14450,71 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         ids: Annotated[
-            Optional[conlist(StrictStr)],
+            list[StrictStr] | None,
             Field(description="Filter by a comma-separated list of InvoicesIDs."),
         ] = None,
         invoice_numbers: Annotated[
-            Optional[conlist(StrictStr)],
+            list[StrictStr] | None,
             Field(description="Filter by a comma-separated list of InvoiceNumbers."),
         ] = None,
         contact_ids: Annotated[
-            Optional[conlist(StrictStr)],
+            list[StrictStr] | None,
             Field(description="Filter by a comma-separated list of ContactIDs."),
         ] = None,
         statuses: Annotated[
-            Optional[conlist(StrictStr)],
+            list[StrictStr] | None,
             Field(
                 description="Filter by a comma-separated list Statuses. For faster response times we recommend using these explicit parameters instead of passing OR conditions into the Where filter."
             ),
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 invoices will be returned in a single API call with line items shown for each invoice"
             ),
         ] = None,
         include_archived: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="e.g. includeArchived=true - Invoices with a status of ARCHIVED will be included in the response"
             ),
         ] = None,
         created_by_my_app: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="When set to true you'll only retrieve Invoices created by your app"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         summary_only: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="Use summaryOnly=true in GET Contacts and Invoices endpoint to retrieve a smaller version of the response object. This returns only lightweight fields, excluding computation-heavy fields from the response, making the API calls quick and efficient."
             ),
         ] = None,
         page_size: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(description="Number of records to retrieve per page"),
         ] = None,
         search_term: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Search parameter that performs a case-insensitive text search across the fields e.g. InvoiceNumber, Reference."
             ),
@@ -14561,71 +14550,71 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         ids: Annotated[
-            Optional[conlist(StrictStr)],
+            list[StrictStr] | None,
             Field(description="Filter by a comma-separated list of InvoicesIDs."),
         ] = None,
         invoice_numbers: Annotated[
-            Optional[conlist(StrictStr)],
+            list[StrictStr] | None,
             Field(description="Filter by a comma-separated list of InvoiceNumbers."),
         ] = None,
         contact_ids: Annotated[
-            Optional[conlist(StrictStr)],
+            list[StrictStr] | None,
             Field(description="Filter by a comma-separated list of ContactIDs."),
         ] = None,
         statuses: Annotated[
-            Optional[conlist(StrictStr)],
+            list[StrictStr] | None,
             Field(
                 description="Filter by a comma-separated list Statuses. For faster response times we recommend using these explicit parameters instead of passing OR conditions into the Where filter."
             ),
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 invoices will be returned in a single API call with line items shown for each invoice"
             ),
         ] = None,
         include_archived: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="e.g. includeArchived=true - Invoices with a status of ARCHIVED will be included in the response"
             ),
         ] = None,
         created_by_my_app: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="When set to true you'll only retrieve Invoices created by your app"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         summary_only: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="Use summaryOnly=true in GET Contacts and Invoices endpoint to retrieve a smaller version of the response object. This returns only lightweight fields, excluding computation-heavy fields from the response, making the API calls quick and efficient."
             ),
         ] = None,
         page_size: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(description="Number of records to retrieve per page"),
         ] = None,
         search_term: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Search parameter that performs a case-insensitive text search across the fields e.g. InvoiceNumber, Reference."
             ),
@@ -14663,8 +14652,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_invoices" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_invoices"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -14745,7 +14734,7 @@ class AccountingApi:
             StrictStr, Field(..., description="Unique identifier for an Item")
         ],
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
@@ -14769,7 +14758,7 @@ class AccountingApi:
             StrictStr, Field(..., description="Unique identifier for an Item")
         ],
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
@@ -14791,7 +14780,7 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s' to method get_item" % _key
+                    f"Got an unexpected keyword argument '{_key}' to method get_item"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -14878,8 +14867,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_item_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_item_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -14927,19 +14916,19 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
@@ -14960,19 +14949,19 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
@@ -15000,7 +14989,7 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s' to method get_items" % _key
+                    f"Got an unexpected keyword argument '{_key}' to method get_items"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -15091,8 +15080,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_journal" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_journal"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -15177,8 +15166,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_journal_by_number" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_journal_by_number"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -15226,19 +15215,19 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         offset: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Offset by a specified journal number. e.g. journals with a JournalNumber greater than the offset will be returned"
             ),
         ] = None,
         payments_only: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="Filter to retrieve journals on a cash basis. Journals are returned on an accrual basis by default."
             ),
@@ -15259,19 +15248,19 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         offset: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Offset by a specified journal number. e.g. journals with a JournalNumber greater than the offset will be returned"
             ),
         ] = None,
         payments_only: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="Filter to retrieve journals on a cash basis. Journals are returned on an accrual basis by default."
             ),
@@ -15293,8 +15282,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_journals" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_journals"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -15385,8 +15374,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_linked_transaction" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_linked_transaction"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -15434,35 +15423,35 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Up to 100 linked transactions will be returned in a single API call. Use the page parameter to specify the page to be returned e.g. page=1."
             ),
         ] = None,
         linked_transaction_id: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="The Xero identifier for an Linked Transaction"),
         ] = None,
         source_transaction_id: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Filter by the SourceTransactionID. Get the linked transactions created from a particular ACCPAY invoice"
             ),
         ] = None,
         contact_id: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Filter by the ContactID. Get all the linked transactions that have been assigned to a particular customer."
             ),
         ] = None,
         status: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Filter by the combination of ContactID and Status. Get  the linked transactions associated to a  customer and with a status"
             ),
         ] = None,
         target_transaction_id: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Filter by the TargetTransactionID. Get all the linked transactions allocated to a particular ACCREC invoice"
             ),
@@ -15490,35 +15479,35 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Up to 100 linked transactions will be returned in a single API call. Use the page parameter to specify the page to be returned e.g. page=1."
             ),
         ] = None,
         linked_transaction_id: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="The Xero identifier for an Linked Transaction"),
         ] = None,
         source_transaction_id: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Filter by the SourceTransactionID. Get the linked transactions created from a particular ACCPAY invoice"
             ),
         ] = None,
         contact_id: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Filter by the ContactID. Get all the linked transactions that have been assigned to a particular customer."
             ),
         ] = None,
         status: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Filter by the combination of ContactID and Status. Get  the linked transactions associated to a  customer and with a status"
             ),
         ] = None,
         target_transaction_id: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Filter by the TargetTransactionID. Get all the linked transactions allocated to a particular ACCREC invoice"
             ),
@@ -15548,8 +15537,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_linked_transactions" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_linked_transactions"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -15650,8 +15639,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_manual_journal" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_manual_journal"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -15761,8 +15750,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_manual_journal_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_manual_journal_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -15876,8 +15865,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_manual_journal_attachment_by_id" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_manual_journal_attachment_by_id"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -15966,8 +15955,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_manual_journal_attachments" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_manual_journal_attachments"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -16015,25 +16004,25 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 manual journals will be returned in a single API call with line items shown for each overpayment"
             ),
         ] = None,
         page_size: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(description="Number of records to retrieve per page"),
         ] = None,
         **kwargs,
@@ -16052,25 +16041,25 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 manual journals will be returned in a single API call with line items shown for each overpayment"
             ),
         ] = None,
         page_size: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(description="Number of records to retrieve per page"),
         ] = None,
         **kwargs,
@@ -16097,8 +16086,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_manual_journals" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_manual_journals"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -16191,8 +16180,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_manual_journals_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_manual_journals_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -16277,8 +16266,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_online_invoice" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_online_invoice"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -16357,8 +16346,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_organisation_actions" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_organisation_actions"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -16443,8 +16432,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_organisation_cis_settings" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_organisation_cis_settings"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -16521,8 +16510,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_organisations" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_organisations"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -16605,8 +16594,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_overpayment" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_overpayment"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -16691,8 +16680,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_overpayment_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_overpayment_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -16740,31 +16729,31 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 overpayments will be returned in a single API call with line items shown for each overpayment"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         page_size: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(description="Number of records to retrieve per page"),
         ] = None,
         **kwargs,
@@ -16790,31 +16779,31 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 overpayments will be returned in a single API call with line items shown for each overpayment"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         page_size: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(description="Number of records to retrieve per page"),
         ] = None,
         **kwargs,
@@ -16842,8 +16831,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_overpayments" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_overpayments"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -16938,8 +16927,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_payment" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_payment"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -17024,8 +17013,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_payment_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_payment_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -17102,8 +17091,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_payment_services" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_payment_services"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -17149,25 +17138,25 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Up to 100 payments will be returned in a single API call"
             ),
         ] = None,
         page_size: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(description="Number of records to retrieve per page"),
         ] = None,
         **kwargs,
@@ -17186,25 +17175,25 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Up to 100 payments will be returned in a single API call"
             ),
         ] = None,
         page_size: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(description="Number of records to retrieve per page"),
         ] = None,
         **kwargs,
@@ -17231,8 +17220,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_payments" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_payments"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -17325,8 +17314,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_prepayment" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_prepayment"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -17411,8 +17400,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_prepayment_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_prepayment_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -17460,31 +17449,31 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 prepayments will be returned in a single API call with line items shown for each overpayment"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         page_size: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(description="Number of records to retrieve per page"),
         ] = None,
         **kwargs,
@@ -17510,31 +17499,31 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 prepayments will be returned in a single API call with line items shown for each overpayment"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         page_size: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(description="Number of records to retrieve per page"),
         ] = None,
         **kwargs,
@@ -17562,8 +17551,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_prepayments" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_prepayments"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -17658,8 +17647,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_purchase_order" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_purchase_order"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -17744,8 +17733,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_purchase_order_as_pdf" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_purchase_order_as_pdf"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -17855,8 +17844,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_purchase_order_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_purchase_order_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -17970,8 +17959,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_purchase_order_attachment_by_id" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_purchase_order_attachment_by_id"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -18060,8 +18049,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_purchase_order_attachments" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_purchase_order_attachments"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -18146,8 +18135,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_purchase_order_by_number" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_purchase_order_by_number"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -18232,8 +18221,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_purchase_order_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_purchase_order_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -18281,37 +18270,37 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         status: Annotated[
-            Optional[StrictStr], Field(description="Filter by purchase order status")
+            StrictStr | None, Field(description="Filter by purchase order status")
         ] = None,
         date_from: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Filter by purchase order date (e.g. GET https://.../PurchaseOrders?DateFrom=2015-12-01&DateTo=2015-12-31"
             ),
         ] = None,
         date_to: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Filter by purchase order date (e.g. GET https://.../PurchaseOrders?DateFrom=2015-12-01&DateTo=2015-12-31"
             ),
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="To specify a page, append the page parameter to the URL e.g. ?page=1. If there are 100 records in the response you will need to check if there is any more data by fetching the next page e.g ?page=2 and continuing this process until no more results are returned."
             ),
         ] = None,
         page_size: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(description="Number of records to retrieve per page"),
         ] = None,
         **kwargs,
@@ -18338,37 +18327,37 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         status: Annotated[
-            Optional[StrictStr], Field(description="Filter by purchase order status")
+            StrictStr | None, Field(description="Filter by purchase order status")
         ] = None,
         date_from: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Filter by purchase order date (e.g. GET https://.../PurchaseOrders?DateFrom=2015-12-01&DateTo=2015-12-31"
             ),
         ] = None,
         date_to: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Filter by purchase order date (e.g. GET https://.../PurchaseOrders?DateFrom=2015-12-01&DateTo=2015-12-31"
             ),
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="To specify a page, append the page parameter to the URL e.g. ?page=1. If there are 100 records in the response you will need to check if there is any more data by fetching the next page e.g ?page=2 and continuing this process until no more results are returned."
             ),
         ] = None,
         page_size: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(description="Number of records to retrieve per page"),
         ] = None,
         **kwargs,
@@ -18397,8 +18386,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_purchase_orders" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_purchase_orders"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -18493,7 +18482,7 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s' to method get_quote" % _key
+                    f"Got an unexpected keyword argument '{_key}' to method get_quote"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -18578,8 +18567,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_quote_as_pdf" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_quote_as_pdf"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -18684,8 +18673,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_quote_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_quote_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -18794,8 +18783,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_quote_attachment_by_id" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_quote_attachment_by_id"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -18884,8 +18873,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_quote_attachments" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_quote_attachments"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -18970,8 +18959,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_quote_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_quote_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -19019,46 +19008,46 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         date_from: Annotated[
-            Optional[date],
+            date | None,
             Field(description="Filter for quotes after a particular date"),
         ] = None,
         date_to: Annotated[
-            Optional[date],
+            date | None,
             Field(description="Filter for quotes before a particular date"),
         ] = None,
         expiry_date_from: Annotated[
-            Optional[date],
+            date | None,
             Field(description="Filter for quotes expiring after a particular date"),
         ] = None,
         expiry_date_to: Annotated[
-            Optional[date],
+            date | None,
             Field(description="Filter for quotes before a particular date"),
         ] = None,
         contact_id: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="Filter for quotes belonging to a particular contact"),
         ] = None,
         status: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="Filter for quotes of a particular Status"),
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 Quotes will be returned in a single API call with line items shown for each quote"
             ),
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         quote_number: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Filter by quote number (e.g. GET https://.../Quotes?QuoteNumber=QU-0001)"
             ),
@@ -19090,46 +19079,46 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         date_from: Annotated[
-            Optional[date],
+            date | None,
             Field(description="Filter for quotes after a particular date"),
         ] = None,
         date_to: Annotated[
-            Optional[date],
+            date | None,
             Field(description="Filter for quotes before a particular date"),
         ] = None,
         expiry_date_from: Annotated[
-            Optional[date],
+            date | None,
             Field(description="Filter for quotes expiring after a particular date"),
         ] = None,
         expiry_date_to: Annotated[
-            Optional[date],
+            date | None,
             Field(description="Filter for quotes before a particular date"),
         ] = None,
         contact_id: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="Filter for quotes belonging to a particular contact"),
         ] = None,
         status: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="Filter for quotes of a particular Status"),
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 Quotes will be returned in a single API call with line items shown for each quote"
             ),
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         quote_number: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Filter by quote number (e.g. GET https://.../Quotes?QuoteNumber=QU-0001)"
             ),
@@ -19163,8 +19152,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_quotes" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_quotes"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -19273,7 +19262,7 @@ class AccountingApi:
             StrictStr, Field(..., description="Unique identifier for a Receipt")
         ],
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
@@ -19297,7 +19286,7 @@ class AccountingApi:
             StrictStr, Field(..., description="Unique identifier for a Receipt")
         ],
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
@@ -19319,8 +19308,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_receipt" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_receipt"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -19427,8 +19416,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_receipt_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_receipt_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -19537,8 +19526,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_receipt_attachment_by_id" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_receipt_attachment_by_id"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -19627,8 +19616,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_receipt_attachments" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_receipt_attachments"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -19713,8 +19702,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_receipt_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_receipt_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -19762,19 +19751,19 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
@@ -19795,19 +19784,19 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
@@ -19835,8 +19824,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_receipts" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_receipts"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -19929,8 +19918,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_repeating_invoice" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_repeating_invoice"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -20042,8 +20031,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_repeating_invoice_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_repeating_invoice_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -20159,8 +20148,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_repeating_invoice_attachment_by_id" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_repeating_invoice_attachment_by_id"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -20251,8 +20240,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_repeating_invoice_attachments" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_repeating_invoice_attachments"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -20339,8 +20328,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_repeating_invoice_history" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_repeating_invoice_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -20388,10 +20377,10 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         **kwargs,
     ) -> RepeatingInvoices:
@@ -20409,10 +20398,10 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -20431,8 +20420,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_repeating_invoices" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_repeating_invoices"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -20485,15 +20474,15 @@ class AccountingApi:
             StrictStr, Field(..., description="Unique identifier for a Contact")
         ],
         var_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="The date of the Aged Payables By Contact report"),
         ] = None,
         from_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="filter by the from date of the report e.g. 2021-02-01"),
         ] = None,
         to_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="filter by the to date of the report e.g. 2021-02-28"),
         ] = None,
         **kwargs,
@@ -20515,15 +20504,15 @@ class AccountingApi:
             StrictStr, Field(..., description="Unique identifier for a Contact")
         ],
         var_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="The date of the Aged Payables By Contact report"),
         ] = None,
         from_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="filter by the from date of the report e.g. 2021-02-01"),
         ] = None,
         to_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="filter by the to date of the report e.g. 2021-02-28"),
         ] = None,
         **kwargs,
@@ -20549,8 +20538,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_report_aged_payables_by_contact" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_report_aged_payables_by_contact"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -20637,15 +20626,15 @@ class AccountingApi:
             StrictStr, Field(..., description="Unique identifier for a Contact")
         ],
         var_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="The date of the Aged Receivables By Contact report"),
         ] = None,
         from_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="filter by the from date of the report e.g. 2021-02-01"),
         ] = None,
         to_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="filter by the to date of the report e.g. 2021-02-28"),
         ] = None,
         **kwargs,
@@ -20667,15 +20656,15 @@ class AccountingApi:
             StrictStr, Field(..., description="Unique identifier for a Contact")
         ],
         var_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="The date of the Aged Receivables By Contact report"),
         ] = None,
         from_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="filter by the from date of the report e.g. 2021-02-01"),
         ] = None,
         to_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="filter by the to date of the report e.g. 2021-02-28"),
         ] = None,
         **kwargs,
@@ -20701,8 +20690,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_report_aged_receivables_by_contact" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_report_aged_receivables_by_contact"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -20786,32 +20775,32 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         var_date: Annotated[
-            Optional[date], Field(description="The date of the Balance Sheet report")
+            date | None, Field(description="The date of the Balance Sheet report")
         ] = None,
         periods: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(description="The number of periods for the Balance Sheet report"),
         ] = None,
         timeframe: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="The period size to compare to (MONTH, QUARTER, YEAR)"),
         ] = None,
         tracking_option_id1: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="The tracking option 1 for the Balance Sheet report"),
         ] = None,
         tracking_option_id2: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="The tracking option 2 for the Balance Sheet report"),
         ] = None,
         standard_layout: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="The standard layout boolean for the Balance Sheet report"
             ),
         ] = None,
         payments_only: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(description="return a cash basis for the Balance Sheet report"),
         ] = None,
         **kwargs,
@@ -20838,32 +20827,32 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         var_date: Annotated[
-            Optional[date], Field(description="The date of the Balance Sheet report")
+            date | None, Field(description="The date of the Balance Sheet report")
         ] = None,
         periods: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(description="The number of periods for the Balance Sheet report"),
         ] = None,
         timeframe: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="The period size to compare to (MONTH, QUARTER, YEAR)"),
         ] = None,
         tracking_option_id1: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="The tracking option 1 for the Balance Sheet report"),
         ] = None,
         tracking_option_id2: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="The tracking option 2 for the Balance Sheet report"),
         ] = None,
         standard_layout: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="The standard layout boolean for the Balance Sheet report"
             ),
         ] = None,
         payments_only: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(description="return a cash basis for the Balance Sheet report"),
         ] = None,
         **kwargs,
@@ -20892,8 +20881,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_report_balance_sheet" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_report_balance_sheet"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -20963,11 +20952,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         from_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="filter by the from date of the report e.g. 2021-02-01"),
         ] = None,
         to_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="filter by the to date of the report e.g. 2021-02-28"),
         ] = None,
         **kwargs,
@@ -20986,11 +20975,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         from_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="filter by the from date of the report e.g. 2021-02-01"),
         ] = None,
         to_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="filter by the to date of the report e.g. 2021-02-28"),
         ] = None,
         **kwargs,
@@ -21010,8 +20999,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_report_bank_summary" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_report_bank_summary"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -21081,17 +21070,17 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         var_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="The date for the Bank Summary report e.g. 2018-03-31"),
         ] = None,
         periods: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="The number of periods to compare (integer between 1 and 12)"
             ),
         ] = None,
         timeframe: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="The period size to compare to (1=month, 3=quarter, 12=year)"
             ),
@@ -21112,17 +21101,17 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         var_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="The date for the Bank Summary report e.g. 2018-03-31"),
         ] = None,
         periods: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="The number of periods to compare (integer between 1 and 12)"
             ),
         ] = None,
         timeframe: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="The period size to compare to (1=month, 3=quarter, 12=year)"
             ),
@@ -21144,8 +21133,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_report_budget_summary" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_report_budget_summary"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -21207,7 +21196,7 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         var_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="The date for the Bank Summary report e.g. 2018-03-31"),
         ] = None,
         **kwargs,
@@ -21226,7 +21215,7 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         var_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="The date for the Bank Summary report e.g. 2018-03-31"),
         ] = None,
         **kwargs,
@@ -21246,8 +21235,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_report_executive_summary" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_report_executive_summary"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -21342,8 +21331,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_report_from_id" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_report_from_id"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -21391,47 +21380,47 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         from_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="filter by the from date of the report e.g. 2021-02-01"),
         ] = None,
         to_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="filter by the to date of the report e.g. 2021-02-28"),
         ] = None,
         periods: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="The number of periods to compare (integer between 1 and 12)"
             ),
         ] = None,
         timeframe: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="The period size to compare to (MONTH, QUARTER, YEAR)"),
         ] = None,
         tracking_category_id: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="The trackingCategory 1 for the ProfitAndLoss report"),
         ] = None,
         tracking_category_id2: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="The trackingCategory 2 for the ProfitAndLoss report"),
         ] = None,
         tracking_option_id: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="The tracking option 1 for the ProfitAndLoss report"),
         ] = None,
         tracking_option_id2: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="The tracking option 2 for the ProfitAndLoss report"),
         ] = None,
         standard_layout: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="Return the standard layout for the ProfitAndLoss report"
             ),
         ] = None,
         payments_only: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(description="Return cash only basis for the ProfitAndLoss report"),
         ] = None,
         **kwargs,
@@ -21461,47 +21450,47 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         from_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="filter by the from date of the report e.g. 2021-02-01"),
         ] = None,
         to_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="filter by the to date of the report e.g. 2021-02-28"),
         ] = None,
         periods: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="The number of periods to compare (integer between 1 and 12)"
             ),
         ] = None,
         timeframe: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="The period size to compare to (MONTH, QUARTER, YEAR)"),
         ] = None,
         tracking_category_id: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="The trackingCategory 1 for the ProfitAndLoss report"),
         ] = None,
         tracking_category_id2: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="The trackingCategory 2 for the ProfitAndLoss report"),
         ] = None,
         tracking_option_id: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="The tracking option 1 for the ProfitAndLoss report"),
         ] = None,
         tracking_option_id2: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(description="The tracking option 2 for the ProfitAndLoss report"),
         ] = None,
         standard_layout: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="Return the standard layout for the ProfitAndLoss report"
             ),
         ] = None,
         payments_only: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(description="Return cash only basis for the ProfitAndLoss report"),
         ] = None,
         **kwargs,
@@ -21533,8 +21522,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_report_profit_and_loss" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_report_profit_and_loss"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -21624,7 +21613,7 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         report_year: Annotated[
-            Optional[StrictStr], Field(description="The year of the 1099 report")
+            StrictStr | None, Field(description="The year of the 1099 report")
         ] = None,
         **kwargs,
     ) -> Reports:
@@ -21642,7 +21631,7 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         report_year: Annotated[
-            Optional[StrictStr], Field(description="The year of the 1099 report")
+            StrictStr | None, Field(description="The year of the 1099 report")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -21661,8 +21650,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_report_ten_ninety_nine" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_report_ten_ninety_nine"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -21710,11 +21699,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         var_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="The date for the Trial Balance report e.g. 2018-03-31"),
         ] = None,
         payments_only: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(description="Return cash only basis for the Trial Balance report"),
         ] = None,
         **kwargs,
@@ -21733,11 +21722,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         var_date: Annotated[
-            Optional[date],
+            date | None,
             Field(description="The date for the Trial Balance report e.g. 2018-03-31"),
         ] = None,
         payments_only: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(description="Return cash only basis for the Trial Balance report"),
         ] = None,
         **kwargs,
@@ -21757,8 +21746,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_report_trial_balance" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_report_trial_balance"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -21847,8 +21836,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_reports_list" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_reports_list"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -21927,8 +21916,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_tax_rate_by_tax_type" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_tax_rate_by_tax_type"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -21976,10 +21965,10 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         **kwargs,
     ) -> TaxRates:
@@ -21997,10 +21986,10 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -22019,8 +22008,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_tax_rates" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_tax_rates"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -22070,13 +22059,13 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         include_archived: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="e.g. includeArchived=true - Categories and options with a status of ARCHIVED will be included in the response"
             ),
@@ -22097,13 +22086,13 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         include_archived: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="e.g. includeArchived=true - Categories and options with a status of ARCHIVED will be included in the response"
             ),
@@ -22125,8 +22114,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_tracking_categories" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_tracking_categories"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -22217,8 +22206,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_tracking_category" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_tracking_category"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -22301,7 +22290,7 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s' to method get_user" % _key
+                    f"Got an unexpected keyword argument '{_key}' to method get_user"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -22349,16 +22338,16 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         **kwargs,
     ) -> Users:
@@ -22376,16 +22365,16 @@ class AccountingApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -22404,7 +22393,7 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s' to method get_users" % _key
+                    f"Got an unexpected keyword argument '{_key}' to method get_users"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -22463,7 +22452,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -22491,7 +22480,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -22513,8 +22502,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method post_setup" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method post_setup"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -22577,7 +22566,7 @@ class AccountingApi:
             Field(..., description="Request of type Accounts array with one Account"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -22605,7 +22594,7 @@ class AccountingApi:
             Field(..., description="Request of type Accounts array with one Account"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -22627,8 +22616,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_account" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_account"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -22693,11 +22682,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -22724,11 +22713,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -22756,8 +22745,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_account_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_account_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -22779,7 +22768,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -22830,13 +22819,13 @@ class AccountingApi:
         ],
         bank_transactions: BankTransactions,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -22870,13 +22859,13 @@ class AccountingApi:
         ],
         bank_transactions: BankTransactions,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -22904,8 +22893,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_bank_transaction" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_bank_transaction"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -22976,11 +22965,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -23018,11 +23007,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -23050,8 +23039,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_bank_transaction_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_bank_transaction_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -23073,7 +23062,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -23125,11 +23114,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -23159,11 +23148,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -23191,8 +23180,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_bank_transfer_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_bank_transfer_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -23214,7 +23203,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -23267,7 +23256,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -23298,7 +23287,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -23320,8 +23309,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_contact" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_contact"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -23386,11 +23375,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -23417,11 +23406,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -23449,8 +23438,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_contact_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_contact_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -23472,7 +23461,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -23525,7 +23514,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -23556,7 +23545,7 @@ class AccountingApi:
             ),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -23583,8 +23572,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_contact_group" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_contact_group"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -23653,13 +23642,13 @@ class AccountingApi:
             ),
         ],
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -23695,13 +23684,13 @@ class AccountingApi:
             ),
         ],
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -23729,8 +23718,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_credit_note" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_credit_note"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -23797,11 +23786,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -23828,11 +23817,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -23860,8 +23849,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_credit_note_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_credit_note_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -23883,7 +23872,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -23930,7 +23919,7 @@ class AccountingApi:
         ],
         expense_claims: ExpenseClaims,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -23955,7 +23944,7 @@ class AccountingApi:
         ],
         expense_claims: ExpenseClaims,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -23982,8 +23971,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_expense_claim" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_expense_claim"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -24046,13 +24035,13 @@ class AccountingApi:
         ],
         invoices: Invoices,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -24077,13 +24066,13 @@ class AccountingApi:
         ],
         invoices: Invoices,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -24111,8 +24100,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_invoice" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_invoice"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -24179,11 +24168,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -24210,11 +24199,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -24242,8 +24231,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_invoice_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_invoice_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -24265,7 +24254,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -24312,13 +24301,13 @@ class AccountingApi:
         ],
         items: Items,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -24343,13 +24332,13 @@ class AccountingApi:
         ],
         items: Items,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -24377,8 +24366,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_item" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_item"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -24444,7 +24433,7 @@ class AccountingApi:
         ],
         linked_transactions: LinkedTransactions,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -24474,7 +24463,7 @@ class AccountingApi:
         ],
         linked_transactions: LinkedTransactions,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -24501,8 +24490,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_linked_transaction" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_linked_transaction"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -24565,7 +24554,7 @@ class AccountingApi:
         ],
         manual_journals: ManualJournals,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -24594,7 +24583,7 @@ class AccountingApi:
         ],
         manual_journals: ManualJournals,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -24621,8 +24610,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_manual_journal" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_manual_journal"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -24687,11 +24676,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -24723,11 +24712,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -24755,8 +24744,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_manual_journal_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_manual_journal_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -24778,7 +24767,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -24822,19 +24811,19 @@ class AccountingApi:
         ],
         bank_transactions: BankTransactions,
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -24861,19 +24850,19 @@ class AccountingApi:
         ],
         bank_transactions: BankTransactions,
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -24901,8 +24890,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_or_create_bank_transactions" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_or_create_bank_transactions"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -24964,13 +24953,13 @@ class AccountingApi:
         ],
         contacts: Contacts,
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -24992,13 +24981,13 @@ class AccountingApi:
         ],
         contacts: Contacts,
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -25025,8 +25014,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_or_create_contacts" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_or_create_contacts"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -25092,19 +25081,19 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -25137,19 +25126,19 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -25177,8 +25166,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_or_create_credit_notes" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_or_create_credit_notes"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -25246,13 +25235,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -25280,13 +25269,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -25313,8 +25302,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_or_create_employees" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_or_create_employees"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -25374,19 +25363,19 @@ class AccountingApi:
         ],
         invoices: Invoices,
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -25413,19 +25402,19 @@ class AccountingApi:
         ],
         invoices: Invoices,
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -25453,8 +25442,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_or_create_invoices" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_or_create_invoices"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -25516,19 +25505,19 @@ class AccountingApi:
         ],
         items: Items,
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -25550,19 +25539,19 @@ class AccountingApi:
         ],
         items: Items,
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -25590,8 +25579,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_or_create_items" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_or_create_items"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -25659,13 +25648,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -25693,13 +25682,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -25726,8 +25715,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_or_create_manual_journals" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_or_create_manual_journals"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -25787,13 +25776,13 @@ class AccountingApi:
         ],
         purchase_orders: PurchaseOrders,
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -25815,13 +25804,13 @@ class AccountingApi:
         ],
         purchase_orders: PurchaseOrders,
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -25848,8 +25837,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_or_create_purchase_orders" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_or_create_purchase_orders"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -25909,13 +25898,13 @@ class AccountingApi:
         ],
         quotes: Quotes,
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -25937,13 +25926,13 @@ class AccountingApi:
         ],
         quotes: Quotes,
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -25970,8 +25959,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_or_create_quotes" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_or_create_quotes"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -26037,13 +26026,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -26075,13 +26064,13 @@ class AccountingApi:
             ),
         ],
         summarize_errors: Annotated[
-            Optional[StrictBool],
+            StrictBool | None,
             Field(
                 description="If false return 200 OK and mix of successfully created objects and any with validation errors"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -26108,8 +26097,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_or_create_repeating_invoices" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_or_create_repeating_invoices"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -26172,7 +26161,7 @@ class AccountingApi:
         ],
         purchase_orders: PurchaseOrders,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -26201,7 +26190,7 @@ class AccountingApi:
         ],
         purchase_orders: PurchaseOrders,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -26228,8 +26217,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_purchase_order" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_purchase_order"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -26294,11 +26283,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -26330,11 +26319,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -26362,8 +26351,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_purchase_order_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_purchase_order_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -26385,7 +26374,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -26432,7 +26421,7 @@ class AccountingApi:
         ],
         quotes: Quotes,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -26457,7 +26446,7 @@ class AccountingApi:
         ],
         quotes: Quotes,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -26479,8 +26468,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_quote" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_quote"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -26545,11 +26534,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -26576,11 +26565,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -26608,8 +26597,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_quote_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_quote_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -26631,7 +26620,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -26678,13 +26667,13 @@ class AccountingApi:
         ],
         receipts: Receipts,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -26709,13 +26698,13 @@ class AccountingApi:
         ],
         receipts: Receipts,
         unitdp: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts"
             ),
         ] = None,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -26743,8 +26732,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_receipt" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_receipt"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -26811,11 +26800,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -26842,11 +26831,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -26874,8 +26863,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_receipt_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_receipt_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -26897,7 +26886,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -26945,7 +26934,7 @@ class AccountingApi:
         ],
         repeating_invoices: RepeatingInvoices,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -26975,7 +26964,7 @@ class AccountingApi:
         ],
         repeating_invoices: RepeatingInvoices,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -27002,8 +26991,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_repeating_invoice" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_repeating_invoice"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -27069,11 +27058,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -27108,11 +27097,11 @@ class AccountingApi:
             StrictStr, Field(..., description="Name of the attachment")
         ],
         body: Annotated[
-            Union[StrictBytes, StrictStr],
+            StrictBytes | StrictStr,
             Field(..., description="Byte array of file in body of request"),
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -27140,8 +27129,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_repeating_invoice_attachment_by_file_name" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_repeating_invoice_attachment_by_file_name"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -27163,7 +27152,7 @@ class AccountingApi:
         if _params["body"] is not None:
             _body_params = _params["body"]
             if isinstance(_body_params, str):
-                with io.open(_body_params, "rb") as _fp:
+                with open(_body_params, "rb") as _fp:
                     _body_params_from_file = _fp.read()
                 _body_params = _body_params_from_file
         _header_params["Accept"] = self.api_client.select_header_accept(
@@ -27207,7 +27196,7 @@ class AccountingApi:
         ],
         tax_rates: TaxRates,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -27229,7 +27218,7 @@ class AccountingApi:
         ],
         tax_rates: TaxRates,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -27251,8 +27240,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_tax_rate" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_tax_rate"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -27314,7 +27303,7 @@ class AccountingApi:
         ],
         tracking_category: TrackingCategory,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -27344,7 +27333,7 @@ class AccountingApi:
         ],
         tracking_category: TrackingCategory,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -27371,8 +27360,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_tracking_category" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_tracking_category"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -27439,7 +27428,7 @@ class AccountingApi:
         ],
         tracking_option: TrackingOption,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -27473,7 +27462,7 @@ class AccountingApi:
         ],
         tracking_option: TrackingOption,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -27501,8 +27490,8 @@ class AccountingApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_tracking_options" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_tracking_options"
                 )
             _params[_key] = _val
         del _params["kwargs"]

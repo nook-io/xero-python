@@ -2,7 +2,9 @@ import json
 import time
 from base64 import b64encode
 from typing import TYPE_CHECKING
+
 from aiohttp import ClientResponse
+
 from xero.api_client.api_response import ApiResponse
 from xero.exceptions import AccessTokenExpiredError
 
@@ -39,9 +41,7 @@ class TokenApi:
         )
         if response.status != 200:
             raise Exception(
-                "refresh token status {} {} {!r}".format(
-                    response.status, await response.text(), response.headers
-                )
+                f"refresh token status {response.status} {await response.text()} {response.headers!r}"
             )
         return await response.json()
 
@@ -64,9 +64,7 @@ class TokenApi:
         )
         if response.status != 200:
             raise Exception(
-                "refresh token status {} {} {!r}".format(
-                    response.status, await response.text(), response.headers
-                )
+                f"refresh token status {response.status} {await response.text()} {response.headers!r}"
             )
         return response.status
 
@@ -91,9 +89,7 @@ class TokenApi:
         )
         if response.status_code != 200:
             raise Exception(
-                "refresh token status {} {} {!r}".format(
-                    response.status_code, response.data, response.headers
-                )
+                f"refresh token status {response.status_code} {response.data} {response.headers!r}"
             )
         return self.parse_token_response(response.data)
 
@@ -128,7 +124,7 @@ class OAuth2Token:
             "type": "oauth2",
             "in": "header",
             "key": "Authorization",
-            "value": "{type} {token}".format(type=self.token_type, token=access_token),
+            "value": f"{self.token_type} {access_token}",
         }
 
     def is_access_token_valid(self, at_time=None):

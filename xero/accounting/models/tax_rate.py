@@ -124,9 +124,7 @@ class TaxRate(BaseModel):
         if status:
             if status not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `status` ({0}), must be one of {1}".format(
-                        status, allowed_values
-                    )
+                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
                 )
         self._status = status
 
@@ -241,9 +239,7 @@ class TaxRate(BaseModel):
         if report_tax_type:
             if report_tax_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `report_tax_type` ({0}), must be one of {1}".format(
-                        report_tax_type, allowed_values
-                    )
+                    f"Invalid value for `report_tax_type` ({report_tax_type}), must be one of {allowed_values}"
                 )
         self._report_tax_type = report_tax_type
 

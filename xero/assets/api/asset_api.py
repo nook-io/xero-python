@@ -1,16 +1,15 @@
 import importlib
-from typing import Optional
+from typing import Annotated
+
 from pydantic import Field, StrictInt, StrictStr
-from typing_extensions import Annotated
+
 from xero.api_client import ApiClient, ApiResponse, ModelFinder
 from xero.assets.models.asset import Asset
 from xero.assets.models.asset_status_query_param import AssetStatusQueryParam
 from xero.assets.models.asset_type import AssetType
 from xero.assets.models.assets import Assets
 from xero.assets.models.setting import Setting
-from xero.exceptions import (
-    ApiTypeError,
-)
+from xero.exceptions import ApiTypeError
 
 
 class AssetApi:
@@ -33,7 +32,7 @@ class AssetApi:
         ],
         asset: Annotated[Asset, Field(..., description="Fixed asset you are creating")],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -55,7 +54,7 @@ class AssetApi:
         ],
         asset: Annotated[Asset, Field(..., description="Fixed asset you are creating")],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -77,8 +76,8 @@ class AssetApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_asset" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_asset"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -136,7 +135,7 @@ class AssetApi:
         ],
         asset_type: Annotated[AssetType, Field(..., description="Asset type to add")],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -158,7 +157,7 @@ class AssetApi:
         ],
         asset_type: Annotated[AssetType, Field(..., description="Asset type to add")],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -180,8 +179,8 @@ class AssetApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_asset_type" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_asset_type"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -274,8 +273,8 @@ class AssetApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_asset_by_id" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_asset_by_id"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -353,8 +352,8 @@ class AssetApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_asset_settings" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_asset_settings"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -430,8 +429,8 @@ class AssetApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_asset_types" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_asset_types"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -485,28 +484,28 @@ class AssetApi:
             ),
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Results are paged. This specifies which page of the results to return. The default page is 1."
             ),
         ] = None,
         page_size: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="The number of records returned per page. By default the number of records returned is 10."
             ),
         ] = None,
         order_by: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Requests can be ordered by AssetType, AssetName, AssetNumber, PurchaseDate and PurchasePrice. If the asset status is DISPOSED it also allows DisposalDate and DisposalPrice."
             ),
         ] = None,
         sort_direction: Annotated[
-            Optional[StrictStr], Field(description="ASC or DESC")
+            StrictStr | None, Field(description="ASC or DESC")
         ] = None,
         filter_by: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="A string that can be used to filter the list to only return assets containing the text. Checks it against the AssetName, AssetNumber, Description and AssetTypeName fields."
             ),
@@ -541,28 +540,28 @@ class AssetApi:
             ),
         ],
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="Results are paged. This specifies which page of the results to return. The default page is 1."
             ),
         ] = None,
         page_size: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="The number of records returned per page. By default the number of records returned is 10."
             ),
         ] = None,
         order_by: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="Requests can be ordered by AssetType, AssetName, AssetNumber, PurchaseDate and PurchasePrice. If the asset status is DISPOSED it also allows DisposalDate and DisposalPrice."
             ),
         ] = None,
         sort_direction: Annotated[
-            Optional[StrictStr], Field(description="ASC or DESC")
+            StrictStr | None, Field(description="ASC or DESC")
         ] = None,
         filter_by: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="A string that can be used to filter the list to only return assets containing the text. Checks it against the AssetName, AssetNumber, Description and AssetTypeName fields."
             ),
@@ -592,8 +591,8 @@ class AssetApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_assets" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_assets"
                 )
             _params[_key] = _val
         del _params["kwargs"]

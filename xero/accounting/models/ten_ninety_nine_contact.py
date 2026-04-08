@@ -373,8 +373,6 @@ class TenNinetyNineContact(BaseModel):
         if federal_tax_classification:
             if federal_tax_classification not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `federal_tax_classification` ({0}), must be one of {1}".format(
-                        federal_tax_classification, allowed_values
-                    )
+                    f"Invalid value for `federal_tax_classification` ({federal_tax_classification}), must be one of {allowed_values}"
                 )
         self._federal_tax_classification = federal_tax_classification

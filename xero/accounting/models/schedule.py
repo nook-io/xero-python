@@ -72,9 +72,7 @@ class Schedule(BaseModel):
         if unit:
             if unit not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `unit` ({0}), must be one of {1}".format(
-                        unit, allowed_values
-                    )
+                    f"Invalid value for `unit` ({unit}), must be one of {allowed_values}"
                 )
         self._unit = unit
 
@@ -104,9 +102,7 @@ class Schedule(BaseModel):
         if due_date_type:
             if due_date_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `due_date_type` ({0}), must be one of {1}".format(
-                        due_date_type, allowed_values
-                    )
+                    f"Invalid value for `due_date_type` ({due_date_type}), must be one of {allowed_values}"
                 )
         self._due_date_type = due_date_type
 

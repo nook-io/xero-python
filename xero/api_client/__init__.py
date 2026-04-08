@@ -14,11 +14,7 @@ from xero import rest
 from xero.api_client.api_response import ApiResponse
 from xero.api_client.configuration import Configuration
 from xero.api_client.deserializer import deserialize
-from xero.exceptions import (
-    ApiValueError,
-    OAuth2TokenGetterError,
-    OAuth2TokenSaverError,
-)
+from xero.exceptions import ApiValueError, OAuth2TokenGetterError, OAuth2TokenSaverError
 from xero.models import BaseModel
 
 
@@ -125,10 +121,10 @@ class ApiClient:
             path_params = self.parameters_to_tuples(path_params, collection_formats)
             for k, v in path_params:
                 resource_path = resource_path.replace(
-                    "{%s}" % k, quote(str(v), safe=config.safe_chars_for_path_param)
+                    f"{{{k}}}", quote(str(v), safe=config.safe_chars_for_path_param)
                 )
         if post_params or files:
-            post_params = post_params if post_params else []
+            post_params = post_params or []
             post_params = self.sanitize_for_serialization(post_params)
             post_params = self.parameters_to_tuples(post_params, collection_formats)
             post_params.extend(self.files_parameters(files))
@@ -192,44 +188,43 @@ class ApiClient:
             return_data = None
         if _return_http_data_only:
             return return_data
-        else:
-            return ApiResponse(
-                status_code=response_data.status,
-                data=return_data,
-                headers=response_data.getheaders(),
-                raw_data=response_data.data,
-            )
+        return ApiResponse(
+            status_code=response_data.status,
+            data=return_data,
+            headers=response_data.getheaders(),
+            raw_data=response_data.data,
+        )
 
     def sanitize_for_serialization(self, obj):
         if isinstance(obj, BaseModel):
             serialized = {}
-            for attr_name, attr_type in obj.openapi_types.items():
+            for attr_name, _attr_type in obj.openapi_types.items():
                 attr_value = getattr(obj, attr_name)
                 if attr_value is not None:
                     key = obj.attribute_map[attr_name]
                     attr_value = self.sanitize_for_serialization(attr_value)
                     serialized[key] = attr_value
             return serialized
-        elif obj is None:
+        if obj is None:
             return None
-        elif isinstance(obj, SecretStr):
+        if isinstance(obj, SecretStr):
             return obj.get_secret_value()
-        elif isinstance(obj, self.PRIMITIVE_TYPES):
+        if isinstance(obj, self.PRIMITIVE_TYPES):
             return obj
-        elif isinstance(obj, Decimal):
+        if isinstance(obj, Decimal):
             return float(obj)
-        elif isinstance(obj, Enum):
+        if isinstance(obj, Enum):
             return obj.value
-        elif isinstance(obj, list):
+        if isinstance(obj, list):
             return [self.sanitize_for_serialization(sub_obj) for sub_obj in obj]
-        elif isinstance(obj, tuple):
+        if isinstance(obj, tuple):
             return tuple(self.sanitize_for_serialization(sub_obj) for sub_obj in obj)
-        elif isinstance(obj, (datetime.datetime, datetime.date)):
+        if isinstance(obj, (datetime.datetime, datetime.date)):
             return obj.isoformat()
         if isinstance(obj, dict):
             obj_dict = obj
         else:
-            if hasattr(obj, "to_dict") and callable(getattr(obj, "to_dict")):
+            if hasattr(obj, "to_dict") and callable(obj.to_dict):
                 obj_dict = obj.to_dict()
             else:
                 obj_dict = obj.__dict__
@@ -306,7 +301,7 @@ class ApiClient:
                 _request_timeout=_request_timeout,
                 headers=headers,
             )
-        elif method == "HEAD":
+        if method == "HEAD":
             return await self.rest_client.head_request(
                 url,
                 query_params=query_params,
@@ -314,7 +309,7 @@ class ApiClient:
                 _request_timeout=_request_timeout,
                 headers=headers,
             )
-        elif method == "OPTIONS":
+        if method == "OPTIONS":
             return await self.rest_client.options_request(
                 url,
                 query_params=query_params,
@@ -322,7 +317,7 @@ class ApiClient:
                 _preload_content=_preload_content,
                 _request_timeout=_request_timeout,
             )
-        elif method == "POST":
+        if method == "POST":
             return await self.rest_client.post_request(
                 url,
                 query_params=query_params,
@@ -332,7 +327,7 @@ class ApiClient:
                 _request_timeout=_request_timeout,
                 body=body,
             )
-        elif method == "PUT":
+        if method == "PUT":
             return await self.rest_client.put_request(
                 url,
                 query_params=query_params,
@@ -342,7 +337,7 @@ class ApiClient:
                 _request_timeout=_request_timeout,
                 body=body,
             )
-        elif method == "PATCH":
+        if method == "PATCH":
             return await self.rest_client.patch_request(
                 url,
                 query_params=query_params,
@@ -352,7 +347,7 @@ class ApiClient:
                 _request_timeout=_request_timeout,
                 body=body,
             )
-        elif method == "DELETE":
+        if method == "DELETE":
             return await self.rest_client.delete_request(
                 url,
                 query_params=query_params,
@@ -361,11 +356,10 @@ class ApiClient:
                 _request_timeout=_request_timeout,
                 body=body,
             )
-        else:
-            raise ApiValueError(
-                "http method must be `GET`, `HEAD`, `OPTIONS`,"
-                " `POST`, `PATCH`, `PUT` or `DELETE`."
-            )
+        raise ApiValueError(
+            "http method must be `GET`, `HEAD`, `OPTIONS`,"
+            " `POST`, `PATCH`, `PUT` or `DELETE`."
+        )
 
     def parameters_to_tuples(self, params, collection_formats):
         new_params = []
@@ -436,12 +430,12 @@ class ApiClient:
                             mimetypes.guess_type(filename)[0]
                             or "application/octet-stream"
                         )
-                        params.append(tuple([k, tuple([filename, filedata, mimetype])]))
+                        params.append((k, (filename, filedata, mimetype)))
         return params
 
     def select_header_accept(self, accepts):
         if not accepts:
-            return
+            return None
         for accept in accepts:
             if re.search("json", accept, re.IGNORECASE):
                 return accept
@@ -512,18 +506,14 @@ class ApiClient:
     def get_oauth2_token(self):
         if not self._oauth2_token_getter:
             raise OAuth2TokenGetterError(
-                "Invalid oauth2_token_getter={!r} function".format(
-                    self._oauth2_token_getter
-                )
+                f"Invalid oauth2_token_getter={self._oauth2_token_getter!r} function"
             )
         return self._oauth2_token_getter()
 
     def set_oauth2_token(self, token):
         if not self._oauth2_token_saver:
             raise OAuth2TokenSaverError(
-                "Invalid oauth2_token_saver={!r} function".format(
-                    self._oauth2_token_saver
-                )
+                f"Invalid oauth2_token_saver={self._oauth2_token_saver!r} function"
             )
         self._oauth2_token_saver(token)
 
@@ -532,12 +522,14 @@ class ApiClient:
         oauth2_token.update_token(**self.get_oauth2_token())
         if await oauth2_token.refresh_access_token(self):
             return self.get_oauth2_token()
+        return None
 
     async def revoke_oauth2_token(self):
         oauth2_token = self.configuration.oauth2_token
         oauth2_token.update_token(**self.get_oauth2_token())
         if await oauth2_token.revoke_access_token(self):
             return self.get_oauth2_token()
+        return None
 
     async def get_client_credentials_token(self, app_store_billing=False):
         oauth2_token = self.configuration.oauth2_token
@@ -545,6 +537,7 @@ class ApiClient:
             self, app_store_billing
         ):
             return self.get_oauth2_token()
+        return None
 
     def oauth2_token_getter(self, token_getter):
         self._oauth2_token_getter = token_getter

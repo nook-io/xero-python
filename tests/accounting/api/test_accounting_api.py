@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import datetime
 import filecmp
 from decimal import Decimal
@@ -6,29 +5,28 @@ from pathlib import Path
 
 import pytest
 from dateutil import tz
-
 from xero_python.accounting import (
-    AccountingApi,
-    models,
     Account,
+    AccountingApi,
     Accounts,
     AccountType,
-    CurrencyCode,
-    LineAmountTypes,
-    Invoices,
-    Invoice,
-    Contact,
-    Payment,
-    HistoryRecords,
-    RequestEmpty,
-    HistoryRecord,
     Address,
+    Attachment,
+    Attachments,
+    Contact,
     ContactGroup,
     ContactPerson,
-    Phone,
+    CurrencyCode,
+    HistoryRecord,
+    HistoryRecords,
+    Invoice,
+    Invoices,
+    LineAmountTypes,
     LineItem,
-    Attachments,
-    Attachment,
+    Payment,
+    Phone,
+    RequestEmpty,
+    models,
 )
 from xero_python.api_client import ApiClient
 from xero_python.assets import Pagination
@@ -321,7 +319,7 @@ def test_get_account_attachments(sandbox_accounting_api: AccountingApi, xero_ten
         attachments=[
             Attachment(
                 attachment_id="52a643be-cd5c-489f-9778-53a9fd337756",
-                content_length=Decimal("2878711"),
+                content_length=Decimal(2878711),
                 file_name="sample5.jpg",
                 include_online=None,
                 mime_type="image/jpg",

@@ -2,7 +2,9 @@ import re
 from datetime import date, datetime, time
 from enum import Enum
 from functools import singledispatch
+
 from dateutil import tz
+
 from xero.models import BaseModel
 from xero.single_dispatch_str import single_dispatch_str
 
@@ -29,11 +31,7 @@ def serialize_routing(value, explicit_type=None):
 @single_dispatch_str(key=serialize_routing)
 def serialize(value, explicit_type=None):
     if explicit_type and explicit_type != data_type(value):
-        raise ValueError(
-            "Can't serialize value type {!r} to explicit type {!r}".format(
-                data_type(value), explicit_type
-            )
-        )
+        raise ValueError(f"Can't serialize value type {data_type(value)!r} to explicit type {explicit_type!r}")
     return serialize_model(value)
 
 
@@ -42,8 +40,8 @@ def serialize_dict(value, explicit_type=None):
     value_type = data_type(value, explicit_type)
     try:
         sub_type = DICT_DATA_TYPE.match(value_type).group(1)
-    except AttributeError:
-        raise ValueError("Can't serialize value type {!r}".format(value_type))
+    except AttributeError as exc:
+        raise ValueError(f"Can't serialize value type {value_type!r}") from exc
     else:
         return {key: serialize(sub_value, sub_type) for key, sub_value in value.items()}
 
@@ -53,8 +51,8 @@ def serialize_list(value, explicit_type=None):
     value_type = data_type(value, explicit_type)
     try:
         sub_type = LIST_DATA_TYPE.match(value_type).group(1)
-    except AttributeError:
-        raise ValueError("Can't serialize value type {!r}".format(value_type))
+    except AttributeError as exc:
+        raise ValueError(f"Can't serialize value type {value_type!r}") from exc
     else:
         return [serialize(sub_value, sub_type) for sub_value in value]
 
@@ -64,8 +62,8 @@ def serialize_tuple(value, explicit_type=None):
     value_type = data_type(value, explicit_type)
     try:
         sub_type = TUPLE_DATA_TYPE.match(value_type).group(1)
-    except AttributeError:
-        raise ValueError("Can't serialize value type {!r}".format(value_type))
+    except AttributeError as exc:
+        raise ValueError(f"Can't serialize value type {value_type!r}") from exc
     else:
         return tuple(serialize(sub_value, sub_type) for sub_value in value)
 
@@ -95,7 +93,7 @@ def serialize_datetime_ms(value, explicit_type=None):
     tz_str = value.strftime("%z")
     timestamp_s = value.timestamp()
     timestamp_ms = int(timestamp_s * 1000)
-    return "/Date({}{})/".format(timestamp_ms, tz_str)
+    return f"/Date({timestamp_ms}{tz_str})/"
 
 
 @serialize.register("date[ms-format]")
@@ -105,15 +103,15 @@ def serialize_date_ms(value, explicit_type=None):
     elif isinstance(value, date):
         datetime_value = datetime.combine(value, time(tzinfo=tz.UTC))
     else:
-        raise ValueError("Can't serialize {!r} into Microsoft date json format")
+        raise ValueError("Can't serialize {!r} into Microsoft date json format")  # noqa: TRY004
     timestamp_s = datetime_value.timestamp()
     timestamp_ms = int(timestamp_s * 1000)
-    return "/Date({})/".format(timestamp_ms)
+    return f"/Date({timestamp_ms})/"
 
 
 @singledispatch
 def serialize_model(model):
-    raise ValueError("Can't serialize value type {!r}".format(data_type(model)))
+    raise ValueError(f"Can't serialize value type {data_type(model)!r}")
 
 
 @serialize_model.register(BaseModel)

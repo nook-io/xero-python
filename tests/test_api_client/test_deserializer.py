@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from contextlib import contextmanager
 from datetime import date, datetime, timedelta
 from decimal import Decimal
@@ -7,8 +6,6 @@ from unittest import mock
 
 import pytest
 from dateutil import tz
-
-from tests import FakeClass, FakeMethod
 from xero_python.api_client.deserializer import (
     deserialize,
     deserialize_bool,
@@ -24,6 +21,8 @@ from xero_python.api_client.deserializer import (
     deserialize_str,
 )
 
+from tests import FakeClass, FakeMethod
+
 
 @contextmanager
 def mock_deserialize(name="deserialize"):
@@ -31,7 +30,7 @@ def mock_deserialize(name="deserialize"):
         return value
 
     with mock.patch(
-        "xero_python.api_client.deserializer.{}".format(name), side_effect=sub_response
+        f"xero_python.api_client.deserializer.{name}", side_effect=sub_response
     ) as deserialize:
         yield deserialize
 
@@ -49,7 +48,7 @@ def test_deserialize_routing(data_type):
 
 
 @pytest.mark.parametrize(
-    "data_type", ["list[{}]".format(key) for key in ("str", "User")]
+    "data_type", [f"list[{key}]" for key in ("str", "User")]
 )
 def test_deserialize_routing_list(data_type):
     # given list data type

@@ -88,9 +88,7 @@ class PayRunCalendar(BaseModel):
         if calendar_type:
             if calendar_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `calendar_type` ({0}), must be one of {1}".format(
-                        calendar_type, allowed_values
-                    )
+                    f"Invalid value for `calendar_type` ({calendar_type}), must be one of {allowed_values}"
                 )
         self._calendar_type = calendar_type
 

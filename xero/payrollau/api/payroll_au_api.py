@@ -1,17 +1,11 @@
 import importlib
 from datetime import datetime
-from typing import Optional
-from pydantic import (
-    Field,
-    StrictInt,
-    StrictStr,
-    conlist,
-)
-from typing_extensions import Annotated
+from typing import Annotated
+
+from pydantic import Field, StrictInt, StrictStr
+
 from xero.api_client import ApiClient, ApiResponse, ModelFinder
-from xero.exceptions import (
-    ApiTypeError,
-)
+from xero.exceptions import ApiTypeError
 from xero.payrollau.models.employee import Employee
 from xero.payrollau.models.employees import Employees
 from xero.payrollau.models.leave_application import LeaveApplication
@@ -56,7 +50,7 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Leave Application id for single object")
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -80,7 +74,7 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Leave Application id for single object")
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -102,8 +96,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method approve_leave_application" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method approve_leave_application"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -153,9 +147,9 @@ class PayrollAuApi:
         xero_tenant_id: Annotated[
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
-        employee: conlist(Employee),
+        employee: Annotated[list[Employee], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -175,9 +169,9 @@ class PayrollAuApi:
         xero_tenant_id: Annotated[
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
-        employee: conlist(Employee),
+        employee: Annotated[list[Employee], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -199,8 +193,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_employee" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_employee"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -256,9 +250,9 @@ class PayrollAuApi:
         xero_tenant_id: Annotated[
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
-        leave_application: conlist(LeaveApplication),
+        leave_application: Annotated[list[LeaveApplication], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -278,9 +272,9 @@ class PayrollAuApi:
         xero_tenant_id: Annotated[
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
-        leave_application: conlist(LeaveApplication),
+        leave_application: Annotated[list[LeaveApplication], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -302,8 +296,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_leave_application" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_leave_application"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -361,7 +355,7 @@ class PayrollAuApi:
         ],
         pay_item: PayItem,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -383,7 +377,7 @@ class PayrollAuApi:
         ],
         pay_item: PayItem,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -405,8 +399,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_pay_item" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_pay_item"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -462,9 +456,9 @@ class PayrollAuApi:
         xero_tenant_id: Annotated[
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
-        pay_run: conlist(PayRun),
+        pay_run: Annotated[list[PayRun], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -484,9 +478,9 @@ class PayrollAuApi:
         xero_tenant_id: Annotated[
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
-        pay_run: conlist(PayRun),
+        pay_run: Annotated[list[PayRun], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -508,8 +502,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_pay_run" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_pay_run"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -565,9 +559,9 @@ class PayrollAuApi:
         xero_tenant_id: Annotated[
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
-        payroll_calendar: conlist(PayrollCalendar),
+        payroll_calendar: Annotated[list[PayrollCalendar], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -587,9 +581,9 @@ class PayrollAuApi:
         xero_tenant_id: Annotated[
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
-        payroll_calendar: conlist(PayrollCalendar),
+        payroll_calendar: Annotated[list[PayrollCalendar], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -611,8 +605,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_payroll_calendar" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_payroll_calendar"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -668,9 +662,9 @@ class PayrollAuApi:
         xero_tenant_id: Annotated[
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
-        super_fund: conlist(SuperFund),
+        super_fund: Annotated[list[SuperFund], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -690,9 +684,9 @@ class PayrollAuApi:
         xero_tenant_id: Annotated[
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
-        super_fund: conlist(SuperFund),
+        super_fund: Annotated[list[SuperFund], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -714,8 +708,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_superfund" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_superfund"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -771,9 +765,9 @@ class PayrollAuApi:
         xero_tenant_id: Annotated[
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
-        timesheet: conlist(Timesheet),
+        timesheet: Annotated[list[Timesheet], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -793,9 +787,9 @@ class PayrollAuApi:
         xero_tenant_id: Annotated[
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
-        timesheet: conlist(Timesheet),
+        timesheet: Annotated[list[Timesheet], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -817,8 +811,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_timesheet" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_timesheet"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -912,8 +906,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_employee" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_employee"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -961,19 +955,19 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 employees will be returned in a single API call"
             ),
@@ -994,19 +988,19 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 employees will be returned in a single API call"
             ),
@@ -1028,8 +1022,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_employees" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_employees"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1121,8 +1115,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_leave_application" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_leave_application"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1170,19 +1164,19 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 objects will be returned in a single API call"
             ),
@@ -1203,19 +1197,19 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 objects will be returned in a single API call"
             ),
@@ -1237,8 +1231,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_leave_applications" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_leave_applications"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1293,19 +1287,19 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 objects will be returned in a single API call"
             ),
@@ -1326,19 +1320,19 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 objects will be returned in a single API call"
             ),
@@ -1360,8 +1354,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_leave_applications_v2" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_leave_applications_v2"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1416,19 +1410,19 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 objects will be returned in a single API call"
             ),
@@ -1449,19 +1443,19 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 objects will be returned in a single API call"
             ),
@@ -1483,8 +1477,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_pay_items" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_pay_items"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1576,8 +1570,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_pay_run" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_pay_run"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1625,19 +1619,19 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 PayRuns will be returned in a single API call"
             ),
@@ -1658,19 +1652,19 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 PayRuns will be returned in a single API call"
             ),
@@ -1692,8 +1686,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_pay_runs" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_pay_runs"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1785,8 +1779,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_payroll_calendar" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_payroll_calendar"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1835,19 +1829,19 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 objects will be returned in a single API call"
             ),
@@ -1868,19 +1862,19 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 objects will be returned in a single API call"
             ),
@@ -1902,8 +1896,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_payroll_calendars" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_payroll_calendars"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1995,8 +1989,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_payslip" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_payslip"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2073,8 +2067,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_settings" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_settings"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2157,8 +2151,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_superfund" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_superfund"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2206,10 +2200,10 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         abn: Annotated[
-            Optional[StrictStr], Field(description="The ABN of the Regulated SuperFund")
+            StrictStr | None, Field(description="The ABN of the Regulated SuperFund")
         ] = None,
         usi: Annotated[
-            Optional[StrictStr], Field(description="The USI of the Regulated SuperFund")
+            StrictStr | None, Field(description="The USI of the Regulated SuperFund")
         ] = None,
         **kwargs,
     ) -> SuperFundProducts:
@@ -2227,10 +2221,10 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         abn: Annotated[
-            Optional[StrictStr], Field(description="The ABN of the Regulated SuperFund")
+            StrictStr | None, Field(description="The ABN of the Regulated SuperFund")
         ] = None,
         usi: Annotated[
-            Optional[StrictStr], Field(description="The USI of the Regulated SuperFund")
+            StrictStr | None, Field(description="The USI of the Regulated SuperFund")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -2249,8 +2243,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_superfund_products" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_superfund_products"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2301,19 +2295,19 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 SuperFunds will be returned in a single API call"
             ),
@@ -2334,19 +2328,19 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 SuperFunds will be returned in a single API call"
             ),
@@ -2368,8 +2362,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_superfunds" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_superfunds"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2461,8 +2455,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_timesheet" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_timesheet"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2510,19 +2504,19 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 timesheets will be returned in a single API call"
             ),
@@ -2543,19 +2537,19 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         if_modified_since: Annotated[
-            Optional[datetime],
+            datetime | None,
             Field(
                 description="Only records created or modified since this timestamp will be returned"
             ),
         ] = None,
         where: Annotated[
-            Optional[StrictStr], Field(description="Filter by an any element")
+            StrictStr | None, Field(description="Filter by an any element")
         ] = None,
         order: Annotated[
-            Optional[StrictStr], Field(description="Order by an any element")
+            StrictStr | None, Field(description="Order by an any element")
         ] = None,
         page: Annotated[
-            Optional[StrictInt],
+            StrictInt | None,
             Field(
                 description="e.g. page=1 – Up to 100 timesheets will be returned in a single API call"
             ),
@@ -2577,8 +2571,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_timesheets" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_timesheets"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2636,7 +2630,7 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Leave Application id for single object")
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2660,7 +2654,7 @@ class PayrollAuApi:
             StrictStr, Field(..., description="Leave Application id for single object")
         ],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2682,8 +2676,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method reject_leave_application" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method reject_leave_application"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2736,9 +2730,9 @@ class PayrollAuApi:
         employee_id: Annotated[
             StrictStr, Field(..., description="Employee id for single object")
         ],
-        employee: conlist(Employee),
+        employee: Annotated[list[Employee], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2761,9 +2755,9 @@ class PayrollAuApi:
         employee_id: Annotated[
             StrictStr, Field(..., description="Employee id for single object")
         ],
-        employee: conlist(Employee),
+        employee: Annotated[list[Employee], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2785,8 +2779,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_employee" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_employee"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2846,9 +2840,9 @@ class PayrollAuApi:
         leave_application_id: Annotated[
             StrictStr, Field(..., description="Leave Application id for single object")
         ],
-        leave_application: conlist(LeaveApplication),
+        leave_application: Annotated[list[LeaveApplication], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2875,9 +2869,9 @@ class PayrollAuApi:
         leave_application_id: Annotated[
             StrictStr, Field(..., description="Leave Application id for single object")
         ],
-        leave_application: conlist(LeaveApplication),
+        leave_application: Annotated[list[LeaveApplication], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2904,8 +2898,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_leave_application" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_leave_application"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2966,9 +2960,9 @@ class PayrollAuApi:
         pay_run_id: Annotated[
             StrictStr, Field(..., description="PayRun id for single object")
         ],
-        pay_run: conlist(PayRun),
+        pay_run: Annotated[list[PayRun], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -2991,9 +2985,9 @@ class PayrollAuApi:
         pay_run_id: Annotated[
             StrictStr, Field(..., description="PayRun id for single object")
         ],
-        pay_run: conlist(PayRun),
+        pay_run: Annotated[list[PayRun], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3015,8 +3009,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_pay_run" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_pay_run"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3076,9 +3070,9 @@ class PayrollAuApi:
         payslip_id: Annotated[
             StrictStr, Field(..., description="Payslip id for single object")
         ],
-        payslip_lines: conlist(PayslipLines),
+        payslip_lines: Annotated[list[PayslipLines], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3101,9 +3095,9 @@ class PayrollAuApi:
         payslip_id: Annotated[
             StrictStr, Field(..., description="Payslip id for single object")
         ],
-        payslip_lines: conlist(PayslipLines),
+        payslip_lines: Annotated[list[PayslipLines], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3130,8 +3124,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_payslip" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_payslip"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3191,9 +3185,9 @@ class PayrollAuApi:
         super_fund_id: Annotated[
             StrictStr, Field(..., description="Superfund id for single object")
         ],
-        super_fund: conlist(SuperFund),
+        super_fund: Annotated[list[SuperFund], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3216,9 +3210,9 @@ class PayrollAuApi:
         super_fund_id: Annotated[
             StrictStr, Field(..., description="Superfund id for single object")
         ],
-        super_fund: conlist(SuperFund),
+        super_fund: Annotated[list[SuperFund], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3245,8 +3239,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_superfund" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_superfund"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3306,9 +3300,9 @@ class PayrollAuApi:
         timesheet_id: Annotated[
             StrictStr, Field(..., description="Timesheet id for single object")
         ],
-        timesheet: conlist(Timesheet),
+        timesheet: Annotated[list[Timesheet], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3331,9 +3325,9 @@ class PayrollAuApi:
         timesheet_id: Annotated[
             StrictStr, Field(..., description="Timesheet id for single object")
         ],
-        timesheet: conlist(Timesheet),
+        timesheet: Annotated[list[Timesheet], Field()],
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -3355,8 +3349,8 @@ class PayrollAuApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_timesheet" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_timesheet"
                 )
             _params[_key] = _val
         del _params["kwargs"]

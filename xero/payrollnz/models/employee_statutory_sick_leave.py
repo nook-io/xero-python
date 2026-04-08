@@ -256,7 +256,7 @@ class EmployeeStatutorySickLeave(BaseModel):
         ]
         if not set(entitlement_failure_reasons).issubset(set(allowed_values)):
             raise ValueError(
-                "Invalid values for `entitlement_failure_reasons` [{0}], must be a subset of [{1}]".format(
+                "Invalid values for `entitlement_failure_reasons` [{}], must be a subset of [{}]".format(
                     ", ".join(
                         map(str, set(entitlement_failure_reasons) - set(allowed_values))
                     ),

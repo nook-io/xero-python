@@ -1,17 +1,10 @@
 import importlib
-from typing import Optional, Union
-from pydantic import (
-    Field,
-    StrictBytes,
-    StrictStr,
-    conint,
-    conlist,
-)
-from typing_extensions import Annotated
+from typing import Annotated
+
+from pydantic import Field, StrictBytes, StrictStr
+
 from xero.api_client import ApiClient, ApiResponse, ModelFinder
-from xero.exceptions import (
-    ApiTypeError,
-)
+from xero.exceptions import ApiTypeError
 from xero.file.models.association import Association
 from xero.file.models.file_object import FileObject
 from xero.file.models.files import Files
@@ -41,7 +34,7 @@ class FilesApi:
         ],
         association: Association,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -66,7 +59,7 @@ class FilesApi:
         ],
         association: Association,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -88,8 +81,8 @@ class FilesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_file_association" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_file_association"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -149,7 +142,7 @@ class FilesApi:
         ],
         folder: Folder,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -171,7 +164,7 @@ class FilesApi:
         ],
         folder: Folder,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -193,8 +186,8 @@ class FilesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_folder" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method create_folder"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -286,8 +279,8 @@ class FilesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_file" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_file"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -373,8 +366,8 @@ class FilesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_file_association" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_file_association"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -456,8 +449,8 @@ class FilesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_folder" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_folder"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -503,18 +496,18 @@ class FilesApi:
             StrictStr, Field(..., description="Object id for single object")
         ],
         pagesize: Annotated[
-            Optional[conint(strict=True, le=100)],
+            Annotated[int, Field(strict=True, le=100)] | None,
             Field(description="pass an optional page size value"),
         ] = None,
         page: Annotated[
-            Optional[conint(strict=True, ge=1)],
+            Annotated[int, Field(strict=True, ge=1)] | None,
             Field(description="number of records to skip for pagination"),
         ] = None,
         sort: Annotated[
-            Optional[StrictStr], Field(description="values to sort by")
+            StrictStr | None, Field(description="values to sort by")
         ] = None,
         direction: Annotated[
-            Optional[StrictStr], Field(description="direction to sort by")
+            StrictStr | None, Field(description="direction to sort by")
         ] = None,
         **kwargs,
     ) -> list[Association]:
@@ -535,18 +528,18 @@ class FilesApi:
             StrictStr, Field(..., description="Object id for single object")
         ],
         pagesize: Annotated[
-            Optional[conint(strict=True, le=100)],
+            Annotated[int, Field(strict=True, le=100)] | None,
             Field(description="pass an optional page size value"),
         ] = None,
         page: Annotated[
-            Optional[conint(strict=True, ge=1)],
+            Annotated[int, Field(strict=True, ge=1)] | None,
             Field(description="number of records to skip for pagination"),
         ] = None,
         sort: Annotated[
-            Optional[StrictStr], Field(description="values to sort by")
+            StrictStr | None, Field(description="values to sort by")
         ] = None,
         direction: Annotated[
-            Optional[StrictStr], Field(description="direction to sort by")
+            StrictStr | None, Field(description="direction to sort by")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -572,8 +565,8 @@ class FilesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_associations_by_object" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_associations_by_object"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -629,7 +622,7 @@ class FilesApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         object_ids: Annotated[
-            conlist(StrictStr),
+            list[StrictStr],
             Field(..., description="A comma-separated list of object ids"),
         ],
         **kwargs,
@@ -648,7 +641,7 @@ class FilesApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         object_ids: Annotated[
-            conlist(StrictStr),
+            list[StrictStr],
             Field(..., description="A comma-separated list of object ids"),
         ],
         **kwargs,
@@ -668,8 +661,8 @@ class FilesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_associations_count" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_associations_count"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -753,7 +746,7 @@ class FilesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s' to method get_file" % _key
+                    f"Got an unexpected keyword argument '{_key}' to method get_file"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -838,8 +831,8 @@ class FilesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_file_associations" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_file_associations"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -924,8 +917,8 @@ class FilesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_file_content" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_file_content"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -973,15 +966,15 @@ class FilesApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         pagesize: Annotated[
-            Optional[conint(strict=True, le=100)],
+            Annotated[int, Field(strict=True, le=100)] | None,
             Field(description="pass an optional page size value"),
         ] = None,
         page: Annotated[
-            Optional[conint(strict=True, ge=1)],
+            Annotated[int, Field(strict=True, ge=1)] | None,
             Field(description="number of records to skip for pagination"),
         ] = None,
         sort: Annotated[
-            Optional[StrictStr], Field(description="values to sort by")
+            StrictStr | None, Field(description="values to sort by")
         ] = None,
         **kwargs,
     ) -> Files:
@@ -999,15 +992,15 @@ class FilesApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         pagesize: Annotated[
-            Optional[conint(strict=True, le=100)],
+            Annotated[int, Field(strict=True, le=100)] | None,
             Field(description="pass an optional page size value"),
         ] = None,
         page: Annotated[
-            Optional[conint(strict=True, ge=1)],
+            Annotated[int, Field(strict=True, ge=1)] | None,
             Field(description="number of records to skip for pagination"),
         ] = None,
         sort: Annotated[
-            Optional[StrictStr], Field(description="values to sort by")
+            StrictStr | None, Field(description="values to sort by")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -1026,7 +1019,7 @@ class FilesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s' to method get_files" % _key
+                    f"Got an unexpected keyword argument '{_key}' to method get_files"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1113,8 +1106,8 @@ class FilesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_folder" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_folder"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1162,7 +1155,7 @@ class FilesApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         sort: Annotated[
-            Optional[StrictStr], Field(description="values to sort by")
+            StrictStr | None, Field(description="values to sort by")
         ] = None,
         **kwargs,
     ) -> list[Folder]:
@@ -1178,7 +1171,7 @@ class FilesApi:
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
         sort: Annotated[
-            Optional[StrictStr], Field(description="values to sort by")
+            StrictStr | None, Field(description="values to sort by")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -1197,8 +1190,8 @@ class FilesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_folders" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_folders"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1275,7 +1268,7 @@ class FilesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s' to method get_inbox" % _key
+                    f"Got an unexpected keyword argument '{_key}' to method get_inbox"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1325,7 +1318,7 @@ class FilesApi:
         ],
         file_object: FileObject,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1350,7 +1343,7 @@ class FilesApi:
         ],
         file_object: FileObject,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1372,8 +1365,8 @@ class FilesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_file" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_file"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1436,7 +1429,7 @@ class FilesApi:
         ],
         folder: Folder,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1461,7 +1454,7 @@ class FilesApi:
         ],
         folder: Folder,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
@@ -1483,8 +1476,8 @@ class FilesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_folder" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method update_folder"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1542,19 +1535,19 @@ class FilesApi:
         xero_tenant_id: Annotated[
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
-        body: Union[StrictBytes, StrictStr],
+        body: StrictBytes | StrictStr,
         name: Annotated[
             StrictStr,
             Field(..., description="exact name of the file you are uploading"),
         ],
         filename: StrictStr,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
         ] = None,
-        mime_type: Optional[StrictStr] = None,
+        mime_type: StrictStr | None = None,
         **kwargs,
     ) -> FileObject:
         kwargs["_return_http_data_only"] = True
@@ -1570,19 +1563,19 @@ class FilesApi:
         xero_tenant_id: Annotated[
             StrictStr, Field(..., description="Xero identifier for Tenant")
         ],
-        body: Union[StrictBytes, StrictStr],
+        body: StrictBytes | StrictStr,
         name: Annotated[
             StrictStr,
             Field(..., description="exact name of the file you are uploading"),
         ],
         filename: StrictStr,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
         ] = None,
-        mime_type: Optional[StrictStr] = None,
+        mime_type: StrictStr | None = None,
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -1607,8 +1600,8 @@ class FilesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method upload_file" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method upload_file"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1677,19 +1670,19 @@ class FilesApi:
                 description="pass required folder id to save file to specific folder",
             ),
         ],
-        body: Union[StrictBytes, StrictStr],
+        body: StrictBytes | StrictStr,
         name: Annotated[
             StrictStr,
             Field(..., description="exact name of the file you are uploading"),
         ],
         filename: StrictStr,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
         ] = None,
-        mime_type: Optional[StrictStr] = None,
+        mime_type: StrictStr | None = None,
         **kwargs,
     ) -> FileObject:
         kwargs["_return_http_data_only"] = True
@@ -1719,19 +1712,19 @@ class FilesApi:
                 description="pass required folder id to save file to specific folder",
             ),
         ],
-        body: Union[StrictBytes, StrictStr],
+        body: StrictBytes | StrictStr,
         name: Annotated[
             StrictStr,
             Field(..., description="exact name of the file you are uploading"),
         ],
         filename: StrictStr,
         idempotency_key: Annotated[
-            Optional[StrictStr],
+            StrictStr | None,
             Field(
                 description="This allows you to safely retry requests without the risk of duplicate processing. 128 character max."
             ),
         ] = None,
-        mime_type: Optional[StrictStr] = None,
+        mime_type: StrictStr | None = None,
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -1757,8 +1750,8 @@ class FilesApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method upload_file_to_folder" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method upload_file_to_folder"
                 )
             _params[_key] = _val
         del _params["kwargs"]

@@ -8,3 +8,16 @@ from xero.file.models.object_group import ObjectGroup
 from xero.file.models.object_type import ObjectType
 from xero.file.models.upload_object import UploadObject
 from xero.file.models.user import User
+
+__all__ = [
+    "Association",
+    "FileObject",
+    "Files",
+    "FilesApi",
+    "Folder",
+    "Folders",
+    "ObjectGroup",
+    "ObjectType",
+    "UploadObject",
+    "User",
+]

@@ -102,9 +102,7 @@ class EmployeeLeaveType(BaseModel):
         if schedule_of_accrual:
             if schedule_of_accrual not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `schedule_of_accrual` ({0}), must be one of {1}".format(
-                        schedule_of_accrual, allowed_values
-                    )
+                    f"Invalid value for `schedule_of_accrual` ({schedule_of_accrual}), must be one of {allowed_values}"
                 )
         self._schedule_of_accrual = schedule_of_accrual
 

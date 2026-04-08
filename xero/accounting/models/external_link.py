@@ -38,9 +38,7 @@ class ExternalLink(BaseModel):
         if link_type:
             if link_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `link_type` ({0}), must be one of {1}".format(
-                        link_type, allowed_values
-                    )
+                    f"Invalid value for `link_type` ({link_type}), must be one of {allowed_values}"
                 )
         self._link_type = link_type
 

@@ -2,8 +2,10 @@ import datetime
 import re
 from decimal import Decimal
 from enum import Enum
+
 from dateutil import tz
 from dateutil.parser.isoparser import DEFAULT_ISOPARSER, isoparse
+
 from xero.single_dispatch_str import single_dispatch_str
 
 LIST_DATA_TYPE = re.compile(r"list\[(.*)\]")
@@ -28,8 +30,8 @@ def deserialize_routing(data_type, data, model_finder):
 def deserialize(data_type, data, model_finder):
     try:
         model = model_finder.find_model(data_type)
-    except AttributeError:
-        raise ValueError("Can't deserialize data_type={!r}".format(data_type))
+    except AttributeError as exc:
+        raise ValueError(f"Can't deserialize data_type={data_type!r}") from exc
     else:
         return deserialize_model(model, data, model_finder)
 
@@ -38,8 +40,8 @@ def deserialize(data_type, data, model_finder):
 def deserialize_list(data_type, data, model_finder):
     try:
         sub_data_type = LIST_DATA_TYPE.match(data_type).group(1)
-    except AttributeError:
-        raise ValueError("Can't deserialize data_type={!r}".format(data_type))
+    except AttributeError as exc:
+        raise ValueError(f"Can't deserialize data_type={data_type!r}") from exc
     else:
         return [deserialize(sub_data_type, sub_data, model_finder) for sub_data in data]
 
@@ -65,7 +67,7 @@ def deserialize_str(data_type, data, model_finder):
 def deserialize_bool(data_type, data, model_finder):
     if data is not None:
         if not isinstance(data, bool):
-            raise ValueError("Json parsed bool value expected. got {!r}".format(data))
+            raise ValueError(f"Json parsed bool value expected. got {data!r}")
     return bool(data)
 
 
@@ -77,11 +79,10 @@ def deserialize_date(data_type, data, model_finder):
         if match:
             kw = {k: int(v) for k, v in match.groupdict().items()}
             return datetime.date(**kw)
-        elif match2:
-            dt = isoparse(data)
-            return dt
-        else:
-            raise ValueError("Invalid date value {!r}".format(data))
+        if match2:
+            return isoparse(data)
+        raise ValueError(f"Invalid date value {data!r}")
+    return None
 
 
 @deserialize.register("date[ms-format]")
@@ -95,11 +96,12 @@ def deserialize_datetime(data_type, data, model_finder):
     if data is not None:
         try:
             dt = isoparse(data)
-        except (ValueError, TypeError):
-            raise ValueError("Invalid datetime value {!r}".format(data))
+        except (ValueError, TypeError) as exc:
+            raise ValueError(f"Invalid datetime value {data!r}") from exc
         if not dt.tzinfo:
             dt = dt.replace(tzinfo=tz.UTC)
         return dt
+    return None
 
 
 @deserialize.register("datetime[ms-format]")
@@ -114,10 +116,9 @@ def deserialize_datetime_ms(data_type, data, model_finder):
         timestamp_ms = int(match.groupdict()["timestamp"])
         timestamp_s = timestamp_ms / 1000
         return datetime.datetime.fromtimestamp(timestamp_s, tz=tz_info)
-    elif DATE_WITH_NO_DAY_RE.match(str(data)):
+    if DATE_WITH_NO_DAY_RE.match(str(data)):
         return datetime.datetime.strptime(data + "-01", "%Y-%m-%d")
-    else:
-        raise ValueError("Invalid datetime value {!r}".format(data))
+    raise ValueError(f"Invalid datetime value {data!r}")
 
 
 def deserialize_model(model, data, model_finder):
@@ -126,12 +127,11 @@ def deserialize_model(model, data, model_finder):
     if issubclass(model, Enum):
         return model(data)
     if not isinstance(data, (list, dict)):
-        raise ValueError("list or dict value expected. got {!r}".format(data))
+        raise ValueError(f"list or dict value expected. got {data!r}")  # noqa: TRY004
     kwargs = {}
     for attr, attr_type in model.openapi_types.items():
         attr_key = model.attribute_map[attr]
         if attr_key in data:
             value = data[attr_key]
             kwargs[attr] = deserialize(attr_type, value, model_finder)
-    instance = model(**kwargs)
-    return instance
+    return model(**kwargs)

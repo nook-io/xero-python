@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from contextlib import contextmanager
 from datetime import date, datetime, timedelta
 from decimal import Decimal
@@ -6,23 +5,23 @@ from unittest import mock
 
 import pytest
 from dateutil import tz
-
 from xero_python.api_client.serializer import (
     data_type,
     serialize,
-    serialize_routing,
-    serialize_dict,
-    serialize_pass_through,
-    serialize_list,
-    serialize_tuple,
-    serialize_float,
-    serialize_datetime_ms,
-    serialize_datetime,
-    serialize_date_ms,
     serialize_base_model,
+    serialize_date_ms,
+    serialize_datetime,
+    serialize_datetime_ms,
+    serialize_dict,
     serialize_enum_model,
+    serialize_float,
+    serialize_list,
+    serialize_pass_through,
+    serialize_routing,
+    serialize_tuple,
 )
 from xero_python.models import BaseModel
+
 from .test_deserializer import Shape
 
 
@@ -32,7 +31,7 @@ def mock_serialize(name="serialize", side_effect=None):
         return value
 
     with mock.patch(
-        "xero_python.api_client.serializer.{}".format(name),
+        f"xero_python.api_client.serializer.{name}",
         side_effect=side_effect or sub_response,
     ) as serialize:
         yield serialize
@@ -92,7 +91,7 @@ def test_serialize_routing(value, explicit_type):
 
 @pytest.mark.parametrize(
     "value,explicit_type",
-    [(dict(), None), (None, "dict"), (None, "dict[str]"), (None, "dict[User]")],
+    [({}, None), (None, "dict"), (None, "dict[str]"), (None, "dict[User]")],
 )
 def test_serialize_routing_dict(value, explicit_type):
     # given dict value or explicit type
@@ -116,7 +115,7 @@ def test_serialize_routing_list(value, explicit_type):
 
 @pytest.mark.parametrize(
     "value,explicit_type",
-    [(tuple(), None), (None, "tuple"), (None, "tuple[str]"), (None, "tuple[User]")],
+    [((), None), (None, "tuple"), (None, "tuple[str]"), (None, "tuple[User]")],
 )
 def test_serialize_routing_tuple(value, explicit_type):
     # given tuple value or explicit type
@@ -224,7 +223,7 @@ def test_serialize_list_sub_type_error():
 @pytest.mark.parametrize(
     "value,explicit_type,sub_type",
     [
-        (tuple(), None, None),
+        ((), None, None),
         (("value", "val2", ""), "tuple", None),
         (("0", "1"), "tuple[int]", "int"),
     ],

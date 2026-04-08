@@ -78,9 +78,7 @@ class BookDepreciationSetting(BaseModel):
         if depreciation_method:
             if depreciation_method not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `depreciation_method` ({0}), must be one of {1}".format(
-                        depreciation_method, allowed_values
-                    )
+                    f"Invalid value for `depreciation_method` ({depreciation_method}), must be one of {allowed_values}"
                 )
         self._depreciation_method = depreciation_method
 
@@ -94,9 +92,7 @@ class BookDepreciationSetting(BaseModel):
         if averaging_method:
             if averaging_method not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `averaging_method` ({0}), must be one of {1}".format(
-                        averaging_method, allowed_values
-                    )
+                    f"Invalid value for `averaging_method` ({averaging_method}), must be one of {allowed_values}"
                 )
         self._averaging_method = averaging_method
 
@@ -126,9 +122,7 @@ class BookDepreciationSetting(BaseModel):
         if depreciation_calculation_method:
             if depreciation_calculation_method not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `depreciation_calculation_method` ({0}), must be one of {1}".format(
-                        depreciation_calculation_method, allowed_values
-                    )
+                    f"Invalid value for `depreciation_calculation_method` ({depreciation_calculation_method}), must be one of {allowed_values}"
                 )
         self._depreciation_calculation_method = depreciation_calculation_method
 

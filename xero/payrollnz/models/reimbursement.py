@@ -110,9 +110,7 @@ class Reimbursement(BaseModel):
         if reimbursement_category:
             if reimbursement_category not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `reimbursement_category` ({0}), must be one of {1}".format(
-                        reimbursement_category, allowed_values
-                    )
+                    f"Invalid value for `reimbursement_category` ({reimbursement_category}), must be one of {allowed_values}"
                 )
         self._reimbursement_category = reimbursement_category
 
@@ -126,9 +124,7 @@ class Reimbursement(BaseModel):
         if calculation_type:
             if calculation_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `calculation_type` ({0}), must be one of {1}".format(
-                        calculation_type, allowed_values
-                    )
+                    f"Invalid value for `calculation_type` ({calculation_type}), must be one of {allowed_values}"
                 )
         self._calculation_type = calculation_type
 
@@ -150,9 +146,7 @@ class Reimbursement(BaseModel):
         if standard_type_of_units:
             if standard_type_of_units not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `standard_type_of_units` ({0}), must be one of {1}".format(
-                        standard_type_of_units, allowed_values
-                    )
+                    f"Invalid value for `standard_type_of_units` ({standard_type_of_units}), must be one of {allowed_values}"
                 )
         self._standard_type_of_units = standard_type_of_units
 

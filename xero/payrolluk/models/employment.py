@@ -85,8 +85,6 @@ class Employment(BaseModel):
         if ni_category:
             if ni_category not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `ni_category` ({0}), must be one of {1}".format(
-                        ni_category, allowed_values
-                    )
+                    f"Invalid value for `ni_category` ({ni_category}), must be one of {allowed_values}"
                 )
         self._ni_category = ni_category

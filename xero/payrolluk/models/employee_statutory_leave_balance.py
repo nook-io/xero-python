@@ -38,9 +38,7 @@ class EmployeeStatutoryLeaveBalance(BaseModel):
         if leave_type:
             if leave_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `leave_type` ({0}), must be one of {1}".format(
-                        leave_type, allowed_values
-                    )
+                    f"Invalid value for `leave_type` ({leave_type}), must be one of {allowed_values}"
                 )
         self._leave_type = leave_type
 
@@ -62,8 +60,6 @@ class EmployeeStatutoryLeaveBalance(BaseModel):
         if units:
             if units not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `units` ({0}), must be one of {1}".format(
-                        units, allowed_values
-                    )
+                    f"Invalid value for `units` ({units}), must be one of {allowed_values}"
                 )
         self._units = units

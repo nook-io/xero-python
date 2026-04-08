@@ -49,9 +49,7 @@ class Account(BaseModel):
         if type:
             if type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `type` ({0}), must be one of {1}".format(
-                        type, allowed_values
-                    )
+                    f"Invalid value for `type` ({type}), must be one of {allowed_values}"
                 )
         self._type = type
 

@@ -132,7 +132,7 @@ class Configuration:
                     "value": "Bearer " + self.access_token,
                 }
             }
-        elif self.oauth2_token is not None:
+        if self.oauth2_token is not None:
             return {"OAuth2": self.oauth2_token.get_auth_settings()}
         return auth
 
@@ -151,18 +151,16 @@ class Configuration:
         servers = self.get_host_settings() if servers is None else servers
         try:
             server = servers[index]
-        except IndexError:
+        except IndexError as exc:
             raise ValueError(
-                "Invalid index {0} when selecting the host settings. "
-                "Must be less than {1}".format(index, len(servers))
-            )
+                f"Invalid index {index} when selecting the host settings. Must be less than {len(servers)}"
+            ) from exc
         url = server["url"]
         for variable_name, variable in server.get("variables", {}).items():
             used_value = variables.get(variable_name, variable["default_value"])
             if "enum_values" in variable and used_value not in variable["enum_values"]:
                 raise ValueError(
-                    "The variable `{0}` in the host URL has invalid value "
-                    "{1}. Must be {2}.".format(
+                    "The variable `{}` in the host URL has invalid value {}. Must be {}.".format(
                         variable_name, variables[variable_name], variable["enum_values"]
                     )
                 )
@@ -171,9 +169,7 @@ class Configuration:
 
     @property
     def host(self):
-        return self.get_host_from_settings(
-            self.server_index, variables=self.server_variables
-        )
+        return self.get_host_from_settings(self.server_index, variables=self.server_variables)
 
     @host.setter
     def host(self, value):

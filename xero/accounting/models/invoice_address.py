@@ -76,9 +76,7 @@ class InvoiceAddress(BaseModel):
         if invoice_address_type:
             if invoice_address_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `invoice_address_type` ({0}), must be one of {1}".format(
-                        invoice_address_type, allowed_values
-                    )
+                    f"Invalid value for `invoice_address_type` ({invoice_address_type}), must be one of {allowed_values}"
                 )
         self._invoice_address_type = invoice_address_type
 

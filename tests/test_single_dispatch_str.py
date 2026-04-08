@@ -1,13 +1,11 @@
-# -*- coding: utf-8 -*-
 import pytest
-
 from xero_python.single_dispatch_str import single_dispatch_str
 
 
 def test_single_dispatch_str():
     @single_dispatch_str
     def decoder(key, data):
-        raise ValueError("can't decode {!r} no decoder found".format(key))
+        raise ValueError(f"can't decode {key!r} no decoder found")
 
     @decoder.register("Connection")
     def _(key, data):
@@ -39,7 +37,7 @@ def test_single_dispatch_str():
 def test_single_dispatch_str_empty_constructor():
     @single_dispatch_str()
     def parse(key, data):
-        raise ValueError("can't parse {!r} no parser found".format(key))
+        raise ValueError(f"can't parse {key!r} no parser found")
 
     @parse.register("Connection")
     def _(key, data):
@@ -72,7 +70,7 @@ def test_single_dispatch_str_key():
 
     @single_dispatch_str(key=key_case_insensitive)
     def saver(key, data):
-        raise ValueError("can't save {!r} no saver found".format(key))
+        raise ValueError(f"can't save {key!r} no saver found")
 
     @saver.register("connection")
     def _(key, data):

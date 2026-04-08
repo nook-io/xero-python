@@ -145,9 +145,7 @@ class Journal(BaseModel):
         if source_type:
             if source_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `source_type` ({0}), must be one of {1}".format(
-                        source_type, allowed_values
-                    )
+                    f"Invalid value for `source_type` ({source_type}), must be one of {allowed_values}"
                 )
         self._source_type = source_type
 

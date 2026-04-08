@@ -121,8 +121,6 @@ class User(BaseModel):
         if organisation_role:
             if organisation_role not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `organisation_role` ({0}), must be one of {1}".format(
-                        organisation_role, allowed_values
-                    )
+                    f"Invalid value for `organisation_role` ({organisation_role}), must be one of {allowed_values}"
                 )
         self._organisation_role = organisation_role

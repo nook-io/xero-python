@@ -83,9 +83,7 @@ class Deduction(BaseModel):
         if deduction_category:
             if deduction_category not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `deduction_category` ({0}), must be one of {1}".format(
-                        deduction_category, allowed_values
-                    )
+                    f"Invalid value for `deduction_category` ({deduction_category}), must be one of {allowed_values}"
                 )
         self._deduction_category = deduction_category
 

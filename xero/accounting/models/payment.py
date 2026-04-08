@@ -310,9 +310,7 @@ class Payment(BaseModel):
         if status:
             if status not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `status` ({0}), must be one of {1}".format(
-                        status, allowed_values
-                    )
+                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
                 )
         self._status = status
 
@@ -336,9 +334,7 @@ class Payment(BaseModel):
         if payment_type:
             if payment_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `payment_type` ({0}), must be one of {1}".format(
-                        payment_type, allowed_values
-                    )
+                    f"Invalid value for `payment_type` ({payment_type}), must be one of {allowed_values}"
                 )
         self._payment_type = payment_type
 

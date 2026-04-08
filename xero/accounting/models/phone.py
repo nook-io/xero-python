@@ -53,9 +53,7 @@ class Phone(BaseModel):
         if phone_type:
             if phone_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `phone_type` ({0}), must be one of {1}".format(
-                        phone_type, allowed_values
-                    )
+                    f"Invalid value for `phone_type` ({phone_type}), must be one of {allowed_values}"
                 )
         self._phone_type = phone_type
 

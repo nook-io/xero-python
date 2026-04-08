@@ -66,9 +66,7 @@ class Report(BaseModel):
         if report_type:
             if report_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `report_type` ({0}), must be one of {1}".format(
-                        report_type, allowed_values
-                    )
+                    f"Invalid value for `report_type` ({report_type}), must be one of {allowed_values}"
                 )
         self._report_type = report_type
 

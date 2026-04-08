@@ -307,9 +307,7 @@ class Employee(BaseModel):
         if gender:
             if gender not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `gender` ({0}), must be one of {1}".format(
-                        gender, allowed_values
-                    )
+                    f"Invalid value for `gender` ({gender}), must be one of {allowed_values}"
                 )
         self._gender = gender
 
@@ -419,9 +417,7 @@ class Employee(BaseModel):
         if termination_reason:
             if termination_reason not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `termination_reason` ({0}), must be one of {1}".format(
-                        termination_reason, allowed_values
-                    )
+                    f"Invalid value for `termination_reason` ({termination_reason}), must be one of {allowed_values}"
                 )
         self._termination_reason = termination_reason
 

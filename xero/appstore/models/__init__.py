@@ -8,3 +8,16 @@ from xero.appstore.models.subscription_item import SubscriptionItem
 from xero.appstore.models.update_usage_record import UpdateUsageRecord
 from xero.appstore.models.usage_record import UsageRecord
 from xero.appstore.models.usage_records_list import UsageRecordsList
+
+__all__ = [
+    "CreateUsageRecord",
+    "Plan",
+    "Price",
+    "ProblemDetails",
+    "Product",
+    "Subscription",
+    "SubscriptionItem",
+    "UpdateUsageRecord",
+    "UsageRecord",
+    "UsageRecordsList",
+]

@@ -198,9 +198,7 @@ class EmployeeTax(BaseModel):
         if kiwi_saver_contributions:
             if kiwi_saver_contributions not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `kiwi_saver_contributions` ({0}), must be one of {1}".format(
-                        kiwi_saver_contributions, allowed_values
-                    )
+                    f"Invalid value for `kiwi_saver_contributions` ({kiwi_saver_contributions}), must be one of {allowed_values}"
                 )
         self._kiwi_saver_contributions = kiwi_saver_contributions
 

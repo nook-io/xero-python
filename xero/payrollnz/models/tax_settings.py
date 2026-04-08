@@ -66,9 +66,7 @@ class TaxSettings(BaseModel):
         if period_type:
             if period_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `period_type` ({0}), must be one of {1}".format(
-                        period_type, allowed_values
-                    )
+                    f"Invalid value for `period_type` ({period_type}), must be one of {allowed_values}"
                 )
         self._period_type = period_type
 

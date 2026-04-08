@@ -257,9 +257,7 @@ class LineItem(BaseModel):
         if taxability:
             if taxability not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `taxability` ({0}), must be one of {1}".format(
-                        taxability, allowed_values
-                    )
+                    f"Invalid value for `taxability` ({taxability}), must be one of {allowed_values}"
                 )
         self._taxability = taxability
 

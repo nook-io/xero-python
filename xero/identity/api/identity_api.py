@@ -1,11 +1,10 @@
 import importlib
-from typing import Optional
+from typing import Annotated
+
 from pydantic import Field, StrictStr
-from typing_extensions import Annotated
+
 from xero.api_client import ApiClient, ApiResponse, ModelFinder
-from xero.exceptions import (
-    ApiTypeError,
-)
+from xero.exceptions import ApiTypeError
 from xero.identity.models.connection import Connection
 
 
@@ -59,8 +58,8 @@ class IdentityApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_connection" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method delete_connection"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -98,7 +97,7 @@ class IdentityApi:
     async def get_connections(
         self,
         auth_event_id: Annotated[
-            Optional[StrictStr], Field(description="Filter by authEventId")
+            StrictStr | None, Field(description="Filter by authEventId")
         ] = None,
         **kwargs,
     ) -> list[Connection]:
@@ -111,7 +110,7 @@ class IdentityApi:
     async def get_connections_with_http_info(
         self,
         auth_event_id: Annotated[
-            Optional[StrictStr], Field(description="Filter by authEventId")
+            StrictStr | None, Field(description="Filter by authEventId")
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -130,8 +129,8 @@ class IdentityApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_connections" % _key
+                    f"Got an unexpected keyword argument '{_key}'"
+                    " to method get_connections"
                 )
             _params[_key] = _val
         del _params["kwargs"]

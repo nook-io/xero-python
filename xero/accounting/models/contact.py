@@ -316,9 +316,7 @@ class Contact(BaseModel):
         if contact_status:
             if contact_status not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `contact_status` ({0}), must be one of {1}".format(
-                        contact_status, allowed_values
-                    )
+                    f"Invalid value for `contact_status` ({contact_status}), must be one of {allowed_values}"
                 )
         self._contact_status = contact_status
 
@@ -473,9 +471,7 @@ class Contact(BaseModel):
         if sales_default_line_amount_type:
             if sales_default_line_amount_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `sales_default_line_amount_type` ({0}), must be one of {1}".format(
-                        sales_default_line_amount_type, allowed_values
-                    )
+                    f"Invalid value for `sales_default_line_amount_type` ({sales_default_line_amount_type}), must be one of {allowed_values}"
                 )
         self._sales_default_line_amount_type = sales_default_line_amount_type
 
@@ -489,9 +485,7 @@ class Contact(BaseModel):
         if purchases_default_line_amount_type:
             if purchases_default_line_amount_type not in allowed_values:
                 raise ValueError(
-                    "Invalid value for `purchases_default_line_amount_type` ({0}), must be one of {1}".format(
-                        purchases_default_line_amount_type, allowed_values
-                    )
+                    f"Invalid value for `purchases_default_line_amount_type` ({purchases_default_line_amount_type}), must be one of {allowed_values}"
                 )
         self._purchases_default_line_amount_type = purchases_default_line_amount_type
 
