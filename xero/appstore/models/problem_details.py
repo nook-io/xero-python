@@ -19,15 +19,7 @@ class ProblemDetails(BaseModel):
         "type": "type",
     }
 
-    def __init__(
-        self,
-        detail=None,
-        extensions=None,
-        instance=None,
-        status=None,
-        title=None,
-        type=None,
-    ):
+    def __init__(self, detail=None, extensions=None, instance=None, status=None, title=None, type=None):
         self._detail = None
         self._extensions = None
         self._instance = None

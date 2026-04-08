@@ -96,9 +96,7 @@ class SalaryAndWage(BaseModel):
     @number_of_units_per_week.setter
     def number_of_units_per_week(self, number_of_units_per_week):
         if number_of_units_per_week is None:
-            raise ValueError(
-                "Invalid value for `number_of_units_per_week`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `number_of_units_per_week`, must not be `None`")
         self._number_of_units_per_week = number_of_units_per_week
 
     @property
@@ -116,9 +114,7 @@ class SalaryAndWage(BaseModel):
     @number_of_units_per_day.setter
     def number_of_units_per_day(self, number_of_units_per_day):
         if number_of_units_per_day is None:
-            raise ValueError(
-                "Invalid value for `number_of_units_per_day`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `number_of_units_per_day`, must not be `None`")
         self._number_of_units_per_day = number_of_units_per_day
 
     @property
@@ -160,9 +156,7 @@ class SalaryAndWage(BaseModel):
         allowed_values = ["Active", "Pending", "History", "None"]
         if status:
             if status not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `status` ({status}), must be one of {allowed_values}")
         self._status = status
 
     @property
@@ -176,9 +170,7 @@ class SalaryAndWage(BaseModel):
         allowed_values = ["Salary", "Hourly", "None"]
         if payment_type:
             if payment_type not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `payment_type` ({payment_type}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `payment_type` ({payment_type}), must be one of {allowed_values}")
         self._payment_type = payment_type
 
     @property

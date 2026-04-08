@@ -2,13 +2,7 @@ from xero.models import BaseModel
 
 
 class BalanceSheetAccountDetail(BaseModel):
-    openapi_types = {
-        "code": "str",
-        "account_id": "str",
-        "name": "str",
-        "reporting_code": "str",
-        "total": "float",
-    }
+    openapi_types = {"code": "str", "account_id": "str", "name": "str", "reporting_code": "str", "total": "float"}
     attribute_map = {
         "code": "code",
         "account_id": "accountID",
@@ -17,9 +11,7 @@ class BalanceSheetAccountDetail(BaseModel):
         "total": "total",
     }
 
-    def __init__(
-        self, code=None, account_id=None, name=None, reporting_code=None, total=None
-    ):
+    def __init__(self, code=None, account_id=None, name=None, reporting_code=None, total=None):
         self._code = None
         self._account_id = None
         self._name = None

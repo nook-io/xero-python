@@ -277,9 +277,7 @@ class Invoice(BaseModel):
         ]
         if type:
             if type not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `type` ({type}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `type` ({type}), must be one of {allowed_values}")
         self._type = type
 
     @property
@@ -329,10 +327,7 @@ class Invoice(BaseModel):
     @invoice_number.setter
     def invoice_number(self, invoice_number):
         if invoice_number is not None and len(invoice_number) > 255:
-            raise ValueError(
-                "Invalid value for `invoice_number`, "
-                "length must be less than or equal to `255`"
-            )
+            raise ValueError("Invalid value for `invoice_number`, length must be less than or equal to `255`")
         self._invoice_number = invoice_number
 
     @property
@@ -381,20 +376,10 @@ class Invoice(BaseModel):
 
     @status.setter
     def status(self, status):
-        allowed_values = [
-            "DRAFT",
-            "SUBMITTED",
-            "DELETED",
-            "AUTHORISED",
-            "PAID",
-            "VOIDED",
-            "None",
-        ]
+        allowed_values = ["DRAFT", "SUBMITTED", "DELETED", "AUTHORISED", "PAID", "VOIDED", "None"]
         if status:
             if status not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `status` ({status}), must be one of {allowed_values}")
         self._status = status
 
     @property

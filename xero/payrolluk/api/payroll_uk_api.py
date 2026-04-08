@@ -755,9 +755,7 @@ class PayrollUkApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}' to method create_employee_leave_type"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_employee_leave_type")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -1414,8 +1412,7 @@ class PayrollUkApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_multiple_employee_earnings_template"
+                    f"Got an unexpected keyword argument '{_key}' to method create_multiple_employee_earnings_template"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2961,9 +2958,7 @@ class PayrollUkApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}' to method get_employee_leave_balances"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_employee_leave_balances")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -3038,9 +3033,7 @@ class PayrollUkApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}' to method get_employee_leave_periods"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_employee_leave_periods")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -3401,9 +3394,7 @@ class PayrollUkApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}' to method get_employee_payment_method"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_employee_payment_method")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -4818,9 +4809,7 @@ class PayrollUkApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}' to method get_statutory_leave_summary"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_statutory_leave_summary")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}

@@ -102,9 +102,7 @@ class Deduction(BaseModel):
         if apply_to_pension_calculations is not None:
             self.apply_to_pension_calculations = apply_to_pension_calculations
         if is_calculating_on_qualifying_earnings is not None:
-            self.is_calculating_on_qualifying_earnings = (
-                is_calculating_on_qualifying_earnings
-            )
+            self.is_calculating_on_qualifying_earnings = is_calculating_on_qualifying_earnings
         if is_pension is not None:
             self.is_pension = is_pension
 
@@ -159,9 +157,7 @@ class Deduction(BaseModel):
     @liability_account_id.setter
     def liability_account_id(self, liability_account_id):
         if liability_account_id is None:
-            raise ValueError(
-                "Invalid value for `liability_account_id`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `liability_account_id`, must not be `None`")
         self._liability_account_id = liability_account_id
 
     @property
@@ -255,12 +251,8 @@ class Deduction(BaseModel):
         return self._is_calculating_on_qualifying_earnings
 
     @is_calculating_on_qualifying_earnings.setter
-    def is_calculating_on_qualifying_earnings(
-        self, is_calculating_on_qualifying_earnings
-    ):
-        self._is_calculating_on_qualifying_earnings = (
-            is_calculating_on_qualifying_earnings
-        )
+    def is_calculating_on_qualifying_earnings(self, is_calculating_on_qualifying_earnings):
+        self._is_calculating_on_qualifying_earnings = is_calculating_on_qualifying_earnings
 
     @property
     def is_pension(self):

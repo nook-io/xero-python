@@ -114,9 +114,7 @@ class PayRun(BaseModel):
     @payroll_calendar_id.setter
     def payroll_calendar_id(self, payroll_calendar_id):
         if payroll_calendar_id is None:
-            raise ValueError(
-                "Invalid value for `payroll_calendar_id`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `payroll_calendar_id`, must not be `None`")
         self._payroll_calendar_id = payroll_calendar_id
 
     @property

@@ -182,9 +182,7 @@ class EmployeeStatutorySickLeave(BaseModel):
     @is_pregnancy_related.setter
     def is_pregnancy_related(self, is_pregnancy_related):
         if is_pregnancy_related is None:
-            raise ValueError(
-                "Invalid value for `is_pregnancy_related`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `is_pregnancy_related`, must not be `None`")
         self._is_pregnancy_related = is_pregnancy_related
 
     @property
@@ -194,9 +192,7 @@ class EmployeeStatutorySickLeave(BaseModel):
     @sufficient_notice.setter
     def sufficient_notice(self, sufficient_notice):
         if sufficient_notice is None:
-            raise ValueError(
-                "Invalid value for `sufficient_notice`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `sufficient_notice`, must not be `None`")
         self._sufficient_notice = sufficient_notice
 
     @property
@@ -257,9 +253,7 @@ class EmployeeStatutorySickLeave(BaseModel):
         if not set(entitlement_failure_reasons).issubset(set(allowed_values)):
             raise ValueError(
                 "Invalid values for `entitlement_failure_reasons` [{}], must be a subset of [{}]".format(
-                    ", ".join(
-                        map(str, set(entitlement_failure_reasons) - set(allowed_values))
-                    ),
+                    ", ".join(map(str, set(entitlement_failure_reasons) - set(allowed_values))),
                     ", ".join(map(str, allowed_values)),
                 )
             )

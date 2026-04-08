@@ -3,10 +3,7 @@ from xero.models import BaseModel
 
 class SalesTrackingCategory(BaseModel):
     openapi_types = {"tracking_category_name": "str", "tracking_option_name": "str"}
-    attribute_map = {
-        "tracking_category_name": "TrackingCategoryName",
-        "tracking_option_name": "TrackingOptionName",
-    }
+    attribute_map = {"tracking_category_name": "TrackingCategoryName", "tracking_option_name": "TrackingOptionName"}
 
     def __init__(self, tracking_category_name=None, tracking_option_name=None):
         self._tracking_category_name = None

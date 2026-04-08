@@ -2,18 +2,8 @@ from xero.models import BaseModel
 
 
 class Plan(BaseModel):
-    openapi_types = {
-        "id": "str",
-        "name": "str",
-        "status": "str",
-        "subscription_items": "list[SubscriptionItem]",
-    }
-    attribute_map = {
-        "id": "id",
-        "name": "name",
-        "status": "status",
-        "subscription_items": "subscriptionItems",
-    }
+    openapi_types = {"id": "str", "name": "str", "status": "str", "subscription_items": "list[SubscriptionItem]"}
+    attribute_map = {"id": "id", "name": "name", "status": "status", "subscription_items": "subscriptionItems"}
 
     def __init__(self, id=None, name=None, status=None, subscription_items=None):
         self._id = None
@@ -54,17 +44,10 @@ class Plan(BaseModel):
     def status(self, status):
         if status is None:
             raise ValueError("Invalid value for `status`, must not be `None`")
-        allowed_values = [
-            "ACTIVE",
-            "CANCELED",
-            "PENDING_ACTIVATION",
-            "None",
-        ]
+        allowed_values = ["ACTIVE", "CANCELED", "PENDING_ACTIVATION", "None"]
         if status:
             if status not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `status` ({status}), must be one of {allowed_values}")
         self._status = status
 
     @property
@@ -74,7 +57,5 @@ class Plan(BaseModel):
     @subscription_items.setter
     def subscription_items(self, subscription_items):
         if subscription_items is None:
-            raise ValueError(
-                "Invalid value for `subscription_items`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `subscription_items`, must not be `None`")
         self._subscription_items = subscription_items

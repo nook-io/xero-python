@@ -20,13 +20,7 @@ class FieldValidationErrorsElement(BaseModel):
     }
 
     def __init__(
-        self,
-        field_name=None,
-        value_provided=None,
-        localised_message=None,
-        type=None,
-        title=None,
-        detail=None,
+        self, field_name=None, value_provided=None, localised_message=None, type=None, title=None, detail=None
     ):
         self._field_name = None
         self._value_provided = None

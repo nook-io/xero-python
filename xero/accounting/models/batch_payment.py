@@ -129,10 +129,7 @@ class BatchPayment(BaseModel):
     @reference.setter
     def reference(self, reference):
         if reference is not None and len(reference) > 255:
-            raise ValueError(
-                "Invalid value for `reference`, "
-                "length must be less than or equal to `255`"
-            )
+            raise ValueError("Invalid value for `reference`, length must be less than or equal to `255`")
         self._reference = reference
 
     @property
@@ -142,10 +139,7 @@ class BatchPayment(BaseModel):
     @particulars.setter
     def particulars(self, particulars):
         if particulars is not None and len(particulars) > 12:
-            raise ValueError(
-                "Invalid value for `particulars`, "
-                "length must be less than or equal to `12`"
-            )
+            raise ValueError("Invalid value for `particulars`, length must be less than or equal to `12`")
         self._particulars = particulars
 
     @property
@@ -155,9 +149,7 @@ class BatchPayment(BaseModel):
     @code.setter
     def code(self, code):
         if code is not None and len(code) > 12:
-            raise ValueError(
-                "Invalid value for `code`, length must be less than or equal to `12`"
-            )
+            raise ValueError("Invalid value for `code`, length must be less than or equal to `12`")
         self._code = code
 
     @property
@@ -175,10 +167,7 @@ class BatchPayment(BaseModel):
     @narrative.setter
     def narrative(self, narrative):
         if narrative is not None and len(narrative) > 18:
-            raise ValueError(
-                "Invalid value for `narrative`, "
-                "length must be less than or equal to `18`"
-            )
+            raise ValueError("Invalid value for `narrative`, length must be less than or equal to `18`")
         self._narrative = narrative
 
     @property
@@ -230,9 +219,7 @@ class BatchPayment(BaseModel):
         allowed_values = ["PAYBATCH", "RECBATCH", "None"]
         if type:
             if type not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `type` ({type}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `type` ({type}), must be one of {allowed_values}")
         self._type = type
 
     @property
@@ -244,9 +231,7 @@ class BatchPayment(BaseModel):
         allowed_values = ["AUTHORISED", "DELETED", "None"]
         if status:
             if status not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `status` ({status}), must be one of {allowed_values}")
         self._status = status
 
     @property

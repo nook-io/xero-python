@@ -2,20 +2,8 @@ from xero.models import BaseModel
 
 
 class Folder(BaseModel):
-    openapi_types = {
-        "name": "str",
-        "file_count": "int",
-        "email": "str",
-        "is_inbox": "bool",
-        "id": "str",
-    }
-    attribute_map = {
-        "name": "Name",
-        "file_count": "FileCount",
-        "email": "Email",
-        "is_inbox": "IsInbox",
-        "id": "Id",
-    }
+    openapi_types = {"name": "str", "file_count": "int", "email": "str", "is_inbox": "bool", "id": "str"}
+    attribute_map = {"name": "Name", "file_count": "FileCount", "email": "Email", "is_inbox": "IsInbox", "id": "Id"}
 
     def __init__(self, name=None, file_count=None, email=None, is_inbox=None, id=None):
         self._name = None

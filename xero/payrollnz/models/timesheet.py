@@ -77,9 +77,7 @@ class Timesheet(BaseModel):
     @payroll_calendar_id.setter
     def payroll_calendar_id(self, payroll_calendar_id):
         if payroll_calendar_id is None:
-            raise ValueError(
-                "Invalid value for `payroll_calendar_id`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `payroll_calendar_id`, must not be `None`")
         self._payroll_calendar_id = payroll_calendar_id
 
     @property
@@ -118,18 +116,10 @@ class Timesheet(BaseModel):
 
     @status.setter
     def status(self, status):
-        allowed_values = [
-            "Draft",
-            "Approved",
-            "Completed",
-            "Requested",
-            "None",
-        ]
+        allowed_values = ["Draft", "Approved", "Completed", "Requested", "None"]
         if status:
             if status not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `status` ({status}), must be one of {allowed_values}")
         self._status = status
 
     @property

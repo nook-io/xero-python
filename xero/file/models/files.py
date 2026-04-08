@@ -2,18 +2,8 @@ from xero.models import BaseModel
 
 
 class Files(BaseModel):
-    openapi_types = {
-        "total_count": "int",
-        "page": "int",
-        "per_page": "int",
-        "items": "list[FileObject]",
-    }
-    attribute_map = {
-        "total_count": "TotalCount",
-        "page": "Page",
-        "per_page": "PerPage",
-        "items": "Items",
-    }
+    openapi_types = {"total_count": "int", "page": "int", "per_page": "int", "items": "list[FileObject]"}
+    attribute_map = {"total_count": "TotalCount", "page": "Page", "per_page": "PerPage", "items": "Items"}
 
     def __init__(self, total_count=None, page=None, per_page=None, items=None):
         self._total_count = None

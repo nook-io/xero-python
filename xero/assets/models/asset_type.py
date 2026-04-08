@@ -47,9 +47,7 @@ class AssetType(BaseModel):
         if depreciation_expense_account_id is not None:
             self.depreciation_expense_account_id = depreciation_expense_account_id
         if accumulated_depreciation_account_id is not None:
-            self.accumulated_depreciation_account_id = (
-                accumulated_depreciation_account_id
-            )
+            self.accumulated_depreciation_account_id = accumulated_depreciation_account_id
         self.book_depreciation_setting = book_depreciation_setting
         if locks is not None:
             self.locks = locks
@@ -103,9 +101,7 @@ class AssetType(BaseModel):
     @book_depreciation_setting.setter
     def book_depreciation_setting(self, book_depreciation_setting):
         if book_depreciation_setting is None:
-            raise ValueError(
-                "Invalid value for `book_depreciation_setting`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `book_depreciation_setting`, must not be `None`")
         self._book_depreciation_setting = book_depreciation_setting
 
     @property

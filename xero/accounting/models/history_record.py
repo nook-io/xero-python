@@ -2,18 +2,8 @@ from xero.models import BaseModel
 
 
 class HistoryRecord(BaseModel):
-    openapi_types = {
-        "details": "str",
-        "changes": "str",
-        "user": "str",
-        "date_utc": "datetime[ms-format]",
-    }
-    attribute_map = {
-        "details": "Details",
-        "changes": "Changes",
-        "user": "User",
-        "date_utc": "DateUTC",
-    }
+    openapi_types = {"details": "str", "changes": "str", "user": "str", "date_utc": "datetime[ms-format]"}
+    attribute_map = {"details": "Details", "changes": "Changes", "user": "User", "date_utc": "DateUTC"}
 
     def __init__(self, details=None, changes=None, user=None, date_utc=None):
         self._details = None

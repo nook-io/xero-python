@@ -6,10 +6,7 @@ class SettingsTrackingCategories(BaseModel):
         "employee_groups": "SettingsTrackingCategoriesEmployeeGroups",
         "timesheet_categories": "SettingsTrackingCategoriesTimesheetCategories",
     }
-    attribute_map = {
-        "employee_groups": "EmployeeGroups",
-        "timesheet_categories": "TimesheetCategories",
-    }
+    attribute_map = {"employee_groups": "EmployeeGroups", "timesheet_categories": "TimesheetCategories"}
 
     def __init__(self, employee_groups=None, timesheet_categories=None):
         self._employee_groups = None

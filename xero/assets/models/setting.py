@@ -52,17 +52,11 @@ class Setting(BaseModel):
         if last_depreciation_date is not None:
             self.last_depreciation_date = last_depreciation_date
         if default_gain_on_disposal_account_id is not None:
-            self.default_gain_on_disposal_account_id = (
-                default_gain_on_disposal_account_id
-            )
+            self.default_gain_on_disposal_account_id = default_gain_on_disposal_account_id
         if default_loss_on_disposal_account_id is not None:
-            self.default_loss_on_disposal_account_id = (
-                default_loss_on_disposal_account_id
-            )
+            self.default_loss_on_disposal_account_id = default_loss_on_disposal_account_id
         if default_capital_gain_on_disposal_account_id is not None:
-            self.default_capital_gain_on_disposal_account_id = (
-                default_capital_gain_on_disposal_account_id
-            )
+            self.default_capital_gain_on_disposal_account_id = default_capital_gain_on_disposal_account_id
         if opt_in_for_tax is not None:
             self.opt_in_for_tax = opt_in_for_tax
 
@@ -119,12 +113,8 @@ class Setting(BaseModel):
         return self._default_capital_gain_on_disposal_account_id
 
     @default_capital_gain_on_disposal_account_id.setter
-    def default_capital_gain_on_disposal_account_id(
-        self, default_capital_gain_on_disposal_account_id
-    ):
-        self._default_capital_gain_on_disposal_account_id = (
-            default_capital_gain_on_disposal_account_id
-        )
+    def default_capital_gain_on_disposal_account_id(self, default_capital_gain_on_disposal_account_id):
+        self._default_capital_gain_on_disposal_account_id = default_capital_gain_on_disposal_account_id
 
     @property
     def opt_in_for_tax(self):

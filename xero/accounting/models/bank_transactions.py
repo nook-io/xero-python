@@ -7,11 +7,7 @@ class BankTransactions(BaseModel):
         "warnings": "list[ValidationError]",
         "bank_transactions": "list[BankTransaction]",
     }
-    attribute_map = {
-        "pagination": "pagination",
-        "warnings": "Warnings",
-        "bank_transactions": "BankTransactions",
-    }
+    attribute_map = {"pagination": "pagination", "warnings": "Warnings", "bank_transactions": "BankTransactions"}
 
     def __init__(self, pagination=None, warnings=None, bank_transactions=None):
         self._pagination = None

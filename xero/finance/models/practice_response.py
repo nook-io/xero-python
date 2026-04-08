@@ -18,12 +18,7 @@ class PracticeResponse(BaseModel):
     }
 
     def __init__(
-        self,
-        xero_partner_since=None,
-        tier=None,
-        location=None,
-        organisation_count=None,
-        staff_certified=None,
+        self, xero_partner_since=None, tier=None, location=None, organisation_count=None, staff_certified=None
     ):
         self._xero_partner_since = None
         self._tier = None

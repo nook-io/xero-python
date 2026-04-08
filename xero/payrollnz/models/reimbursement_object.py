@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class ReimbursementObject(BaseModel):
-    openapi_types = {
-        "pagination": "Pagination",
-        "problem": "Problem",
-        "reimbursement": "Reimbursement",
-    }
-    attribute_map = {
-        "pagination": "pagination",
-        "problem": "problem",
-        "reimbursement": "reimbursement",
-    }
+    openapi_types = {"pagination": "Pagination", "problem": "Problem", "reimbursement": "Reimbursement"}
+    attribute_map = {"pagination": "pagination", "problem": "problem", "reimbursement": "reimbursement"}
 
     def __init__(self, pagination=None, problem=None, reimbursement=None):
         self._pagination = None

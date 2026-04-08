@@ -132,17 +132,10 @@ class Overpayment(BaseModel):
 
     @type.setter
     def type(self, type):
-        allowed_values = [
-            "RECEIVE-OVERPAYMENT",
-            "SPEND-OVERPAYMENT",
-            "AROVERPAYMENT",
-            "None",
-        ]
+        allowed_values = ["RECEIVE-OVERPAYMENT", "SPEND-OVERPAYMENT", "AROVERPAYMENT", "None"]
         if type:
             if type not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `type` ({type}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `type` ({type}), must be one of {allowed_values}")
         self._type = type
 
     @property
@@ -170,9 +163,7 @@ class Overpayment(BaseModel):
         allowed_values = ["AUTHORISED", "PAID", "VOIDED", "None"]
         if status:
             if status not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `status` ({status}), must be one of {allowed_values}")
         self._status = status
 
     @property

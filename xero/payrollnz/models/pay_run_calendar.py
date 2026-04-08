@@ -85,9 +85,7 @@ class PayRunCalendar(BaseModel):
     @period_start_date.setter
     def period_start_date(self, period_start_date):
         if period_start_date is None:
-            raise ValueError(
-                "Invalid value for `period_start_date`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `period_start_date`, must not be `None`")
         self._period_start_date = period_start_date
 
     @property

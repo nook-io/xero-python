@@ -258,19 +258,10 @@ class PurchaseOrder(BaseModel):
 
     @status.setter
     def status(self, status):
-        allowed_values = [
-            "DRAFT",
-            "SUBMITTED",
-            "AUTHORISED",
-            "BILLED",
-            "DELETED",
-            "None",
-        ]
+        allowed_values = ["DRAFT", "SUBMITTED", "AUTHORISED", "BILLED", "DELETED", "None"]
         if status:
             if status not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `status` ({status}), must be one of {allowed_values}")
         self._status = status
 
     @property

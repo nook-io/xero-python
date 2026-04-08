@@ -2,18 +2,8 @@ from xero.models import BaseModel
 
 
 class Error(BaseModel):
-    openapi_types = {
-        "error_number": "int",
-        "type": "str",
-        "message": "str",
-        "elements": "list[Element]",
-    }
-    attribute_map = {
-        "error_number": "ErrorNumber",
-        "type": "Type",
-        "message": "Message",
-        "elements": "Elements",
-    }
+    openapi_types = {"error_number": "int", "type": "str", "message": "str", "elements": "list[Element]"}
+    attribute_map = {"error_number": "ErrorNumber", "type": "Type", "message": "Message", "elements": "Elements"}
 
     def __init__(self, error_number=None, type=None, message=None, elements=None):
         self._error_number = None

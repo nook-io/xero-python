@@ -2,11 +2,7 @@ from xero.models import BaseModel
 
 
 class LeaveAccrualLine(BaseModel):
-    openapi_types = {
-        "leave_type_id": "str",
-        "number_of_units": "float",
-        "auto_calculate": "bool",
-    }
+    openapi_types = {"leave_type_id": "str", "number_of_units": "float", "auto_calculate": "bool"}
     attribute_map = {
         "leave_type_id": "LeaveTypeID",
         "number_of_units": "NumberOfUnits",

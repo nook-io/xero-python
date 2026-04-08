@@ -100,9 +100,7 @@ class BankTransfer(BaseModel):
     @from_bank_account.setter
     def from_bank_account(self, from_bank_account):
         if from_bank_account is None:
-            raise ValueError(
-                "Invalid value for `from_bank_account`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `from_bank_account`, must not be `None`")
         self._from_bank_account = from_bank_account
 
     @property

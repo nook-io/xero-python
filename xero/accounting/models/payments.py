@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class Payments(BaseModel):
-    openapi_types = {
-        "pagination": "Pagination",
-        "warnings": "list[ValidationError]",
-        "payments": "list[Payment]",
-    }
-    attribute_map = {
-        "pagination": "pagination",
-        "warnings": "Warnings",
-        "payments": "Payments",
-    }
+    openapi_types = {"pagination": "Pagination", "warnings": "list[ValidationError]", "payments": "list[Payment]"}
+    attribute_map = {"pagination": "pagination", "warnings": "Warnings", "payments": "Payments"}
 
     def __init__(self, pagination=None, warnings=None, payments=None):
         self._pagination = None

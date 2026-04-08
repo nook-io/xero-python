@@ -171,10 +171,7 @@ class Quote(BaseModel):
     @quote_number.setter
     def quote_number(self, quote_number):
         if quote_number is not None and len(quote_number) > 255:
-            raise ValueError(
-                "Invalid value for `quote_number`, "
-                "length must be less than or equal to `255`"
-            )
+            raise ValueError("Invalid value for `quote_number`, length must be less than or equal to `255`")
         self._quote_number = quote_number
 
     @property
@@ -184,10 +181,7 @@ class Quote(BaseModel):
     @reference.setter
     def reference(self, reference):
         if reference is not None and len(reference) > 4000:
-            raise ValueError(
-                "Invalid value for `reference`, "
-                "length must be less than or equal to `4000`"
-            )
+            raise ValueError("Invalid value for `reference`, length must be less than or equal to `4000`")
         self._reference = reference
 
     @property
@@ -197,9 +191,7 @@ class Quote(BaseModel):
     @terms.setter
     def terms(self, terms):
         if terms is not None and len(terms) > 4000:
-            raise ValueError(
-                "Invalid value for `terms`, length must be less than or equal to `4000`"
-            )
+            raise ValueError("Invalid value for `terms`, length must be less than or equal to `4000`")
         self._terms = terms
 
     @property
@@ -313,9 +305,7 @@ class Quote(BaseModel):
     @title.setter
     def title(self, title):
         if title is not None and len(title) > 100:
-            raise ValueError(
-                "Invalid value for `title`, length must be less than or equal to `100`"
-            )
+            raise ValueError("Invalid value for `title`, length must be less than or equal to `100`")
         self._title = title
 
     @property
@@ -325,10 +315,7 @@ class Quote(BaseModel):
     @summary.setter
     def summary(self, summary):
         if summary is not None and len(summary) > 3000:
-            raise ValueError(
-                "Invalid value for `summary`, "
-                "length must be less than or equal to `3000`"
-            )
+            raise ValueError("Invalid value for `summary`, length must be less than or equal to `3000`")
         self._summary = summary
 
     @property

@@ -15,9 +15,7 @@ class AccountUsageResponse(BaseModel):
         "account_usage": "accountUsage",
     }
 
-    def __init__(
-        self, organisation_id=None, start_month=None, end_month=None, account_usage=None
-    ):
+    def __init__(self, organisation_id=None, start_month=None, end_month=None, account_usage=None):
         self._organisation_id = None
         self._start_month = None
         self._end_month = None

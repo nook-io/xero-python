@@ -81,9 +81,7 @@ class Address(BaseModel):
         allowed_values = ["POBOX", "STREET", "None"]
         if address_type:
             if address_type not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `address_type` ({address_type}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `address_type` ({address_type}), must be one of {allowed_values}")
         self._address_type = address_type
 
     @property
@@ -93,10 +91,7 @@ class Address(BaseModel):
     @address_line1.setter
     def address_line1(self, address_line1):
         if address_line1 is not None and len(address_line1) > 500:
-            raise ValueError(
-                "Invalid value for `address_line1`, "
-                "length must be less than or equal to `500`"
-            )
+            raise ValueError("Invalid value for `address_line1`, length must be less than or equal to `500`")
         self._address_line1 = address_line1
 
     @property
@@ -106,10 +101,7 @@ class Address(BaseModel):
     @address_line2.setter
     def address_line2(self, address_line2):
         if address_line2 is not None and len(address_line2) > 500:
-            raise ValueError(
-                "Invalid value for `address_line2`, "
-                "length must be less than or equal to `500`"
-            )
+            raise ValueError("Invalid value for `address_line2`, length must be less than or equal to `500`")
         self._address_line2 = address_line2
 
     @property
@@ -119,10 +111,7 @@ class Address(BaseModel):
     @address_line3.setter
     def address_line3(self, address_line3):
         if address_line3 is not None and len(address_line3) > 500:
-            raise ValueError(
-                "Invalid value for `address_line3`, "
-                "length must be less than or equal to `500`"
-            )
+            raise ValueError("Invalid value for `address_line3`, length must be less than or equal to `500`")
         self._address_line3 = address_line3
 
     @property
@@ -132,10 +121,7 @@ class Address(BaseModel):
     @address_line4.setter
     def address_line4(self, address_line4):
         if address_line4 is not None and len(address_line4) > 500:
-            raise ValueError(
-                "Invalid value for `address_line4`, "
-                "length must be less than or equal to `500`"
-            )
+            raise ValueError("Invalid value for `address_line4`, length must be less than or equal to `500`")
         self._address_line4 = address_line4
 
     @property
@@ -145,9 +131,7 @@ class Address(BaseModel):
     @city.setter
     def city(self, city):
         if city is not None and len(city) > 255:
-            raise ValueError(
-                "Invalid value for `city`, length must be less than or equal to `255`"
-            )
+            raise ValueError("Invalid value for `city`, length must be less than or equal to `255`")
         self._city = city
 
     @property
@@ -157,9 +141,7 @@ class Address(BaseModel):
     @region.setter
     def region(self, region):
         if region is not None and len(region) > 255:
-            raise ValueError(
-                "Invalid value for `region`, length must be less than or equal to `255`"
-            )
+            raise ValueError("Invalid value for `region`, length must be less than or equal to `255`")
         self._region = region
 
     @property
@@ -169,10 +151,7 @@ class Address(BaseModel):
     @postal_code.setter
     def postal_code(self, postal_code):
         if postal_code is not None and len(postal_code) > 50:
-            raise ValueError(
-                "Invalid value for `postal_code`, "
-                "length must be less than or equal to `50`"
-            )
+            raise ValueError("Invalid value for `postal_code`, length must be less than or equal to `50`")
         self._postal_code = postal_code
 
     @property
@@ -182,9 +161,7 @@ class Address(BaseModel):
     @country.setter
     def country(self, country):
         if country is not None and len(country) > 50:
-            raise ValueError(
-                "Invalid value for `country`, length must be less than or equal to `50`"
-            )
+            raise ValueError("Invalid value for `country`, length must be less than or equal to `50`")
         self._country = country
 
     @property
@@ -194,8 +171,5 @@ class Address(BaseModel):
     @attention_to.setter
     def attention_to(self, attention_to):
         if attention_to is not None and len(attention_to) > 255:
-            raise ValueError(
-                "Invalid value for `attention_to`, "
-                "length must be less than or equal to `255`"
-            )
+            raise ValueError("Invalid value for `attention_to`, length must be less than or equal to `255`")
         self._attention_to = attention_to

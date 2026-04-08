@@ -106,9 +106,7 @@ class TaxDeclaration(BaseModel):
         if abn is not None:
             self.abn = abn
         if australian_resident_for_tax_purposes is not None:
-            self.australian_resident_for_tax_purposes = (
-                australian_resident_for_tax_purposes
-            )
+            self.australian_resident_for_tax_purposes = australian_resident_for_tax_purposes
         if residency_status is not None:
             self.residency_status = residency_status
         if tax_scale_type is not None:
@@ -128,15 +126,11 @@ class TaxDeclaration(BaseModel):
         if has_trade_support_loan_debt is not None:
             self.has_trade_support_loan_debt = has_trade_support_loan_debt
         if upward_variation_tax_withholding_amount is not None:
-            self.upward_variation_tax_withholding_amount = (
-                upward_variation_tax_withholding_amount
-            )
+            self.upward_variation_tax_withholding_amount = upward_variation_tax_withholding_amount
         if eligible_to_receive_leave_loading is not None:
             self.eligible_to_receive_leave_loading = eligible_to_receive_leave_loading
         if approved_withholding_variation_percentage is not None:
-            self.approved_withholding_variation_percentage = (
-                approved_withholding_variation_percentage
-            )
+            self.approved_withholding_variation_percentage = approved_withholding_variation_percentage
         if has_student_startup_loan is not None:
             self.has_student_startup_loan = has_student_startup_loan
         if has_loan_or_student_debt is not None:
@@ -189,12 +183,8 @@ class TaxDeclaration(BaseModel):
         return self._australian_resident_for_tax_purposes
 
     @australian_resident_for_tax_purposes.setter
-    def australian_resident_for_tax_purposes(
-        self, australian_resident_for_tax_purposes
-    ):
-        self._australian_resident_for_tax_purposes = (
-            australian_resident_for_tax_purposes
-        )
+    def australian_resident_for_tax_purposes(self, australian_resident_for_tax_purposes):
+        self._australian_resident_for_tax_purposes = australian_resident_for_tax_purposes
 
     @property
     def residency_status(self):
@@ -273,12 +263,8 @@ class TaxDeclaration(BaseModel):
         return self._upward_variation_tax_withholding_amount
 
     @upward_variation_tax_withholding_amount.setter
-    def upward_variation_tax_withholding_amount(
-        self, upward_variation_tax_withholding_amount
-    ):
-        self._upward_variation_tax_withholding_amount = (
-            upward_variation_tax_withholding_amount
-        )
+    def upward_variation_tax_withholding_amount(self, upward_variation_tax_withholding_amount):
+        self._upward_variation_tax_withholding_amount = upward_variation_tax_withholding_amount
 
     @property
     def eligible_to_receive_leave_loading(self):
@@ -293,12 +279,8 @@ class TaxDeclaration(BaseModel):
         return self._approved_withholding_variation_percentage
 
     @approved_withholding_variation_percentage.setter
-    def approved_withholding_variation_percentage(
-        self, approved_withholding_variation_percentage
-    ):
-        self._approved_withholding_variation_percentage = (
-            approved_withholding_variation_percentage
-        )
+    def approved_withholding_variation_percentage(self, approved_withholding_variation_percentage):
+        self._approved_withholding_variation_percentage = approved_withholding_variation_percentage
 
     @property
     def has_student_startup_loan(self):

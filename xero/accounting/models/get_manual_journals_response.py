@@ -20,13 +20,7 @@ class GetManualJournalsResponse(BaseModel):
     }
 
     def __init__(
-        self,
-        id=None,
-        status=None,
-        provider_name=None,
-        date_time_utc=None,
-        page_info=None,
-        manual_journals=None,
+        self, id=None, status=None, provider_name=None, date_time_utc=None, page_info=None, manual_journals=None
     ):
         self._id = None
         self._status = None

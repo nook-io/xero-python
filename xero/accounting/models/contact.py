@@ -287,10 +287,7 @@ class Contact(BaseModel):
     @contact_number.setter
     def contact_number(self, contact_number):
         if contact_number is not None and len(contact_number) > 50:
-            raise ValueError(
-                "Invalid value for `contact_number`, "
-                "length must be less than or equal to `50`"
-            )
+            raise ValueError("Invalid value for `contact_number`, length must be less than or equal to `50`")
         self._contact_number = contact_number
 
     @property
@@ -300,10 +297,7 @@ class Contact(BaseModel):
     @account_number.setter
     def account_number(self, account_number):
         if account_number is not None and len(account_number) > 50:
-            raise ValueError(
-                "Invalid value for `account_number`, "
-                "length must be less than or equal to `50`"
-            )
+            raise ValueError("Invalid value for `account_number`, length must be less than or equal to `50`")
         self._account_number = account_number
 
     @property
@@ -327,9 +321,7 @@ class Contact(BaseModel):
     @name.setter
     def name(self, name):
         if name is not None and len(name) > 255:
-            raise ValueError(
-                "Invalid value for `name`, length must be less than or equal to `255`"
-            )
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `255`")
         self._name = name
 
     @property
@@ -339,10 +331,7 @@ class Contact(BaseModel):
     @first_name.setter
     def first_name(self, first_name):
         if first_name is not None and len(first_name) > 255:
-            raise ValueError(
-                "Invalid value for `first_name`, "
-                "length must be less than or equal to `255`"
-            )
+            raise ValueError("Invalid value for `first_name`, length must be less than or equal to `255`")
         self._first_name = first_name
 
     @property
@@ -352,10 +341,7 @@ class Contact(BaseModel):
     @last_name.setter
     def last_name(self, last_name):
         if last_name is not None and len(last_name) > 255:
-            raise ValueError(
-                "Invalid value for `last_name`, "
-                "length must be less than or equal to `255`"
-            )
+            raise ValueError("Invalid value for `last_name`, length must be less than or equal to `255`")
         self._last_name = last_name
 
     @property
@@ -365,10 +351,7 @@ class Contact(BaseModel):
     @company_number.setter
     def company_number(self, company_number):
         if company_number is not None and len(company_number) > 50:
-            raise ValueError(
-                "Invalid value for `company_number`, "
-                "length must be less than or equal to `50`"
-            )
+            raise ValueError("Invalid value for `company_number`, length must be less than or equal to `50`")
         self._company_number = company_number
 
     @property
@@ -378,10 +361,7 @@ class Contact(BaseModel):
     @email_address.setter
     def email_address(self, email_address):
         if email_address is not None and len(email_address) > 255:
-            raise ValueError(
-                "Invalid value for `email_address`, "
-                "length must be less than or equal to `255`"
-            )
+            raise ValueError("Invalid value for `email_address`, length must be less than or equal to `255`")
         self._email_address = email_address
 
     @property
@@ -407,10 +387,7 @@ class Contact(BaseModel):
     @tax_number.setter
     def tax_number(self, tax_number):
         if tax_number is not None and len(tax_number) > 50:
-            raise ValueError(
-                "Invalid value for `tax_number`, "
-                "length must be less than or equal to `50`"
-            )
+            raise ValueError("Invalid value for `tax_number`, length must be less than or equal to `50`")
         self._tax_number = tax_number
 
     @property

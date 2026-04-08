@@ -3,12 +3,7 @@ from xero.models import BaseModel
 
 class Account(BaseModel):
     openapi_types = {"account_id": "str", "type": "str", "code": "str", "name": "str"}
-    attribute_map = {
-        "account_id": "accountID",
-        "type": "type",
-        "code": "code",
-        "name": "name",
-    }
+    attribute_map = {"account_id": "accountID", "type": "type", "code": "code", "name": "name"}
 
     def __init__(self, account_id=None, type=None, code=None, name=None):
         self._account_id = None
@@ -51,9 +46,7 @@ class Account(BaseModel):
         ]
         if type:
             if type not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `type` ({type}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `type` ({type}), must be one of {allowed_values}")
         self._type = type
 
     @property

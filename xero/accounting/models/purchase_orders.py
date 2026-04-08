@@ -7,11 +7,7 @@ class PurchaseOrders(BaseModel):
         "warnings": "list[ValidationError]",
         "purchase_orders": "list[PurchaseOrder]",
     }
-    attribute_map = {
-        "pagination": "pagination",
-        "warnings": "Warnings",
-        "purchase_orders": "PurchaseOrders",
-    }
+    attribute_map = {"pagination": "pagination", "warnings": "Warnings", "purchase_orders": "PurchaseOrders"}
 
     def __init__(self, pagination=None, warnings=None, purchase_orders=None):
         self._pagination = None

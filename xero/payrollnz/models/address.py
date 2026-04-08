@@ -20,13 +20,7 @@ class Address(BaseModel):
     }
 
     def __init__(
-        self,
-        address_line1=None,
-        address_line2=None,
-        city=None,
-        suburb=None,
-        post_code=None,
-        country_name=None,
+        self, address_line1=None, address_line2=None, city=None, suburb=None, post_code=None, country_name=None
     ):
         self._address_line1 = None
         self._address_line2 = None

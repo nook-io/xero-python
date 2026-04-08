@@ -19,15 +19,7 @@ class PnlAccount(BaseModel):
         "total": "total",
     }
 
-    def __init__(
-        self,
-        account_id=None,
-        account_type=None,
-        code=None,
-        name=None,
-        reporting_code=None,
-        total=None,
-    ):
+    def __init__(self, account_id=None, account_type=None, code=None, name=None, reporting_code=None, total=None):
         self._account_id = None
         self._account_type = None
         self._code = None

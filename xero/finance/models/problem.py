@@ -2,18 +2,8 @@ from xero.models import BaseModel
 
 
 class Problem(BaseModel):
-    openapi_types = {
-        "type": "ProblemType",
-        "title": "str",
-        "status": "int",
-        "detail": "str",
-    }
-    attribute_map = {
-        "type": "type",
-        "title": "title",
-        "status": "status",
-        "detail": "detail",
-    }
+    openapi_types = {"type": "ProblemType", "title": "str", "status": "int", "detail": "str"}
+    attribute_map = {"type": "type", "title": "title", "status": "status", "detail": "detail"}
 
     def __init__(self, type=None, title=None, status=None, detail=None):
         self._type = None

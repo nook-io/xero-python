@@ -7,11 +7,7 @@ class EmployeeWorkingPatternsObject(BaseModel):
         "problem": "Problem",
         "payee_working_patterns": "list[EmployeeWorkingPattern]",
     }
-    attribute_map = {
-        "pagination": "pagination",
-        "problem": "problem",
-        "payee_working_patterns": "payeeWorkingPatterns",
-    }
+    attribute_map = {"pagination": "pagination", "problem": "problem", "payee_working_patterns": "payeeWorkingPatterns"}
 
     def __init__(self, pagination=None, problem=None, payee_working_patterns=None):
         self._pagination = None

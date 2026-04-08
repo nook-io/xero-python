@@ -15,13 +15,7 @@ class ContactTotalOther(BaseModel):
         "transaction_count": "transactionCount",
     }
 
-    def __init__(
-        self,
-        total_outstanding_aged=None,
-        total_voided=None,
-        total_credited=None,
-        transaction_count=None,
-    ):
+    def __init__(self, total_outstanding_aged=None, total_voided=None, total_credited=None, transaction_count=None):
         self._total_outstanding_aged = None
         self._total_voided = None
         self._total_credited = None

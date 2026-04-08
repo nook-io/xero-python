@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class TrialBalanceResponse(BaseModel):
-    openapi_types = {
-        "start_date": "date",
-        "end_date": "date",
-        "accounts": "list[TrialBalanceAccount]",
-    }
-    attribute_map = {
-        "start_date": "startDate",
-        "end_date": "endDate",
-        "accounts": "accounts",
-    }
+    openapi_types = {"start_date": "date", "end_date": "date", "accounts": "list[TrialBalanceAccount]"}
+    attribute_map = {"start_date": "startDate", "end_date": "endDate", "accounts": "accounts"}
 
     def __init__(self, start_date=None, end_date=None, accounts=None):
         self._start_date = None

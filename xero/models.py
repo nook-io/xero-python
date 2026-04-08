@@ -7,10 +7,7 @@ class BaseModel:
     attribute_map = {}
 
     def to_dict(self):
-        return {
-            key: serialize_to_dict(getattr(self, key))
-            for key in self.openapi_types.keys()
-        }
+        return {key: serialize_to_dict(getattr(self, key)) for key in self.openapi_types.keys()}
 
     def to_str(self):
         return pprint.pformat(self.to_dict())

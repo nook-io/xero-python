@@ -2,13 +2,7 @@ from xero.models import BaseModel
 
 
 class ResourceValidationErrorsElement(BaseModel):
-    openapi_types = {
-        "resource_name": "str",
-        "localised_message": "str",
-        "type": "str",
-        "title": "str",
-        "detail": "str",
-    }
+    openapi_types = {"resource_name": "str", "localised_message": "str", "type": "str", "title": "str", "detail": "str"}
     attribute_map = {
         "resource_name": "resourceName",
         "localised_message": "localisedMessage",
@@ -17,14 +11,7 @@ class ResourceValidationErrorsElement(BaseModel):
         "detail": "detail",
     }
 
-    def __init__(
-        self,
-        resource_name=None,
-        localised_message=None,
-        type=None,
-        title=None,
-        detail=None,
-    ):
+    def __init__(self, resource_name=None, localised_message=None, type=None, title=None, detail=None):
         self._resource_name = None
         self._localised_message = None
         self._type = None

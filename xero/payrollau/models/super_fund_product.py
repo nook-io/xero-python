@@ -3,12 +3,7 @@ from xero.models import BaseModel
 
 class SuperFundProduct(BaseModel):
     openapi_types = {"abn": "str", "usi": "str", "spin": "str", "product_name": "str"}
-    attribute_map = {
-        "abn": "ABN",
-        "usi": "USI",
-        "spin": "SPIN",
-        "product_name": "ProductName",
-    }
+    attribute_map = {"abn": "ABN", "usi": "USI", "spin": "SPIN", "product_name": "ProductName"}
 
     def __init__(self, abn=None, usi=None, spin=None, product_name=None):
         self._abn = None

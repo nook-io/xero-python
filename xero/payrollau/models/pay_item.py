@@ -15,13 +15,7 @@ class PayItem(BaseModel):
         "reimbursement_types": "ReimbursementTypes",
     }
 
-    def __init__(
-        self,
-        earnings_rates=None,
-        deduction_types=None,
-        leave_types=None,
-        reimbursement_types=None,
-    ):
+    def __init__(self, earnings_rates=None, deduction_types=None, leave_types=None, reimbursement_types=None):
         self._earnings_rates = None
         self._deduction_types = None
         self._leave_types = None

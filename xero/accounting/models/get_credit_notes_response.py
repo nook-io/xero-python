@@ -19,15 +19,7 @@ class GetCreditNotesResponse(BaseModel):
         "credit_notes": "CreditNotes",
     }
 
-    def __init__(
-        self,
-        id=None,
-        status=None,
-        provider_name=None,
-        date_time_utc=None,
-        page_info=None,
-        credit_notes=None,
-    ):
+    def __init__(self, id=None, status=None, provider_name=None, date_time_utc=None, page_info=None, credit_notes=None):
         self._id = None
         self._status = None
         self._provider_name = None

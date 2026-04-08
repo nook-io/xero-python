@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class Prepayments(BaseModel):
-    openapi_types = {
-        "pagination": "Pagination",
-        "warnings": "list[ValidationError]",
-        "prepayments": "list[Prepayment]",
-    }
-    attribute_map = {
-        "pagination": "pagination",
-        "warnings": "Warnings",
-        "prepayments": "Prepayments",
-    }
+    openapi_types = {"pagination": "Pagination", "warnings": "list[ValidationError]", "prepayments": "list[Prepayment]"}
+    attribute_map = {"pagination": "pagination", "warnings": "Warnings", "prepayments": "Prepayments"}
 
     def __init__(self, pagination=None, warnings=None, prepayments=None):
         self._pagination = None

@@ -2,12 +2,7 @@ from xero.models import BaseModel
 
 
 class ContactPerson(BaseModel):
-    openapi_types = {
-        "first_name": "str",
-        "last_name": "str",
-        "email_address": "str",
-        "include_in_emails": "bool",
-    }
+    openapi_types = {"first_name": "str", "last_name": "str", "email_address": "str", "include_in_emails": "bool"}
     attribute_map = {
         "first_name": "FirstName",
         "last_name": "LastName",
@@ -15,13 +10,7 @@ class ContactPerson(BaseModel):
         "include_in_emails": "IncludeInEmails",
     }
 
-    def __init__(
-        self,
-        first_name=None,
-        last_name=None,
-        email_address=None,
-        include_in_emails=None,
-    ):
+    def __init__(self, first_name=None, last_name=None, email_address=None, include_in_emails=None):
         self._first_name = None
         self._last_name = None
         self._email_address = None

@@ -8,12 +8,7 @@ class InvoiceResponse(BaseModel):
         "total": "float",
         "line_items": "list[LineItemResponse]",
     }
-    attribute_map = {
-        "invoice_id": "invoiceId",
-        "contact": "contact",
-        "total": "total",
-        "line_items": "lineItems",
-    }
+    attribute_map = {"invoice_id": "invoiceId", "contact": "contact", "total": "total", "line_items": "lineItems"}
 
     def __init__(self, invoice_id=None, contact=None, total=None, line_items=None):
         self._invoice_id = None

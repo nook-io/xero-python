@@ -2,18 +2,8 @@ from xero.models import BaseModel
 
 
 class Pagination(BaseModel):
-    openapi_types = {
-        "page": "int",
-        "page_size": "int",
-        "page_count": "int",
-        "item_count": "int",
-    }
-    attribute_map = {
-        "page": "page",
-        "page_size": "pageSize",
-        "page_count": "pageCount",
-        "item_count": "itemCount",
-    }
+    openapi_types = {"page": "int", "page_size": "int", "page_count": "int", "item_count": "int"}
+    attribute_map = {"page": "page", "page_size": "pageSize", "page_count": "pageCount", "item_count": "itemCount"}
 
     def __init__(self, page=None, page_size=None, page_count=None, item_count=None):
         self._page = None

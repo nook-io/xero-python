@@ -18,12 +18,7 @@ class StatutoryDeduction(BaseModel):
     }
 
     def __init__(
-        self,
-        id=None,
-        name=None,
-        statutory_deduction_category=None,
-        liability_account_id=None,
-        current_record=None,
+        self, id=None, name=None, statutory_deduction_category=None, liability_account_id=None, current_record=None
     ):
         self._id = None
         self._name = None

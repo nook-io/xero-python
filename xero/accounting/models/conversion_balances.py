@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class ConversionBalances(BaseModel):
-    openapi_types = {
-        "account_code": "str",
-        "balance": "float",
-        "balance_details": "list[BalanceDetails]",
-    }
-    attribute_map = {
-        "account_code": "AccountCode",
-        "balance": "Balance",
-        "balance_details": "BalanceDetails",
-    }
+    openapi_types = {"account_code": "str", "balance": "float", "balance_details": "list[BalanceDetails]"}
+    attribute_map = {"account_code": "AccountCode", "balance": "Balance", "balance_details": "BalanceDetails"}
 
     def __init__(self, account_code=None, balance=None, balance_details=None):
         self._account_code = None

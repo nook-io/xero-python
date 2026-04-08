@@ -26,12 +26,8 @@ class FilesApi:
 
     async def create_file_association(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        file_id: Annotated[
-            StrictStr, Field(..., description="File id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
         association: Association,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -51,12 +47,8 @@ class FilesApi:
 
     async def create_file_association_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        file_id: Annotated[
-            StrictStr, Field(..., description="File id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
         association: Association,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -80,10 +72,7 @@ class FilesApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_file_association"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_file_association")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -101,20 +90,14 @@ class FilesApi:
         _body_params = None
         if _params["association"] is not None:
             _body_params = _params["association"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "201": "Association",
-            "400": None,
-        }
+        _response_types_map = {"201": "Association", "400": None}
         return await self.api_client.call_api(
             "/Files/{FileId}/Associations",
             "POST",
@@ -137,9 +120,7 @@ class FilesApi:
 
     async def create_folder(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         folder: Folder,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -153,15 +134,11 @@ class FilesApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_folder_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.create_folder_with_http_info(
-            xero_tenant_id, folder, idempotency_key, **kwargs
-        )
+        return await self.create_folder_with_http_info(xero_tenant_id, folder, idempotency_key, **kwargs)
 
     async def create_folder_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         folder: Folder,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -185,10 +162,7 @@ class FilesApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_folder"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_folder")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -204,20 +178,14 @@ class FilesApi:
         _body_params = None
         if _params["folder"] is not None:
             _body_params = _params["folder"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "Folder",
-            "400": None,
-        }
+        _response_types_map = {"200": "Folder", "400": None}
         return await self.api_client.call_api(
             "/Folders",
             "POST",
@@ -240,12 +208,8 @@ class FilesApi:
 
     async def delete_file(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        file_id: Annotated[
-            StrictStr, Field(..., description="File id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
         **kwargs,
     ) -> None:
         kwargs["_return_http_data_only"] = True
@@ -256,12 +220,8 @@ class FilesApi:
 
     async def delete_file_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        file_id: Annotated[
-            StrictStr, Field(..., description="File id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -278,10 +238,7 @@ class FilesApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method delete_file"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method delete_file")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -319,36 +276,22 @@ class FilesApi:
 
     async def delete_file_association(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        file_id: Annotated[
-            StrictStr, Field(..., description="File id for single object")
-        ],
-        object_id: Annotated[
-            StrictStr, Field(..., description="Object id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
+        object_id: Annotated[StrictStr, Field(..., description="Object id for single object")],
         **kwargs,
     ) -> None:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the delete_file_association_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.delete_file_association_with_http_info(
-            xero_tenant_id, file_id, object_id, **kwargs
-        )
+        return await self.delete_file_association_with_http_info(xero_tenant_id, file_id, object_id, **kwargs)
 
     async def delete_file_association_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        file_id: Annotated[
-            StrictStr, Field(..., description="File id for single object")
-        ],
-        object_id: Annotated[
-            StrictStr, Field(..., description="Object id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
+        object_id: Annotated[StrictStr, Field(..., description="Object id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -365,10 +308,7 @@ class FilesApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method delete_file_association"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method delete_file_association")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -408,30 +348,20 @@ class FilesApi:
 
     async def delete_folder(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        folder_id: Annotated[
-            StrictStr, Field(..., description="Folder id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        folder_id: Annotated[StrictStr, Field(..., description="Folder id for single object")],
         **kwargs,
     ) -> None:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the delete_folder_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.delete_folder_with_http_info(
-            xero_tenant_id, folder_id, **kwargs
-        )
+        return await self.delete_folder_with_http_info(xero_tenant_id, folder_id, **kwargs)
 
     async def delete_folder_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        folder_id: Annotated[
-            StrictStr, Field(..., description="Folder id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        folder_id: Annotated[StrictStr, Field(..., description="Folder id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -448,10 +378,7 @@ class FilesApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method delete_folder"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method delete_folder")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -489,26 +416,17 @@ class FilesApi:
 
     async def get_associations_by_object(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        object_id: Annotated[
-            StrictStr, Field(..., description="Object id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        object_id: Annotated[StrictStr, Field(..., description="Object id for single object")],
         pagesize: Annotated[
-            Annotated[int, Field(strict=True, le=100)] | None,
-            Field(description="pass an optional page size value"),
+            Annotated[int, Field(strict=True, le=100)] | None, Field(description="pass an optional page size value")
         ] = None,
         page: Annotated[
             Annotated[int, Field(strict=True, ge=1)] | None,
             Field(description="number of records to skip for pagination"),
         ] = None,
-        sort: Annotated[
-            StrictStr | None, Field(description="values to sort by")
-        ] = None,
-        direction: Annotated[
-            StrictStr | None, Field(description="direction to sort by")
-        ] = None,
+        sort: Annotated[StrictStr | None, Field(description="values to sort by")] = None,
+        direction: Annotated[StrictStr | None, Field(description="direction to sort by")] = None,
         **kwargs,
     ) -> list[Association]:
         kwargs["_return_http_data_only"] = True
@@ -521,37 +439,21 @@ class FilesApi:
 
     async def get_associations_by_object_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        object_id: Annotated[
-            StrictStr, Field(..., description="Object id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        object_id: Annotated[StrictStr, Field(..., description="Object id for single object")],
         pagesize: Annotated[
-            Annotated[int, Field(strict=True, le=100)] | None,
-            Field(description="pass an optional page size value"),
+            Annotated[int, Field(strict=True, le=100)] | None, Field(description="pass an optional page size value")
         ] = None,
         page: Annotated[
             Annotated[int, Field(strict=True, ge=1)] | None,
             Field(description="number of records to skip for pagination"),
         ] = None,
-        sort: Annotated[
-            StrictStr | None, Field(description="values to sort by")
-        ] = None,
-        direction: Annotated[
-            StrictStr | None, Field(description="direction to sort by")
-        ] = None,
+        sort: Annotated[StrictStr | None, Field(description="values to sort by")] = None,
+        direction: Annotated[StrictStr | None, Field(description="direction to sort by")] = None,
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "object_id",
-            "pagesize",
-            "page",
-            "sort",
-            "direction",
-        ]
+        _all_params = ["xero_tenant_id", "object_id", "pagesize", "page", "sort", "direction"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -564,10 +466,7 @@ class FilesApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_associations_by_object"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_associations_by_object")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -589,13 +488,9 @@ class FilesApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "list[Association]",
-        }
+        _response_types_map = {"200": "list[Association]"}
         return await self.api_client.call_api(
             "/Associations/{ObjectId}",
             "GET",
@@ -618,32 +513,20 @@ class FilesApi:
 
     async def get_associations_count(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        object_ids: Annotated[
-            list[StrictStr],
-            Field(..., description="A comma-separated list of object ids"),
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        object_ids: Annotated[list[StrictStr], Field(..., description="A comma-separated list of object ids")],
         **kwargs,
     ) -> object:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_associations_count_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_associations_count_with_http_info(
-            xero_tenant_id, object_ids, **kwargs
-        )
+        return await self.get_associations_count_with_http_info(xero_tenant_id, object_ids, **kwargs)
 
     async def get_associations_count_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        object_ids: Annotated[
-            list[StrictStr],
-            Field(..., description="A comma-separated list of object ids"),
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        object_ids: Annotated[list[StrictStr], Field(..., description="A comma-separated list of object ids")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -660,10 +543,7 @@ class FilesApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_associations_count"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_associations_count")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -678,13 +558,9 @@ class FilesApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "object",
-        }
+        _response_types_map = {"200": "object"}
         return await self.api_client.call_api(
             "/Associations/Count",
             "GET",
@@ -707,12 +583,8 @@ class FilesApi:
 
     async def get_file(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        file_id: Annotated[
-            StrictStr, Field(..., description="File id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
         **kwargs,
     ) -> FileObject:
         kwargs["_return_http_data_only"] = True
@@ -723,12 +595,8 @@ class FilesApi:
 
     async def get_file_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        file_id: Annotated[
-            StrictStr, Field(..., description="File id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -745,9 +613,7 @@ class FilesApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}' to method get_file"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_file")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -761,13 +627,9 @@ class FilesApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "FileObject",
-        }
+        _response_types_map = {"200": "FileObject"}
         return await self.api_client.call_api(
             "/Files/{FileId}",
             "GET",
@@ -790,30 +652,20 @@ class FilesApi:
 
     async def get_file_associations(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        file_id: Annotated[
-            StrictStr, Field(..., description="File id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
         **kwargs,
     ) -> list[Association]:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_file_associations_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_file_associations_with_http_info(
-            xero_tenant_id, file_id, **kwargs
-        )
+        return await self.get_file_associations_with_http_info(xero_tenant_id, file_id, **kwargs)
 
     async def get_file_associations_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        file_id: Annotated[
-            StrictStr, Field(..., description="File id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -830,10 +682,7 @@ class FilesApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_file_associations"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_file_associations")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -847,13 +696,9 @@ class FilesApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "list[Association]",
-        }
+        _response_types_map = {"200": "list[Association]"}
         return await self.api_client.call_api(
             "/Files/{FileId}/Associations",
             "GET",
@@ -876,30 +721,20 @@ class FilesApi:
 
     async def get_file_content(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        file_id: Annotated[
-            StrictStr, Field(..., description="File id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
         **kwargs,
     ) -> bytearray:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_file_content_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_file_content_with_http_info(
-            xero_tenant_id, file_id, **kwargs
-        )
+        return await self.get_file_content_with_http_info(xero_tenant_id, file_id, **kwargs)
 
     async def get_file_content_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        file_id: Annotated[
-            StrictStr, Field(..., description="File id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -916,10 +751,7 @@ class FilesApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_file_content"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_file_content")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -933,13 +765,9 @@ class FilesApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/octet-stream"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/octet-stream"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "bytearray",
-        }
+        _response_types_map = {"200": "bytearray"}
         return await self.api_client.call_api(
             "/Files/{FileId}/Content",
             "GET",
@@ -962,46 +790,34 @@ class FilesApi:
 
     async def get_files(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         pagesize: Annotated[
-            Annotated[int, Field(strict=True, le=100)] | None,
-            Field(description="pass an optional page size value"),
+            Annotated[int, Field(strict=True, le=100)] | None, Field(description="pass an optional page size value")
         ] = None,
         page: Annotated[
             Annotated[int, Field(strict=True, ge=1)] | None,
             Field(description="number of records to skip for pagination"),
         ] = None,
-        sort: Annotated[
-            StrictStr | None, Field(description="values to sort by")
-        ] = None,
+        sort: Annotated[StrictStr | None, Field(description="values to sort by")] = None,
         **kwargs,
     ) -> Files:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_files_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_files_with_http_info(
-            xero_tenant_id, pagesize, page, sort, **kwargs
-        )
+        return await self.get_files_with_http_info(xero_tenant_id, pagesize, page, sort, **kwargs)
 
     async def get_files_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         pagesize: Annotated[
-            Annotated[int, Field(strict=True, le=100)] | None,
-            Field(description="pass an optional page size value"),
+            Annotated[int, Field(strict=True, le=100)] | None, Field(description="pass an optional page size value")
         ] = None,
         page: Annotated[
             Annotated[int, Field(strict=True, ge=1)] | None,
             Field(description="number of records to skip for pagination"),
         ] = None,
-        sort: Annotated[
-            StrictStr | None, Field(description="values to sort by")
-        ] = None,
+        sort: Annotated[StrictStr | None, Field(description="values to sort by")] = None,
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -1018,9 +834,7 @@ class FilesApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}' to method get_files"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_files")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -1038,13 +852,9 @@ class FilesApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "Files",
-        }
+        _response_types_map = {"200": "Files"}
         return await self.api_client.call_api(
             "/Files",
             "GET",
@@ -1067,12 +877,8 @@ class FilesApi:
 
     async def get_folder(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        folder_id: Annotated[
-            StrictStr, Field(..., description="Folder id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        folder_id: Annotated[StrictStr, Field(..., description="Folder id for single object")],
         **kwargs,
     ) -> Folder:
         kwargs["_return_http_data_only"] = True
@@ -1083,12 +889,8 @@ class FilesApi:
 
     async def get_folder_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        folder_id: Annotated[
-            StrictStr, Field(..., description="Folder id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        folder_id: Annotated[StrictStr, Field(..., description="Folder id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -1105,10 +907,7 @@ class FilesApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_folder"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_folder")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -1122,13 +921,9 @@ class FilesApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "Folder",
-        }
+        _response_types_map = {"200": "Folder"}
         return await self.api_client.call_api(
             "/Folders/{FolderId}",
             "GET",
@@ -1151,12 +946,8 @@ class FilesApi:
 
     async def get_folders(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        sort: Annotated[
-            StrictStr | None, Field(description="values to sort by")
-        ] = None,
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        sort: Annotated[StrictStr | None, Field(description="values to sort by")] = None,
         **kwargs,
     ) -> list[Folder]:
         kwargs["_return_http_data_only"] = True
@@ -1167,12 +958,8 @@ class FilesApi:
 
     async def get_folders_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        sort: Annotated[
-            StrictStr | None, Field(description="values to sort by")
-        ] = None,
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        sort: Annotated[StrictStr | None, Field(description="values to sort by")] = None,
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -1189,10 +976,7 @@ class FilesApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_folders"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_folders")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -1206,13 +990,9 @@ class FilesApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "list[Folder]",
-        }
+        _response_types_map = {"200": "list[Folder]"}
         return await self.api_client.call_api(
             "/Folders",
             "GET",
@@ -1234,11 +1014,7 @@ class FilesApi:
         )
 
     async def get_inbox(
-        self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        **kwargs,
+        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
     ) -> Folder:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
@@ -1247,11 +1023,7 @@ class FilesApi:
         return await self.get_inbox_with_http_info(xero_tenant_id, **kwargs)
 
     async def get_inbox_with_http_info(
-        self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        **kwargs,
+        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
     ) -> ApiResponse:
         _params = locals()
         _all_params = ["xero_tenant_id"]
@@ -1267,9 +1039,7 @@ class FilesApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}' to method get_inbox"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_inbox")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -1281,13 +1051,9 @@ class FilesApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "Folder",
-        }
+        _response_types_map = {"200": "Folder"}
         return await self.api_client.call_api(
             "/Inbox",
             "GET",
@@ -1310,12 +1076,8 @@ class FilesApi:
 
     async def update_file(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        file_id: Annotated[
-            StrictStr, Field(..., description="File id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
         file_object: FileObject,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1329,18 +1091,12 @@ class FilesApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the update_file_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.update_file_with_http_info(
-            xero_tenant_id, file_id, file_object, idempotency_key, **kwargs
-        )
+        return await self.update_file_with_http_info(xero_tenant_id, file_id, file_object, idempotency_key, **kwargs)
 
     async def update_file_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        file_id: Annotated[
-            StrictStr, Field(..., description="File id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
         file_object: FileObject,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1364,10 +1120,7 @@ class FilesApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method update_file"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method update_file")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -1385,20 +1138,14 @@ class FilesApi:
         _body_params = None
         if _params["file_object"] is not None:
             _body_params = _params["file_object"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "FileObject",
-            "400": None,
-        }
+        _response_types_map = {"200": "FileObject", "400": None}
         return await self.api_client.call_api(
             "/Files/{FileId}",
             "PUT",
@@ -1421,12 +1168,8 @@ class FilesApi:
 
     async def update_folder(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        folder_id: Annotated[
-            StrictStr, Field(..., description="Folder id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        folder_id: Annotated[StrictStr, Field(..., description="Folder id for single object")],
         folder: Folder,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1440,18 +1183,12 @@ class FilesApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the update_folder_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.update_folder_with_http_info(
-            xero_tenant_id, folder_id, folder, idempotency_key, **kwargs
-        )
+        return await self.update_folder_with_http_info(xero_tenant_id, folder_id, folder, idempotency_key, **kwargs)
 
     async def update_folder_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        folder_id: Annotated[
-            StrictStr, Field(..., description="Folder id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        folder_id: Annotated[StrictStr, Field(..., description="Folder id for single object")],
         folder: Folder,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1475,10 +1212,7 @@ class FilesApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method update_folder"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method update_folder")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -1496,20 +1230,14 @@ class FilesApi:
         _body_params = None
         if _params["folder"] is not None:
             _body_params = _params["folder"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "Folder",
-            "400": None,
-        }
+        _response_types_map = {"200": "Folder", "400": None}
         return await self.api_client.call_api(
             "/Folders/{FolderId}",
             "PUT",
@@ -1532,14 +1260,9 @@ class FilesApi:
 
     async def upload_file(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         body: StrictBytes | StrictStr,
-        name: Annotated[
-            StrictStr,
-            Field(..., description="exact name of the file you are uploading"),
-        ],
+        name: Annotated[StrictStr, Field(..., description="exact name of the file you are uploading")],
         filename: StrictStr,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1560,14 +1283,9 @@ class FilesApi:
 
     async def upload_file_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         body: StrictBytes | StrictStr,
-        name: Annotated[
-            StrictStr,
-            Field(..., description="exact name of the file you are uploading"),
-        ],
+        name: Annotated[StrictStr, Field(..., description="exact name of the file you are uploading")],
         filename: StrictStr,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1579,14 +1297,7 @@ class FilesApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "body",
-            "name",
-            "filename",
-            "idempotency_key",
-            "mime_type",
-        ]
+        _all_params = ["xero_tenant_id", "body", "name", "filename", "idempotency_key", "mime_type"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -1599,10 +1310,7 @@ class FilesApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method upload_file"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method upload_file")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -1624,20 +1332,14 @@ class FilesApi:
         if _params["mime_type"] is not None:
             _form_params.append(("mimeType", _params["mime_type"]))
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["multipart/form-data"]),
+            "_content_type", self.api_client.select_header_content_type(["multipart/form-data"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "201": "FileObject",
-            "400": None,
-        }
+        _response_types_map = {"201": "FileObject", "400": None}
         return await self.api_client.call_api(
             "/Files",
             "POST",
@@ -1660,21 +1362,12 @@ class FilesApi:
 
     async def upload_file_to_folder(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         folder_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="pass required folder id to save file to specific folder",
-            ),
+            StrictStr, Field(..., description="pass required folder id to save file to specific folder")
         ],
         body: StrictBytes | StrictStr,
-        name: Annotated[
-            StrictStr,
-            Field(..., description="exact name of the file you are uploading"),
-        ],
+        name: Annotated[StrictStr, Field(..., description="exact name of the file you are uploading")],
         filename: StrictStr,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1690,33 +1383,17 @@ class FilesApi:
             message = "Error! Please call the upload_file_to_folder_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.upload_file_to_folder_with_http_info(
-            xero_tenant_id,
-            folder_id,
-            body,
-            name,
-            filename,
-            idempotency_key,
-            mime_type,
-            **kwargs,
+            xero_tenant_id, folder_id, body, name, filename, idempotency_key, mime_type, **kwargs
         )
 
     async def upload_file_to_folder_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         folder_id: Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description="pass required folder id to save file to specific folder",
-            ),
+            StrictStr, Field(..., description="pass required folder id to save file to specific folder")
         ],
         body: StrictBytes | StrictStr,
-        name: Annotated[
-            StrictStr,
-            Field(..., description="exact name of the file you are uploading"),
-        ],
+        name: Annotated[StrictStr, Field(..., description="exact name of the file you are uploading")],
         filename: StrictStr,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1728,15 +1405,7 @@ class FilesApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "folder_id",
-            "body",
-            "name",
-            "filename",
-            "idempotency_key",
-            "mime_type",
-        ]
+        _all_params = ["xero_tenant_id", "folder_id", "body", "name", "filename", "idempotency_key", "mime_type"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -1749,10 +1418,7 @@ class FilesApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method upload_file_to_folder"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method upload_file_to_folder")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -1776,20 +1442,14 @@ class FilesApi:
         if _params["mime_type"] is not None:
             _form_params.append(("mimeType", _params["mime_type"]))
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["multipart/form-data"]),
+            "_content_type", self.api_client.select_header_content_type(["multipart/form-data"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "201": "FileObject",
-            "400": None,
-        }
+        _response_types_map = {"201": "FileObject", "400": None}
         return await self.api_client.call_api(
             "/Files/{FolderId}",
             "POST",

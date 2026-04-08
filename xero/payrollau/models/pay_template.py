@@ -18,12 +18,7 @@ class PayTemplate(BaseModel):
     }
 
     def __init__(
-        self,
-        earnings_lines=None,
-        deduction_lines=None,
-        super_lines=None,
-        reimbursement_lines=None,
-        leave_lines=None,
+        self, earnings_lines=None, deduction_lines=None, super_lines=None, reimbursement_lines=None, leave_lines=None
     ):
         self._earnings_lines = None
         self._deduction_lines = None

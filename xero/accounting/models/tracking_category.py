@@ -20,13 +20,7 @@ class TrackingCategory(BaseModel):
     }
 
     def __init__(
-        self,
-        tracking_category_id=None,
-        tracking_option_id=None,
-        name=None,
-        option=None,
-        status=None,
-        options=None,
+        self, tracking_category_id=None, tracking_option_id=None, name=None, option=None, status=None, options=None
     ):
         self._tracking_category_id = None
         self._tracking_option_id = None
@@ -71,9 +65,7 @@ class TrackingCategory(BaseModel):
     @name.setter
     def name(self, name):
         if name is not None and len(name) > 100:
-            raise ValueError(
-                "Invalid value for `name`, length must be less than or equal to `100`"
-            )
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `100`")
         self._name = name
 
     @property
@@ -83,9 +75,7 @@ class TrackingCategory(BaseModel):
     @option.setter
     def option(self, option):
         if option is not None and len(option) > 100:
-            raise ValueError(
-                "Invalid value for `option`, length must be less than or equal to `100`"
-            )
+            raise ValueError("Invalid value for `option`, length must be less than or equal to `100`")
         self._option = option
 
     @property
@@ -97,9 +87,7 @@ class TrackingCategory(BaseModel):
         allowed_values = ["ACTIVE", "ARCHIVED", "DELETED", "None"]
         if status:
             if status not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `status` ({status}), must be one of {allowed_values}")
         self._status = status
 
     @property

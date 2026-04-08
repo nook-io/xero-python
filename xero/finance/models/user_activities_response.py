@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class UserActivitiesResponse(BaseModel):
-    openapi_types = {
-        "organisation_id": "str",
-        "data_month": "str",
-        "users": "list[UserResponse]",
-    }
-    attribute_map = {
-        "organisation_id": "organisationId",
-        "data_month": "dataMonth",
-        "users": "users",
-    }
+    openapi_types = {"organisation_id": "str", "data_month": "str", "users": "list[UserResponse]"}
+    attribute_map = {"organisation_id": "organisationId", "data_month": "dataMonth", "users": "users"}
 
     def __init__(self, organisation_id=None, data_month=None, users=None):
         self._organisation_id = None

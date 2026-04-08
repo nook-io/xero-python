@@ -65,9 +65,7 @@ class TaxSettings(BaseModel):
         allowed_values = ["weeks", "months", "None"]
         if period_type:
             if period_type not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `period_type` ({period_type}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `period_type` ({period_type}), must be one of {allowed_values}")
         self._period_type = period_type
 
     @property

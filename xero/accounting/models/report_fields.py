@@ -3,11 +3,7 @@ from xero.models import BaseModel
 
 class ReportFields(BaseModel):
     openapi_types = {"field_id": "str", "description": "str", "value": "str"}
-    attribute_map = {
-        "field_id": "FieldID",
-        "description": "Description",
-        "value": "Value",
-    }
+    attribute_map = {"field_id": "FieldID", "description": "Description", "value": "Value"}
 
     def __init__(self, field_id=None, description=None, value=None):
         self._field_id = None

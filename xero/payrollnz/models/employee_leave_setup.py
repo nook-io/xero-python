@@ -54,13 +54,9 @@ class EmployeeLeaveSetup(BaseModel):
         if annual_leave_opening_balance is not None:
             self.annual_leave_opening_balance = annual_leave_opening_balance
         if negative_annual_leave_balance_paid_amount is not None:
-            self.negative_annual_leave_balance_paid_amount = (
-                negative_annual_leave_balance_paid_amount
-            )
+            self.negative_annual_leave_balance_paid_amount = negative_annual_leave_balance_paid_amount
         if sick_leave_hours_to_accrue_annually is not None:
-            self.sick_leave_hours_to_accrue_annually = (
-                sick_leave_hours_to_accrue_annually
-            )
+            self.sick_leave_hours_to_accrue_annually = sick_leave_hours_to_accrue_annually
         if sick_leave_maximum_hours_to_accrue is not None:
             self.sick_leave_maximum_hours_to_accrue = sick_leave_maximum_hours_to_accrue
         if sick_leave_opening_balance is not None:
@@ -99,12 +95,8 @@ class EmployeeLeaveSetup(BaseModel):
         return self._negative_annual_leave_balance_paid_amount
 
     @negative_annual_leave_balance_paid_amount.setter
-    def negative_annual_leave_balance_paid_amount(
-        self, negative_annual_leave_balance_paid_amount
-    ):
-        self._negative_annual_leave_balance_paid_amount = (
-            negative_annual_leave_balance_paid_amount
-        )
+    def negative_annual_leave_balance_paid_amount(self, negative_annual_leave_balance_paid_amount):
+        self._negative_annual_leave_balance_paid_amount = negative_annual_leave_balance_paid_amount
 
     @property
     def sick_leave_hours_to_accrue_annually(self):

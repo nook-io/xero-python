@@ -246,19 +246,10 @@ class LineItem(BaseModel):
 
     @taxability.setter
     def taxability(self, taxability):
-        allowed_values = [
-            "TAXABLE",
-            "NON_TAXABLE",
-            "EXEMPT",
-            "PART_TAXABLE",
-            "NOT_APPLICABLE",
-            "None",
-        ]
+        allowed_values = ["TAXABLE", "NON_TAXABLE", "EXEMPT", "PART_TAXABLE", "NOT_APPLICABLE", "None"]
         if taxability:
             if taxability not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `taxability` ({taxability}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `taxability` ({taxability}), must be one of {allowed_values}")
         self._taxability = taxability
 
     @property

@@ -10,14 +10,10 @@ def single_dispatch_str(func=None, key=None):
 
     def default_get_key(*args, **kwargs):
         if not args:
-            raise TypeError(
-                f"{func_name} requires at least 1 positional argument"
-            )
+            raise TypeError(f"{func_name} requires at least 1 positional argument")
         key = args[0]
         if not isinstance(key, str):
-            raise TypeError(
-                f"{func_name} requires first positional argument to be string type"
-            )
+            raise TypeError(f"{func_name} requires first positional argument to be string type")
         return key
 
     get_key = key or default_get_key
@@ -31,13 +27,9 @@ def single_dispatch_str(func=None, key=None):
 
     def register(key, func=None):
         if not isinstance(key, str):
-            raise TypeError(
-                f"{func_name} requires string type key for register"
-            )
+            raise TypeError(f"{func_name} requires string type key for register")
         if not key:
-            raise ValueError(
-                f"{func_name} requires non empty string type key for register"
-            )
+            raise ValueError(f"{func_name} requires non empty string type key for register")
         if func is None:
             return lambda f: register(key, f)
         registry[key] = func

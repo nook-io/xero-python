@@ -3,11 +3,7 @@ from xero.models import BaseModel
 
 class APIException(BaseModel):
     openapi_types = {"error_number": "float", "type": "str", "message": "str"}
-    attribute_map = {
-        "error_number": "ErrorNumber",
-        "type": "Type",
-        "message": "Message",
-    }
+    attribute_map = {"error_number": "ErrorNumber", "type": "Type", "message": "Message"}
 
     def __init__(self, error_number=None, type=None, message=None):
         self._error_number = None

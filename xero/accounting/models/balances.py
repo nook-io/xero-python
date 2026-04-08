@@ -2,14 +2,8 @@ from xero.models import BaseModel
 
 
 class Balances(BaseModel):
-    openapi_types = {
-        "accounts_receivable": "AccountsReceivable",
-        "accounts_payable": "AccountsPayable",
-    }
-    attribute_map = {
-        "accounts_receivable": "AccountsReceivable",
-        "accounts_payable": "AccountsPayable",
-    }
+    openapi_types = {"accounts_receivable": "AccountsReceivable", "accounts_payable": "AccountsPayable"}
+    attribute_map = {"accounts_receivable": "AccountsReceivable", "accounts_payable": "AccountsPayable"}
 
     def __init__(self, accounts_receivable=None, accounts_payable=None):
         self._accounts_receivable = None

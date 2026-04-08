@@ -27,10 +27,7 @@ class AppStoreApi:
 
     async def get_subscription(
         self,
-        subscription_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique identifier for Subscription object"),
-        ],
+        subscription_id: Annotated[StrictStr, Field(..., description="Unique identifier for Subscription object")],
         **kwargs,
     ) -> Subscription:
         kwargs["_return_http_data_only"] = True
@@ -41,10 +38,7 @@ class AppStoreApi:
 
     async def get_subscription_with_http_info(
         self,
-        subscription_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique identifier for Subscription object"),
-        ],
+        subscription_id: Annotated[StrictStr, Field(..., description="Unique identifier for Subscription object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -61,10 +55,7 @@ class AppStoreApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_subscription"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_subscription")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -76,14 +67,9 @@ class AppStoreApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "Subscription",
-            "404": "ProblemDetails",
-        }
+        _response_types_map = {"200": "Subscription", "404": "ProblemDetails"}
         return await self.api_client.call_api(
             "/subscriptions/{subscriptionId}",
             "GET",
@@ -106,10 +92,7 @@ class AppStoreApi:
 
     async def get_usage_records(
         self,
-        subscription_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique identifier for Subscription object"),
-        ],
+        subscription_id: Annotated[StrictStr, Field(..., description="Unique identifier for Subscription object")],
         **kwargs,
     ) -> UsageRecordsList:
         kwargs["_return_http_data_only"] = True
@@ -120,10 +103,7 @@ class AppStoreApi:
 
     async def get_usage_records_with_http_info(
         self,
-        subscription_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique identifier for Subscription object"),
-        ],
+        subscription_id: Annotated[StrictStr, Field(..., description="Unique identifier for Subscription object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -140,10 +120,7 @@ class AppStoreApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_usage_records"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_usage_records")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -155,14 +132,9 @@ class AppStoreApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "UsageRecordsList",
-            "404": "ProblemDetails",
-        }
+        _response_types_map = {"200": "UsageRecordsList", "404": "ProblemDetails"}
         return await self.api_client.call_api(
             "/subscriptions/{subscriptionId}/usage-records",
             "GET",
@@ -185,19 +157,12 @@ class AppStoreApi:
 
     async def post_usage_records(
         self,
-        subscription_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique identifier for Subscription object"),
-        ],
+        subscription_id: Annotated[StrictStr, Field(..., description="Unique identifier for Subscription object")],
         subscription_item_id: Annotated[
-            StrictStr,
-            Field(..., description="The unique identifier of the subscriptionItem"),
+            StrictStr, Field(..., description="The unique identifier of the subscriptionItem")
         ],
         create_usage_record: Annotated[
-            CreateUsageRecord,
-            Field(
-                ..., description="Contains the quantity for the usage record to create"
-            ),
+            CreateUsageRecord, Field(..., description="Contains the quantity for the usage record to create")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -212,28 +177,17 @@ class AppStoreApi:
             message = "Error! Please call the post_usage_records_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.post_usage_records_with_http_info(
-            subscription_id,
-            subscription_item_id,
-            create_usage_record,
-            idempotency_key,
-            **kwargs,
+            subscription_id, subscription_item_id, create_usage_record, idempotency_key, **kwargs
         )
 
     async def post_usage_records_with_http_info(
         self,
-        subscription_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique identifier for Subscription object"),
-        ],
+        subscription_id: Annotated[StrictStr, Field(..., description="Unique identifier for Subscription object")],
         subscription_item_id: Annotated[
-            StrictStr,
-            Field(..., description="The unique identifier of the subscriptionItem"),
+            StrictStr, Field(..., description="The unique identifier of the subscriptionItem")
         ],
         create_usage_record: Annotated[
-            CreateUsageRecord,
-            Field(
-                ..., description="Contains the quantity for the usage record to create"
-            ),
+            CreateUsageRecord, Field(..., description="Contains the quantity for the usage record to create")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -244,12 +198,7 @@ class AppStoreApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "subscription_id",
-            "subscription_item_id",
-            "create_usage_record",
-            "idempotency_key",
-        ]
+        _all_params = ["subscription_id", "subscription_item_id", "create_usage_record", "idempotency_key"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -262,10 +211,7 @@ class AppStoreApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method post_usage_records"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method post_usage_records")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -283,20 +229,14 @@ class AppStoreApi:
         _body_params = None
         if _params["create_usage_record"] is not None:
             _body_params = _params["create_usage_record"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "UsageRecord",
-            "404": "ProblemDetails",
-        }
+        _response_types_map = {"200": "UsageRecord", "404": "ProblemDetails"}
         return await self.api_client.call_api(
             "/subscriptions/{subscriptionId}/items/{subscriptionItemId}/usage-records",
             "POST",
@@ -319,23 +259,13 @@ class AppStoreApi:
 
     async def put_usage_records(
         self,
-        subscription_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique identifier for Subscription object"),
-        ],
+        subscription_id: Annotated[StrictStr, Field(..., description="Unique identifier for Subscription object")],
         subscription_item_id: Annotated[
-            StrictStr,
-            Field(..., description="The unique identifier of the subscriptionItem"),
+            StrictStr, Field(..., description="The unique identifier of the subscriptionItem")
         ],
-        usage_record_id: Annotated[
-            StrictStr,
-            Field(..., description="The unique identifier of the usage record"),
-        ],
+        usage_record_id: Annotated[StrictStr, Field(..., description="The unique identifier of the usage record")],
         update_usage_record: Annotated[
-            UpdateUsageRecord,
-            Field(
-                ..., description="Contains the quantity for the usage record to update"
-            ),
+            UpdateUsageRecord, Field(..., description="Contains the quantity for the usage record to update")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -350,33 +280,18 @@ class AppStoreApi:
             message = "Error! Please call the put_usage_records_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.put_usage_records_with_http_info(
-            subscription_id,
-            subscription_item_id,
-            usage_record_id,
-            update_usage_record,
-            idempotency_key,
-            **kwargs,
+            subscription_id, subscription_item_id, usage_record_id, update_usage_record, idempotency_key, **kwargs
         )
 
     async def put_usage_records_with_http_info(
         self,
-        subscription_id: Annotated[
-            StrictStr,
-            Field(..., description="Unique identifier for Subscription object"),
-        ],
+        subscription_id: Annotated[StrictStr, Field(..., description="Unique identifier for Subscription object")],
         subscription_item_id: Annotated[
-            StrictStr,
-            Field(..., description="The unique identifier of the subscriptionItem"),
+            StrictStr, Field(..., description="The unique identifier of the subscriptionItem")
         ],
-        usage_record_id: Annotated[
-            StrictStr,
-            Field(..., description="The unique identifier of the usage record"),
-        ],
+        usage_record_id: Annotated[StrictStr, Field(..., description="The unique identifier of the usage record")],
         update_usage_record: Annotated[
-            UpdateUsageRecord,
-            Field(
-                ..., description="Contains the quantity for the usage record to update"
-            ),
+            UpdateUsageRecord, Field(..., description="Contains the quantity for the usage record to update")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -406,10 +321,7 @@ class AppStoreApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method put_usage_records"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method put_usage_records")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -429,20 +341,14 @@ class AppStoreApi:
         _body_params = None
         if _params["update_usage_record"] is not None:
             _body_params = _params["update_usage_record"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "UsageRecord",
-            "404": "ProblemDetails",
-        }
+        _response_types_map = {"200": "UsageRecord", "404": "ProblemDetails"}
         return await self.api_client.call_api(
             "/subscriptions/{subscriptionId}/items/{subscriptionItemId}/usage-records/{usageRecordId}",
             "PUT",

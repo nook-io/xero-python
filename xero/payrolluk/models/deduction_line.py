@@ -2,12 +2,7 @@ from xero.models import BaseModel
 
 
 class DeductionLine(BaseModel):
-    openapi_types = {
-        "deduction_type_id": "str",
-        "amount": "float",
-        "subject_to_tax": "bool",
-        "percentage": "float",
-    }
+    openapi_types = {"deduction_type_id": "str", "amount": "float", "subject_to_tax": "bool", "percentage": "float"}
     attribute_map = {
         "deduction_type_id": "deductionTypeID",
         "amount": "amount",
@@ -15,9 +10,7 @@ class DeductionLine(BaseModel):
         "percentage": "percentage",
     }
 
-    def __init__(
-        self, deduction_type_id=None, amount=None, subject_to_tax=None, percentage=None
-    ):
+    def __init__(self, deduction_type_id=None, amount=None, subject_to_tax=None, percentage=None):
         self._deduction_type_id = None
         self._amount = None
         self._subject_to_tax = None

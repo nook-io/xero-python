@@ -2,12 +2,7 @@ from xero.models import BaseModel
 
 
 class LineItemResponse(BaseModel):
-    openapi_types = {
-        "account_id": "str",
-        "reporting_code": "str",
-        "line_amount": "float",
-        "account_type": "str",
-    }
+    openapi_types = {"account_id": "str", "reporting_code": "str", "line_amount": "float", "account_type": "str"}
     attribute_map = {
         "account_id": "accountId",
         "reporting_code": "reportingCode",
@@ -15,9 +10,7 @@ class LineItemResponse(BaseModel):
         "account_type": "accountType",
     }
 
-    def __init__(
-        self, account_id=None, reporting_code=None, line_amount=None, account_type=None
-    ):
+    def __init__(self, account_id=None, reporting_code=None, line_amount=None, account_type=None):
         self._account_id = None
         self._reporting_code = None
         self._line_amount = None

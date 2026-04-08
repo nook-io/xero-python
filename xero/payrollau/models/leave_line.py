@@ -50,21 +50,15 @@ class LeaveLine(BaseModel):
         if entitlement_final_pay_payout_type is not None:
             self.entitlement_final_pay_payout_type = entitlement_final_pay_payout_type
         if employment_termination_payment_type is not None:
-            self.employment_termination_payment_type = (
-                employment_termination_payment_type
-            )
+            self.employment_termination_payment_type = employment_termination_payment_type
         if include_superannuation_guarantee_contribution is not None:
-            self.include_superannuation_guarantee_contribution = (
-                include_superannuation_guarantee_contribution
-            )
+            self.include_superannuation_guarantee_contribution = include_superannuation_guarantee_contribution
         if number_of_units is not None:
             self.number_of_units = number_of_units
         if annual_number_of_units is not None:
             self.annual_number_of_units = annual_number_of_units
         if full_time_number_of_units_per_period is not None:
-            self.full_time_number_of_units_per_period = (
-                full_time_number_of_units_per_period
-            )
+            self.full_time_number_of_units_per_period = full_time_number_of_units_per_period
 
     @property
     def leave_type_id(self):
@@ -103,12 +97,8 @@ class LeaveLine(BaseModel):
         return self._include_superannuation_guarantee_contribution
 
     @include_superannuation_guarantee_contribution.setter
-    def include_superannuation_guarantee_contribution(
-        self, include_superannuation_guarantee_contribution
-    ):
-        self._include_superannuation_guarantee_contribution = (
-            include_superannuation_guarantee_contribution
-        )
+    def include_superannuation_guarantee_contribution(self, include_superannuation_guarantee_contribution):
+        self._include_superannuation_guarantee_contribution = include_superannuation_guarantee_contribution
 
     @property
     def number_of_units(self):
@@ -131,9 +121,5 @@ class LeaveLine(BaseModel):
         return self._full_time_number_of_units_per_period
 
     @full_time_number_of_units_per_period.setter
-    def full_time_number_of_units_per_period(
-        self, full_time_number_of_units_per_period
-    ):
-        self._full_time_number_of_units_per_period = (
-            full_time_number_of_units_per_period
-        )
+    def full_time_number_of_units_per_period(self, full_time_number_of_units_per_period):
+        self._full_time_number_of_units_per_period = full_time_number_of_units_per_period

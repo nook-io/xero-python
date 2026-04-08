@@ -15,13 +15,7 @@ class BankStatementAccountingResponse(BaseModel):
         "statements": "statements",
     }
 
-    def __init__(
-        self,
-        bank_account_id=None,
-        bank_account_name=None,
-        bank_account_currency_code=None,
-        statements=None,
-    ):
+    def __init__(self, bank_account_id=None, bank_account_name=None, bank_account_currency_code=None, statements=None):
         self._bank_account_id = None
         self._bank_account_name = None
         self._bank_account_currency_code = None

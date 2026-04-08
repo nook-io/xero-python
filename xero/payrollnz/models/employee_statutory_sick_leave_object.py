@@ -7,11 +7,7 @@ class EmployeeStatutorySickLeaveObject(BaseModel):
         "problem": "Problem",
         "statutory_sick_leave": "EmployeeStatutorySickLeave",
     }
-    attribute_map = {
-        "pagination": "pagination",
-        "problem": "problem",
-        "statutory_sick_leave": "statutorySickLeave",
-    }
+    attribute_map = {"pagination": "pagination", "problem": "problem", "statutory_sick_leave": "statutorySickLeave"}
 
     def __init__(self, pagination=None, problem=None, statutory_sick_leave=None):
         self._pagination = None

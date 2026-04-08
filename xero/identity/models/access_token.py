@@ -17,14 +17,7 @@ class AccessToken(BaseModel):
         "refresh_token": "refresh_token",
     }
 
-    def __init__(
-        self,
-        id_token=None,
-        access_token=None,
-        expires_in=None,
-        token_type=None,
-        refresh_token=None,
-    ):
+    def __init__(self, id_token=None, access_token=None, expires_in=None, token_type=None, refresh_token=None):
         self._id_token = None
         self._access_token = None
         self._expires_in = None

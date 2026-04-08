@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class TrackingCategories(BaseModel):
-    openapi_types = {
-        "pagination": "Pagination",
-        "problem": "Problem",
-        "tracking_categories": "TrackingCategory",
-    }
-    attribute_map = {
-        "pagination": "pagination",
-        "problem": "problem",
-        "tracking_categories": "trackingCategories",
-    }
+    openapi_types = {"pagination": "Pagination", "problem": "Problem", "tracking_categories": "TrackingCategory"}
+    attribute_map = {"pagination": "pagination", "problem": "problem", "tracking_categories": "trackingCategories"}
 
     def __init__(self, pagination=None, problem=None, tracking_categories=None):
         self._pagination = None

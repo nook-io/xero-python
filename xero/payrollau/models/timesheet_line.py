@@ -15,13 +15,7 @@ class TimesheetLine(BaseModel):
         "updated_date_utc": "UpdatedDateUTC",
     }
 
-    def __init__(
-        self,
-        earnings_rate_id=None,
-        tracking_item_id=None,
-        number_of_units=None,
-        updated_date_utc=None,
-    ):
+    def __init__(self, earnings_rate_id=None, tracking_item_id=None, number_of_units=None, updated_date_utc=None):
         self._earnings_rate_id = None
         self._tracking_item_id = None
         self._number_of_units = None

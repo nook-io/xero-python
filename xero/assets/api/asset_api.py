@@ -27,9 +27,7 @@ class AssetApi:
 
     async def create_asset(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         asset: Annotated[Asset, Field(..., description="Fixed asset you are creating")],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -43,15 +41,11 @@ class AssetApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_asset_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.create_asset_with_http_info(
-            xero_tenant_id, asset, idempotency_key, **kwargs
-        )
+        return await self.create_asset_with_http_info(xero_tenant_id, asset, idempotency_key, **kwargs)
 
     async def create_asset_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         asset: Annotated[Asset, Field(..., description="Fixed asset you are creating")],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -75,10 +69,7 @@ class AssetApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_asset"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_asset")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -94,20 +85,14 @@ class AssetApi:
         _body_params = None
         if _params["asset"] is not None:
             _body_params = _params["asset"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "Asset",
-            "400": None,
-        }
+        _response_types_map = {"200": "Asset", "400": None}
         return await self.api_client.call_api(
             "/Assets",
             "POST",
@@ -130,9 +115,7 @@ class AssetApi:
 
     async def create_asset_type(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         asset_type: Annotated[AssetType, Field(..., description="Asset type to add")],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -146,15 +129,11 @@ class AssetApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_asset_type_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.create_asset_type_with_http_info(
-            xero_tenant_id, asset_type, idempotency_key, **kwargs
-        )
+        return await self.create_asset_type_with_http_info(xero_tenant_id, asset_type, idempotency_key, **kwargs)
 
     async def create_asset_type_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         asset_type: Annotated[AssetType, Field(..., description="Asset type to add")],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -178,10 +157,7 @@ class AssetApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_asset_type"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_asset_type")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -197,21 +173,14 @@ class AssetApi:
         _body_params = None
         if _params["asset_type"] is not None:
             _body_params = _params["asset_type"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "AssetType",
-            "400": None,
-            "409": None,
-        }
+        _response_types_map = {"200": "AssetType", "400": None, "409": None}
         return await self.api_client.call_api(
             "/AssetTypes",
             "POST",
@@ -234,12 +203,8 @@ class AssetApi:
 
     async def get_asset_by_id(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        id: Annotated[
-            StrictStr, Field(..., description="fixed asset id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        id: Annotated[StrictStr, Field(..., description="fixed asset id for single object")],
         **kwargs,
     ) -> Asset:
         kwargs["_return_http_data_only"] = True
@@ -250,12 +215,8 @@ class AssetApi:
 
     async def get_asset_by_id_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        id: Annotated[
-            StrictStr, Field(..., description="fixed asset id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        id: Annotated[StrictStr, Field(..., description="fixed asset id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -272,10 +233,7 @@ class AssetApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_asset_by_id"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_asset_by_id")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -289,14 +247,9 @@ class AssetApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "Asset",
-            "400": None,
-        }
+        _response_types_map = {"200": "Asset", "400": None}
         return await self.api_client.call_api(
             "/Assets/{id}",
             "GET",
@@ -318,11 +271,7 @@ class AssetApi:
         )
 
     async def get_asset_settings(
-        self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        **kwargs,
+        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
     ) -> Setting:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
@@ -331,11 +280,7 @@ class AssetApi:
         return await self.get_asset_settings_with_http_info(xero_tenant_id, **kwargs)
 
     async def get_asset_settings_with_http_info(
-        self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        **kwargs,
+        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
     ) -> ApiResponse:
         _params = locals()
         _all_params = ["xero_tenant_id"]
@@ -351,10 +296,7 @@ class AssetApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_asset_settings"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_asset_settings")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -366,14 +308,9 @@ class AssetApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "Setting",
-            "400": None,
-        }
+        _response_types_map = {"200": "Setting", "400": None}
         return await self.api_client.call_api(
             "/Settings",
             "GET",
@@ -395,11 +332,7 @@ class AssetApi:
         )
 
     async def get_asset_types(
-        self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        **kwargs,
+        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
     ) -> list[AssetType]:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
@@ -408,11 +341,7 @@ class AssetApi:
         return await self.get_asset_types_with_http_info(xero_tenant_id, **kwargs)
 
     async def get_asset_types_with_http_info(
-        self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        **kwargs,
+        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
     ) -> ApiResponse:
         _params = locals()
         _all_params = ["xero_tenant_id"]
@@ -428,10 +357,7 @@ class AssetApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_asset_types"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_asset_types")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -443,14 +369,9 @@ class AssetApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "list[AssetType]",
-            "400": None,
-        }
+        _response_types_map = {"200": "list[AssetType]", "400": None}
         return await self.api_client.call_api(
             "/AssetTypes",
             "GET",
@@ -473,15 +394,10 @@ class AssetApi:
 
     async def get_assets(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         status: Annotated[
             AssetStatusQueryParam,
-            Field(
-                ...,
-                description="Required when retrieving a collection of assets. See Asset Status Codes",
-            ),
+            Field(..., description="Required when retrieving a collection of assets. See Asset Status Codes"),
         ],
         page: Annotated[
             StrictInt | None,
@@ -501,9 +417,7 @@ class AssetApi:
                 description="Requests can be ordered by AssetType, AssetName, AssetNumber, PurchaseDate and PurchasePrice. If the asset status is DISPOSED it also allows DisposalDate and DisposalPrice."
             ),
         ] = None,
-        sort_direction: Annotated[
-            StrictStr | None, Field(description="ASC or DESC")
-        ] = None,
+        sort_direction: Annotated[StrictStr | None, Field(description="ASC or DESC")] = None,
         filter_by: Annotated[
             StrictStr | None,
             Field(
@@ -517,27 +431,15 @@ class AssetApi:
             message = "Error! Please call the get_assets_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.get_assets_with_http_info(
-            xero_tenant_id,
-            status,
-            page,
-            page_size,
-            order_by,
-            sort_direction,
-            filter_by,
-            **kwargs,
+            xero_tenant_id, status, page, page_size, order_by, sort_direction, filter_by, **kwargs
         )
 
     async def get_assets_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         status: Annotated[
             AssetStatusQueryParam,
-            Field(
-                ...,
-                description="Required when retrieving a collection of assets. See Asset Status Codes",
-            ),
+            Field(..., description="Required when retrieving a collection of assets. See Asset Status Codes"),
         ],
         page: Annotated[
             StrictInt | None,
@@ -557,9 +459,7 @@ class AssetApi:
                 description="Requests can be ordered by AssetType, AssetName, AssetNumber, PurchaseDate and PurchasePrice. If the asset status is DISPOSED it also allows DisposalDate and DisposalPrice."
             ),
         ] = None,
-        sort_direction: Annotated[
-            StrictStr | None, Field(description="ASC or DESC")
-        ] = None,
+        sort_direction: Annotated[StrictStr | None, Field(description="ASC or DESC")] = None,
         filter_by: Annotated[
             StrictStr | None,
             Field(
@@ -569,15 +469,7 @@ class AssetApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "status",
-            "page",
-            "page_size",
-            "order_by",
-            "sort_direction",
-            "filter_by",
-        ]
+        _all_params = ["xero_tenant_id", "status", "page", "page_size", "order_by", "sort_direction", "filter_by"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -590,10 +482,7 @@ class AssetApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_assets"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_assets")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -617,14 +506,9 @@ class AssetApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "Assets",
-            "400": None,
-        }
+        _response_types_map = {"200": "Assets", "400": None}
         return await self.api_client.call_api(
             "/Assets",
             "GET",

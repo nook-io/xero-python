@@ -18,12 +18,7 @@ class ReimbursementLine(BaseModel):
     }
 
     def __init__(
-        self,
-        reimbursement_type_id=None,
-        description=None,
-        amount=None,
-        rate_per_unit=None,
-        number_of_units=None,
+        self, reimbursement_type_id=None, description=None, amount=None, rate_per_unit=None, number_of_units=None
     ):
         self._reimbursement_type_id = None
         self._description = None

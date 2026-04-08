@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class BudgetLine(BaseModel):
-    openapi_types = {
-        "account_id": "str",
-        "account_code": "str",
-        "budget_balances": "list[BudgetBalance]",
-    }
-    attribute_map = {
-        "account_id": "AccountID",
-        "account_code": "AccountCode",
-        "budget_balances": "BudgetBalances",
-    }
+    openapi_types = {"account_id": "str", "account_code": "str", "budget_balances": "list[BudgetBalance]"}
+    attribute_map = {"account_id": "AccountID", "account_code": "AccountCode", "budget_balances": "BudgetBalances"}
 
     def __init__(self, account_id=None, account_code=None, budget_balances=None):
         self._account_id = None

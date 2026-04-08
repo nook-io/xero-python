@@ -20,13 +20,7 @@ class Attachment(BaseModel):
     }
 
     def __init__(
-        self,
-        attachment_id=None,
-        file_name=None,
-        url=None,
-        mime_type=None,
-        content_length=None,
-        include_online=None,
+        self, attachment_id=None, file_name=None, url=None, mime_type=None, content_length=None, include_online=None
     ):
         self._attachment_id = None
         self._file_name = None

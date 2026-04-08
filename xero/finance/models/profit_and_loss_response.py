@@ -17,14 +17,7 @@ class ProfitAndLossResponse(BaseModel):
         "expense": "expense",
     }
 
-    def __init__(
-        self,
-        start_date=None,
-        end_date=None,
-        net_profit_loss=None,
-        revenue=None,
-        expense=None,
-    ):
+    def __init__(self, start_date=None, end_date=None, net_profit_loss=None, revenue=None, expense=None):
         self._start_date = None
         self._end_date = None
         self._net_profit_loss = None

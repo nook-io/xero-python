@@ -19,15 +19,7 @@ class GetPrepaymentsResponse(BaseModel):
         "prepayments": "Prepayments",
     }
 
-    def __init__(
-        self,
-        id=None,
-        status=None,
-        provider_name=None,
-        date_time_utc=None,
-        page_info=None,
-        prepayments=None,
-    ):
+    def __init__(self, id=None, status=None, provider_name=None, date_time_utc=None, page_info=None, prepayments=None):
         self._id = None
         self._status = None
         self._provider_name = None

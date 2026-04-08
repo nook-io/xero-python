@@ -2,18 +2,8 @@ from xero.models import BaseModel
 
 
 class TaskCreateOrUpdate(BaseModel):
-    openapi_types = {
-        "name": "str",
-        "rate": "Amount",
-        "charge_type": "ChargeType",
-        "estimate_minutes": "int",
-    }
-    attribute_map = {
-        "name": "name",
-        "rate": "rate",
-        "charge_type": "chargeType",
-        "estimate_minutes": "estimateMinutes",
-    }
+    openapi_types = {"name": "str", "rate": "Amount", "charge_type": "ChargeType", "estimate_minutes": "int"}
+    attribute_map = {"name": "name", "rate": "rate", "charge_type": "chargeType", "estimate_minutes": "estimateMinutes"}
 
     def __init__(self, name=None, rate=None, charge_type=None, estimate_minutes=None):
         self._name = None

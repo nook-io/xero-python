@@ -69,16 +69,8 @@ class EmployeeLeaveType(BaseModel):
     @schedule_of_accrual.setter
     def schedule_of_accrual(self, schedule_of_accrual):
         if schedule_of_accrual is None:
-            raise ValueError(
-                "Invalid value for `schedule_of_accrual`, must not be `None`"
-            )
-        allowed_values = [
-            "BeginningOfCalendarYear",
-            "OnAnniversaryDate",
-            "EachPayPeriod",
-            "OnHourWorked",
-            "None",
-        ]
+            raise ValueError("Invalid value for `schedule_of_accrual`, must not be `None`")
+        allowed_values = ["BeginningOfCalendarYear", "OnAnniversaryDate", "EachPayPeriod", "OnHourWorked", "None"]
         if schedule_of_accrual:
             if schedule_of_accrual not in allowed_values:
                 raise ValueError(

@@ -2,18 +2,8 @@ from xero.models import BaseModel
 
 
 class Account(BaseModel):
-    openapi_types = {
-        "account_id": "str",
-        "type": "AccountType",
-        "code": "str",
-        "name": "str",
-    }
-    attribute_map = {
-        "account_id": "AccountID",
-        "type": "Type",
-        "code": "Code",
-        "name": "Name",
-    }
+    openapi_types = {"account_id": "str", "type": "AccountType", "code": "str", "name": "str"}
+    attribute_map = {"account_id": "AccountID", "type": "Type", "code": "Code", "name": "Name"}
 
     def __init__(self, account_id=None, type=None, code=None, name=None):
         self._account_id = None

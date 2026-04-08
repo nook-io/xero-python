@@ -96,9 +96,7 @@ class TaxBreakdownComponent(BaseModel):
         ]
         if type:
             if type not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `type` ({type}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `type` ({type}), must be one of {allowed_values}")
         self._type = type
 
     @property

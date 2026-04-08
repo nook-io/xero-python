@@ -7,11 +7,7 @@ class EmployeeStatutoryLeavesSummaries(BaseModel):
         "problem": "Problem",
         "statutory_leaves": "list[EmployeeStatutoryLeaveSummary]",
     }
-    attribute_map = {
-        "pagination": "pagination",
-        "problem": "problem",
-        "statutory_leaves": "statutoryLeaves",
-    }
+    attribute_map = {"pagination": "pagination", "problem": "problem", "statutory_leaves": "statutoryLeaves"}
 
     def __init__(self, pagination=None, problem=None, statutory_leaves=None):
         self._pagination = None

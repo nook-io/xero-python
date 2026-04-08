@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class ReimbursementLine(BaseModel):
-    openapi_types = {
-        "reimbursement_type_id": "str",
-        "description": "str",
-        "amount": "float",
-    }
-    attribute_map = {
-        "reimbursement_type_id": "reimbursementTypeID",
-        "description": "description",
-        "amount": "amount",
-    }
+    openapi_types = {"reimbursement_type_id": "str", "description": "str", "amount": "float"}
+    attribute_map = {"reimbursement_type_id": "reimbursementTypeID", "description": "description", "amount": "amount"}
 
     def __init__(self, reimbursement_type_id=None, description=None, amount=None):
         self._reimbursement_type_id = None

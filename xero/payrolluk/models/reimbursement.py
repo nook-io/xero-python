@@ -2,12 +2,7 @@ from xero.models import BaseModel
 
 
 class Reimbursement(BaseModel):
-    openapi_types = {
-        "reimbursement_id": "str",
-        "name": "str",
-        "account_id": "str",
-        "current_record": "bool",
-    }
+    openapi_types = {"reimbursement_id": "str", "name": "str", "account_id": "str", "current_record": "bool"}
     attribute_map = {
         "reimbursement_id": "reimbursementID",
         "name": "name",
@@ -15,9 +10,7 @@ class Reimbursement(BaseModel):
         "current_record": "currentRecord",
     }
 
-    def __init__(
-        self, reimbursement_id=None, name=None, account_id=None, current_record=None
-    ):
+    def __init__(self, reimbursement_id=None, name=None, account_id=None, current_record=None):
         self._reimbursement_id = None
         self._name = None
         self._account_id = None

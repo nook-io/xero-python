@@ -2,12 +2,7 @@ from xero.models import BaseModel
 
 
 class TrialBalanceMovement(BaseModel):
-    openapi_types = {
-        "debits": "float",
-        "credits": "float",
-        "movement": "TrialBalanceEntry",
-        "signed_movement": "float",
-    }
+    openapi_types = {"debits": "float", "credits": "float", "movement": "TrialBalanceEntry", "signed_movement": "float"}
     attribute_map = {
         "debits": "debits",
         "credits": "credits",

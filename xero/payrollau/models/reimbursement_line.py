@@ -2,12 +2,7 @@ from xero.models import BaseModel
 
 
 class ReimbursementLine(BaseModel):
-    openapi_types = {
-        "reimbursement_type_id": "str",
-        "amount": "float",
-        "description": "str",
-        "expense_account": "str",
-    }
+    openapi_types = {"reimbursement_type_id": "str", "amount": "float", "description": "str", "expense_account": "str"}
     attribute_map = {
         "reimbursement_type_id": "ReimbursementTypeID",
         "amount": "Amount",
@@ -15,13 +10,7 @@ class ReimbursementLine(BaseModel):
         "expense_account": "ExpenseAccount",
     }
 
-    def __init__(
-        self,
-        reimbursement_type_id=None,
-        amount=None,
-        description=None,
-        expense_account=None,
-    ):
+    def __init__(self, reimbursement_type_id=None, amount=None, description=None, expense_account=None):
         self._reimbursement_type_id = None
         self._amount = None
         self._description = None
@@ -59,10 +48,7 @@ class ReimbursementLine(BaseModel):
     @description.setter
     def description(self, description):
         if description is not None and len(description) > 50:
-            raise ValueError(
-                "Invalid value for `description`, "
-                "length must be less than or equal to `50`"
-            )
+            raise ValueError("Invalid value for `description`, length must be less than or equal to `50`")
         self._description = description
 
     @property

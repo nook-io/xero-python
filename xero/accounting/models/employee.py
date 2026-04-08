@@ -74,18 +74,10 @@ class Employee(BaseModel):
 
     @status.setter
     def status(self, status):
-        allowed_values = [
-            "ACTIVE",
-            "ARCHIVED",
-            "GDPRREQUEST",
-            "DELETED",
-            "None",
-        ]
+        allowed_values = ["ACTIVE", "ARCHIVED", "GDPRREQUEST", "DELETED", "None"]
         if status:
             if status not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `status` ({status}), must be one of {allowed_values}")
         self._status = status
 
     @property
@@ -95,10 +87,7 @@ class Employee(BaseModel):
     @first_name.setter
     def first_name(self, first_name):
         if first_name is not None and len(first_name) > 255:
-            raise ValueError(
-                "Invalid value for `first_name`, "
-                "length must be less than or equal to `255`"
-            )
+            raise ValueError("Invalid value for `first_name`, length must be less than or equal to `255`")
         self._first_name = first_name
 
     @property
@@ -108,10 +97,7 @@ class Employee(BaseModel):
     @last_name.setter
     def last_name(self, last_name):
         if last_name is not None and len(last_name) > 255:
-            raise ValueError(
-                "Invalid value for `last_name`, "
-                "length must be less than or equal to `255`"
-            )
+            raise ValueError("Invalid value for `last_name`, length must be less than or equal to `255`")
         self._last_name = last_name
 
     @property

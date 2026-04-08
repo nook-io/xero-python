@@ -8,12 +8,7 @@ class BalanceSheetResponse(BaseModel):
         "liability": "BalanceSheetAccountGroup",
         "equity": "BalanceSheetAccountGroup",
     }
-    attribute_map = {
-        "balance_date": "balanceDate",
-        "asset": "asset",
-        "liability": "liability",
-        "equity": "equity",
-    }
+    attribute_map = {"balance_date": "balanceDate", "asset": "asset", "liability": "liability", "equity": "equity"}
 
     def __init__(self, balance_date=None, asset=None, liability=None, equity=None):
         self._balance_date = None

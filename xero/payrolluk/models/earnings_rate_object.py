@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class EarningsRateObject(BaseModel):
-    openapi_types = {
-        "pagination": "Pagination",
-        "problem": "Problem",
-        "earnings_rate": "EarningsRate",
-    }
-    attribute_map = {
-        "pagination": "pagination",
-        "problem": "problem",
-        "earnings_rate": "earningsRate",
-    }
+    openapi_types = {"pagination": "Pagination", "problem": "Problem", "earnings_rate": "EarningsRate"}
+    attribute_map = {"pagination": "pagination", "problem": "problem", "earnings_rate": "earningsRate"}
 
     def __init__(self, pagination=None, problem=None, earnings_rate=None):
         self._pagination = None

@@ -2,13 +2,7 @@ from xero.models import BaseModel
 
 
 class User(BaseModel):
-    openapi_types = {
-        "id": "str",
-        "name": "str",
-        "first_name": "str",
-        "last_name": "str",
-        "full_name": "str",
-    }
+    openapi_types = {"id": "str", "name": "str", "first_name": "str", "last_name": "str", "full_name": "str"}
     attribute_map = {
         "id": "Id",
         "name": "Name",
@@ -17,9 +11,7 @@ class User(BaseModel):
         "full_name": "FullName",
     }
 
-    def __init__(
-        self, id=None, name=None, first_name=None, last_name=None, full_name=None
-    ):
+    def __init__(self, id=None, name=None, first_name=None, last_name=None, full_name=None):
         self._id = None
         self._name = None
         self._first_name = None

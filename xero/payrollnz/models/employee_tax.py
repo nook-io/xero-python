@@ -84,9 +84,7 @@ class EmployeeTax(BaseModel):
         if has_special_student_loan_rate is not None:
             self.has_special_student_loan_rate = has_special_student_loan_rate
         if special_student_loan_rate_percentage is not None:
-            self.special_student_loan_rate_percentage = (
-                special_student_loan_rate_percentage
-            )
+            self.special_student_loan_rate_percentage = special_student_loan_rate_percentage
         if is_eligible_for_kiwi_saver is not None:
             self.is_eligible_for_kiwi_saver = is_eligible_for_kiwi_saver
         if esct_rate_percentage is not None:
@@ -94,26 +92,17 @@ class EmployeeTax(BaseModel):
         if kiwi_saver_contributions is not None:
             self.kiwi_saver_contributions = kiwi_saver_contributions
         if kiwi_saver_employee_contribution_rate_percentage is not None:
-            self.kiwi_saver_employee_contribution_rate_percentage = (
-                kiwi_saver_employee_contribution_rate_percentage
-            )
+            self.kiwi_saver_employee_contribution_rate_percentage = kiwi_saver_employee_contribution_rate_percentage
         if kiwi_saver_employer_contribution_rate_percentage is not None:
-            self.kiwi_saver_employer_contribution_rate_percentage = (
-                kiwi_saver_employer_contribution_rate_percentage
-            )
-        if (
-            kiwi_saver_employer_salary_sacrifice_contribution_rate_percentage
-            is not None
-        ):
+            self.kiwi_saver_employer_contribution_rate_percentage = kiwi_saver_employer_contribution_rate_percentage
+        if kiwi_saver_employer_salary_sacrifice_contribution_rate_percentage is not None:
             self.kiwi_saver_employer_salary_sacrifice_contribution_rate_percentage = (
                 kiwi_saver_employer_salary_sacrifice_contribution_rate_percentage
             )
         if kiwi_saver_opt_out_date is not None:
             self.kiwi_saver_opt_out_date = kiwi_saver_opt_out_date
         if kiwi_saver_contribution_holiday_end_date is not None:
-            self.kiwi_saver_contribution_holiday_end_date = (
-                kiwi_saver_contribution_holiday_end_date
-            )
+            self.kiwi_saver_contribution_holiday_end_date = kiwi_saver_contribution_holiday_end_date
         if has_student_loan_balance is not None:
             self.has_student_loan_balance = has_student_loan_balance
         if student_loan_balance is not None:
@@ -158,12 +147,8 @@ class EmployeeTax(BaseModel):
         return self._special_student_loan_rate_percentage
 
     @special_student_loan_rate_percentage.setter
-    def special_student_loan_rate_percentage(
-        self, special_student_loan_rate_percentage
-    ):
-        self._special_student_loan_rate_percentage = (
-            special_student_loan_rate_percentage
-        )
+    def special_student_loan_rate_percentage(self, special_student_loan_rate_percentage):
+        self._special_student_loan_rate_percentage = special_student_loan_rate_percentage
 
     @property
     def is_eligible_for_kiwi_saver(self):
@@ -207,24 +192,16 @@ class EmployeeTax(BaseModel):
         return self._kiwi_saver_employee_contribution_rate_percentage
 
     @kiwi_saver_employee_contribution_rate_percentage.setter
-    def kiwi_saver_employee_contribution_rate_percentage(
-        self, kiwi_saver_employee_contribution_rate_percentage
-    ):
-        self._kiwi_saver_employee_contribution_rate_percentage = (
-            kiwi_saver_employee_contribution_rate_percentage
-        )
+    def kiwi_saver_employee_contribution_rate_percentage(self, kiwi_saver_employee_contribution_rate_percentage):
+        self._kiwi_saver_employee_contribution_rate_percentage = kiwi_saver_employee_contribution_rate_percentage
 
     @property
     def kiwi_saver_employer_contribution_rate_percentage(self):
         return self._kiwi_saver_employer_contribution_rate_percentage
 
     @kiwi_saver_employer_contribution_rate_percentage.setter
-    def kiwi_saver_employer_contribution_rate_percentage(
-        self, kiwi_saver_employer_contribution_rate_percentage
-    ):
-        self._kiwi_saver_employer_contribution_rate_percentage = (
-            kiwi_saver_employer_contribution_rate_percentage
-        )
+    def kiwi_saver_employer_contribution_rate_percentage(self, kiwi_saver_employer_contribution_rate_percentage):
+        self._kiwi_saver_employer_contribution_rate_percentage = kiwi_saver_employer_contribution_rate_percentage
 
     @property
     def kiwi_saver_employer_salary_sacrifice_contribution_rate_percentage(self):
@@ -251,12 +228,8 @@ class EmployeeTax(BaseModel):
         return self._kiwi_saver_contribution_holiday_end_date
 
     @kiwi_saver_contribution_holiday_end_date.setter
-    def kiwi_saver_contribution_holiday_end_date(
-        self, kiwi_saver_contribution_holiday_end_date
-    ):
-        self._kiwi_saver_contribution_holiday_end_date = (
-            kiwi_saver_contribution_holiday_end_date
-        )
+    def kiwi_saver_contribution_holiday_end_date(self, kiwi_saver_contribution_holiday_end_date):
+        self._kiwi_saver_contribution_holiday_end_date = kiwi_saver_contribution_holiday_end_date
 
     @property
     def has_student_loan_balance(self):

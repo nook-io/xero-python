@@ -2,18 +2,8 @@ from xero.models import BaseModel
 
 
 class InlineObject(BaseModel):
-    openapi_types = {
-        "body": "str",
-        "name": "str",
-        "filename": "str",
-        "mime_type": "str",
-    }
-    attribute_map = {
-        "body": "body",
-        "name": "name",
-        "filename": "filename",
-        "mime_type": "mimeType",
-    }
+    openapi_types = {"body": "str", "name": "str", "filename": "str", "mime_type": "str"}
+    attribute_map = {"body": "body", "name": "name", "filename": "filename", "mime_type": "mimeType"}
 
     def __init__(self, body=None, name=None, filename=None, mime_type=None):
         self._body = None

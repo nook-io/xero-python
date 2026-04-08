@@ -119,17 +119,10 @@ class SubscriptionItem(BaseModel):
     def status(self, status):
         if status is None:
             raise ValueError("Invalid value for `status`, must not be `None`")
-        allowed_values = [
-            "ACTIVE",
-            "CANCELED",
-            "PENDING_ACTIVATION",
-            "None",
-        ]
+        allowed_values = ["ACTIVE", "CANCELED", "PENDING_ACTIVATION", "None"]
         if status:
             if status not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `status` ({status}), must be one of {allowed_values}")
         self._status = status
 
     @property

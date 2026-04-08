@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class EmployeeLeaveSetupObject(BaseModel):
-    openapi_types = {
-        "pagination": "Pagination",
-        "problem": "Problem",
-        "leave_setup": "EmployeeLeaveSetup",
-    }
-    attribute_map = {
-        "pagination": "pagination",
-        "problem": "problem",
-        "leave_setup": "leaveSetup",
-    }
+    openapi_types = {"pagination": "Pagination", "problem": "Problem", "leave_setup": "EmployeeLeaveSetup"}
+    attribute_map = {"pagination": "pagination", "problem": "problem", "leave_setup": "leaveSetup"}
 
     def __init__(self, pagination=None, problem=None, leave_setup=None):
         self._pagination = None

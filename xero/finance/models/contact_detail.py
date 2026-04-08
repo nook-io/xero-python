@@ -19,15 +19,7 @@ class ContactDetail(BaseModel):
         "account_codes": "accountCodes",
     }
 
-    def __init__(
-        self,
-        contact_id=None,
-        name=None,
-        total=None,
-        total_detail=None,
-        total_other=None,
-        account_codes=None,
-    ):
+    def __init__(self, contact_id=None, name=None, total=None, total_detail=None, total_other=None, account_codes=None):
         self._contact_id = None
         self._name = None
         self._total = None

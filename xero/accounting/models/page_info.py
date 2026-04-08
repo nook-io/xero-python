@@ -2,18 +2,8 @@ from xero.models import BaseModel
 
 
 class PageInfo(BaseModel):
-    openapi_types = {
-        "page": "int",
-        "page_size": "int",
-        "total_pages": "int",
-        "total_rows": "int",
-    }
-    attribute_map = {
-        "page": "Page",
-        "page_size": "PageSize",
-        "total_pages": "TotalPages",
-        "total_rows": "TotalRows",
-    }
+    openapi_types = {"page": "int", "page_size": "int", "total_pages": "int", "total_rows": "int"}
+    attribute_map = {"page": "Page", "page_size": "PageSize", "total_pages": "TotalPages", "total_rows": "TotalRows"}
 
     def __init__(self, page=None, page_size=None, total_pages=None, total_rows=None):
         self._page = None

@@ -86,9 +86,7 @@ class Benefit(BaseModel):
         if subject_to_tax is not None:
             self.subject_to_tax = subject_to_tax
         if is_calculating_on_qualifying_earnings is not None:
-            self.is_calculating_on_qualifying_earnings = (
-                is_calculating_on_qualifying_earnings
-            )
+            self.is_calculating_on_qualifying_earnings = is_calculating_on_qualifying_earnings
         if show_balance_to_employee is not None:
             self.show_balance_to_employee = show_balance_to_employee
 
@@ -121,9 +119,7 @@ class Benefit(BaseModel):
         allowed_values = ["StakeholderPension", "Other", "None"]
         if category:
             if category not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `category` ({category}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `category` ({category}), must be one of {allowed_values}")
         self._category = category
 
     @property
@@ -133,9 +129,7 @@ class Benefit(BaseModel):
     @liability_account_id.setter
     def liability_account_id(self, liability_account_id):
         if liability_account_id is None:
-            raise ValueError(
-                "Invalid value for `liability_account_id`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `liability_account_id`, must not be `None`")
         self._liability_account_id = liability_account_id
 
     @property
@@ -145,9 +139,7 @@ class Benefit(BaseModel):
     @expense_account_id.setter
     def expense_account_id(self, expense_account_id):
         if expense_account_id is None:
-            raise ValueError(
-                "Invalid value for `expense_account_id`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `expense_account_id`, must not be `None`")
         self._expense_account_id = expense_account_id
 
     @property
@@ -221,12 +213,8 @@ class Benefit(BaseModel):
         return self._is_calculating_on_qualifying_earnings
 
     @is_calculating_on_qualifying_earnings.setter
-    def is_calculating_on_qualifying_earnings(
-        self, is_calculating_on_qualifying_earnings
-    ):
-        self._is_calculating_on_qualifying_earnings = (
-            is_calculating_on_qualifying_earnings
-        )
+    def is_calculating_on_qualifying_earnings(self, is_calculating_on_qualifying_earnings):
+        self._is_calculating_on_qualifying_earnings = is_calculating_on_qualifying_earnings
 
     @property
     def show_balance_to_employee(self):

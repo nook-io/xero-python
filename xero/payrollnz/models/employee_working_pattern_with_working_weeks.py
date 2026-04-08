@@ -2,20 +2,14 @@ from xero.models import BaseModel
 
 
 class EmployeeWorkingPatternWithWorkingWeeks(BaseModel):
-    openapi_types = {
-        "payee_working_pattern_id": "str",
-        "effective_from": "date",
-        "working_weeks": "list[WorkingWeek]",
-    }
+    openapi_types = {"payee_working_pattern_id": "str", "effective_from": "date", "working_weeks": "list[WorkingWeek]"}
     attribute_map = {
         "payee_working_pattern_id": "payeeWorkingPatternID",
         "effective_from": "effectiveFrom",
         "working_weeks": "workingWeeks",
     }
 
-    def __init__(
-        self, payee_working_pattern_id=None, effective_from=None, working_weeks=None
-    ):
+    def __init__(self, payee_working_pattern_id=None, effective_from=None, working_weeks=None):
         self._payee_working_pattern_id = None
         self._effective_from = None
         self._working_weeks = None
@@ -32,9 +26,7 @@ class EmployeeWorkingPatternWithWorkingWeeks(BaseModel):
     @payee_working_pattern_id.setter
     def payee_working_pattern_id(self, payee_working_pattern_id):
         if payee_working_pattern_id is None:
-            raise ValueError(
-                "Invalid value for `payee_working_pattern_id`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `payee_working_pattern_id`, must not be `None`")
         self._payee_working_pattern_id = payee_working_pattern_id
 
     @property

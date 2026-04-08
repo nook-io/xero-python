@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class DeductionObject(BaseModel):
-    openapi_types = {
-        "pagination": "Pagination",
-        "problem": "Problem",
-        "deduction": "Deduction",
-    }
-    attribute_map = {
-        "pagination": "pagination",
-        "problem": "problem",
-        "deduction": "deduction",
-    }
+    openapi_types = {"pagination": "Pagination", "problem": "Problem", "deduction": "Deduction"}
+    attribute_map = {"pagination": "pagination", "problem": "problem", "deduction": "deduction"}
 
     def __init__(self, pagination=None, problem=None, deduction=None):
         self._pagination = None

@@ -113,29 +113,19 @@ class ApiClient:
             header_params["Cookie"] = self.cookie
         if header_params:
             header_params = self.sanitize_for_serialization(header_params)
-            header_params = dict(
-                self.parameters_to_tuples(header_params, collection_formats)
-            )
+            header_params = dict(self.parameters_to_tuples(header_params, collection_formats))
         if path_params:
             path_params = self.sanitize_for_serialization(path_params)
             path_params = self.parameters_to_tuples(path_params, collection_formats)
             for k, v in path_params:
-                resource_path = resource_path.replace(
-                    f"{{{k}}}", quote(str(v), safe=config.safe_chars_for_path_param)
-                )
+                resource_path = resource_path.replace(f"{{{k}}}", quote(str(v), safe=config.safe_chars_for_path_param))
         if post_params or files:
             post_params = post_params or []
             post_params = self.sanitize_for_serialization(post_params)
             post_params = self.parameters_to_tuples(post_params, collection_formats)
             post_params.extend(self.files_parameters(files))
         await self.update_params_for_auth(
-            header_params,
-            query_params,
-            auth_settings,
-            resource_path,
-            method,
-            body,
-            request_auth=_request_auth,
+            header_params, query_params, auth_settings, resource_path, method, body, request_auth=_request_auth
         )
         if body:
             body = self.sanitize_for_serialization(body)
@@ -163,14 +153,8 @@ class ApiClient:
         response_type = None
         if response_types_map:
             response_type = response_types_map.get(str(response_data.status), None)
-            if (
-                not response_type
-                and isinstance(response_data.status, int)
-                and 100 <= response_data.status <= 599
-            ):
-                response_type = response_types_map.get(
-                    str(response_data.status)[0] + "XX", None
-                )
+            if not response_type and isinstance(response_data.status, int) and 100 <= response_data.status <= 599:
+                response_type = response_types_map.get(str(response_data.status)[0] + "XX", None)
         if response_type != "bytearray":
             match = None
             content_type = response_data.getheader("content-type")
@@ -181,9 +165,7 @@ class ApiClient:
         if response_type == "bytearray":
             return_data = response_data.data
         elif response_type:
-            return_data = self.deserialize(
-                response_data, response_type, response_model_finder
-            )
+            return_data = self.deserialize(response_data, response_type, response_model_finder)
         else:
             return_data = None
         if _return_http_data_only:
@@ -228,9 +210,7 @@ class ApiClient:
                 obj_dict = obj.to_dict()
             else:
                 obj_dict = obj.__dict__
-        return {
-            key: self.sanitize_for_serialization(val) for key, val in obj_dict.items()
-        }
+        return {key: self.sanitize_for_serialization(val) for key, val in obj_dict.items()}
 
     def deserialize(self, response, response_type, response_model_finder):
         if response_type == "file":
@@ -356,10 +336,7 @@ class ApiClient:
                 _request_timeout=_request_timeout,
                 body=body,
             )
-        raise ApiValueError(
-            "http method must be `GET`, `HEAD`, `OPTIONS`,"
-            " `POST`, `PATCH`, `PUT` or `DELETE`."
-        )
+        raise ApiValueError("http method must be `GET`, `HEAD`, `OPTIONS`, `POST`, `PATCH`, `PUT` or `DELETE`.")
 
     def parameters_to_tuples(self, params, collection_formats):
         new_params = []
@@ -408,9 +385,7 @@ class ApiClient:
                         delimiter = "|"
                     else:
                         delimiter = ","
-                    new_params.append(
-                        (k, delimiter.join(quote(str(value)) for value in v))
-                    )
+                    new_params.append((k, delimiter.join(quote(str(value)) for value in v)))
             else:
                 new_params.append((k, quote(str(v))))
         return "&".join(["=".join(map(str, item)) for item in new_params])
@@ -426,10 +401,7 @@ class ApiClient:
                     with open(n, "rb") as f:
                         filename = os.path.basename(f.name)
                         filedata = f.read()
-                        mimetype = (
-                            mimetypes.guess_type(filename)[0]
-                            or "application/octet-stream"
-                        )
+                        mimetype = mimetypes.guess_type(filename)[0] or "application/octet-stream"
                         params.append((k, (filename, filedata, mimetype)))
         return params
 
@@ -450,21 +422,12 @@ class ApiClient:
         return content_types[0]
 
     async def update_params_for_auth(
-        self,
-        headers,
-        queries,
-        auth_settings,
-        resource_path,
-        method,
-        body,
-        request_auth=None,
+        self, headers, queries, auth_settings, resource_path, method, body, request_auth=None
     ):
         if not auth_settings:
             return
         if request_auth:
-            self._apply_auth_params(
-                headers, queries, resource_path, method, body, request_auth
-            )
+            self._apply_auth_params(headers, queries, resource_path, method, body, request_auth)
             return
         for auth in auth_settings:
             auth_setting = await self.configuration.auth_settings()
@@ -472,13 +435,9 @@ class ApiClient:
                 auth_setting = auth_setting.get(auth)
                 if callable(auth_setting):
                     auth_setting = await auth_setting(self)
-                self._apply_auth_params(
-                    headers, queries, resource_path, method, body, auth_setting
-                )
+                self._apply_auth_params(headers, queries, resource_path, method, body, auth_setting)
 
-    def _apply_auth_params(
-        self, headers, queries, resource_path, method, body, auth_setting
-    ):
+    def _apply_auth_params(self, headers, queries, resource_path, method, body, auth_setting):
         if auth_setting["in"] == "cookie":
             headers["Cookie"] = auth_setting["value"]
         elif auth_setting["in"] == "header":
@@ -495,9 +454,7 @@ class ApiClient:
         os.remove(path)
         content_disposition = response.getheader("Content-Disposition")
         if content_disposition:
-            filename = re.search(
-                r'filename=[\'"]?([^\'"\s]+)[\'"]?', content_disposition
-            ).group(1)
+            filename = re.search(r'filename=[\'"]?([^\'"\s]+)[\'"]?', content_disposition).group(1)
             path = os.path.join(os.path.dirname(path), filename)
         with open(path, "wb") as f:
             f.write(response.data)
@@ -505,16 +462,12 @@ class ApiClient:
 
     def get_oauth2_token(self):
         if not self._oauth2_token_getter:
-            raise OAuth2TokenGetterError(
-                f"Invalid oauth2_token_getter={self._oauth2_token_getter!r} function"
-            )
+            raise OAuth2TokenGetterError(f"Invalid oauth2_token_getter={self._oauth2_token_getter!r} function")
         return self._oauth2_token_getter()
 
     def set_oauth2_token(self, token):
         if not self._oauth2_token_saver:
-            raise OAuth2TokenSaverError(
-                f"Invalid oauth2_token_saver={self._oauth2_token_saver!r} function"
-            )
+            raise OAuth2TokenSaverError(f"Invalid oauth2_token_saver={self._oauth2_token_saver!r} function")
         self._oauth2_token_saver(token)
 
     async def refresh_oauth2_token(self):
@@ -533,9 +486,7 @@ class ApiClient:
 
     async def get_client_credentials_token(self, app_store_billing=False):
         oauth2_token = self.configuration.oauth2_token
-        if await oauth2_token.get_client_credentials_access_token(
-            self, app_store_billing
-        ):
+        if await oauth2_token.get_client_credentials_access_token(self, app_store_billing):
             return self.get_oauth2_token()
         return None
 

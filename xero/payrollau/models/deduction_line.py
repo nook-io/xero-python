@@ -18,12 +18,7 @@ class DeductionLine(BaseModel):
     }
 
     def __init__(
-        self,
-        deduction_type_id=None,
-        calculation_type=None,
-        amount=None,
-        percentage=None,
-        number_of_units=None,
+        self, deduction_type_id=None, calculation_type=None, amount=None, percentage=None, number_of_units=None
     ):
         self._deduction_type_id = None
         self._calculation_type = None
@@ -48,9 +43,7 @@ class DeductionLine(BaseModel):
     @deduction_type_id.setter
     def deduction_type_id(self, deduction_type_id):
         if deduction_type_id is None:
-            raise ValueError(
-                "Invalid value for `deduction_type_id`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `deduction_type_id`, must not be `None`")
         self._deduction_type_id = deduction_type_id
 
     @property

@@ -15,13 +15,7 @@ class LeaveEarningsLine(BaseModel):
         "pay_out_type": "PayOutType",
     }
 
-    def __init__(
-        self,
-        earnings_rate_id=None,
-        rate_per_unit=None,
-        number_of_units=None,
-        pay_out_type=None,
-    ):
+    def __init__(self, earnings_rate_id=None, rate_per_unit=None, number_of_units=None, pay_out_type=None):
         self._earnings_rate_id = None
         self._rate_per_unit = None
         self._number_of_units = None

@@ -17,14 +17,7 @@ class DeductionLine(BaseModel):
         "percentage": "percentage",
     }
 
-    def __init__(
-        self,
-        deduction_type_id=None,
-        display_name=None,
-        amount=None,
-        subject_to_tax=None,
-        percentage=None,
-    ):
+    def __init__(self, deduction_type_id=None, display_name=None, amount=None, subject_to_tax=None, percentage=None):
         self._deduction_type_id = None
         self._display_name = None
         self._amount = None

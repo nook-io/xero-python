@@ -179,9 +179,7 @@ class Employee(BaseModel):
         if is_authorised_to_approve_leave is not None:
             self.is_authorised_to_approve_leave = is_authorised_to_approve_leave
         if is_authorised_to_approve_timesheets is not None:
-            self.is_authorised_to_approve_timesheets = (
-                is_authorised_to_approve_timesheets
-            )
+            self.is_authorised_to_approve_timesheets = is_authorised_to_approve_timesheets
         if job_title is not None:
             self.job_title = job_title
         if classification is not None:
@@ -306,9 +304,7 @@ class Employee(BaseModel):
         allowed_values = ["N", "M", "F", "I", "None"]
         if gender:
             if gender not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `gender` ({gender}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `gender` ({gender}), must be one of {allowed_values}")
         self._gender = gender
 
     @property

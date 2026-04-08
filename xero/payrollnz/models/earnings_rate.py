@@ -126,17 +126,10 @@ class EarningsRate(BaseModel):
     def rate_type(self, rate_type):
         if rate_type is None:
             raise ValueError("Invalid value for `rate_type`, must not be `None`")
-        allowed_values = [
-            "RatePerUnit",
-            "MultipleOfOrdinaryEarningsRate",
-            "FixedAmount",
-            "None",
-        ]
+        allowed_values = ["RatePerUnit", "MultipleOfOrdinaryEarningsRate", "FixedAmount", "None"]
         if rate_type:
             if rate_type not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `rate_type` ({rate_type}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `rate_type` ({rate_type}), must be one of {allowed_values}")
         self._rate_type = rate_type
 
     @property
@@ -164,9 +157,7 @@ class EarningsRate(BaseModel):
     @expense_account_id.setter
     def expense_account_id(self, expense_account_id):
         if expense_account_id is None:
-            raise ValueError(
-                "Invalid value for `expense_account_id`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `expense_account_id`, must not be `None`")
         self._expense_account_id = expense_account_id
 
     @property

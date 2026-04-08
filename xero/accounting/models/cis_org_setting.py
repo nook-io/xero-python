@@ -2,20 +2,14 @@ from xero.models import BaseModel
 
 
 class CISOrgSetting(BaseModel):
-    openapi_types = {
-        "cis_contractor_enabled": "bool",
-        "cis_sub_contractor_enabled": "bool",
-        "rate": "float",
-    }
+    openapi_types = {"cis_contractor_enabled": "bool", "cis_sub_contractor_enabled": "bool", "rate": "float"}
     attribute_map = {
         "cis_contractor_enabled": "CISContractorEnabled",
         "cis_sub_contractor_enabled": "CISSubContractorEnabled",
         "rate": "Rate",
     }
 
-    def __init__(
-        self, cis_contractor_enabled=None, cis_sub_contractor_enabled=None, rate=None
-    ):
+    def __init__(self, cis_contractor_enabled=None, cis_sub_contractor_enabled=None, rate=None):
         self._cis_contractor_enabled = None
         self._cis_sub_contractor_enabled = None
         self._rate = None

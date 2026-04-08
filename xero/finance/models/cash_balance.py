@@ -2,23 +2,14 @@ from xero.models import BaseModel
 
 
 class CashBalance(BaseModel):
-    openapi_types = {
-        "opening_cash_balance": "float",
-        "closing_cash_balance": "float",
-        "net_cash_movement": "float",
-    }
+    openapi_types = {"opening_cash_balance": "float", "closing_cash_balance": "float", "net_cash_movement": "float"}
     attribute_map = {
         "opening_cash_balance": "openingCashBalance",
         "closing_cash_balance": "closingCashBalance",
         "net_cash_movement": "netCashMovement",
     }
 
-    def __init__(
-        self,
-        opening_cash_balance=None,
-        closing_cash_balance=None,
-        net_cash_movement=None,
-    ):
+    def __init__(self, opening_cash_balance=None, closing_cash_balance=None, net_cash_movement=None):
         self._opening_cash_balance = None
         self._closing_cash_balance = None
         self._net_cash_movement = None

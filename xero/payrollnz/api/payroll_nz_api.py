@@ -91,12 +91,8 @@ class PayrollNzApi:
 
     async def approve_timesheet(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        timesheet_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the timesheet")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -109,18 +105,12 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the approve_timesheet_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.approve_timesheet_with_http_info(
-            xero_tenant_id, timesheet_id, idempotency_key, **kwargs
-        )
+        return await self.approve_timesheet_with_http_info(xero_tenant_id, timesheet_id, idempotency_key, **kwargs)
 
     async def approve_timesheet_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        timesheet_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the timesheet")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -143,10 +133,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method approve_timesheet"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method approve_timesheet")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -162,14 +149,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "TimesheetObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "TimesheetObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Timesheets/{TimesheetID}/Approve",
             "POST",
@@ -192,9 +174,7 @@ class PayrollNzApi:
 
     async def create_deduction(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         deduction: Deduction,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -208,15 +188,11 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_deduction_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.create_deduction_with_http_info(
-            xero_tenant_id, deduction, idempotency_key, **kwargs
-        )
+        return await self.create_deduction_with_http_info(xero_tenant_id, deduction, idempotency_key, **kwargs)
 
     async def create_deduction_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         deduction: Deduction,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -240,10 +216,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_deduction"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_deduction")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -259,20 +232,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["deduction"] is not None:
             _body_params = _params["deduction"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "DeductionObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "DeductionObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Deductions",
             "POST",
@@ -295,9 +262,7 @@ class PayrollNzApi:
 
     async def create_earnings_rate(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         earnings_rate: EarningsRate,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -311,15 +276,11 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_earnings_rate_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.create_earnings_rate_with_http_info(
-            xero_tenant_id, earnings_rate, idempotency_key, **kwargs
-        )
+        return await self.create_earnings_rate_with_http_info(xero_tenant_id, earnings_rate, idempotency_key, **kwargs)
 
     async def create_earnings_rate_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         earnings_rate: EarningsRate,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -343,10 +304,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_earnings_rate"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_earnings_rate")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -362,20 +320,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["earnings_rate"] is not None:
             _body_params = _params["earnings_rate"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EarningsRateObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "EarningsRateObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/EarningsRates",
             "POST",
@@ -398,9 +350,7 @@ class PayrollNzApi:
 
     async def create_employee(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         employee: Employee,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -414,15 +364,11 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_employee_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.create_employee_with_http_info(
-            xero_tenant_id, employee, idempotency_key, **kwargs
-        )
+        return await self.create_employee_with_http_info(xero_tenant_id, employee, idempotency_key, **kwargs)
 
     async def create_employee_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         employee: Employee,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -446,10 +392,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_employee"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_employee")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -465,20 +408,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["employee"] is not None:
             _body_params = _params["employee"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeeObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "EmployeeObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees",
             "POST",
@@ -501,12 +438,8 @@ class PayrollNzApi:
 
     async def create_employee_earnings_template(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         earnings_template: EarningsTemplate,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -526,12 +459,8 @@ class PayrollNzApi:
 
     async def create_employee_earnings_template_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         earnings_template: EarningsTemplate,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -542,12 +471,7 @@ class PayrollNzApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "employee_id",
-            "earnings_template",
-            "idempotency_key",
-        ]
+        _all_params = ["xero_tenant_id", "employee_id", "earnings_template", "idempotency_key"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -561,8 +485,7 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_employee_earnings_template"
+                    f"Got an unexpected keyword argument '{_key}' to method create_employee_earnings_template"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -581,20 +504,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["earnings_template"] is not None:
             _body_params = _params["earnings_template"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EarningsTemplateObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "EarningsTemplateObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/PayTemplates/Earnings",
             "POST",
@@ -617,12 +534,8 @@ class PayrollNzApi:
 
     async def create_employee_leave(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         employee_leave: EmployeeLeave,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -642,12 +555,8 @@ class PayrollNzApi:
 
     async def create_employee_leave_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         employee_leave: EmployeeLeave,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -658,12 +567,7 @@ class PayrollNzApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "employee_id",
-            "employee_leave",
-            "idempotency_key",
-        ]
+        _all_params = ["xero_tenant_id", "employee_id", "employee_leave", "idempotency_key"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -676,10 +580,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_employee_leave"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_employee_leave")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -697,20 +598,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["employee_leave"] is not None:
             _body_params = _params["employee_leave"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeeLeaveObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "EmployeeLeaveObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/Leave",
             "POST",
@@ -733,12 +628,8 @@ class PayrollNzApi:
 
     async def create_employee_leave_setup(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         employee_leave_setup: EmployeeLeaveSetup,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -758,12 +649,8 @@ class PayrollNzApi:
 
     async def create_employee_leave_setup_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         employee_leave_setup: EmployeeLeaveSetup,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -774,12 +661,7 @@ class PayrollNzApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "employee_id",
-            "employee_leave_setup",
-            "idempotency_key",
-        ]
+        _all_params = ["xero_tenant_id", "employee_id", "employee_leave_setup", "idempotency_key"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -792,10 +674,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_employee_leave_setup"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_employee_leave_setup")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -813,20 +692,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["employee_leave_setup"] is not None:
             _body_params = _params["employee_leave_setup"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeeLeaveSetupObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "EmployeeLeaveSetupObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/LeaveSetup",
             "POST",
@@ -849,12 +722,8 @@ class PayrollNzApi:
 
     async def create_employee_leave_type(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         employee_leave_type: EmployeeLeaveType,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -874,12 +743,8 @@ class PayrollNzApi:
 
     async def create_employee_leave_type_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         employee_leave_type: EmployeeLeaveType,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -890,12 +755,7 @@ class PayrollNzApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "employee_id",
-            "employee_leave_type",
-            "idempotency_key",
-        ]
+        _all_params = ["xero_tenant_id", "employee_id", "employee_leave_type", "idempotency_key"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -908,10 +768,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_employee_leave_type"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_employee_leave_type")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -929,20 +786,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["employee_leave_type"] is not None:
             _body_params = _params["employee_leave_type"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeeLeaveTypeObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "EmployeeLeaveTypeObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/LeaveTypes",
             "POST",
@@ -965,12 +816,8 @@ class PayrollNzApi:
 
     async def create_employee_opening_balances(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         employee_opening_balance: Annotated[list[EmployeeOpeningBalance], Field()],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -985,21 +832,13 @@ class PayrollNzApi:
             message = "Error! Please call the create_employee_opening_balances_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.create_employee_opening_balances_with_http_info(
-            xero_tenant_id,
-            employee_id,
-            employee_opening_balance,
-            idempotency_key,
-            **kwargs,
+            xero_tenant_id, employee_id, employee_opening_balance, idempotency_key, **kwargs
         )
 
     async def create_employee_opening_balances_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         employee_opening_balance: Annotated[list[EmployeeOpeningBalance], Field()],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1010,12 +849,7 @@ class PayrollNzApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "employee_id",
-            "employee_opening_balance",
-            "idempotency_key",
-        ]
+        _all_params = ["xero_tenant_id", "employee_id", "employee_opening_balance", "idempotency_key"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -1029,8 +863,7 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_employee_opening_balances"
+                    f"Got an unexpected keyword argument '{_key}' to method create_employee_opening_balances"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1049,20 +882,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["employee_opening_balance"] is not None:
             _body_params = _params["employee_opening_balance"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeeOpeningBalancesObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "EmployeeOpeningBalancesObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/OpeningBalances",
             "POST",
@@ -1085,12 +912,8 @@ class PayrollNzApi:
 
     async def create_employee_payment_method(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         payment_method: PaymentMethod,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1110,12 +933,8 @@ class PayrollNzApi:
 
     async def create_employee_payment_method_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         payment_method: PaymentMethod,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1126,12 +945,7 @@ class PayrollNzApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "employee_id",
-            "payment_method",
-            "idempotency_key",
-        ]
+        _all_params = ["xero_tenant_id", "employee_id", "payment_method", "idempotency_key"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -1145,8 +959,7 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_employee_payment_method"
+                    f"Got an unexpected keyword argument '{_key}' to method create_employee_payment_method"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1165,20 +978,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["payment_method"] is not None:
             _body_params = _params["payment_method"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "PaymentMethodObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "PaymentMethodObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/PaymentMethods",
             "POST",
@@ -1201,12 +1008,8 @@ class PayrollNzApi:
 
     async def create_employee_salary_and_wage(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         salary_and_wage: SalaryAndWage,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1226,12 +1029,8 @@ class PayrollNzApi:
 
     async def create_employee_salary_and_wage_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         salary_and_wage: SalaryAndWage,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1242,12 +1041,7 @@ class PayrollNzApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "employee_id",
-            "salary_and_wage",
-            "idempotency_key",
-        ]
+        _all_params = ["xero_tenant_id", "employee_id", "salary_and_wage", "idempotency_key"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -1261,8 +1055,7 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_employee_salary_and_wage"
+                    f"Got an unexpected keyword argument '{_key}' to method create_employee_salary_and_wage"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1281,20 +1074,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["salary_and_wage"] is not None:
             _body_params = _params["salary_and_wage"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "SalaryAndWageObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "SalaryAndWageObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/SalaryAndWages",
             "POST",
@@ -1317,12 +1104,8 @@ class PayrollNzApi:
 
     async def create_employee_working_pattern(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         employee_working_pattern_with_working_weeks_request: EmployeeWorkingPatternWithWorkingWeeksRequest,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1337,21 +1120,13 @@ class PayrollNzApi:
             message = "Error! Please call the create_employee_working_pattern_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.create_employee_working_pattern_with_http_info(
-            xero_tenant_id,
-            employee_id,
-            employee_working_pattern_with_working_weeks_request,
-            idempotency_key,
-            **kwargs,
+            xero_tenant_id, employee_id, employee_working_pattern_with_working_weeks_request, idempotency_key, **kwargs
         )
 
     async def create_employee_working_pattern_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         employee_working_pattern_with_working_weeks_request: EmployeeWorkingPatternWithWorkingWeeksRequest,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1381,8 +1156,7 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_employee_working_pattern"
+                    f"Got an unexpected keyword argument '{_key}' to method create_employee_working_pattern"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1400,23 +1174,15 @@ class PayrollNzApi:
         _files = {}
         _body_params = None
         if _params["employee_working_pattern_with_working_weeks_request"] is not None:
-            _body_params = _params[
-                "employee_working_pattern_with_working_weeks_request"
-            ]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+            _body_params = _params["employee_working_pattern_with_working_weeks_request"]
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeeWorkingPatternWithWorkingWeeksObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "EmployeeWorkingPatternWithWorkingWeeksObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/Working-Patterns",
             "POST",
@@ -1439,12 +1205,8 @@ class PayrollNzApi:
 
     async def create_employment(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         employment: Employment,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1464,12 +1226,8 @@ class PayrollNzApi:
 
     async def create_employment_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         employment: Employment,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1493,10 +1251,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_employment"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_employment")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -1514,20 +1269,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["employment"] is not None:
             _body_params = _params["employment"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmploymentObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "EmploymentObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/Employment",
             "POST",
@@ -1550,9 +1299,7 @@ class PayrollNzApi:
 
     async def create_leave_type(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         leave_type: LeaveType,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1566,15 +1313,11 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_leave_type_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.create_leave_type_with_http_info(
-            xero_tenant_id, leave_type, idempotency_key, **kwargs
-        )
+        return await self.create_leave_type_with_http_info(xero_tenant_id, leave_type, idempotency_key, **kwargs)
 
     async def create_leave_type_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         leave_type: LeaveType,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1598,10 +1341,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_leave_type"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_leave_type")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -1617,20 +1357,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["leave_type"] is not None:
             _body_params = _params["leave_type"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "LeaveTypeObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "LeaveTypeObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/LeaveTypes",
             "POST",
@@ -1653,12 +1387,8 @@ class PayrollNzApi:
 
     async def create_multiple_employee_earnings_template(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         earnings_template: Annotated[list[EarningsTemplate], Field()],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1678,12 +1408,8 @@ class PayrollNzApi:
 
     async def create_multiple_employee_earnings_template_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         earnings_template: Annotated[list[EarningsTemplate], Field()],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1694,12 +1420,7 @@ class PayrollNzApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "employee_id",
-            "earnings_template",
-            "idempotency_key",
-        ]
+        _all_params = ["xero_tenant_id", "employee_id", "earnings_template", "idempotency_key"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -1713,8 +1434,7 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_multiple_employee_earnings_template"
+                    f"Got an unexpected keyword argument '{_key}' to method create_multiple_employee_earnings_template"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1733,20 +1453,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["earnings_template"] is not None:
             _body_params = _params["earnings_template"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeeEarningsTemplates",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "EmployeeEarningsTemplates", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/PayTemplateEarnings",
             "POST",
@@ -1769,9 +1483,7 @@ class PayrollNzApi:
 
     async def create_pay_run(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         pay_run: PayRun,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1785,15 +1497,11 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_pay_run_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.create_pay_run_with_http_info(
-            xero_tenant_id, pay_run, idempotency_key, **kwargs
-        )
+        return await self.create_pay_run_with_http_info(xero_tenant_id, pay_run, idempotency_key, **kwargs)
 
     async def create_pay_run_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         pay_run: PayRun,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1817,10 +1525,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_pay_run"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_pay_run")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -1836,20 +1541,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["pay_run"] is not None:
             _body_params = _params["pay_run"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "PayRunObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "PayRunObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/PayRuns",
             "POST",
@@ -1872,9 +1571,7 @@ class PayrollNzApi:
 
     async def create_pay_run_calendar(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         pay_run_calendar: PayRunCalendar,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1894,9 +1591,7 @@ class PayrollNzApi:
 
     async def create_pay_run_calendar_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         pay_run_calendar: PayRunCalendar,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1920,10 +1615,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_pay_run_calendar"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_pay_run_calendar")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -1939,20 +1631,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["pay_run_calendar"] is not None:
             _body_params = _params["pay_run_calendar"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "PayRunCalendarObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "PayRunCalendarObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/PayRunCalendars",
             "POST",
@@ -1975,9 +1661,7 @@ class PayrollNzApi:
 
     async def create_reimbursement(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         reimbursement: Reimbursement,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1991,15 +1675,11 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_reimbursement_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.create_reimbursement_with_http_info(
-            xero_tenant_id, reimbursement, idempotency_key, **kwargs
-        )
+        return await self.create_reimbursement_with_http_info(xero_tenant_id, reimbursement, idempotency_key, **kwargs)
 
     async def create_reimbursement_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         reimbursement: Reimbursement,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -2023,10 +1703,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_reimbursement"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_reimbursement")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -2042,20 +1719,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["reimbursement"] is not None:
             _body_params = _params["reimbursement"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "ReimbursementObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "ReimbursementObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Reimbursements",
             "POST",
@@ -2078,9 +1749,7 @@ class PayrollNzApi:
 
     async def create_superannuation(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         benefit: Benefit,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -2094,15 +1763,11 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_superannuation_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.create_superannuation_with_http_info(
-            xero_tenant_id, benefit, idempotency_key, **kwargs
-        )
+        return await self.create_superannuation_with_http_info(xero_tenant_id, benefit, idempotency_key, **kwargs)
 
     async def create_superannuation_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         benefit: Benefit,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -2126,10 +1791,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_superannuation"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_superannuation")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -2145,20 +1807,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["benefit"] is not None:
             _body_params = _params["benefit"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "SuperannuationObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "SuperannuationObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Superannuations",
             "POST",
@@ -2181,9 +1837,7 @@ class PayrollNzApi:
 
     async def create_timesheet(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         timesheet: Timesheet,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -2197,15 +1851,11 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the create_timesheet_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.create_timesheet_with_http_info(
-            xero_tenant_id, timesheet, idempotency_key, **kwargs
-        )
+        return await self.create_timesheet_with_http_info(xero_tenant_id, timesheet, idempotency_key, **kwargs)
 
     async def create_timesheet_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         timesheet: Timesheet,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -2229,10 +1879,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_timesheet"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_timesheet")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -2248,20 +1895,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["timesheet"] is not None:
             _body_params = _params["timesheet"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "TimesheetObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "TimesheetObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Timesheets",
             "POST",
@@ -2284,12 +1925,8 @@ class PayrollNzApi:
 
     async def create_timesheet_line(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        timesheet_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the timesheet")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
         timesheet_line: TimesheetLine,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -2309,12 +1946,8 @@ class PayrollNzApi:
 
     async def create_timesheet_line_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        timesheet_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the timesheet")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
         timesheet_line: TimesheetLine,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -2325,12 +1958,7 @@ class PayrollNzApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "timesheet_id",
-            "timesheet_line",
-            "idempotency_key",
-        ]
+        _all_params = ["xero_tenant_id", "timesheet_id", "timesheet_line", "idempotency_key"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -2343,10 +1971,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method create_timesheet_line"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method create_timesheet_line")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -2364,20 +1989,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["timesheet_line"] is not None:
             _body_params = _params["timesheet_line"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "TimesheetLineObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "TimesheetLineObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Timesheets/{TimesheetID}/Lines",
             "POST",
@@ -2400,15 +2019,10 @@ class PayrollNzApi:
 
     async def delete_employee_earnings_template(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         pay_template_earning_id: Annotated[
-            StrictStr,
-            Field(..., description="Id for single pay template earnings object"),
+            StrictStr, Field(..., description="Id for single pay template earnings object")
         ],
         **kwargs,
     ) -> EarningsTemplateObject:
@@ -2422,15 +2036,10 @@ class PayrollNzApi:
 
     async def delete_employee_earnings_template_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         pay_template_earning_id: Annotated[
-            StrictStr,
-            Field(..., description="Id for single pay template earnings object"),
+            StrictStr, Field(..., description="Id for single pay template earnings object")
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -2449,8 +2058,7 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method delete_employee_earnings_template"
+                    f"Got an unexpected keyword argument '{_key}' to method delete_employee_earnings_template"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2467,13 +2075,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EarningsTemplateObject",
-        }
+        _response_types_map = {"200": "EarningsTemplateObject"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/PayTemplates/Earnings/{PayTemplateEarningID}",
             "DELETE",
@@ -2496,36 +2100,22 @@ class PayrollNzApi:
 
     async def delete_employee_leave(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
-        leave_id: Annotated[
-            StrictStr, Field(..., description="Leave id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        leave_id: Annotated[StrictStr, Field(..., description="Leave id for single object")],
         **kwargs,
     ) -> EmployeeLeaveObject:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the delete_employee_leave_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.delete_employee_leave_with_http_info(
-            xero_tenant_id, employee_id, leave_id, **kwargs
-        )
+        return await self.delete_employee_leave_with_http_info(xero_tenant_id, employee_id, leave_id, **kwargs)
 
     async def delete_employee_leave_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
-        leave_id: Annotated[
-            StrictStr, Field(..., description="Leave id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        leave_id: Annotated[StrictStr, Field(..., description="Leave id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -2542,10 +2132,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method delete_employee_leave"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method delete_employee_leave")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -2561,13 +2148,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeeLeaveObject",
-        }
+        _response_types_map = {"200": "EmployeeLeaveObject"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/Leave/{LeaveID}",
             "DELETE",
@@ -2590,15 +2173,9 @@ class PayrollNzApi:
 
     async def delete_employee_salary_and_wage(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
-        salary_and_wages_id: Annotated[
-            StrictStr, Field(..., description="Id for single salary and wages object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        salary_and_wages_id: Annotated[StrictStr, Field(..., description="Id for single salary and wages object")],
         **kwargs,
     ) -> SalaryAndWageObject:
         kwargs["_return_http_data_only"] = True
@@ -2611,15 +2188,9 @@ class PayrollNzApi:
 
     async def delete_employee_salary_and_wage_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
-        salary_and_wages_id: Annotated[
-            StrictStr, Field(..., description="Id for single salary and wages object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        salary_and_wages_id: Annotated[StrictStr, Field(..., description="Id for single salary and wages object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -2637,8 +2208,7 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method delete_employee_salary_and_wage"
+                    f"Got an unexpected keyword argument '{_key}' to method delete_employee_salary_and_wage"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2655,13 +2225,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "SalaryAndWageObject",
-        }
+        _response_types_map = {"200": "SalaryAndWageObject"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/SalaryAndWages/{SalaryAndWagesID}",
             "DELETE",
@@ -2684,15 +2250,10 @@ class PayrollNzApi:
 
     async def delete_employee_working_pattern(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         employee_working_pattern_id: Annotated[
-            StrictStr,
-            Field(..., description="Employee working pattern id for single object"),
+            StrictStr, Field(..., description="Employee working pattern id for single object")
         ],
         **kwargs,
     ) -> EmployeeLeaveObject:
@@ -2706,15 +2267,10 @@ class PayrollNzApi:
 
     async def delete_employee_working_pattern_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         employee_working_pattern_id: Annotated[
-            StrictStr,
-            Field(..., description="Employee working pattern id for single object"),
+            StrictStr, Field(..., description="Employee working pattern id for single object")
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -2733,8 +2289,7 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method delete_employee_working_pattern"
+                    f"Got an unexpected keyword argument '{_key}' to method delete_employee_working_pattern"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -2743,9 +2298,7 @@ class PayrollNzApi:
         if _params["employee_id"] is not None:
             _path_params["EmployeeID"] = _params["employee_id"]
         if _params["employee_working_pattern_id"] is not None:
-            _path_params["EmployeeWorkingPatternID"] = _params[
-                "employee_working_pattern_id"
-            ]
+            _path_params["EmployeeWorkingPatternID"] = _params["employee_working_pattern_id"]
         _query_params = []
         _header_params = dict(_params.get("_headers", {}))
         if _params["xero_tenant_id"] is not None:
@@ -2753,14 +2306,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeeLeaveObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "EmployeeLeaveObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/Working-Patterns/{EmployeeWorkingPatternID}",
             "DELETE",
@@ -2783,30 +2331,20 @@ class PayrollNzApi:
 
     async def delete_timesheet(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        timesheet_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the timesheet")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
         **kwargs,
     ) -> TimesheetLine:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the delete_timesheet_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.delete_timesheet_with_http_info(
-            xero_tenant_id, timesheet_id, **kwargs
-        )
+        return await self.delete_timesheet_with_http_info(xero_tenant_id, timesheet_id, **kwargs)
 
     async def delete_timesheet_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        timesheet_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the timesheet")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -2823,10 +2361,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method delete_timesheet"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method delete_timesheet")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -2840,14 +2375,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "TimesheetLine",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "TimesheetLine", "400": "Problem"}
         return await self.api_client.call_api(
             "/Timesheets/{TimesheetID}",
             "DELETE",
@@ -2870,15 +2400,9 @@ class PayrollNzApi:
 
     async def delete_timesheet_line(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        timesheet_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the timesheet")
-        ],
-        timesheet_line_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the timesheet line")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
+        timesheet_line_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet line")],
         **kwargs,
     ) -> TimesheetLine:
         kwargs["_return_http_data_only"] = True
@@ -2891,15 +2415,9 @@ class PayrollNzApi:
 
     async def delete_timesheet_line_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        timesheet_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the timesheet")
-        ],
-        timesheet_line_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the timesheet line")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
+        timesheet_line_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet line")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -2916,10 +2434,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method delete_timesheet_line"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method delete_timesheet_line")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -2935,14 +2450,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "TimesheetLine",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "TimesheetLine", "400": "Problem"}
         return await self.api_client.call_api(
             "/Timesheets/{TimesheetID}/Lines/{TimesheetLineID}",
             "DELETE",
@@ -2965,30 +2475,20 @@ class PayrollNzApi:
 
     async def get_deduction(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        deduction_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the deduction")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        deduction_id: Annotated[StrictStr, Field(..., description="Identifier for the deduction")],
         **kwargs,
     ) -> DeductionObject:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_deduction_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_deduction_with_http_info(
-            xero_tenant_id, deduction_id, **kwargs
-        )
+        return await self.get_deduction_with_http_info(xero_tenant_id, deduction_id, **kwargs)
 
     async def get_deduction_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        deduction_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the deduction")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        deduction_id: Annotated[StrictStr, Field(..., description="Identifier for the deduction")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -3005,10 +2505,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_deduction"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_deduction")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -3022,13 +2519,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "DeductionObject",
-        }
+        _response_types_map = {"200": "DeductionObject"}
         return await self.api_client.call_api(
             "/Deductions/{deductionId}",
             "GET",
@@ -3051,9 +2544,7 @@ class PayrollNzApi:
 
     async def get_deductions(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -3070,9 +2561,7 @@ class PayrollNzApi:
 
     async def get_deductions_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -3095,10 +2584,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_deductions"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_deductions")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -3112,13 +2598,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "Deductions",
-        }
+        _response_types_map = {"200": "Deductions"}
         return await self.api_client.call_api(
             "/Deductions",
             "GET",
@@ -3141,30 +2623,20 @@ class PayrollNzApi:
 
     async def get_earnings_rate(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        earnings_rate_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the earnings rate")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        earnings_rate_id: Annotated[StrictStr, Field(..., description="Identifier for the earnings rate")],
         **kwargs,
     ) -> EarningsRateObject:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_earnings_rate_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_earnings_rate_with_http_info(
-            xero_tenant_id, earnings_rate_id, **kwargs
-        )
+        return await self.get_earnings_rate_with_http_info(xero_tenant_id, earnings_rate_id, **kwargs)
 
     async def get_earnings_rate_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        earnings_rate_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the earnings rate")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        earnings_rate_id: Annotated[StrictStr, Field(..., description="Identifier for the earnings rate")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -3181,10 +2653,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_earnings_rate"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_earnings_rate")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -3198,13 +2667,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EarningsRateObject",
-        }
+        _response_types_map = {"200": "EarningsRateObject"}
         return await self.api_client.call_api(
             "/EarningsRates/{EarningsRateID}",
             "GET",
@@ -3227,9 +2692,7 @@ class PayrollNzApi:
 
     async def get_earnings_rates(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -3242,15 +2705,11 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_earnings_rates_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_earnings_rates_with_http_info(
-            xero_tenant_id, page, **kwargs
-        )
+        return await self.get_earnings_rates_with_http_info(xero_tenant_id, page, **kwargs)
 
     async def get_earnings_rates_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -3273,10 +2732,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_earnings_rates"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_earnings_rates")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -3290,13 +2746,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EarningsRates",
-        }
+        _response_types_map = {"200": "EarningsRates"}
         return await self.api_client.call_api(
             "/EarningsRates",
             "GET",
@@ -3319,30 +2771,20 @@ class PayrollNzApi:
 
     async def get_employee(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         **kwargs,
     ) -> EmployeeObject:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_employee_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_employee_with_http_info(
-            xero_tenant_id, employee_id, **kwargs
-        )
+        return await self.get_employee_with_http_info(xero_tenant_id, employee_id, **kwargs)
 
     async def get_employee_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -3359,10 +2801,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_employee"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_employee")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -3376,13 +2815,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeeObject",
-        }
+        _response_types_map = {"200": "EmployeeObject"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}",
             "GET",
@@ -3405,30 +2840,20 @@ class PayrollNzApi:
 
     async def get_employee_leave_balances(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         **kwargs,
     ) -> EmployeeLeaveBalances:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_employee_leave_balances_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_employee_leave_balances_with_http_info(
-            xero_tenant_id, employee_id, **kwargs
-        )
+        return await self.get_employee_leave_balances_with_http_info(xero_tenant_id, employee_id, **kwargs)
 
     async def get_employee_leave_balances_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -3445,10 +2870,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_employee_leave_balances"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_employee_leave_balances")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -3462,13 +2884,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeeLeaveBalances",
-        }
+        _response_types_map = {"200": "EmployeeLeaveBalances"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/LeaveBalances",
             "GET",
@@ -3491,18 +2909,10 @@ class PayrollNzApi:
 
     async def get_employee_leave_periods(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
-        start_date: Annotated[
-            date | None, Field(description="Filter by start date")
-        ] = None,
-        end_date: Annotated[
-            date | None, Field(description="Filter by end date")
-        ] = None,
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        start_date: Annotated[date | None, Field(description="Filter by start date")] = None,
+        end_date: Annotated[date | None, Field(description="Filter by end date")] = None,
         **kwargs,
     ) -> LeavePeriods:
         kwargs["_return_http_data_only"] = True
@@ -3515,18 +2925,10 @@ class PayrollNzApi:
 
     async def get_employee_leave_periods_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
-        start_date: Annotated[
-            date | None, Field(description="Filter by start date")
-        ] = None,
-        end_date: Annotated[
-            date | None, Field(description="Filter by end date")
-        ] = None,
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        start_date: Annotated[date | None, Field(description="Filter by start date")] = None,
+        end_date: Annotated[date | None, Field(description="Filter by end date")] = None,
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -3543,10 +2945,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_employee_leave_periods"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_employee_leave_periods")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -3557,24 +2956,14 @@ class PayrollNzApi:
         if _params.get("start_date") is not None:
             if isinstance(_params["start_date"], date):
                 _query_params.append(
-                    (
-                        "startDate",
-                        _params["start_date"].strftime(
-                            self.api_client.configuration.date_format
-                        ),
-                    )
+                    ("startDate", _params["start_date"].strftime(self.api_client.configuration.date_format))
                 )
             else:
                 _query_params.append(("startDate", _params["start_date"]))
         if _params.get("end_date") is not None:
             if isinstance(_params["end_date"], date):
                 _query_params.append(
-                    (
-                        "endDate",
-                        _params["end_date"].strftime(
-                            self.api_client.configuration.date_format
-                        ),
-                    )
+                    ("endDate", _params["end_date"].strftime(self.api_client.configuration.date_format))
                 )
             else:
                 _query_params.append(("endDate", _params["end_date"]))
@@ -3584,14 +2973,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "LeavePeriods",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "LeavePeriods", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/LeavePeriods",
             "GET",
@@ -3614,30 +2998,20 @@ class PayrollNzApi:
 
     async def get_employee_leave_types(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         **kwargs,
     ) -> EmployeeLeaveTypes:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_employee_leave_types_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_employee_leave_types_with_http_info(
-            xero_tenant_id, employee_id, **kwargs
-        )
+        return await self.get_employee_leave_types_with_http_info(xero_tenant_id, employee_id, **kwargs)
 
     async def get_employee_leave_types_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -3654,10 +3028,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_employee_leave_types"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_employee_leave_types")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -3671,14 +3042,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeeLeaveTypes",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "EmployeeLeaveTypes", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/LeaveTypes",
             "GET",
@@ -3701,30 +3067,20 @@ class PayrollNzApi:
 
     async def get_employee_leaves(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         **kwargs,
     ) -> EmployeeLeaves:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_employee_leaves_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_employee_leaves_with_http_info(
-            xero_tenant_id, employee_id, **kwargs
-        )
+        return await self.get_employee_leaves_with_http_info(xero_tenant_id, employee_id, **kwargs)
 
     async def get_employee_leaves_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -3741,10 +3097,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_employee_leaves"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_employee_leaves")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -3758,13 +3111,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeeLeaves",
-        }
+        _response_types_map = {"200": "EmployeeLeaves"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/Leave",
             "GET",
@@ -3787,30 +3136,20 @@ class PayrollNzApi:
 
     async def get_employee_opening_balances(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         **kwargs,
     ) -> EmployeeOpeningBalancesObject:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_employee_opening_balances_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_employee_opening_balances_with_http_info(
-            xero_tenant_id, employee_id, **kwargs
-        )
+        return await self.get_employee_opening_balances_with_http_info(xero_tenant_id, employee_id, **kwargs)
 
     async def get_employee_opening_balances_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -3828,8 +3167,7 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_employee_opening_balances"
+                    f"Got an unexpected keyword argument '{_key}' to method get_employee_opening_balances"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -3844,13 +3182,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeeOpeningBalancesObject",
-        }
+        _response_types_map = {"200": "EmployeeOpeningBalancesObject"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/OpeningBalances",
             "GET",
@@ -3873,30 +3207,20 @@ class PayrollNzApi:
 
     async def get_employee_pay_templates(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         **kwargs,
     ) -> EmployeePayTemplates:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_employee_pay_templates_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_employee_pay_templates_with_http_info(
-            xero_tenant_id, employee_id, **kwargs
-        )
+        return await self.get_employee_pay_templates_with_http_info(xero_tenant_id, employee_id, **kwargs)
 
     async def get_employee_pay_templates_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -3913,10 +3237,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_employee_pay_templates"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_employee_pay_templates")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -3930,14 +3251,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeePayTemplates",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "EmployeePayTemplates", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/PayTemplates",
             "GET",
@@ -3960,30 +3276,20 @@ class PayrollNzApi:
 
     async def get_employee_payment_method(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         **kwargs,
     ) -> PaymentMethodObject:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_employee_payment_method_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_employee_payment_method_with_http_info(
-            xero_tenant_id, employee_id, **kwargs
-        )
+        return await self.get_employee_payment_method_with_http_info(xero_tenant_id, employee_id, **kwargs)
 
     async def get_employee_payment_method_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -4000,10 +3306,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_employee_payment_method"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_employee_payment_method")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -4017,14 +3320,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "PaymentMethodObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "PaymentMethodObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/PaymentMethods",
             "GET",
@@ -4047,16 +3345,9 @@ class PayrollNzApi:
 
     async def get_employee_salary_and_wage(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
-        salary_and_wages_id: Annotated[
-            StrictStr,
-            Field(..., description="Id for single pay template earnings object"),
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        salary_and_wages_id: Annotated[StrictStr, Field(..., description="Id for single pay template earnings object")],
         **kwargs,
     ) -> SalaryAndWages:
         kwargs["_return_http_data_only"] = True
@@ -4069,16 +3360,9 @@ class PayrollNzApi:
 
     async def get_employee_salary_and_wage_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
-        salary_and_wages_id: Annotated[
-            StrictStr,
-            Field(..., description="Id for single pay template earnings object"),
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        salary_and_wages_id: Annotated[StrictStr, Field(..., description="Id for single pay template earnings object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -4096,8 +3380,7 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_employee_salary_and_wage"
+                    f"Got an unexpected keyword argument '{_key}' to method get_employee_salary_and_wage"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4114,13 +3397,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "SalaryAndWages",
-        }
+        _response_types_map = {"200": "SalaryAndWages"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/SalaryAndWages/{SalaryAndWagesID}",
             "GET",
@@ -4143,12 +3422,8 @@ class PayrollNzApi:
 
     async def get_employee_salary_and_wages(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -4161,18 +3436,12 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_employee_salary_and_wages_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_employee_salary_and_wages_with_http_info(
-            xero_tenant_id, employee_id, page, **kwargs
-        )
+        return await self.get_employee_salary_and_wages_with_http_info(xero_tenant_id, employee_id, page, **kwargs)
 
     async def get_employee_salary_and_wages_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -4196,8 +3465,7 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_employee_salary_and_wages"
+                    f"Got an unexpected keyword argument '{_key}' to method get_employee_salary_and_wages"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4214,14 +3482,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "SalaryAndWages",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "SalaryAndWages", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/SalaryAndWages",
             "GET",
@@ -4244,30 +3507,20 @@ class PayrollNzApi:
 
     async def get_employee_tax(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         **kwargs,
     ) -> EmployeeTaxObject:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_employee_tax_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_employee_tax_with_http_info(
-            xero_tenant_id, employee_id, **kwargs
-        )
+        return await self.get_employee_tax_with_http_info(xero_tenant_id, employee_id, **kwargs)
 
     async def get_employee_tax_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -4284,10 +3537,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_employee_tax"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_employee_tax")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -4301,13 +3551,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeeTaxObject",
-        }
+        _response_types_map = {"200": "EmployeeTaxObject"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/Tax",
             "GET",
@@ -4330,15 +3576,10 @@ class PayrollNzApi:
 
     async def get_employee_working_pattern(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         employee_working_pattern_id: Annotated[
-            StrictStr,
-            Field(..., description="Employee working pattern id for single object"),
+            StrictStr, Field(..., description="Employee working pattern id for single object")
         ],
         **kwargs,
     ) -> EmployeeWorkingPatternWithWorkingWeeksObject:
@@ -4352,15 +3593,10 @@ class PayrollNzApi:
 
     async def get_employee_working_pattern_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         employee_working_pattern_id: Annotated[
-            StrictStr,
-            Field(..., description="Employee working pattern id for single object"),
+            StrictStr, Field(..., description="Employee working pattern id for single object")
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -4379,8 +3615,7 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_employee_working_pattern"
+                    f"Got an unexpected keyword argument '{_key}' to method get_employee_working_pattern"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4389,9 +3624,7 @@ class PayrollNzApi:
         if _params["employee_id"] is not None:
             _path_params["EmployeeID"] = _params["employee_id"]
         if _params["employee_working_pattern_id"] is not None:
-            _path_params["EmployeeWorkingPatternID"] = _params[
-                "employee_working_pattern_id"
-            ]
+            _path_params["EmployeeWorkingPatternID"] = _params["employee_working_pattern_id"]
         _query_params = []
         _header_params = dict(_params.get("_headers", {}))
         if _params["xero_tenant_id"] is not None:
@@ -4399,13 +3632,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeeWorkingPatternWithWorkingWeeksObject",
-        }
+        _response_types_map = {"200": "EmployeeWorkingPatternWithWorkingWeeksObject"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/Working-Patterns/{EmployeeWorkingPatternID}",
             "GET",
@@ -4428,30 +3657,20 @@ class PayrollNzApi:
 
     async def get_employee_working_patterns(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         **kwargs,
     ) -> EmployeeWorkingPatternsObject:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_employee_working_patterns_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_employee_working_patterns_with_http_info(
-            xero_tenant_id, employee_id, **kwargs
-        )
+        return await self.get_employee_working_patterns_with_http_info(xero_tenant_id, employee_id, **kwargs)
 
     async def get_employee_working_patterns_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -4469,8 +3688,7 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_employee_working_patterns"
+                    f"Got an unexpected keyword argument '{_key}' to method get_employee_working_patterns"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -4485,13 +3703,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeeWorkingPatternsObject",
-        }
+        _response_types_map = {"200": "EmployeeWorkingPatternsObject"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/Working-Patterns",
             "GET",
@@ -4514,13 +3728,8 @@ class PayrollNzApi:
 
     async def get_employees(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        filter: Annotated[
-            StrictStr | None,
-            Field(description="Filter by first name and/or lastname"),
-        ] = None,
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        filter: Annotated[StrictStr | None, Field(description="Filter by first name and/or lastname")] = None,
         page: Annotated[
             StrictInt | None,
             Field(
@@ -4533,19 +3742,12 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_employees_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_employees_with_http_info(
-            xero_tenant_id, filter, page, **kwargs
-        )
+        return await self.get_employees_with_http_info(xero_tenant_id, filter, page, **kwargs)
 
     async def get_employees_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        filter: Annotated[
-            StrictStr | None,
-            Field(description="Filter by first name and/or lastname"),
-        ] = None,
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        filter: Annotated[StrictStr | None, Field(description="Filter by first name and/or lastname")] = None,
         page: Annotated[
             StrictInt | None,
             Field(
@@ -4568,10 +3770,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_employees"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_employees")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -4587,14 +3786,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "Employees",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "Employees", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees",
             "GET",
@@ -4617,30 +3811,20 @@ class PayrollNzApi:
 
     async def get_leave_type(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        leave_type_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the leave type")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        leave_type_id: Annotated[StrictStr, Field(..., description="Identifier for the leave type")],
         **kwargs,
     ) -> LeaveTypeObject:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_leave_type_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_leave_type_with_http_info(
-            xero_tenant_id, leave_type_id, **kwargs
-        )
+        return await self.get_leave_type_with_http_info(xero_tenant_id, leave_type_id, **kwargs)
 
     async def get_leave_type_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        leave_type_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the leave type")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        leave_type_id: Annotated[StrictStr, Field(..., description="Identifier for the leave type")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -4657,10 +3841,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_leave_type"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_leave_type")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -4674,13 +3855,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "LeaveTypeObject",
-        }
+        _response_types_map = {"200": "LeaveTypeObject"}
         return await self.api_client.call_api(
             "/LeaveTypes/{LeaveTypeID}",
             "GET",
@@ -4703,9 +3880,7 @@ class PayrollNzApi:
 
     async def get_leave_types(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -4714,9 +3889,7 @@ class PayrollNzApi:
         ] = None,
         active_only: Annotated[
             StrictBool | None,
-            Field(
-                description="Filters leave types by active status. By default the API returns all leave types."
-            ),
+            Field(description="Filters leave types by active status. By default the API returns all leave types."),
         ] = None,
         **kwargs,
     ) -> LeaveTypes:
@@ -4724,15 +3897,11 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_leave_types_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_leave_types_with_http_info(
-            xero_tenant_id, page, active_only, **kwargs
-        )
+        return await self.get_leave_types_with_http_info(xero_tenant_id, page, active_only, **kwargs)
 
     async def get_leave_types_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -4741,9 +3910,7 @@ class PayrollNzApi:
         ] = None,
         active_only: Annotated[
             StrictBool | None,
-            Field(
-                description="Filters leave types by active status. By default the API returns all leave types."
-            ),
+            Field(description="Filters leave types by active status. By default the API returns all leave types."),
         ] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -4761,10 +3928,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_leave_types"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_leave_types")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -4780,13 +3944,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "LeaveTypes",
-        }
+        _response_types_map = {"200": "LeaveTypes"}
         return await self.api_client.call_api(
             "/LeaveTypes",
             "GET",
@@ -4809,30 +3969,20 @@ class PayrollNzApi:
 
     async def get_pay_run(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        pay_run_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the pay run")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        pay_run_id: Annotated[StrictStr, Field(..., description="Identifier for the pay run")],
         **kwargs,
     ) -> PayRunObject:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_pay_run_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_pay_run_with_http_info(
-            xero_tenant_id, pay_run_id, **kwargs
-        )
+        return await self.get_pay_run_with_http_info(xero_tenant_id, pay_run_id, **kwargs)
 
     async def get_pay_run_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        pay_run_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the pay run")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        pay_run_id: Annotated[StrictStr, Field(..., description="Identifier for the pay run")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -4849,10 +3999,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_pay_run"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_pay_run")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -4866,13 +4013,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "PayRunObject",
-        }
+        _response_types_map = {"200": "PayRunObject"}
         return await self.api_client.call_api(
             "/PayRuns/{PayRunID}",
             "GET",
@@ -4895,30 +4038,20 @@ class PayrollNzApi:
 
     async def get_pay_run_calendar(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        payroll_calendar_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the payrun calendars")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        payroll_calendar_id: Annotated[StrictStr, Field(..., description="Identifier for the payrun calendars")],
         **kwargs,
     ) -> PayRunCalendarObject:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_pay_run_calendar_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_pay_run_calendar_with_http_info(
-            xero_tenant_id, payroll_calendar_id, **kwargs
-        )
+        return await self.get_pay_run_calendar_with_http_info(xero_tenant_id, payroll_calendar_id, **kwargs)
 
     async def get_pay_run_calendar_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        payroll_calendar_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the payrun calendars")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        payroll_calendar_id: Annotated[StrictStr, Field(..., description="Identifier for the payrun calendars")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -4935,10 +4068,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_pay_run_calendar"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_pay_run_calendar")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -4952,13 +4082,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "PayRunCalendarObject",
-        }
+        _response_types_map = {"200": "PayRunCalendarObject"}
         return await self.api_client.call_api(
             "/PayRunCalendars/{PayrollCalendarID}",
             "GET",
@@ -4981,9 +4107,7 @@ class PayrollNzApi:
 
     async def get_pay_run_calendars(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -4996,15 +4120,11 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_pay_run_calendars_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_pay_run_calendars_with_http_info(
-            xero_tenant_id, page, **kwargs
-        )
+        return await self.get_pay_run_calendars_with_http_info(xero_tenant_id, page, **kwargs)
 
     async def get_pay_run_calendars_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -5027,10 +4147,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_pay_run_calendars"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_pay_run_calendars")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -5044,13 +4161,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "PayRunCalendars",
-        }
+        _response_types_map = {"200": "PayRunCalendars"}
         return await self.api_client.call_api(
             "/PayRunCalendars",
             "GET",
@@ -5073,9 +4186,7 @@ class PayrollNzApi:
 
     async def get_pay_runs(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -5094,15 +4205,11 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_pay_runs_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_pay_runs_with_http_info(
-            xero_tenant_id, page, status, **kwargs
-        )
+        return await self.get_pay_runs_with_http_info(xero_tenant_id, page, status, **kwargs)
 
     async def get_pay_runs_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -5131,10 +4238,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_pay_runs"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_pay_runs")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -5150,13 +4254,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "PayRuns",
-        }
+        _response_types_map = {"200": "PayRuns"}
         return await self.api_client.call_api(
             "/PayRuns",
             "GET",
@@ -5179,30 +4279,20 @@ class PayrollNzApi:
 
     async def get_pay_slip(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        pay_slip_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the payslip")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        pay_slip_id: Annotated[StrictStr, Field(..., description="Identifier for the payslip")],
         **kwargs,
     ) -> PaySlipObject:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_pay_slip_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_pay_slip_with_http_info(
-            xero_tenant_id, pay_slip_id, **kwargs
-        )
+        return await self.get_pay_slip_with_http_info(xero_tenant_id, pay_slip_id, **kwargs)
 
     async def get_pay_slip_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        pay_slip_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the payslip")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        pay_slip_id: Annotated[StrictStr, Field(..., description="Identifier for the payslip")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -5219,10 +4309,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_pay_slip"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_pay_slip")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -5236,13 +4323,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "PaySlipObject",
-        }
+        _response_types_map = {"200": "PaySlipObject"}
         return await self.api_client.call_api(
             "/PaySlips/{PaySlipID}",
             "GET",
@@ -5265,9 +4348,7 @@ class PayrollNzApi:
 
     async def get_pay_slips(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         pay_run_id: Annotated[
             StrictStr,
             Field(
@@ -5287,15 +4368,11 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_pay_slips_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_pay_slips_with_http_info(
-            xero_tenant_id, pay_run_id, page, **kwargs
-        )
+        return await self.get_pay_slips_with_http_info(xero_tenant_id, pay_run_id, page, **kwargs)
 
     async def get_pay_slips_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         pay_run_id: Annotated[
             StrictStr,
             Field(
@@ -5325,10 +4402,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_pay_slips"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_pay_slips")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -5344,13 +4418,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "PaySlips",
-        }
+        _response_types_map = {"200": "PaySlips"}
         return await self.api_client.call_api(
             "/PaySlips",
             "GET",
@@ -5373,30 +4443,20 @@ class PayrollNzApi:
 
     async def get_reimbursement(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        reimbursement_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the reimbursement")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        reimbursement_id: Annotated[StrictStr, Field(..., description="Identifier for the reimbursement")],
         **kwargs,
     ) -> ReimbursementObject:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_reimbursement_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_reimbursement_with_http_info(
-            xero_tenant_id, reimbursement_id, **kwargs
-        )
+        return await self.get_reimbursement_with_http_info(xero_tenant_id, reimbursement_id, **kwargs)
 
     async def get_reimbursement_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        reimbursement_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the reimbursement")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        reimbursement_id: Annotated[StrictStr, Field(..., description="Identifier for the reimbursement")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -5413,10 +4473,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_reimbursement"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_reimbursement")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -5430,13 +4487,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "ReimbursementObject",
-        }
+        _response_types_map = {"200": "ReimbursementObject"}
         return await self.api_client.call_api(
             "/Reimbursements/{ReimbursementID}",
             "GET",
@@ -5459,9 +4512,7 @@ class PayrollNzApi:
 
     async def get_reimbursements(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -5474,15 +4525,11 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_reimbursements_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_reimbursements_with_http_info(
-            xero_tenant_id, page, **kwargs
-        )
+        return await self.get_reimbursements_with_http_info(xero_tenant_id, page, **kwargs)
 
     async def get_reimbursements_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -5505,10 +4552,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_reimbursements"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_reimbursements")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -5522,13 +4566,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "Reimbursements",
-        }
+        _response_types_map = {"200": "Reimbursements"}
         return await self.api_client.call_api(
             "/Reimbursements",
             "GET",
@@ -5550,11 +4590,7 @@ class PayrollNzApi:
         )
 
     async def get_settings(
-        self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        **kwargs,
+        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
     ) -> Settings:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
@@ -5563,11 +4599,7 @@ class PayrollNzApi:
         return await self.get_settings_with_http_info(xero_tenant_id, **kwargs)
 
     async def get_settings_with_http_info(
-        self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        **kwargs,
+        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
     ) -> ApiResponse:
         _params = locals()
         _all_params = ["xero_tenant_id"]
@@ -5583,10 +4615,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_settings"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_settings")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -5598,13 +4627,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "Settings",
-        }
+        _response_types_map = {"200": "Settings"}
         return await self.api_client.call_api(
             "/Settings",
             "GET",
@@ -5627,30 +4652,20 @@ class PayrollNzApi:
 
     async def get_statutory_deduction(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        id: Annotated[
-            StrictStr, Field(..., description="Identifier for the statutory deduction")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        id: Annotated[StrictStr, Field(..., description="Identifier for the statutory deduction")],
         **kwargs,
     ) -> StatutoryDeductionObject:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_statutory_deduction_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_statutory_deduction_with_http_info(
-            xero_tenant_id, id, **kwargs
-        )
+        return await self.get_statutory_deduction_with_http_info(xero_tenant_id, id, **kwargs)
 
     async def get_statutory_deduction_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        id: Annotated[
-            StrictStr, Field(..., description="Identifier for the statutory deduction")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        id: Annotated[StrictStr, Field(..., description="Identifier for the statutory deduction")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -5667,10 +4682,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_statutory_deduction"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_statutory_deduction")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -5684,13 +4696,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "StatutoryDeductionObject",
-        }
+        _response_types_map = {"200": "StatutoryDeductionObject"}
         return await self.api_client.call_api(
             "/StatutoryDeductions/{id}",
             "GET",
@@ -5713,9 +4721,7 @@ class PayrollNzApi:
 
     async def get_statutory_deductions(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -5728,15 +4734,11 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_statutory_deductions_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_statutory_deductions_with_http_info(
-            xero_tenant_id, page, **kwargs
-        )
+        return await self.get_statutory_deductions_with_http_info(xero_tenant_id, page, **kwargs)
 
     async def get_statutory_deductions_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -5759,10 +4761,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_statutory_deductions"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_statutory_deductions")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -5776,13 +4775,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "StatutoryDeductions",
-        }
+        _response_types_map = {"200": "StatutoryDeductions"}
         return await self.api_client.call_api(
             "/StatutoryDeductions",
             "GET",
@@ -5805,30 +4800,20 @@ class PayrollNzApi:
 
     async def get_superannuation(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        superannuation_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the superannuation")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        superannuation_id: Annotated[StrictStr, Field(..., description="Identifier for the superannuation")],
         **kwargs,
     ) -> SuperannuationObject:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_superannuation_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_superannuation_with_http_info(
-            xero_tenant_id, superannuation_id, **kwargs
-        )
+        return await self.get_superannuation_with_http_info(xero_tenant_id, superannuation_id, **kwargs)
 
     async def get_superannuation_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        superannuation_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the superannuation")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        superannuation_id: Annotated[StrictStr, Field(..., description="Identifier for the superannuation")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -5845,10 +4830,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_superannuation"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_superannuation")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -5862,13 +4844,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "SuperannuationObject",
-        }
+        _response_types_map = {"200": "SuperannuationObject"}
         return await self.api_client.call_api(
             "/Superannuations/{SuperannuationID}",
             "GET",
@@ -5891,9 +4869,7 @@ class PayrollNzApi:
 
     async def get_superannuations(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -5906,15 +4882,11 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_superannuations_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_superannuations_with_http_info(
-            xero_tenant_id, page, **kwargs
-        )
+        return await self.get_superannuations_with_http_info(xero_tenant_id, page, **kwargs)
 
     async def get_superannuations_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -5937,10 +4909,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_superannuations"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_superannuations")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -5954,13 +4923,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "Superannuations",
-        }
+        _response_types_map = {"200": "Superannuations"}
         return await self.api_client.call_api(
             "/Superannuations",
             "GET",
@@ -5983,30 +4948,20 @@ class PayrollNzApi:
 
     async def get_timesheet(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        timesheet_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the timesheet")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
         **kwargs,
     ) -> TimesheetObject:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_timesheet_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_timesheet_with_http_info(
-            xero_tenant_id, timesheet_id, **kwargs
-        )
+        return await self.get_timesheet_with_http_info(xero_tenant_id, timesheet_id, **kwargs)
 
     async def get_timesheet_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        timesheet_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the timesheet")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -6023,10 +4978,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_timesheet"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_timesheet")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -6040,13 +4992,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "TimesheetObject",
-        }
+        _response_types_map = {"200": "TimesheetObject"}
         return await self.api_client.call_api(
             "/Timesheets/{TimesheetID}",
             "GET",
@@ -6069,36 +5017,24 @@ class PayrollNzApi:
 
     async def get_timesheets(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
         ] = None,
-        filter: Annotated[
-            StrictStr | None,
-            Field(description="Filter by employeeId and/or payrollCalendarId"),
-        ] = None,
+        filter: Annotated[StrictStr | None, Field(description="Filter by employeeId and/or payrollCalendarId")] = None,
         status: Annotated[
-            StrictStr | None,
-            Field(
-                description="filter results by any timesheets with a matching timesheet status"
-            ),
+            StrictStr | None, Field(description="filter results by any timesheets with a matching timesheet status")
         ] = None,
         start_date: Annotated[
             StrictStr | None,
-            Field(
-                description="filter results by any timesheets with a startDate on or after the provided date"
-            ),
+            Field(description="filter results by any timesheets with a startDate on or after the provided date"),
         ] = None,
         end_date: Annotated[
             StrictStr | None,
-            Field(
-                description="filter results by any timesheets with a endDate on or before the provided date"
-            ),
+            Field(description="filter results by any timesheets with a endDate on or before the provided date"),
         ] = None,
         sort: Annotated[
             StrictStr | None,
@@ -6118,36 +5054,24 @@ class PayrollNzApi:
 
     async def get_timesheets_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
                 description="Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
             ),
         ] = None,
-        filter: Annotated[
-            StrictStr | None,
-            Field(description="Filter by employeeId and/or payrollCalendarId"),
-        ] = None,
+        filter: Annotated[StrictStr | None, Field(description="Filter by employeeId and/or payrollCalendarId")] = None,
         status: Annotated[
-            StrictStr | None,
-            Field(
-                description="filter results by any timesheets with a matching timesheet status"
-            ),
+            StrictStr | None, Field(description="filter results by any timesheets with a matching timesheet status")
         ] = None,
         start_date: Annotated[
             StrictStr | None,
-            Field(
-                description="filter results by any timesheets with a startDate on or after the provided date"
-            ),
+            Field(description="filter results by any timesheets with a startDate on or after the provided date"),
         ] = None,
         end_date: Annotated[
             StrictStr | None,
-            Field(
-                description="filter results by any timesheets with a endDate on or before the provided date"
-            ),
+            Field(description="filter results by any timesheets with a endDate on or before the provided date"),
         ] = None,
         sort: Annotated[
             StrictStr | None,
@@ -6158,15 +5082,7 @@ class PayrollNzApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "page",
-            "filter",
-            "status",
-            "start_date",
-            "end_date",
-            "sort",
-        ]
+        _all_params = ["xero_tenant_id", "page", "filter", "status", "start_date", "end_date", "sort"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -6179,10 +5095,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_timesheets"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_timesheets")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -6206,13 +5119,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "Timesheets",
-        }
+        _response_types_map = {"200": "Timesheets"}
         return await self.api_client.call_api(
             "/Timesheets",
             "GET",
@@ -6234,26 +5143,16 @@ class PayrollNzApi:
         )
 
     async def get_tracking_categories(
-        self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        **kwargs,
+        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
     ) -> TrackingCategories:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_tracking_categories_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_tracking_categories_with_http_info(
-            xero_tenant_id, **kwargs
-        )
+        return await self.get_tracking_categories_with_http_info(xero_tenant_id, **kwargs)
 
     async def get_tracking_categories_with_http_info(
-        self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        **kwargs,
+        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
     ) -> ApiResponse:
         _params = locals()
         _all_params = ["xero_tenant_id"]
@@ -6269,10 +5168,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_tracking_categories"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_tracking_categories")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -6284,13 +5180,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "TrackingCategories",
-        }
+        _response_types_map = {"200": "TrackingCategories"}
         return await self.api_client.call_api(
             "/Settings/TrackingCategories",
             "GET",
@@ -6313,12 +5205,8 @@ class PayrollNzApi:
 
     async def revert_timesheet(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        timesheet_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the timesheet")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -6331,18 +5219,12 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the revert_timesheet_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.revert_timesheet_with_http_info(
-            xero_tenant_id, timesheet_id, idempotency_key, **kwargs
-        )
+        return await self.revert_timesheet_with_http_info(xero_tenant_id, timesheet_id, idempotency_key, **kwargs)
 
     async def revert_timesheet_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        timesheet_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the timesheet")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -6365,10 +5247,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method revert_timesheet"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method revert_timesheet")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -6384,14 +5263,9 @@ class PayrollNzApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "TimesheetObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "TimesheetObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Timesheets/{TimesheetID}/RevertToDraft",
             "POST",
@@ -6414,12 +5288,8 @@ class PayrollNzApi:
 
     async def update_employee(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         employee: Employee,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -6439,12 +5309,8 @@ class PayrollNzApi:
 
     async def update_employee_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         employee: Employee,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -6468,10 +5334,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method update_employee"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method update_employee")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -6489,20 +5352,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["employee"] is not None:
             _body_params = _params["employee"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeeObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "EmployeeObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}",
             "PUT",
@@ -6525,15 +5382,10 @@ class PayrollNzApi:
 
     async def update_employee_earnings_template(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         pay_template_earning_id: Annotated[
-            StrictStr,
-            Field(..., description="Id for single pay template earnings object"),
+            StrictStr, Field(..., description="Id for single pay template earnings object")
         ],
         earnings_template: EarningsTemplate,
         idempotency_key: Annotated[
@@ -6549,25 +5401,15 @@ class PayrollNzApi:
             message = "Error! Please call the update_employee_earnings_template_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.update_employee_earnings_template_with_http_info(
-            xero_tenant_id,
-            employee_id,
-            pay_template_earning_id,
-            earnings_template,
-            idempotency_key,
-            **kwargs,
+            xero_tenant_id, employee_id, pay_template_earning_id, earnings_template, idempotency_key, **kwargs
         )
 
     async def update_employee_earnings_template_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         pay_template_earning_id: Annotated[
-            StrictStr,
-            Field(..., description="Id for single pay template earnings object"),
+            StrictStr, Field(..., description="Id for single pay template earnings object")
         ],
         earnings_template: EarningsTemplate,
         idempotency_key: Annotated[
@@ -6599,8 +5441,7 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method update_employee_earnings_template"
+                    f"Got an unexpected keyword argument '{_key}' to method update_employee_earnings_template"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -6621,20 +5462,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["earnings_template"] is not None:
             _body_params = _params["earnings_template"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EarningsTemplateObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "EarningsTemplateObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/PayTemplates/Earnings/{PayTemplateEarningID}",
             "PUT",
@@ -6657,15 +5492,9 @@ class PayrollNzApi:
 
     async def update_employee_leave(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
-        leave_id: Annotated[
-            StrictStr, Field(..., description="Leave id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        leave_id: Annotated[StrictStr, Field(..., description="Leave id for single object")],
         employee_leave: EmployeeLeave,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -6680,25 +5509,14 @@ class PayrollNzApi:
             message = "Error! Please call the update_employee_leave_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.update_employee_leave_with_http_info(
-            xero_tenant_id,
-            employee_id,
-            leave_id,
-            employee_leave,
-            idempotency_key,
-            **kwargs,
+            xero_tenant_id, employee_id, leave_id, employee_leave, idempotency_key, **kwargs
         )
 
     async def update_employee_leave_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
-        leave_id: Annotated[
-            StrictStr, Field(..., description="Leave id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        leave_id: Annotated[StrictStr, Field(..., description="Leave id for single object")],
         employee_leave: EmployeeLeave,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -6709,13 +5527,7 @@ class PayrollNzApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "employee_id",
-            "leave_id",
-            "employee_leave",
-            "idempotency_key",
-        ]
+        _all_params = ["xero_tenant_id", "employee_id", "leave_id", "employee_leave", "idempotency_key"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -6728,10 +5540,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method update_employee_leave"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method update_employee_leave")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -6751,20 +5560,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["employee_leave"] is not None:
             _body_params = _params["employee_leave"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeeLeaveObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "EmployeeLeaveObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/Leave/{LeaveID}",
             "PUT",
@@ -6787,16 +5590,9 @@ class PayrollNzApi:
 
     async def update_employee_salary_and_wage(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
-        salary_and_wages_id: Annotated[
-            StrictStr,
-            Field(..., description="Id for single pay template earnings object"),
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        salary_and_wages_id: Annotated[StrictStr, Field(..., description="Id for single pay template earnings object")],
         salary_and_wage: SalaryAndWage,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -6811,26 +5607,14 @@ class PayrollNzApi:
             message = "Error! Please call the update_employee_salary_and_wage_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.update_employee_salary_and_wage_with_http_info(
-            xero_tenant_id,
-            employee_id,
-            salary_and_wages_id,
-            salary_and_wage,
-            idempotency_key,
-            **kwargs,
+            xero_tenant_id, employee_id, salary_and_wages_id, salary_and_wage, idempotency_key, **kwargs
         )
 
     async def update_employee_salary_and_wage_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
-        salary_and_wages_id: Annotated[
-            StrictStr,
-            Field(..., description="Id for single pay template earnings object"),
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        salary_and_wages_id: Annotated[StrictStr, Field(..., description="Id for single pay template earnings object")],
         salary_and_wage: SalaryAndWage,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -6841,13 +5625,7 @@ class PayrollNzApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "employee_id",
-            "salary_and_wages_id",
-            "salary_and_wage",
-            "idempotency_key",
-        ]
+        _all_params = ["xero_tenant_id", "employee_id", "salary_and_wages_id", "salary_and_wage", "idempotency_key"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -6861,8 +5639,7 @@ class PayrollNzApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method update_employee_salary_and_wage"
+                    f"Got an unexpected keyword argument '{_key}' to method update_employee_salary_and_wage"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -6883,20 +5660,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["salary_and_wage"] is not None:
             _body_params = _params["salary_and_wage"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "SalaryAndWageObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "SalaryAndWageObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/SalaryAndWages/{SalaryAndWagesID}",
             "PUT",
@@ -6919,12 +5690,8 @@ class PayrollNzApi:
 
     async def update_employee_tax(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         employee_tax: EmployeeTax,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -6944,12 +5711,8 @@ class PayrollNzApi:
 
     async def update_employee_tax_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        employee_id: Annotated[
-            StrictStr, Field(..., description="Employee id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
         employee_tax: EmployeeTax,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -6960,12 +5723,7 @@ class PayrollNzApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "employee_id",
-            "employee_tax",
-            "idempotency_key",
-        ]
+        _all_params = ["xero_tenant_id", "employee_id", "employee_tax", "idempotency_key"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -6978,10 +5736,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method update_employee_tax"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method update_employee_tax")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -6999,19 +5754,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["employee_tax"] is not None:
             _body_params = _params["employee_tax"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "EmployeeTaxObject",
-        }
+        _response_types_map = {"200": "EmployeeTaxObject"}
         return await self.api_client.call_api(
             "/Employees/{EmployeeID}/Tax",
             "POST",
@@ -7034,12 +5784,8 @@ class PayrollNzApi:
 
     async def update_pay_run(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        pay_run_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the pay run")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        pay_run_id: Annotated[StrictStr, Field(..., description="Identifier for the pay run")],
         pay_run: PayRun,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -7053,18 +5799,12 @@ class PayrollNzApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the update_pay_run_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.update_pay_run_with_http_info(
-            xero_tenant_id, pay_run_id, pay_run, idempotency_key, **kwargs
-        )
+        return await self.update_pay_run_with_http_info(xero_tenant_id, pay_run_id, pay_run, idempotency_key, **kwargs)
 
     async def update_pay_run_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        pay_run_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the pay run")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        pay_run_id: Annotated[StrictStr, Field(..., description="Identifier for the pay run")],
         pay_run: PayRun,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -7088,10 +5828,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method update_pay_run"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method update_pay_run")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -7109,20 +5846,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["pay_run"] is not None:
             _body_params = _params["pay_run"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "PayRunObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "PayRunObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/PayRuns/{PayRunID}",
             "PUT",
@@ -7145,12 +5876,8 @@ class PayrollNzApi:
 
     async def update_pay_slip_line_items(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        pay_slip_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the payslip")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        pay_slip_id: Annotated[StrictStr, Field(..., description="Identifier for the payslip")],
         pay_slip: PaySlip,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -7170,12 +5897,8 @@ class PayrollNzApi:
 
     async def update_pay_slip_line_items_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        pay_slip_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the payslip")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        pay_slip_id: Annotated[StrictStr, Field(..., description="Identifier for the payslip")],
         pay_slip: PaySlip,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -7199,10 +5922,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method update_pay_slip_line_items"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method update_pay_slip_line_items")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -7220,20 +5940,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["pay_slip"] is not None:
             _body_params = _params["pay_slip"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "PaySlipObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "PaySlipObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/PaySlips/{PaySlipID}",
             "PUT",
@@ -7256,15 +5970,9 @@ class PayrollNzApi:
 
     async def update_timesheet_line(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        timesheet_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the timesheet")
-        ],
-        timesheet_line_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the timesheet line")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
+        timesheet_line_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet line")],
         timesheet_line: TimesheetLine,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -7279,25 +5987,14 @@ class PayrollNzApi:
             message = "Error! Please call the update_timesheet_line_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.update_timesheet_line_with_http_info(
-            xero_tenant_id,
-            timesheet_id,
-            timesheet_line_id,
-            timesheet_line,
-            idempotency_key,
-            **kwargs,
+            xero_tenant_id, timesheet_id, timesheet_line_id, timesheet_line, idempotency_key, **kwargs
         )
 
     async def update_timesheet_line_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        timesheet_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the timesheet")
-        ],
-        timesheet_line_id: Annotated[
-            StrictStr, Field(..., description="Identifier for the timesheet line")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
+        timesheet_line_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet line")],
         timesheet_line: TimesheetLine,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -7308,13 +6005,7 @@ class PayrollNzApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "timesheet_id",
-            "timesheet_line_id",
-            "timesheet_line",
-            "idempotency_key",
-        ]
+        _all_params = ["xero_tenant_id", "timesheet_id", "timesheet_line_id", "timesheet_line", "idempotency_key"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -7327,10 +6018,7 @@ class PayrollNzApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method update_timesheet_line"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method update_timesheet_line")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -7350,20 +6038,14 @@ class PayrollNzApi:
         _body_params = None
         if _params["timesheet_line"] is not None:
             _body_params = _params["timesheet_line"]
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _content_types_list = _params.get(
-            "_content_type",
-            self.api_client.select_header_content_type(["application/json"]),
+            "_content_type", self.api_client.select_header_content_type(["application/json"])
         )
         if _content_types_list:
             _header_params["Content-Type"] = _content_types_list
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "TimesheetLineObject",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "TimesheetLineObject", "400": "Problem"}
         return await self.api_client.call_api(
             "/Timesheets/{TimesheetID}/Lines/{TimesheetLineID}",
             "PUT",

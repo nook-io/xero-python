@@ -24,9 +24,7 @@ class LineItemItem(BaseModel):
     @code.setter
     def code(self, code):
         if code is not None and len(code) > 30:
-            raise ValueError(
-                "Invalid value for `code`, length must be less than or equal to `30`"
-            )
+            raise ValueError("Invalid value for `code`, length must be less than or equal to `30`")
         self._code = code
 
     @property
@@ -36,9 +34,7 @@ class LineItemItem(BaseModel):
     @name.setter
     def name(self, name):
         if name is not None and len(name) > 50:
-            raise ValueError(
-                "Invalid value for `name`, length must be less than or equal to `50`"
-            )
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `50`")
         self._name = name
 
     @property

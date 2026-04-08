@@ -141,9 +141,7 @@ class RepeatingInvoice(BaseModel):
         allowed_values = ["ACCPAY", "ACCREC", "None"]
         if type:
             if type not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `type` ({type}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `type` ({type}), must be one of {allowed_values}")
         self._type = type
 
     @property
@@ -211,9 +209,7 @@ class RepeatingInvoice(BaseModel):
         allowed_values = ["DRAFT", "AUTHORISED", "DELETED", "None"]
         if status:
             if status not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `status` ({status}), must be one of {allowed_values}")
         self._status = status
 
     @property

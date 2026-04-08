@@ -179,9 +179,7 @@ class Employee(BaseModel):
         allowed_values = ["M", "F", "None"]
         if gender:
             if gender not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `gender` ({gender}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `gender` ({gender}), must be one of {allowed_values}")
         self._gender = gender
 
     @property

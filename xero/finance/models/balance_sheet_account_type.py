@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class BalanceSheetAccountType(BaseModel):
-    openapi_types = {
-        "account_type": "str",
-        "accounts": "list[BalanceSheetAccountDetail]",
-        "total": "float",
-    }
-    attribute_map = {
-        "account_type": "accountType",
-        "accounts": "accounts",
-        "total": "total",
-    }
+    openapi_types = {"account_type": "str", "accounts": "list[BalanceSheetAccountDetail]", "total": "float"}
+    attribute_map = {"account_type": "accountType", "accounts": "accounts", "total": "total"}
 
     def __init__(self, account_type=None, accounts=None, total=None):
         self._account_type = None

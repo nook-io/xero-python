@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class LockHistoryResponse(BaseModel):
-    openapi_types = {
-        "organisation_id": "str",
-        "end_date": "date",
-        "lock_dates": "list[LockHistoryModel]",
-    }
-    attribute_map = {
-        "organisation_id": "organisationId",
-        "end_date": "endDate",
-        "lock_dates": "lockDates",
-    }
+    openapi_types = {"organisation_id": "str", "end_date": "date", "lock_dates": "list[LockHistoryModel]"}
+    attribute_map = {"organisation_id": "organisationId", "end_date": "endDate", "lock_dates": "lockDates"}
 
     def __init__(self, organisation_id=None, end_date=None, lock_dates=None):
         self._organisation_id = None

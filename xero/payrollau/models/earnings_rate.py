@@ -104,13 +104,9 @@ class EarningsRate(BaseModel):
         if is_reportable_as_w1 is not None:
             self.is_reportable_as_w1 = is_reportable_as_w1
         if allowance_contributes_to_annual_leave_rate is not None:
-            self.allowance_contributes_to_annual_leave_rate = (
-                allowance_contributes_to_annual_leave_rate
-            )
+            self.allowance_contributes_to_annual_leave_rate = allowance_contributes_to_annual_leave_rate
         if allowance_contributes_to_overtime_rate is not None:
-            self.allowance_contributes_to_overtime_rate = (
-                allowance_contributes_to_overtime_rate
-            )
+            self.allowance_contributes_to_overtime_rate = allowance_contributes_to_overtime_rate
         if earnings_type is not None:
             self.earnings_type = earnings_type
         if earnings_rate_id is not None:
@@ -126,9 +122,7 @@ class EarningsRate(BaseModel):
         if amount is not None:
             self.amount = amount
         if employment_termination_payment_type is not None:
-            self.employment_termination_payment_type = (
-                employment_termination_payment_type
-            )
+            self.employment_termination_payment_type = employment_termination_payment_type
         if updated_date_utc is not None:
             self.updated_date_utc = updated_date_utc
         if current_record is not None:
@@ -145,9 +139,7 @@ class EarningsRate(BaseModel):
     @name.setter
     def name(self, name):
         if name is not None and len(name) > 100:
-            raise ValueError(
-                "Invalid value for `name`, length must be less than or equal to `100`"
-            )
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `100`")
         self._name = name
 
     @property
@@ -165,10 +157,7 @@ class EarningsRate(BaseModel):
     @type_of_units.setter
     def type_of_units(self, type_of_units):
         if type_of_units is not None and len(type_of_units) > 50:
-            raise ValueError(
-                "Invalid value for `type_of_units`, "
-                "length must be less than or equal to `50`"
-            )
+            raise ValueError("Invalid value for `type_of_units`, length must be less than or equal to `50`")
         self._type_of_units = type_of_units
 
     @property
@@ -200,24 +189,16 @@ class EarningsRate(BaseModel):
         return self._allowance_contributes_to_annual_leave_rate
 
     @allowance_contributes_to_annual_leave_rate.setter
-    def allowance_contributes_to_annual_leave_rate(
-        self, allowance_contributes_to_annual_leave_rate
-    ):
-        self._allowance_contributes_to_annual_leave_rate = (
-            allowance_contributes_to_annual_leave_rate
-        )
+    def allowance_contributes_to_annual_leave_rate(self, allowance_contributes_to_annual_leave_rate):
+        self._allowance_contributes_to_annual_leave_rate = allowance_contributes_to_annual_leave_rate
 
     @property
     def allowance_contributes_to_overtime_rate(self):
         return self._allowance_contributes_to_overtime_rate
 
     @allowance_contributes_to_overtime_rate.setter
-    def allowance_contributes_to_overtime_rate(
-        self, allowance_contributes_to_overtime_rate
-    ):
-        self._allowance_contributes_to_overtime_rate = (
-            allowance_contributes_to_overtime_rate
-        )
+    def allowance_contributes_to_overtime_rate(self, allowance_contributes_to_overtime_rate):
+        self._allowance_contributes_to_overtime_rate = allowance_contributes_to_overtime_rate
 
     @property
     def earnings_type(self):

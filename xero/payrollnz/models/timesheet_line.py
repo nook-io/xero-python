@@ -18,12 +18,7 @@ class TimesheetLine(BaseModel):
     }
 
     def __init__(
-        self,
-        timesheet_line_id=None,
-        date=None,
-        earnings_rate_id=None,
-        tracking_item_id=None,
-        number_of_units=None,
+        self, timesheet_line_id=None, date=None, earnings_rate_id=None, tracking_item_id=None, number_of_units=None
     ):
         self._timesheet_line_id = None
         self._date = None

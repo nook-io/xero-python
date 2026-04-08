@@ -2,12 +2,7 @@ from xero.models import BaseModel
 
 
 class RefreshToken(BaseModel):
-    openapi_types = {
-        "grant_type": "str",
-        "refresh_token": "str",
-        "client_id": "str",
-        "client_secret": "str",
-    }
+    openapi_types = {"grant_type": "str", "refresh_token": "str", "client_id": "str", "client_secret": "str"}
     attribute_map = {
         "grant_type": "grant_type",
         "refresh_token": "refresh_token",
@@ -15,9 +10,7 @@ class RefreshToken(BaseModel):
         "client_secret": "client_secret",
     }
 
-    def __init__(
-        self, grant_type=None, refresh_token=None, client_id=None, client_secret=None
-    ):
+    def __init__(self, grant_type=None, refresh_token=None, client_id=None, client_secret=None):
         self._grant_type = None
         self._refresh_token = None
         self._client_id = None

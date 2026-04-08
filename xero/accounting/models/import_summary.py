@@ -2,10 +2,7 @@ from xero.models import BaseModel
 
 
 class ImportSummary(BaseModel):
-    openapi_types = {
-        "accounts": "ImportSummaryAccounts",
-        "organisation": "ImportSummaryOrganisation",
-    }
+    openapi_types = {"accounts": "ImportSummaryAccounts", "organisation": "ImportSummaryOrganisation"}
     attribute_map = {"accounts": "Accounts", "organisation": "Organisation"}
 
     def __init__(self, accounts=None, organisation=None):

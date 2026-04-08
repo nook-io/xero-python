@@ -20,13 +20,7 @@ class BrandingTheme(BaseModel):
     }
 
     def __init__(
-        self,
-        branding_theme_id=None,
-        name=None,
-        logo_url=None,
-        type=None,
-        sort_order=None,
-        created_date_utc=None,
+        self, branding_theme_id=None, name=None, logo_url=None, type=None, sort_order=None, created_date_utc=None
     ):
         self._branding_theme_id = None
         self._name = None
@@ -81,9 +75,7 @@ class BrandingTheme(BaseModel):
         allowed_values = ["INVOICE", "None"]
         if type:
             if type not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `type` ({type}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `type` ({type}), must be one of {allowed_values}")
         self._type = type
 
     @property

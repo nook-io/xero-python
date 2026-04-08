@@ -2,12 +2,7 @@ from xero.models import BaseModel
 
 
 class LineItemTracking(BaseModel):
-    openapi_types = {
-        "tracking_category_id": "str",
-        "tracking_option_id": "str",
-        "name": "str",
-        "option": "str",
-    }
+    openapi_types = {"tracking_category_id": "str", "tracking_option_id": "str", "name": "str", "option": "str"}
     attribute_map = {
         "tracking_category_id": "TrackingCategoryID",
         "tracking_option_id": "TrackingOptionID",
@@ -15,9 +10,7 @@ class LineItemTracking(BaseModel):
         "option": "Option",
     }
 
-    def __init__(
-        self, tracking_category_id=None, tracking_option_id=None, name=None, option=None
-    ):
+    def __init__(self, tracking_category_id=None, tracking_option_id=None, name=None, option=None):
         self._tracking_category_id = None
         self._tracking_option_id = None
         self._name = None
@@ -55,9 +48,7 @@ class LineItemTracking(BaseModel):
     @name.setter
     def name(self, name):
         if name is not None and len(name) > 100:
-            raise ValueError(
-                "Invalid value for `name`, length must be less than or equal to `100`"
-            )
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `100`")
         self._name = name
 
     @property

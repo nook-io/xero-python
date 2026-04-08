@@ -2,18 +2,8 @@ from xero.models import BaseModel
 
 
 class BudgetLines(BaseModel):
-    openapi_types = {
-        "period": "date[ms-format]",
-        "amount": "int",
-        "unit_amount": "int",
-        "notes": "str",
-    }
-    attribute_map = {
-        "period": "Period",
-        "amount": "Amount",
-        "unit_amount": "UnitAmount",
-        "notes": "Notes",
-    }
+    openapi_types = {"period": "date[ms-format]", "amount": "int", "unit_amount": "int", "notes": "str"}
+    attribute_map = {"period": "Period", "amount": "Amount", "unit_amount": "UnitAmount", "notes": "Notes"}
 
     def __init__(self, period=None, amount=None, unit_amount=None, notes=None):
         self._period = None
@@ -61,7 +51,5 @@ class BudgetLines(BaseModel):
     @notes.setter
     def notes(self, notes):
         if notes is not None and len(notes) > 255:
-            raise ValueError(
-                "Invalid value for `notes`, length must be less than or equal to `255`"
-            )
+            raise ValueError("Invalid value for `notes`, length must be less than or equal to `255`")
         self._notes = notes

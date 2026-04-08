@@ -33,9 +33,7 @@ class FinanceApi:
 
     async def get_accounting_activity_account_usage(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         start_month: Annotated[
             StrictStr | None,
             Field(
@@ -60,9 +58,7 @@ class FinanceApi:
 
     async def get_accounting_activity_account_usage_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         start_month: Annotated[
             StrictStr | None,
             Field(
@@ -92,8 +88,7 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_accounting_activity_account_usage"
+                    f"Got an unexpected keyword argument '{_key}' to method get_accounting_activity_account_usage"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -110,14 +105,9 @@ class FinanceApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "AccountUsageResponse",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "AccountUsageResponse", "400": "Problem"}
         return await self.api_client.call_api(
             "/AccountingActivities/AccountUsage",
             "GET",
@@ -140,9 +130,7 @@ class FinanceApi:
 
     async def get_accounting_activity_lock_history(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         end_date: Annotated[
             StrictStr | None,
             Field(
@@ -155,15 +143,11 @@ class FinanceApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_accounting_activity_lock_history_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_accounting_activity_lock_history_with_http_info(
-            xero_tenant_id, end_date, **kwargs
-        )
+        return await self.get_accounting_activity_lock_history_with_http_info(xero_tenant_id, end_date, **kwargs)
 
     async def get_accounting_activity_lock_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         end_date: Annotated[
             StrictStr | None,
             Field(
@@ -187,8 +171,7 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_accounting_activity_lock_history"
+                    f"Got an unexpected keyword argument '{_key}' to method get_accounting_activity_lock_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -203,14 +186,9 @@ class FinanceApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "LockHistoryResponse",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "LockHistoryResponse", "400": "Problem"}
         return await self.api_client.call_api(
             "/AccountingActivities/LockHistory",
             "GET",
@@ -233,9 +211,7 @@ class FinanceApi:
 
     async def get_accounting_activity_report_history(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         end_date: Annotated[
             StrictStr | None,
             Field(
@@ -248,15 +224,11 @@ class FinanceApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_accounting_activity_report_history_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_accounting_activity_report_history_with_http_info(
-            xero_tenant_id, end_date, **kwargs
-        )
+        return await self.get_accounting_activity_report_history_with_http_info(xero_tenant_id, end_date, **kwargs)
 
     async def get_accounting_activity_report_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         end_date: Annotated[
             StrictStr | None,
             Field(
@@ -280,8 +252,7 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_accounting_activity_report_history"
+                    f"Got an unexpected keyword argument '{_key}' to method get_accounting_activity_report_history"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -296,14 +267,9 @@ class FinanceApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "ReportHistoryResponse",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "ReportHistoryResponse", "400": "Problem"}
         return await self.api_client.call_api(
             "/AccountingActivities/ReportHistory",
             "GET",
@@ -326,9 +292,7 @@ class FinanceApi:
 
     async def get_accounting_activity_user_activities(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         data_month: Annotated[
             StrictStr | None,
             Field(
@@ -341,15 +305,11 @@ class FinanceApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_accounting_activity_user_activities_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_accounting_activity_user_activities_with_http_info(
-            xero_tenant_id, data_month, **kwargs
-        )
+        return await self.get_accounting_activity_user_activities_with_http_info(xero_tenant_id, data_month, **kwargs)
 
     async def get_accounting_activity_user_activities_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         data_month: Annotated[
             StrictStr | None,
             Field(
@@ -373,8 +333,7 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_accounting_activity_user_activities"
+                    f"Got an unexpected keyword argument '{_key}' to method get_accounting_activity_user_activities"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -389,14 +348,9 @@ class FinanceApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "UserActivitiesResponse",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "UserActivitiesResponse", "400": "Problem"}
         return await self.api_client.call_api(
             "/AccountingActivities/UserActivities",
             "GET",
@@ -419,12 +373,8 @@ class FinanceApi:
 
     async def get_bank_statement_accounting(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        bank_account_id: Annotated[
-            StrictStr, Field(..., description="string, GUID    Bank account Id")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        bank_account_id: Annotated[StrictStr, Field(..., description="string, GUID    Bank account Id")],
         from_date: Annotated[
             StrictStr,
             Field(
@@ -457,12 +407,8 @@ class FinanceApi:
 
     async def get_bank_statement_accounting_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
-        bank_account_id: Annotated[
-            StrictStr, Field(..., description="string, GUID    Bank account Id")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        bank_account_id: Annotated[StrictStr, Field(..., description="string, GUID    Bank account Id")],
         from_date: Annotated[
             StrictStr,
             Field(
@@ -486,13 +432,7 @@ class FinanceApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "bank_account_id",
-            "from_date",
-            "to_date",
-            "summary_only",
-        ]
+        _all_params = ["xero_tenant_id", "bank_account_id", "from_date", "to_date", "summary_only"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -506,8 +446,7 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_bank_statement_accounting"
+                    f"Got an unexpected keyword argument '{_key}' to method get_bank_statement_accounting"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -528,14 +467,9 @@ class FinanceApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "BankStatementAccountingResponse",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "BankStatementAccountingResponse", "400": "Problem"}
         return await self.api_client.call_api(
             "/BankStatementsPlus/statements",
             "GET",
@@ -558,9 +492,7 @@ class FinanceApi:
 
     async def get_cash_validation(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         balance_date: Annotated[
             StrictStr | None,
             Field(
@@ -591,9 +523,7 @@ class FinanceApi:
 
     async def get_cash_validation_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         balance_date: Annotated[
             StrictStr | None,
             Field(
@@ -615,12 +545,7 @@ class FinanceApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "balance_date",
-            "as_at_system_date",
-            "begin_date",
-        ]
+        _all_params = ["xero_tenant_id", "balance_date", "as_at_system_date", "begin_date"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -633,10 +558,7 @@ class FinanceApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_cash_validation"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_cash_validation")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -654,14 +576,9 @@ class FinanceApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "list[CashValidationResponse]",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "list[CashValidationResponse]", "400": "Problem"}
         return await self.api_client.call_api(
             "/CashValidation",
             "GET",
@@ -684,9 +601,7 @@ class FinanceApi:
 
     async def get_financial_statement_balance_sheet(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         balance_date: Annotated[
             StrictStr | None,
             Field(
@@ -699,15 +614,11 @@ class FinanceApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_financial_statement_balance_sheet_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_financial_statement_balance_sheet_with_http_info(
-            xero_tenant_id, balance_date, **kwargs
-        )
+        return await self.get_financial_statement_balance_sheet_with_http_info(xero_tenant_id, balance_date, **kwargs)
 
     async def get_financial_statement_balance_sheet_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         balance_date: Annotated[
             StrictStr | None,
             Field(
@@ -731,8 +642,7 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_financial_statement_balance_sheet"
+                    f"Got an unexpected keyword argument '{_key}' to method get_financial_statement_balance_sheet"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -747,15 +657,9 @@ class FinanceApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "BalanceSheetResponse",
-            "400": "Problem",
-            "503": "Problem",
-        }
+        _response_types_map = {"200": "BalanceSheetResponse", "400": "Problem", "503": "Problem"}
         return await self.api_client.call_api(
             "/FinancialStatements/BalanceSheet",
             "GET",
@@ -778,9 +682,7 @@ class FinanceApi:
 
     async def get_financial_statement_cashflow(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         start_date: Annotated[
             StrictStr | None,
             Field(
@@ -805,9 +707,7 @@ class FinanceApi:
 
     async def get_financial_statement_cashflow_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         start_date: Annotated[
             StrictStr | None,
             Field(
@@ -837,8 +737,7 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_financial_statement_cashflow"
+                    f"Got an unexpected keyword argument '{_key}' to method get_financial_statement_cashflow"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -855,15 +754,9 @@ class FinanceApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "CashflowResponse",
-            "400": "Problem",
-            "503": "Problem",
-        }
+        _response_types_map = {"200": "CashflowResponse", "400": "Problem", "503": "Problem"}
         return await self.api_client.call_api(
             "/FinancialStatements/Cashflow",
             "GET",
@@ -886,9 +779,7 @@ class FinanceApi:
 
     async def get_financial_statement_contacts_expense(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         contact_ids: Annotated[
             list[StrictStr] | None,
             Field(
@@ -920,19 +811,12 @@ class FinanceApi:
             message = "Error! Please call the get_financial_statement_contacts_expense_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.get_financial_statement_contacts_expense_with_http_info(
-            xero_tenant_id,
-            contact_ids,
-            include_manual_journals,
-            start_date,
-            end_date,
-            **kwargs,
+            xero_tenant_id, contact_ids, include_manual_journals, start_date, end_date, **kwargs
         )
 
     async def get_financial_statement_contacts_expense_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         contact_ids: Annotated[
             list[StrictStr] | None,
             Field(
@@ -960,13 +844,7 @@ class FinanceApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "contact_ids",
-            "include_manual_journals",
-            "start_date",
-            "end_date",
-        ]
+        _all_params = ["xero_tenant_id", "contact_ids", "include_manual_journals", "start_date", "end_date"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -980,8 +858,7 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_financial_statement_contacts_expense"
+                    f"Got an unexpected keyword argument '{_key}' to method get_financial_statement_contacts_expense"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -992,9 +869,7 @@ class FinanceApi:
             _query_params.append(("contactIds", _params["contact_ids"]))
             _collection_formats["contactIds"] = "multi"
         if _params.get("include_manual_journals") is not None:
-            _query_params.append(
-                ("includeManualJournals", _params["include_manual_journals"])
-            )
+            _query_params.append(("includeManualJournals", _params["include_manual_journals"]))
         if _params.get("start_date") is not None:
             _query_params.append(("startDate", _params["start_date"]))
         if _params.get("end_date") is not None:
@@ -1005,14 +880,9 @@ class FinanceApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "IncomeByContactResponse",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "IncomeByContactResponse", "400": "Problem"}
         return await self.api_client.call_api(
             "/FinancialStatements/contacts/expense",
             "GET",
@@ -1035,9 +905,7 @@ class FinanceApi:
 
     async def get_financial_statement_contacts_revenue(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         contact_ids: Annotated[
             list[StrictStr] | None,
             Field(
@@ -1069,19 +937,12 @@ class FinanceApi:
             message = "Error! Please call the get_financial_statement_contacts_revenue_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
         return await self.get_financial_statement_contacts_revenue_with_http_info(
-            xero_tenant_id,
-            contact_ids,
-            include_manual_journals,
-            start_date,
-            end_date,
-            **kwargs,
+            xero_tenant_id, contact_ids, include_manual_journals, start_date, end_date, **kwargs
         )
 
     async def get_financial_statement_contacts_revenue_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         contact_ids: Annotated[
             list[StrictStr] | None,
             Field(
@@ -1109,13 +970,7 @@ class FinanceApi:
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
-        _all_params = [
-            "xero_tenant_id",
-            "contact_ids",
-            "include_manual_journals",
-            "start_date",
-            "end_date",
-        ]
+        _all_params = ["xero_tenant_id", "contact_ids", "include_manual_journals", "start_date", "end_date"]
         _all_params.extend(
             [
                 "_return_http_data_only",
@@ -1129,8 +984,7 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_financial_statement_contacts_revenue"
+                    f"Got an unexpected keyword argument '{_key}' to method get_financial_statement_contacts_revenue"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1141,9 +995,7 @@ class FinanceApi:
             _query_params.append(("contactIds", _params["contact_ids"]))
             _collection_formats["contactIds"] = "multi"
         if _params.get("include_manual_journals") is not None:
-            _query_params.append(
-                ("includeManualJournals", _params["include_manual_journals"])
-            )
+            _query_params.append(("includeManualJournals", _params["include_manual_journals"]))
         if _params.get("start_date") is not None:
             _query_params.append(("startDate", _params["start_date"]))
         if _params.get("end_date") is not None:
@@ -1154,14 +1006,9 @@ class FinanceApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "IncomeByContactResponse",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "IncomeByContactResponse", "400": "Problem"}
         return await self.api_client.call_api(
             "/FinancialStatements/contacts/revenue",
             "GET",
@@ -1184,9 +1031,7 @@ class FinanceApi:
 
     async def get_financial_statement_profit_and_loss(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         start_date: Annotated[
             StrictStr | None,
             Field(
@@ -1211,9 +1056,7 @@ class FinanceApi:
 
     async def get_financial_statement_profit_and_loss_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         start_date: Annotated[
             StrictStr | None,
             Field(
@@ -1243,8 +1086,7 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_financial_statement_profit_and_loss"
+                    f"Got an unexpected keyword argument '{_key}' to method get_financial_statement_profit_and_loss"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1261,14 +1103,9 @@ class FinanceApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "ProfitAndLossResponse",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "ProfitAndLossResponse", "400": "Problem"}
         return await self.api_client.call_api(
             "/FinancialStatements/ProfitAndLoss",
             "GET",
@@ -1291,9 +1128,7 @@ class FinanceApi:
 
     async def get_financial_statement_trial_balance(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         end_date: Annotated[
             StrictStr | None,
             Field(
@@ -1306,15 +1141,11 @@ class FinanceApi:
         if "_preload_content" in kwargs:
             message = "Error! Please call the get_financial_statement_trial_balance_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             raise ValueError(message)
-        return await self.get_financial_statement_trial_balance_with_http_info(
-            xero_tenant_id, end_date, **kwargs
-        )
+        return await self.get_financial_statement_trial_balance_with_http_info(xero_tenant_id, end_date, **kwargs)
 
     async def get_financial_statement_trial_balance_with_http_info(
         self,
-        xero_tenant_id: Annotated[
-            StrictStr, Field(..., description="Xero identifier for Tenant")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
         end_date: Annotated[
             StrictStr | None,
             Field(
@@ -1338,8 +1169,7 @@ class FinanceApi:
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
                 raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_financial_statement_trial_balance"
+                    f"Got an unexpected keyword argument '{_key}' to method get_financial_statement_trial_balance"
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1354,14 +1184,9 @@ class FinanceApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "TrialBalanceResponse",
-            "400": "Problem",
-        }
+        _response_types_map = {"200": "TrialBalanceResponse", "400": "Problem"}
         return await self.api_client.call_api(
             "/FinancialStatements/TrialBalance",
             "GET",

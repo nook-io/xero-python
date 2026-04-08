@@ -20,13 +20,7 @@ class Budget(BaseModel):
     }
 
     def __init__(
-        self,
-        budget_id=None,
-        type=None,
-        description=None,
-        updated_date_utc=None,
-        budget_lines=None,
-        tracking=None,
+        self, budget_id=None, type=None, description=None, updated_date_utc=None, budget_lines=None, tracking=None
     ):
         self._budget_id = None
         self._type = None
@@ -65,9 +59,7 @@ class Budget(BaseModel):
         allowed_values = ["OVERALL", "TRACKING", "None"]
         if type:
             if type not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `type` ({type}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `type` ({type}), must be one of {allowed_values}")
         self._type = type
 
     @property
@@ -77,10 +69,7 @@ class Budget(BaseModel):
     @description.setter
     def description(self, description):
         if description is not None and len(description) > 255:
-            raise ValueError(
-                "Invalid value for `description`, "
-                "length must be less than or equal to `255`"
-            )
+            raise ValueError("Invalid value for `description`, length must be less than or equal to `255`")
         self._description = description
 
     @property

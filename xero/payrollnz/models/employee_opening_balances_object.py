@@ -7,11 +7,7 @@ class EmployeeOpeningBalancesObject(BaseModel):
         "problem": "Problem",
         "opening_balances": "list[EmployeeOpeningBalance]",
     }
-    attribute_map = {
-        "pagination": "pagination",
-        "problem": "problem",
-        "opening_balances": "openingBalances",
-    }
+    attribute_map = {"pagination": "pagination", "problem": "problem", "opening_balances": "openingBalances"}
 
     def __init__(self, pagination=None, problem=None, opening_balances=None):
         self._pagination = None

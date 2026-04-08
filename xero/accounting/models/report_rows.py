@@ -2,18 +2,8 @@ from xero.models import BaseModel
 
 
 class ReportRows(BaseModel):
-    openapi_types = {
-        "row_type": "RowType",
-        "title": "str",
-        "cells": "list[ReportCell]",
-        "rows": "list[ReportRow]",
-    }
-    attribute_map = {
-        "row_type": "RowType",
-        "title": "Title",
-        "cells": "Cells",
-        "rows": "Rows",
-    }
+    openapi_types = {"row_type": "RowType", "title": "str", "cells": "list[ReportCell]", "rows": "list[ReportRow]"}
+    attribute_map = {"row_type": "RowType", "title": "Title", "cells": "Cells", "rows": "Rows"}
 
     def __init__(self, row_type=None, title=None, cells=None, rows=None):
         self._row_type = None

@@ -16,11 +16,7 @@ class LeavePeriod(BaseModel):
     }
 
     def __init__(
-        self,
-        number_of_units=None,
-        pay_period_end_date=None,
-        pay_period_start_date=None,
-        leave_period_status=None,
+        self, number_of_units=None, pay_period_end_date=None, pay_period_start_date=None, leave_period_status=None
     ):
         self._number_of_units = None
         self._pay_period_end_date = None

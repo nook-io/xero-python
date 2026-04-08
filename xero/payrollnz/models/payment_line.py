@@ -17,14 +17,7 @@ class PaymentLine(BaseModel):
         "account_name": "accountName",
     }
 
-    def __init__(
-        self,
-        payment_line_id=None,
-        amount=None,
-        account_number=None,
-        sort_code=None,
-        account_name=None,
-    ):
+    def __init__(self, payment_line_id=None, amount=None, account_number=None, sort_code=None, account_name=None):
         self._payment_line_id = None
         self._amount = None
         self._account_number = None

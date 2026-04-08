@@ -2,12 +2,7 @@ from xero.models import BaseModel
 
 
 class ProjectCreateOrUpdate(BaseModel):
-    openapi_types = {
-        "contact_id": "str",
-        "name": "str",
-        "estimate_amount": "float",
-        "deadline_utc": "datetime",
-    }
+    openapi_types = {"contact_id": "str", "name": "str", "estimate_amount": "float", "deadline_utc": "datetime"}
     attribute_map = {
         "contact_id": "contactId",
         "name": "name",
@@ -15,9 +10,7 @@ class ProjectCreateOrUpdate(BaseModel):
         "deadline_utc": "deadlineUtc",
     }
 
-    def __init__(
-        self, contact_id=None, name=None, estimate_amount=None, deadline_utc=None
-    ):
+    def __init__(self, contact_id=None, name=None, estimate_amount=None, deadline_utc=None):
         self._contact_id = None
         self._name = None
         self._estimate_amount = None

@@ -17,14 +17,7 @@ class BatchPaymentDetails(BaseModel):
         "reference": "Reference",
     }
 
-    def __init__(
-        self,
-        bank_account_number=None,
-        bank_account_name=None,
-        details=None,
-        code=None,
-        reference=None,
-    ):
+    def __init__(self, bank_account_number=None, bank_account_name=None, details=None, code=None, reference=None):
         self._bank_account_number = None
         self._bank_account_name = None
         self._details = None
@@ -73,9 +66,7 @@ class BatchPaymentDetails(BaseModel):
     @code.setter
     def code(self, code):
         if code is not None and len(code) > 12:
-            raise ValueError(
-                "Invalid value for `code`, length must be less than or equal to `12`"
-            )
+            raise ValueError("Invalid value for `code`, length must be less than or equal to `12`")
         self._code = code
 
     @property
@@ -85,8 +76,5 @@ class BatchPaymentDetails(BaseModel):
     @reference.setter
     def reference(self, reference):
         if reference is not None and len(reference) > 12:
-            raise ValueError(
-                "Invalid value for `reference`, "
-                "length must be less than or equal to `12`"
-            )
+            raise ValueError("Invalid value for `reference`, length must be less than or equal to `12`")
         self._reference = reference

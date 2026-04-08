@@ -15,13 +15,7 @@ class LeavePeriod(BaseModel):
         "period_status": "periodStatus",
     }
 
-    def __init__(
-        self,
-        period_start_date=None,
-        period_end_date=None,
-        number_of_units=None,
-        period_status=None,
-    ):
+    def __init__(self, period_start_date=None, period_end_date=None, number_of_units=None, period_status=None):
         self._period_start_date = None
         self._period_end_date = None
         self._number_of_units = None

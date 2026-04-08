@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class EmployeePayTemplates(BaseModel):
-    openapi_types = {
-        "pagination": "Pagination",
-        "problem": "Problem",
-        "pay_template": "EmployeePayTemplate",
-    }
-    attribute_map = {
-        "pagination": "pagination",
-        "problem": "problem",
-        "pay_template": "payTemplate",
-    }
+    openapi_types = {"pagination": "Pagination", "problem": "Problem", "pay_template": "EmployeePayTemplate"}
+    attribute_map = {"pagination": "pagination", "problem": "problem", "pay_template": "payTemplate"}
 
     def __init__(self, pagination=None, problem=None, pay_template=None):
         self._pagination = None

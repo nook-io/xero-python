@@ -147,9 +147,7 @@ class Account(BaseModel):
     @name.setter
     def name(self, name):
         if name is not None and len(name) > 150:
-            raise ValueError(
-                "Invalid value for `name`, length must be less than or equal to `150`"
-            )
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `150`")
         self._name = name
 
     @property
@@ -185,9 +183,7 @@ class Account(BaseModel):
         allowed_values = ["ACTIVE", "ARCHIVED", "DELETED", "None"]
         if status:
             if status not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `status` ({status}), must be one of {allowed_values}")
         self._status = status
 
     @property
@@ -204,14 +200,7 @@ class Account(BaseModel):
 
     @bank_account_type.setter
     def bank_account_type(self, bank_account_type):
-        allowed_values = [
-            "BANK",
-            "CREDITCARD",
-            "PAYPAL",
-            "NONE",
-            "",
-            "None",
-        ]
+        allowed_values = ["BANK", "CREDITCARD", "PAYPAL", "NONE", "", "None"]
         if bank_account_type:
             if bank_account_type not in allowed_values:
                 raise ValueError(
@@ -257,19 +246,10 @@ class Account(BaseModel):
 
     @_class.setter
     def _class(self, _class):
-        allowed_values = [
-            "ASSET",
-            "EQUITY",
-            "EXPENSE",
-            "LIABILITY",
-            "REVENUE",
-            "None",
-        ]
+        allowed_values = ["ASSET", "EQUITY", "EXPENSE", "LIABILITY", "REVENUE", "None"]
         if _class:
             if _class not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `_class` ({_class}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `_class` ({_class}), must be one of {allowed_values}")
         self.__class = _class
 
     @property

@@ -3,11 +3,7 @@ from xero.models import BaseModel
 
 class EmployeeStatutoryLeaveBalance(BaseModel):
     openapi_types = {"leave_type": "str", "balance_remaining": "float", "units": "str"}
-    attribute_map = {
-        "leave_type": "leaveType",
-        "balance_remaining": "balanceRemaining",
-        "units": "units",
-    }
+    attribute_map = {"leave_type": "leaveType", "balance_remaining": "balanceRemaining", "units": "units"}
 
     def __init__(self, leave_type=None, balance_remaining=None, units=None):
         self._leave_type = None
@@ -27,19 +23,10 @@ class EmployeeStatutoryLeaveBalance(BaseModel):
 
     @leave_type.setter
     def leave_type(self, leave_type):
-        allowed_values = [
-            "Sick",
-            "Adoption",
-            "Maternity",
-            "Paternity",
-            "Sharedparental",
-            "None",
-        ]
+        allowed_values = ["Sick", "Adoption", "Maternity", "Paternity", "Sharedparental", "None"]
         if leave_type:
             if leave_type not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `leave_type` ({leave_type}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `leave_type` ({leave_type}), must be one of {allowed_values}")
         self._leave_type = leave_type
 
     @property
@@ -59,7 +46,5 @@ class EmployeeStatutoryLeaveBalance(BaseModel):
         allowed_values = ["Hours", "None"]
         if units:
             if units not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `units` ({units}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `units` ({units}), must be one of {allowed_values}")
         self._units = units

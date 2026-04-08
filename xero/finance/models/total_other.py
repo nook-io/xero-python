@@ -2,20 +2,14 @@ from xero.models import BaseModel
 
 
 class TotalOther(BaseModel):
-    openapi_types = {
-        "total_outstanding_aged": "float",
-        "total_voided": "float",
-        "total_credited": "float",
-    }
+    openapi_types = {"total_outstanding_aged": "float", "total_voided": "float", "total_credited": "float"}
     attribute_map = {
         "total_outstanding_aged": "totalOutstandingAged",
         "total_voided": "totalVoided",
         "total_credited": "totalCredited",
     }
 
-    def __init__(
-        self, total_outstanding_aged=None, total_voided=None, total_credited=None
-    ):
+    def __init__(self, total_outstanding_aged=None, total_voided=None, total_credited=None):
         self._total_outstanding_aged = None
         self._total_voided = None
         self._total_credited = None

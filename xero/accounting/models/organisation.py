@@ -271,9 +271,7 @@ class Organisation(BaseModel):
         ]
         if version:
             if version not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `version` ({version}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `version` ({version}), must be one of {allowed_values}")
         self._version = version
 
     @property
@@ -549,9 +547,7 @@ class Organisation(BaseModel):
         ]
         if _class:
             if _class not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `_class` ({_class}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `_class` ({_class}), must be one of {allowed_values}")
         self.__class = _class
 
     @property
@@ -563,9 +559,7 @@ class Organisation(BaseModel):
         allowed_values = ["BUSINESS", "PARTNER", "None"]
         if edition:
             if edition not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `edition` ({edition}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `edition` ({edition}), must be one of {allowed_values}")
         self._edition = edition
 
     @property

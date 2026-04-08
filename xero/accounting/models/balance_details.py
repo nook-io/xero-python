@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class BalanceDetails(BaseModel):
-    openapi_types = {
-        "balance": "float",
-        "currency_code": "str",
-        "currency_rate": "float",
-    }
-    attribute_map = {
-        "balance": "Balance",
-        "currency_code": "CurrencyCode",
-        "currency_rate": "CurrencyRate",
-    }
+    openapi_types = {"balance": "float", "currency_code": "str", "currency_rate": "float"}
+    attribute_map = {"balance": "Balance", "currency_code": "CurrencyCode", "currency_rate": "CurrencyRate"}
 
     def __init__(self, balance=None, currency_code=None, currency_rate=None):
         self._balance = None

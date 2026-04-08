@@ -160,17 +160,10 @@ class PayRun(BaseModel):
 
     @pay_run_type.setter
     def pay_run_type(self, pay_run_type):
-        allowed_values = [
-            "Scheduled",
-            "Unscheduled",
-            "EarlierYearUpdate",
-            "None",
-        ]
+        allowed_values = ["Scheduled", "Unscheduled", "EarlierYearUpdate", "None"]
         if pay_run_type:
             if pay_run_type not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `pay_run_type` ({pay_run_type}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `pay_run_type` ({pay_run_type}), must be one of {allowed_values}")
         self._pay_run_type = pay_run_type
 
     @property

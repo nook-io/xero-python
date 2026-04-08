@@ -2,12 +2,7 @@ from xero.models import BaseModel
 
 
 class EmployeeOpeningBalance(BaseModel):
-    openapi_types = {
-        "period_end_date": "date",
-        "days_paid": "int",
-        "unpaid_weeks": "int",
-        "gross_earnings": "float",
-    }
+    openapi_types = {"period_end_date": "date", "days_paid": "int", "unpaid_weeks": "int", "gross_earnings": "float"}
     attribute_map = {
         "period_end_date": "periodEndDate",
         "days_paid": "daysPaid",
@@ -15,13 +10,7 @@ class EmployeeOpeningBalance(BaseModel):
         "gross_earnings": "grossEarnings",
     }
 
-    def __init__(
-        self,
-        period_end_date=None,
-        days_paid=None,
-        unpaid_weeks=None,
-        gross_earnings=None,
-    ):
+    def __init__(self, period_end_date=None, days_paid=None, unpaid_weeks=None, gross_earnings=None):
         self._period_end_date = None
         self._days_paid = None
         self._unpaid_weeks = None

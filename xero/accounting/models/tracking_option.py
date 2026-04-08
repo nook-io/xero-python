@@ -2,12 +2,7 @@ from xero.models import BaseModel
 
 
 class TrackingOption(BaseModel):
-    openapi_types = {
-        "tracking_option_id": "str",
-        "name": "str",
-        "status": "str",
-        "tracking_category_id": "str",
-    }
+    openapi_types = {"tracking_option_id": "str", "name": "str", "status": "str", "tracking_category_id": "str"}
     attribute_map = {
         "tracking_option_id": "TrackingOptionID",
         "name": "Name",
@@ -15,9 +10,7 @@ class TrackingOption(BaseModel):
         "tracking_category_id": "TrackingCategoryID",
     }
 
-    def __init__(
-        self, tracking_option_id=None, name=None, status=None, tracking_category_id=None
-    ):
+    def __init__(self, tracking_option_id=None, name=None, status=None, tracking_category_id=None):
         self._tracking_option_id = None
         self._name = None
         self._status = None
@@ -47,9 +40,7 @@ class TrackingOption(BaseModel):
     @name.setter
     def name(self, name):
         if name is not None and len(name) > 100:
-            raise ValueError(
-                "Invalid value for `name`, length must be less than or equal to `100`"
-            )
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `100`")
         self._name = name
 
     @property
@@ -61,9 +52,7 @@ class TrackingOption(BaseModel):
         allowed_values = ["ACTIVE", "ARCHIVED", "DELETED", "None"]
         if status:
             if status not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `status` ({status}), must be one of {allowed_values}")
         self._status = status
 
     @property

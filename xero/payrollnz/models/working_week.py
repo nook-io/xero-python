@@ -22,14 +22,7 @@ class WorkingWeek(BaseModel):
     }
 
     def __init__(
-        self,
-        monday=None,
-        tuesday=None,
-        wednesday=None,
-        thursday=None,
-        friday=None,
-        saturday=None,
-        sunday=None,
+        self, monday=None, tuesday=None, wednesday=None, thursday=None, friday=None, saturday=None, sunday=None
     ):
         self._monday = None
         self._tuesday = None

@@ -7,11 +7,7 @@ class ManualJournals(BaseModel):
         "warnings": "list[ValidationError]",
         "manual_journals": "list[ManualJournal]",
     }
-    attribute_map = {
-        "pagination": "pagination",
-        "warnings": "Warnings",
-        "manual_journals": "ManualJournals",
-    }
+    attribute_map = {"pagination": "pagination", "warnings": "Warnings", "manual_journals": "ManualJournals"}
 
     def __init__(self, pagination=None, warnings=None, manual_journals=None):
         self._pagination = None

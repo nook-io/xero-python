@@ -17,9 +17,7 @@ class HistoryRecordResponse(BaseModel):
         "details": "details",
     }
 
-    def __init__(
-        self, changes=None, date_utc_string=None, date_utc=None, user=None, details=None
-    ):
+    def __init__(self, changes=None, date_utc_string=None, date_utc=None, user=None, details=None):
         self._changes = None
         self._date_utc_string = None
         self._date_utc = None

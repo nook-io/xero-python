@@ -97,9 +97,7 @@ class Benefit(BaseModel):
         allowed_values = ["KiwiSaver", "ComplyingFund", "Other", "None"]
         if category:
             if category not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `category` ({category}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `category` ({category}), must be one of {allowed_values}")
         self._category = category
 
     @property
@@ -109,9 +107,7 @@ class Benefit(BaseModel):
     @liability_account_id.setter
     def liability_account_id(self, liability_account_id):
         if liability_account_id is None:
-            raise ValueError(
-                "Invalid value for `liability_account_id`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `liability_account_id`, must not be `None`")
         self._liability_account_id = liability_account_id
 
     @property
@@ -121,9 +117,7 @@ class Benefit(BaseModel):
     @expense_account_id.setter
     def expense_account_id(self, expense_account_id):
         if expense_account_id is None:
-            raise ValueError(
-                "Invalid value for `expense_account_id`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `expense_account_id`, must not be `None`")
         self._expense_account_id = expense_account_id
 
     @property
@@ -132,11 +126,7 @@ class Benefit(BaseModel):
 
     @calculation_type_nz.setter
     def calculation_type_nz(self, calculation_type_nz):
-        allowed_values = [
-            "FixedAmount",
-            "PercentageOfTaxableEarnings",
-            "None",
-        ]
+        allowed_values = ["FixedAmount", "PercentageOfTaxableEarnings", "None"]
         if calculation_type_nz:
             if calculation_type_nz not in allowed_values:
                 raise ValueError(

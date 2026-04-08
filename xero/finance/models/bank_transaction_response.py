@@ -20,13 +20,7 @@ class BankTransactionResponse(BaseModel):
     }
 
     def __init__(
-        self,
-        bank_transaction_id=None,
-        batch_payment_id=None,
-        contact=None,
-        date=None,
-        amount=None,
-        line_items=None,
+        self, bank_transaction_id=None, batch_payment_id=None, contact=None, date=None, amount=None, line_items=None
     ):
         self._bank_transaction_id = None
         self._batch_payment_id = None

@@ -132,19 +132,10 @@ class LinkedTransaction(BaseModel):
 
     @status.setter
     def status(self, status):
-        allowed_values = [
-            "APPROVED",
-            "DRAFT",
-            "ONDRAFT",
-            "BILLED",
-            "VOIDED",
-            "None",
-        ]
+        allowed_values = ["APPROVED", "DRAFT", "ONDRAFT", "BILLED", "VOIDED", "None"]
         if status:
             if status not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `status` ({status}), must be one of {allowed_values}")
         self._status = status
 
     @property
@@ -156,9 +147,7 @@ class LinkedTransaction(BaseModel):
         allowed_values = ["BILLABLEEXPENSE", "None"]
         if type:
             if type not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `type` ({type}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `type` ({type}), must be one of {allowed_values}")
         self._type = type
 
     @property

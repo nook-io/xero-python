@@ -3,11 +3,7 @@ from xero.models import BaseModel
 
 class ExternalLink(BaseModel):
     openapi_types = {"link_type": "str", "url": "str", "description": "str"}
-    attribute_map = {
-        "link_type": "LinkType",
-        "url": "Url",
-        "description": "Description",
-    }
+    attribute_map = {"link_type": "LinkType", "url": "Url", "description": "Description"}
 
     def __init__(self, link_type=None, url=None, description=None):
         self._link_type = None
@@ -27,19 +23,10 @@ class ExternalLink(BaseModel):
 
     @link_type.setter
     def link_type(self, link_type):
-        allowed_values = [
-            "Facebook",
-            "GooglePlus",
-            "LinkedIn",
-            "Twitter",
-            "Website",
-            "None",
-        ]
+        allowed_values = ["Facebook", "GooglePlus", "LinkedIn", "Twitter", "Website", "None"]
         if link_type:
             if link_type not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `link_type` ({link_type}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `link_type` ({link_type}), must be one of {allowed_values}")
         self._link_type = link_type
 
     @property

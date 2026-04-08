@@ -17,9 +17,7 @@ class TimeEntryCreateOrUpdate(BaseModel):
         "description": "description",
     }
 
-    def __init__(
-        self, user_id=None, task_id=None, date_utc=None, duration=None, description=None
-    ):
+    def __init__(self, user_id=None, task_id=None, date_utc=None, duration=None, description=None):
         self._user_id = None
         self._task_id = None
         self._date_utc = None

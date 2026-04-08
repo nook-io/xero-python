@@ -116,9 +116,7 @@ class Item(BaseModel):
         if code is None:
             raise ValueError("Invalid value for `code`, must not be `None`")
         if code is not None and len(code) > 30:
-            raise ValueError(
-                "Invalid value for `code`, length must be less than or equal to `30`"
-            )
+            raise ValueError("Invalid value for `code`, length must be less than or equal to `30`")
         self._code = code
 
     @property
@@ -136,9 +134,7 @@ class Item(BaseModel):
     @name.setter
     def name(self, name):
         if name is not None and len(name) > 50:
-            raise ValueError(
-                "Invalid value for `name`, length must be less than or equal to `50`"
-            )
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `50`")
         self._name = name
 
     @property
@@ -164,10 +160,7 @@ class Item(BaseModel):
     @description.setter
     def description(self, description):
         if description is not None and len(description) > 4000:
-            raise ValueError(
-                "Invalid value for `description`, "
-                "length must be less than or equal to `4000`"
-            )
+            raise ValueError("Invalid value for `description`, length must be less than or equal to `4000`")
         self._description = description
 
     @property
@@ -177,10 +170,7 @@ class Item(BaseModel):
     @purchase_description.setter
     def purchase_description(self, purchase_description):
         if purchase_description is not None and len(purchase_description) > 4000:
-            raise ValueError(
-                "Invalid value for `purchase_description`, "
-                "length must be less than or equal to `4000`"
-            )
+            raise ValueError("Invalid value for `purchase_description`, length must be less than or equal to `4000`")
         self._purchase_description = purchase_description
 
     @property

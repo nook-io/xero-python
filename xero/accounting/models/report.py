@@ -65,9 +65,7 @@ class Report(BaseModel):
         allowed_values = ["AgedPayablesByContact", "None"]
         if report_type:
             if report_type not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `report_type` ({report_type}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `report_type` ({report_type}), must be one of {allowed_values}")
         self._report_type = report_type
 
     @property

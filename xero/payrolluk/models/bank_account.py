@@ -3,11 +3,7 @@ from xero.models import BaseModel
 
 class BankAccount(BaseModel):
     openapi_types = {"account_name": "str", "account_number": "str", "sort_code": "str"}
-    attribute_map = {
-        "account_name": "accountName",
-        "account_number": "accountNumber",
-        "sort_code": "sortCode",
-    }
+    attribute_map = {"account_name": "accountName", "account_number": "accountNumber", "sort_code": "sortCode"}
 
     def __init__(self, account_name=None, account_number=None, sort_code=None):
         self._account_name = None

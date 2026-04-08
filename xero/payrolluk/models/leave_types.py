@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class LeaveTypes(BaseModel):
-    openapi_types = {
-        "pagination": "Pagination",
-        "problem": "Problem",
-        "leave_types": "list[LeaveType]",
-    }
-    attribute_map = {
-        "pagination": "pagination",
-        "problem": "problem",
-        "leave_types": "leaveTypes",
-    }
+    openapi_types = {"pagination": "Pagination", "problem": "Problem", "leave_types": "list[LeaveType]"}
+    attribute_map = {"pagination": "pagination", "problem": "problem", "leave_types": "leaveTypes"}
 
     def __init__(self, pagination=None, problem=None, leave_types=None):
         self._pagination = None

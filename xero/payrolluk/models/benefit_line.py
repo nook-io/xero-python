@@ -17,14 +17,7 @@ class BenefitLine(BaseModel):
         "percentage": "percentage",
     }
 
-    def __init__(
-        self,
-        benefit_type_id=None,
-        display_name=None,
-        amount=None,
-        fixed_amount=None,
-        percentage=None,
-    ):
+    def __init__(self, benefit_type_id=None, display_name=None, amount=None, fixed_amount=None, percentage=None):
         self._benefit_type_id = None
         self._display_name = None
         self._amount = None

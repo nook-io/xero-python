@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class Contacts(BaseModel):
-    openapi_types = {
-        "pagination": "Pagination",
-        "warnings": "list[ValidationError]",
-        "contacts": "list[Contact]",
-    }
-    attribute_map = {
-        "pagination": "pagination",
-        "warnings": "Warnings",
-        "contacts": "Contacts",
-    }
+    openapi_types = {"pagination": "Pagination", "warnings": "list[ValidationError]", "contacts": "list[Contact]"}
+    attribute_map = {"pagination": "pagination", "warnings": "Warnings", "contacts": "Contacts"}
 
     def __init__(self, pagination=None, warnings=None, contacts=None):
         self._pagination = None

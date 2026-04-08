@@ -76,15 +76,7 @@ class PayRunCalendar(BaseModel):
     def calendar_type(self, calendar_type):
         if calendar_type is None:
             raise ValueError("Invalid value for `calendar_type`, must not be `None`")
-        allowed_values = [
-            "Weekly",
-            "Fortnightly",
-            "FourWeekly",
-            "Monthly",
-            "Annual",
-            "Quarterly",
-            "None",
-        ]
+        allowed_values = ["Weekly", "Fortnightly", "FourWeekly", "Monthly", "Annual", "Quarterly", "None"]
         if calendar_type:
             if calendar_type not in allowed_values:
                 raise ValueError(
@@ -99,9 +91,7 @@ class PayRunCalendar(BaseModel):
     @period_start_date.setter
     def period_start_date(self, period_start_date):
         if period_start_date is None:
-            raise ValueError(
-                "Invalid value for `period_start_date`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `period_start_date`, must not be `None`")
         self._period_start_date = period_start_date
 
     @property

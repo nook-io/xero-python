@@ -79,9 +79,7 @@ class UsageRecord(BaseModel):
     @subscription_item_id.setter
     def subscription_item_id(self, subscription_item_id):
         if subscription_item_id is None:
-            raise ValueError(
-                "Invalid value for `subscription_item_id`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `subscription_item_id`, must not be `None`")
         self._subscription_item_id = subscription_item_id
 
     @property

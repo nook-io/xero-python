@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class CashflowActivity(BaseModel):
-    openapi_types = {
-        "name": "str",
-        "total": "float",
-        "cashflow_types": "list[CashflowType]",
-    }
-    attribute_map = {
-        "name": "name",
-        "total": "total",
-        "cashflow_types": "cashflowTypes",
-    }
+    openapi_types = {"name": "str", "total": "float", "cashflow_types": "list[CashflowType]"}
+    attribute_map = {"name": "name", "total": "total", "cashflow_types": "cashflowTypes"}
 
     def __init__(self, name=None, total=None, cashflow_types=None):
         self._name = None

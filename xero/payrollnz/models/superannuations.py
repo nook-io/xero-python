@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class Superannuations(BaseModel):
-    openapi_types = {
-        "pagination": "Pagination",
-        "problem": "Problem",
-        "benefits": "list[Benefit]",
-    }
-    attribute_map = {
-        "pagination": "pagination",
-        "problem": "problem",
-        "benefits": "benefits",
-    }
+    openapi_types = {"pagination": "Pagination", "problem": "Problem", "benefits": "list[Benefit]"}
+    attribute_map = {"pagination": "pagination", "problem": "problem", "benefits": "benefits"}
 
     def __init__(self, pagination=None, problem=None, benefits=None):
         self._pagination = None

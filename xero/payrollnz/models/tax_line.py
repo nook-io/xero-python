@@ -18,12 +18,7 @@ class TaxLine(BaseModel):
     }
 
     def __init__(
-        self,
-        tax_line_id=None,
-        description=None,
-        amount=None,
-        global_tax_type_id=None,
-        manual_adjustment=None,
+        self, tax_line_id=None, description=None, amount=None, global_tax_type_id=None, manual_adjustment=None
     ):
         self._tax_line_id = None
         self._description = None

@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class ReportHistoryResponse(BaseModel):
-    openapi_types = {
-        "organisation_id": "str",
-        "end_date": "date",
-        "reports": "list[ReportHistoryModel]",
-    }
-    attribute_map = {
-        "organisation_id": "organisationId",
-        "end_date": "endDate",
-        "reports": "reports",
-    }
+    openapi_types = {"organisation_id": "str", "end_date": "date", "reports": "list[ReportHistoryModel]"}
+    attribute_map = {"organisation_id": "organisationId", "end_date": "endDate", "reports": "reports"}
 
     def __init__(self, organisation_id=None, end_date=None, reports=None):
         self._organisation_id = None

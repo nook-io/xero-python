@@ -2,12 +2,7 @@ from xero.models import BaseModel
 
 
 class LeaveBalance(BaseModel):
-    openapi_types = {
-        "leave_name": "str",
-        "leave_type_id": "str",
-        "number_of_units": "float",
-        "type_of_units": "str",
-    }
+    openapi_types = {"leave_name": "str", "leave_type_id": "str", "number_of_units": "float", "type_of_units": "str"}
     attribute_map = {
         "leave_name": "LeaveName",
         "leave_type_id": "LeaveTypeID",
@@ -15,13 +10,7 @@ class LeaveBalance(BaseModel):
         "type_of_units": "TypeOfUnits",
     }
 
-    def __init__(
-        self,
-        leave_name=None,
-        leave_type_id=None,
-        number_of_units=None,
-        type_of_units=None,
-    ):
+    def __init__(self, leave_name=None, leave_type_id=None, number_of_units=None, type_of_units=None):
         self._leave_name = None
         self._leave_type_id = None
         self._number_of_units = None

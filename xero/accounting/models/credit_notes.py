@@ -7,11 +7,7 @@ class CreditNotes(BaseModel):
         "warnings": "list[ValidationError]",
         "credit_notes": "list[CreditNote]",
     }
-    attribute_map = {
-        "pagination": "pagination",
-        "warnings": "Warnings",
-        "credit_notes": "CreditNotes",
-    }
+    attribute_map = {"pagination": "pagination", "warnings": "Warnings", "credit_notes": "CreditNotes"}
 
     def __init__(self, pagination=None, warnings=None, credit_notes=None):
         self._pagination = None

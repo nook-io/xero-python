@@ -2,20 +2,14 @@ from xero.models import BaseModel
 
 
 class SuperMembership(BaseModel):
-    openapi_types = {
-        "super_membership_id": "str",
-        "super_fund_id": "str",
-        "employee_number": "str",
-    }
+    openapi_types = {"super_membership_id": "str", "super_fund_id": "str", "employee_number": "str"}
     attribute_map = {
         "super_membership_id": "SuperMembershipID",
         "super_fund_id": "SuperFundID",
         "employee_number": "EmployeeNumber",
     }
 
-    def __init__(
-        self, super_membership_id=None, super_fund_id=None, employee_number=None
-    ):
+    def __init__(self, super_membership_id=None, super_fund_id=None, employee_number=None):
         self._super_membership_id = None
         self._super_fund_id = None
         self._employee_number = None

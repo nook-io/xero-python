@@ -2,20 +2,14 @@ from xero.models import BaseModel
 
 
 class ReportHistoryModel(BaseModel):
-    openapi_types = {
-        "report_name": "str",
-        "report_date_text": "str",
-        "published_date_utc": "datetime",
-    }
+    openapi_types = {"report_name": "str", "report_date_text": "str", "published_date_utc": "datetime"}
     attribute_map = {
         "report_name": "reportName",
         "report_date_text": "reportDateText",
         "published_date_utc": "publishedDateUtc",
     }
 
-    def __init__(
-        self, report_name=None, report_date_text=None, published_date_utc=None
-    ):
+    def __init__(self, report_name=None, report_date_text=None, published_date_utc=None):
         self._report_name = None
         self._report_date_text = None
         self._published_date_utc = None

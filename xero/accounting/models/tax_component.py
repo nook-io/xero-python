@@ -2,12 +2,7 @@ from xero.models import BaseModel
 
 
 class TaxComponent(BaseModel):
-    openapi_types = {
-        "name": "str",
-        "rate": "float",
-        "is_compound": "bool",
-        "is_non_recoverable": "bool",
-    }
+    openapi_types = {"name": "str", "rate": "float", "is_compound": "bool", "is_non_recoverable": "bool"}
     attribute_map = {
         "name": "Name",
         "rate": "Rate",

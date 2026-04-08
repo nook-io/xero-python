@@ -23,10 +23,7 @@ class IdentityApi:
 
     async def delete_connection(
         self,
-        id: Annotated[
-            StrictStr,
-            Field(..., description="Unique identifier for retrieving single object"),
-        ],
+        id: Annotated[StrictStr, Field(..., description="Unique identifier for retrieving single object")],
         **kwargs,
     ) -> None:
         kwargs["_return_http_data_only"] = True
@@ -37,10 +34,7 @@ class IdentityApi:
 
     async def delete_connection_with_http_info(
         self,
-        id: Annotated[
-            StrictStr,
-            Field(..., description="Unique identifier for retrieving single object"),
-        ],
+        id: Annotated[StrictStr, Field(..., description="Unique identifier for retrieving single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -57,10 +51,7 @@ class IdentityApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method delete_connection"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method delete_connection")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -95,11 +86,7 @@ class IdentityApi:
         )
 
     async def get_connections(
-        self,
-        auth_event_id: Annotated[
-            StrictStr | None, Field(description="Filter by authEventId")
-        ] = None,
-        **kwargs,
+        self, auth_event_id: Annotated[StrictStr | None, Field(description="Filter by authEventId")] = None, **kwargs
     ) -> list[Connection]:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
@@ -108,11 +95,7 @@ class IdentityApi:
         return await self.get_connections_with_http_info(auth_event_id, **kwargs)
 
     async def get_connections_with_http_info(
-        self,
-        auth_event_id: Annotated[
-            StrictStr | None, Field(description="Filter by authEventId")
-        ] = None,
-        **kwargs,
+        self, auth_event_id: Annotated[StrictStr | None, Field(description="Filter by authEventId")] = None, **kwargs
     ) -> ApiResponse:
         _params = locals()
         _all_params = ["auth_event_id"]
@@ -128,10 +111,7 @@ class IdentityApi:
         )
         for _key, _val in _params["kwargs"].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    f"Got an unexpected keyword argument '{_key}'"
-                    " to method get_connections"
-                )
+                raise ApiTypeError(f"Got an unexpected keyword argument '{_key}' to method get_connections")
             _params[_key] = _val
         del _params["kwargs"]
         _collection_formats = {}
@@ -143,13 +123,9 @@ class IdentityApi:
         _form_params = []
         _files = {}
         _body_params = None
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        _header_params["Accept"] = self.api_client.select_header_accept(["application/json"])
         _auth_settings = ["OAuth2"]
-        _response_types_map = {
-            "200": "list[Connection]",
-        }
+        _response_types_map = {"200": "list[Connection]"}
         return await self.api_client.call_api(
             "/Connections",
             "GET",

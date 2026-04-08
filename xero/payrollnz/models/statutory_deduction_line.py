@@ -15,13 +15,7 @@ class StatutoryDeductionLine(BaseModel):
         "manual_adjustment": "manualAdjustment",
     }
 
-    def __init__(
-        self,
-        statutory_deduction_type_id=None,
-        amount=None,
-        fixed_amount=None,
-        manual_adjustment=None,
-    ):
+    def __init__(self, statutory_deduction_type_id=None, amount=None, fixed_amount=None, manual_adjustment=None):
         self._statutory_deduction_type_id = None
         self._amount = None
         self._fixed_amount = None

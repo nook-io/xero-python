@@ -61,9 +61,7 @@ class Subscription(BaseModel):
     @current_period_end.setter
     def current_period_end(self, current_period_end):
         if current_period_end is None:
-            raise ValueError(
-                "Invalid value for `current_period_end`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `current_period_end`, must not be `None`")
         self._current_period_end = current_period_end
 
     @property
@@ -125,9 +123,7 @@ class Subscription(BaseModel):
         allowed_values = ["ACTIVE", "CANCELED", "PAST_DUE", "None"]
         if status:
             if status not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `status` ({status}), must be one of {allowed_values}")
         self._status = status
 
     @property

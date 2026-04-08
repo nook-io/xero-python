@@ -8,12 +8,7 @@ class PrepaymentResponse(BaseModel):
         "total": "float",
         "line_items": "list[LineItemResponse]",
     }
-    attribute_map = {
-        "prepayment_id": "prepaymentId",
-        "contact": "contact",
-        "total": "total",
-        "line_items": "lineItems",
-    }
+    attribute_map = {"prepayment_id": "prepaymentId", "contact": "contact", "total": "total", "line_items": "lineItems"}
 
     def __init__(self, prepayment_id=None, contact=None, total=None, line_items=None):
         self._prepayment_id = None

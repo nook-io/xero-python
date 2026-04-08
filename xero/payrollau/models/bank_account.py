@@ -20,13 +20,7 @@ class BankAccount(BaseModel):
     }
 
     def __init__(
-        self,
-        statement_text=None,
-        account_name=None,
-        bsb=None,
-        account_number=None,
-        remainder=None,
-        amount=None,
+        self, statement_text=None, account_name=None, bsb=None, account_number=None, remainder=None, amount=None
     ):
         self._statement_text = None
         self._account_name = None

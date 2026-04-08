@@ -23,10 +23,7 @@ class TokenApi:
         self.client_secret = client_secret
 
     async def refresh_token(self, refresh_token):
-        post_data = {
-            "grant_type": "refresh_token",
-            "refresh_token": refresh_token,
-        }
+        post_data = {"grant_type": "refresh_token", "refresh_token": refresh_token}
         response: ClientResponse = await self.api_client.request(
             "POST",
             self.refresh_token_url,
@@ -40,32 +37,21 @@ class TokenApi:
             _preload_content=False,
         )
         if response.status != 200:
-            raise Exception(
-                f"refresh token status {response.status} {await response.text()} {response.headers!r}"
-            )
+            raise Exception(f"refresh token status {response.status} {await response.text()} {response.headers!r}")
         return await response.json()
 
     async def revoke_token(self, refresh_token):
-        post_data = {
-            "token": refresh_token,
-            "client_id": self.client_id,
-            "client_secret": self.client_secret,
-        }
+        post_data = {"token": refresh_token, "client_id": self.client_id, "client_secret": self.client_secret}
         response: ClientResponse = await self.api_client.request(
             "POST",
             self.revoke_token_url,
             query_params=None,
-            headers={
-                "Accept": "application/json",
-                "Content-Type": "application/x-www-form-urlencoded",
-            },
+            headers={"Accept": "application/json", "Content-Type": "application/x-www-form-urlencoded"},
             post_params=post_data,
             _preload_content=False,
         )
         if response.status != 200:
-            raise Exception(
-                f"refresh token status {response.status} {await response.text()} {response.headers!r}"
-            )
+            raise Exception(f"refresh token status {response.status} {await response.text()} {response.headers!r}")
         return response.status
 
     async def get_client_credentials_token(self, app_store_billing):
@@ -79,18 +65,13 @@ class TokenApi:
         response: ApiResponse = await self.api_client.call_api(
             self.client_credentials_token_url,
             "POST",
-            header_params={
-                "Accept": "application/json",
-                "Content-Type": "application/x-www-form-urlencoded",
-            },
+            header_params={"Accept": "application/json", "Content-Type": "application/x-www-form-urlencoded"},
             post_params=post_data,
             auth_settings=None,
             _preload_content=False,
         )
         if response.status_code != 200:
-            raise Exception(
-                f"refresh token status {response.status_code} {response.data} {response.headers!r}"
-            )
+            raise Exception(f"refresh token status {response.status_code} {response.data} {response.headers!r}")
         return self.parse_token_response(response.data)
 
     def parse_token_response(self, response):
@@ -101,12 +82,7 @@ class TokenApi:
 class OAuth2Token:
     EXPIRATION_BUFFER_DEFAULT = 60
 
-    def __init__(
-        self,
-        client_id=None,
-        client_secret=None,
-        expiration_buffer=EXPIRATION_BUFFER_DEFAULT,
-    ):
+    def __init__(self, client_id=None, client_secret=None, expiration_buffer=EXPIRATION_BUFFER_DEFAULT):
         self.client_id = client_id
         self.client_secret = client_secret
         self.expiration_buffer = expiration_buffer
@@ -120,12 +96,7 @@ class OAuth2Token:
     async def create_auth_settings(self, api_client):
         self.update_token(**api_client.get_oauth2_token())
         access_token = await self.get_valid_access_token(api_client)
-        return {
-            "type": "oauth2",
-            "in": "header",
-            "key": "Authorization",
-            "value": f"{self.token_type} {access_token}",
-        }
+        return {"type": "oauth2", "in": "header", "key": "Authorization", "value": f"{self.token_type} {access_token}"}
 
     def is_access_token_valid(self, at_time=None):
         at_time = at_time or time.time() + self.expiration_buffer
@@ -140,12 +111,7 @@ class OAuth2Token:
         return self.access_token
 
     def can_refresh_access_token(self):
-        return (
-            self.refresh_token
-            and isinstance(self.scope, (list, tuple))
-            and self.client_id
-            and self.client_secret
-        )
+        return self.refresh_token and isinstance(self.scope, (list, tuple)) and self.client_id and self.client_secret
 
     async def refresh_access_token(self, api_client):
         if not self.can_refresh_access_token():
@@ -182,14 +148,7 @@ class OAuth2Token:
         return True
 
     def update_token(
-        self,
-        access_token,
-        scope,
-        expires_in,
-        token_type,
-        expires_at=None,
-        refresh_token=None,
-        id_token=None,
+        self, access_token, scope, expires_in, token_type, expires_at=None, refresh_token=None, id_token=None
     ):
         self.access_token = access_token
         self.expires_at = expires_at

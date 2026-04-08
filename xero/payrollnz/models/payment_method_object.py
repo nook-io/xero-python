@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class PaymentMethodObject(BaseModel):
-    openapi_types = {
-        "pagination": "Pagination",
-        "problem": "Problem",
-        "payment_method": "PaymentMethod",
-    }
-    attribute_map = {
-        "pagination": "pagination",
-        "problem": "problem",
-        "payment_method": "paymentMethod",
-    }
+    openapi_types = {"pagination": "Pagination", "problem": "Problem", "payment_method": "PaymentMethod"}
+    attribute_map = {"pagination": "pagination", "problem": "problem", "payment_method": "paymentMethod"}
 
     def __init__(self, pagination=None, problem=None, payment_method=None):
         self._pagination = None

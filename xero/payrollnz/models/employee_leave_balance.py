@@ -2,12 +2,7 @@ from xero.models import BaseModel
 
 
 class EmployeeLeaveBalance(BaseModel):
-    openapi_types = {
-        "name": "str",
-        "leave_type_id": "str",
-        "balance": "float",
-        "type_of_units": "str",
-    }
+    openapi_types = {"name": "str", "leave_type_id": "str", "balance": "float", "type_of_units": "str"}
     attribute_map = {
         "name": "name",
         "leave_type_id": "leaveTypeID",

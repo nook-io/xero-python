@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class TimesheetObject(BaseModel):
-    openapi_types = {
-        "pagination": "Pagination",
-        "problem": "Problem",
-        "timesheet": "Timesheet",
-    }
-    attribute_map = {
-        "pagination": "pagination",
-        "problem": "problem",
-        "timesheet": "timesheet",
-    }
+    openapi_types = {"pagination": "Pagination", "problem": "Problem", "timesheet": "Timesheet"}
+    attribute_map = {"pagination": "pagination", "problem": "problem", "timesheet": "timesheet"}
 
     def __init__(self, pagination=None, problem=None, timesheet=None):
         self._pagination = None

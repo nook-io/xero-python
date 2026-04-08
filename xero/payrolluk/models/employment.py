@@ -2,12 +2,7 @@ from xero.models import BaseModel
 
 
 class Employment(BaseModel):
-    openapi_types = {
-        "payroll_calendar_id": "str",
-        "start_date": "date",
-        "employee_number": "str",
-        "ni_category": "str",
-    }
+    openapi_types = {"payroll_calendar_id": "str", "start_date": "date", "employee_number": "str", "ni_category": "str"}
     attribute_map = {
         "payroll_calendar_id": "payrollCalendarID",
         "start_date": "startDate",
@@ -15,13 +10,7 @@ class Employment(BaseModel):
         "ni_category": "niCategory",
     }
 
-    def __init__(
-        self,
-        payroll_calendar_id=None,
-        start_date=None,
-        employee_number=None,
-        ni_category=None,
-    ):
+    def __init__(self, payroll_calendar_id=None, start_date=None, employee_number=None, ni_category=None):
         self._payroll_calendar_id = None
         self._start_date = None
         self._employee_number = None
@@ -66,25 +55,8 @@ class Employment(BaseModel):
 
     @ni_category.setter
     def ni_category(self, ni_category):
-        allowed_values = [
-            "A",
-            "B",
-            "C",
-            "F",
-            "H",
-            "I",
-            "J",
-            "L",
-            "M",
-            "S",
-            "V",
-            "X",
-            "Z",
-            "None",
-        ]
+        allowed_values = ["A", "B", "C", "F", "H", "I", "J", "L", "M", "S", "V", "X", "Z", "None"]
         if ni_category:
             if ni_category not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `ni_category` ({ni_category}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `ni_category` ({ni_category}), must be one of {allowed_values}")
         self._ni_category = ni_category

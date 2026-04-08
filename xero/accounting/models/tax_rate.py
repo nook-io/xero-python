@@ -114,18 +114,10 @@ class TaxRate(BaseModel):
 
     @status.setter
     def status(self, status):
-        allowed_values = [
-            "ACTIVE",
-            "DELETED",
-            "ARCHIVED",
-            "PENDING",
-            "None",
-        ]
+        allowed_values = ["ACTIVE", "DELETED", "ARCHIVED", "PENDING", "None"]
         if status:
             if status not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `status` ({status}), must be one of {allowed_values}")
         self._status = status
 
     @property

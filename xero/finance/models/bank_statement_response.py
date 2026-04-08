@@ -2,14 +2,8 @@ from xero.models import BaseModel
 
 
 class BankStatementResponse(BaseModel):
-    openapi_types = {
-        "statement_lines": "StatementLinesResponse",
-        "current_statement": "CurrentStatementResponse",
-    }
-    attribute_map = {
-        "statement_lines": "statementLines",
-        "current_statement": "currentStatement",
-    }
+    openapi_types = {"statement_lines": "StatementLinesResponse", "current_statement": "CurrentStatementResponse"}
+    attribute_map = {"statement_lines": "statementLines", "current_statement": "currentStatement"}
 
     def __init__(self, statement_lines=None, current_statement=None):
         self._statement_lines = None

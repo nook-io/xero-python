@@ -11,10 +11,7 @@ class OpenApiException(Exception):
 
 
 class HTTPStatusException(OpenApiException):
-    def __init__(
-        self,
-        http_resp: "RESTResponse",
-    ):
+    def __init__(self, http_resp: "RESTResponse"):
         self.http_resp = http_resp
 
     @property

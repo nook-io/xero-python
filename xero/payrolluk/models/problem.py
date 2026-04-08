@@ -19,15 +19,7 @@ class Problem(BaseModel):
         "invalid_fields": "invalidFields",
     }
 
-    def __init__(
-        self,
-        type=None,
-        title=None,
-        status=None,
-        detail=None,
-        instance=None,
-        invalid_fields=None,
-    ):
+    def __init__(self, type=None, title=None, status=None, detail=None, instance=None, invalid_fields=None):
         self._type = None
         self._title = None
         self._status = None

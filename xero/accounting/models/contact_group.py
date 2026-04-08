@@ -2,18 +2,8 @@ from xero.models import BaseModel
 
 
 class ContactGroup(BaseModel):
-    openapi_types = {
-        "name": "str",
-        "status": "str",
-        "contact_group_id": "str",
-        "contacts": "list[Contact]",
-    }
-    attribute_map = {
-        "name": "Name",
-        "status": "Status",
-        "contact_group_id": "ContactGroupID",
-        "contacts": "Contacts",
-    }
+    openapi_types = {"name": "str", "status": "str", "contact_group_id": "str", "contacts": "list[Contact]"}
+    attribute_map = {"name": "Name", "status": "Status", "contact_group_id": "ContactGroupID", "contacts": "Contacts"}
 
     def __init__(self, name=None, status=None, contact_group_id=None, contacts=None):
         self._name = None
@@ -47,9 +37,7 @@ class ContactGroup(BaseModel):
         allowed_values = ["ACTIVE", "DELETED", "None"]
         if status:
             if status not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `status` ({status}), must be one of {allowed_values}")
         self._status = status
 
     @property

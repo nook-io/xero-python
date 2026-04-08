@@ -2,14 +2,8 @@ from xero.models import BaseModel
 
 
 class EmployeePayTemplate(BaseModel):
-    openapi_types = {
-        "employee_id": "str",
-        "earning_templates": "list[EarningsTemplate]",
-    }
-    attribute_map = {
-        "employee_id": "employeeID",
-        "earning_templates": "earningTemplates",
-    }
+    openapi_types = {"employee_id": "str", "earning_templates": "list[EarningsTemplate]"}
+    attribute_map = {"employee_id": "employeeID", "earning_templates": "earningTemplates"}
 
     def __init__(self, employee_id=None, earning_templates=None):
         self._employee_id = None

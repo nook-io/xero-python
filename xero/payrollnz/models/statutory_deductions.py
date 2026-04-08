@@ -7,11 +7,7 @@ class StatutoryDeductions(BaseModel):
         "problem": "Problem",
         "statutory_deductions": "list[StatutoryDeduction]",
     }
-    attribute_map = {
-        "pagination": "pagination",
-        "problem": "problem",
-        "statutory_deductions": "statutoryDeductions",
-    }
+    attribute_map = {"pagination": "pagination", "problem": "problem", "statutory_deductions": "statutoryDeductions"}
 
     def __init__(self, pagination=None, problem=None, statutory_deductions=None):
         self._pagination = None

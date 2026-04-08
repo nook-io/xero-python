@@ -2,20 +2,8 @@ from xero.models import BaseModel
 
 
 class Product(BaseModel):
-    openapi_types = {
-        "id": "str",
-        "name": "str",
-        "seat_unit": "str",
-        "type": "str",
-        "usage_unit": "str",
-    }
-    attribute_map = {
-        "id": "id",
-        "name": "name",
-        "seat_unit": "seatUnit",
-        "type": "type",
-        "usage_unit": "usageUnit",
-    }
+    openapi_types = {"id": "str", "name": "str", "seat_unit": "str", "type": "str", "usage_unit": "str"}
+    attribute_map = {"id": "id", "name": "name", "seat_unit": "seatUnit", "type": "type", "usage_unit": "usageUnit"}
 
     def __init__(self, id=None, name=None, seat_unit=None, type=None, usage_unit=None):
         self._id = None
@@ -68,9 +56,7 @@ class Product(BaseModel):
         allowed_values = ["FIXED", "PER_SEAT", "METERED", "None"]
         if type:
             if type not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `type` ({type}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `type` ({type}), must be one of {allowed_values}")
         self._type = type
 
     @property

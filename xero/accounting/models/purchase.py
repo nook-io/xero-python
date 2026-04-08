@@ -2,12 +2,7 @@ from xero.models import BaseModel
 
 
 class Purchase(BaseModel):
-    openapi_types = {
-        "unit_price": "float",
-        "account_code": "str",
-        "cogs_account_code": "str",
-        "tax_type": "str",
-    }
+    openapi_types = {"unit_price": "float", "account_code": "str", "cogs_account_code": "str", "tax_type": "str"}
     attribute_map = {
         "unit_price": "UnitPrice",
         "account_code": "AccountCode",
@@ -15,9 +10,7 @@ class Purchase(BaseModel):
         "tax_type": "TaxType",
     }
 
-    def __init__(
-        self, unit_price=None, account_code=None, cogs_account_code=None, tax_type=None
-    ):
+    def __init__(self, unit_price=None, account_code=None, cogs_account_code=None, tax_type=None):
         self._unit_price = None
         self._account_code = None
         self._cogs_account_code = None

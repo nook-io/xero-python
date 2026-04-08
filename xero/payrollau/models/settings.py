@@ -15,13 +15,7 @@ class Settings(BaseModel):
         "employees_are_stp2": "EmployeesAreSTP2",
     }
 
-    def __init__(
-        self,
-        accounts=None,
-        tracking_categories=None,
-        days_in_payroll_year=None,
-        employees_are_stp2=None,
-    ):
+    def __init__(self, accounts=None, tracking_categories=None, days_in_payroll_year=None, employees_are_stp2=None):
         self._accounts = None
         self._tracking_categories = None
         self._days_in_payroll_year = None

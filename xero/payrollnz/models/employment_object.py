@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class EmploymentObject(BaseModel):
-    openapi_types = {
-        "pagination": "Pagination",
-        "problem": "Problem",
-        "employment": "Employment",
-    }
-    attribute_map = {
-        "pagination": "pagination",
-        "problem": "problem",
-        "employment": "employment",
-    }
+    openapi_types = {"pagination": "Pagination", "problem": "Problem", "employment": "Employment"}
+    attribute_map = {"pagination": "pagination", "problem": "problem", "employment": "employment"}
 
     def __init__(self, pagination=None, problem=None, employment=None):
         self._pagination = None

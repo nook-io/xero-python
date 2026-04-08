@@ -70,16 +70,8 @@ class Deduction(BaseModel):
     @deduction_category.setter
     def deduction_category(self, deduction_category):
         if deduction_category is None:
-            raise ValueError(
-                "Invalid value for `deduction_category`, must not be `None`"
-            )
-        allowed_values = [
-            "PayrollGiving",
-            "KiwiSaverVoluntaryContributions",
-            "Superannuation",
-            "NzOther",
-            "None",
-        ]
+            raise ValueError("Invalid value for `deduction_category`, must not be `None`")
+        allowed_values = ["PayrollGiving", "KiwiSaverVoluntaryContributions", "Superannuation", "NzOther", "None"]
         if deduction_category:
             if deduction_category not in allowed_values:
                 raise ValueError(
@@ -94,9 +86,7 @@ class Deduction(BaseModel):
     @liability_account_id.setter
     def liability_account_id(self, liability_account_id):
         if liability_account_id is None:
-            raise ValueError(
-                "Invalid value for `liability_account_id`, must not be `None`"
-            )
+            raise ValueError("Invalid value for `liability_account_id`, must not be `None`")
         self._liability_account_id = liability_account_id
 
     @property

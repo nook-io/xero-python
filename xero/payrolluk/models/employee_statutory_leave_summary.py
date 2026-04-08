@@ -76,19 +76,10 @@ class EmployeeStatutoryLeaveSummary(BaseModel):
 
     @type.setter
     def type(self, type):
-        allowed_values = [
-            "Sick",
-            "Adoption",
-            "Maternity",
-            "Paternity",
-            "Sharedparental",
-            "None",
-        ]
+        allowed_values = ["Sick", "Adoption", "Maternity", "Paternity", "Sharedparental", "None"]
         if type:
             if type not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `type` ({type}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `type` ({type}), must be one of {allowed_values}")
         self._type = type
 
     @property
@@ -124,7 +115,5 @@ class EmployeeStatutoryLeaveSummary(BaseModel):
         allowed_values = ["Pending", "In-Progress", "Completed", "None"]
         if status:
             if status not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `status` ({status}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `status` ({status}), must be one of {allowed_values}")
         self._status = status

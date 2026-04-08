@@ -18,12 +18,7 @@ class Error(BaseModel):
     }
 
     def __init__(
-        self,
-        resource_validation_errors=None,
-        field_validation_errors=None,
-        type=None,
-        title=None,
-        detail=None,
+        self, resource_validation_errors=None, field_validation_errors=None, type=None, title=None, detail=None
     ):
         self._resource_validation_errors = None
         self._field_validation_errors = None

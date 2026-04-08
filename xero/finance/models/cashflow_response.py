@@ -15,13 +15,7 @@ class CashflowResponse(BaseModel):
         "cashflow_activities": "cashflowActivities",
     }
 
-    def __init__(
-        self,
-        start_date=None,
-        end_date=None,
-        cash_balance=None,
-        cashflow_activities=None,
-    ):
+    def __init__(self, start_date=None, end_date=None, cash_balance=None, cashflow_activities=None):
         self._start_date = None
         self._end_date = None
         self._cash_balance = None

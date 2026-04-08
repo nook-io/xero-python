@@ -2,11 +2,7 @@ from xero.models import BaseModel
 
 
 class LockHistoryModel(BaseModel):
-    openapi_types = {
-        "hard_lock_date": "date",
-        "soft_lock_date": "date",
-        "updated_date_utc": "datetime",
-    }
+    openapi_types = {"hard_lock_date": "date", "soft_lock_date": "date", "updated_date_utc": "datetime"}
     attribute_map = {
         "hard_lock_date": "hardLockDate",
         "soft_lock_date": "softLockDate",

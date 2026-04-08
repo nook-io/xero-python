@@ -2,16 +2,8 @@ from xero.models import BaseModel
 
 
 class LeavePeriods(BaseModel):
-    openapi_types = {
-        "pagination": "Pagination",
-        "problem": "Problem",
-        "periods": "list[LeavePeriod]",
-    }
-    attribute_map = {
-        "pagination": "pagination",
-        "problem": "problem",
-        "periods": "periods",
-    }
+    openapi_types = {"pagination": "Pagination", "problem": "Problem", "periods": "list[LeavePeriod]"}
+    attribute_map = {"pagination": "pagination", "problem": "problem", "periods": "periods"}
 
     def __init__(self, pagination=None, problem=None, periods=None):
         self._pagination = None

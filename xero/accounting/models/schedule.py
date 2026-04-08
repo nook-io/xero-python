@@ -71,9 +71,7 @@ class Schedule(BaseModel):
         allowed_values = ["WEEKLY", "MONTHLY", "None"]
         if unit:
             if unit not in allowed_values:
-                raise ValueError(
-                    f"Invalid value for `unit` ({unit}), must be one of {allowed_values}"
-                )
+                raise ValueError(f"Invalid value for `unit` ({unit}), must be one of {allowed_values}")
         self._unit = unit
 
     @property
