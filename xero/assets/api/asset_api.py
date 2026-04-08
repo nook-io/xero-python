@@ -27,8 +27,8 @@ class AssetApi:
 
     async def create_asset(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        asset: Annotated[Asset, Field(..., description="Fixed asset you are creating")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        asset: Annotated[Asset, Field(description="Fixed asset you are creating")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -45,8 +45,8 @@ class AssetApi:
 
     async def create_asset_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        asset: Annotated[Asset, Field(..., description="Fixed asset you are creating")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        asset: Annotated[Asset, Field(description="Fixed asset you are creating")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -115,8 +115,8 @@ class AssetApi:
 
     async def create_asset_type(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        asset_type: Annotated[AssetType, Field(..., description="Asset type to add")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        asset_type: Annotated[AssetType, Field(description="Asset type to add")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -133,8 +133,8 @@ class AssetApi:
 
     async def create_asset_type_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        asset_type: Annotated[AssetType, Field(..., description="Asset type to add")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        asset_type: Annotated[AssetType, Field(description="Asset type to add")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -203,8 +203,8 @@ class AssetApi:
 
     async def get_asset_by_id(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        id: Annotated[StrictStr, Field(..., description="fixed asset id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        id: Annotated[StrictStr, Field(description="fixed asset id for single object")],
         **kwargs,
     ) -> Asset:
         kwargs["_return_http_data_only"] = True
@@ -215,8 +215,8 @@ class AssetApi:
 
     async def get_asset_by_id_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        id: Annotated[StrictStr, Field(..., description="fixed asset id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        id: Annotated[StrictStr, Field(description="fixed asset id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -271,7 +271,7 @@ class AssetApi:
         )
 
     async def get_asset_settings(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> Setting:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
@@ -280,7 +280,7 @@ class AssetApi:
         return await self.get_asset_settings_with_http_info(xero_tenant_id, **kwargs)
 
     async def get_asset_settings_with_http_info(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> ApiResponse:
         _params = locals()
         _all_params = ["xero_tenant_id"]
@@ -332,7 +332,7 @@ class AssetApi:
         )
 
     async def get_asset_types(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> list[AssetType]:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
@@ -341,7 +341,7 @@ class AssetApi:
         return await self.get_asset_types_with_http_info(xero_tenant_id, **kwargs)
 
     async def get_asset_types_with_http_info(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> ApiResponse:
         _params = locals()
         _all_params = ["xero_tenant_id"]
@@ -394,10 +394,10 @@ class AssetApi:
 
     async def get_assets(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         status: Annotated[
             AssetStatusQueryParam,
-            Field(..., description="Required when retrieving a collection of assets. See Asset Status Codes"),
+            Field(description="Required when retrieving a collection of assets. See Asset Status Codes"),
         ],
         page: Annotated[
             StrictInt | None,
@@ -436,10 +436,10 @@ class AssetApi:
 
     async def get_assets_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         status: Annotated[
             AssetStatusQueryParam,
-            Field(..., description="Required when retrieving a collection of assets. See Asset Status Codes"),
+            Field(description="Required when retrieving a collection of assets. See Asset Status Codes"),
         ],
         page: Annotated[
             StrictInt | None,

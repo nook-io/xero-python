@@ -33,7 +33,7 @@ class FinanceApi:
 
     async def get_accounting_activity_account_usage(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         start_month: Annotated[
             StrictStr | None,
             Field(
@@ -58,7 +58,7 @@ class FinanceApi:
 
     async def get_accounting_activity_account_usage_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         start_month: Annotated[
             StrictStr | None,
             Field(
@@ -130,7 +130,7 @@ class FinanceApi:
 
     async def get_accounting_activity_lock_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         end_date: Annotated[
             StrictStr | None,
             Field(
@@ -147,7 +147,7 @@ class FinanceApi:
 
     async def get_accounting_activity_lock_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         end_date: Annotated[
             StrictStr | None,
             Field(
@@ -211,7 +211,7 @@ class FinanceApi:
 
     async def get_accounting_activity_report_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         end_date: Annotated[
             StrictStr | None,
             Field(
@@ -228,7 +228,7 @@ class FinanceApi:
 
     async def get_accounting_activity_report_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         end_date: Annotated[
             StrictStr | None,
             Field(
@@ -292,7 +292,7 @@ class FinanceApi:
 
     async def get_accounting_activity_user_activities(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         data_month: Annotated[
             StrictStr | None,
             Field(
@@ -309,7 +309,7 @@ class FinanceApi:
 
     async def get_accounting_activity_user_activities_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         data_month: Annotated[
             StrictStr | None,
             Field(
@@ -373,20 +373,18 @@ class FinanceApi:
 
     async def get_bank_statement_accounting(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        bank_account_id: Annotated[StrictStr, Field(..., description="string, GUID    Bank account Id")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        bank_account_id: Annotated[StrictStr, Field(description="string, GUID    Bank account Id")],
         from_date: Annotated[
             StrictStr,
             Field(
-                ...,
-                description="date, yyyy-MM-dd     Specifies the start date of the query period.   The maximum range of the query period is 12 months. If the specified query period is more than 12 months the request will be rejected.",
+                description="date, yyyy-MM-dd     Specifies the start date of the query period.   The maximum range of the query period is 12 months. If the specified query period is more than 12 months the request will be rejected."
             ),
         ],
         to_date: Annotated[
             StrictStr,
             Field(
-                ...,
-                description="date, yyyy-MM-dd     Specifies the end date of the query period.   If the end date is a future date, the request will be rejected.",
+                description="date, yyyy-MM-dd     Specifies the end date of the query period.   If the end date is a future date, the request will be rejected."
             ),
         ],
         summary_only: Annotated[
@@ -407,20 +405,18 @@ class FinanceApi:
 
     async def get_bank_statement_accounting_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        bank_account_id: Annotated[StrictStr, Field(..., description="string, GUID    Bank account Id")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        bank_account_id: Annotated[StrictStr, Field(description="string, GUID    Bank account Id")],
         from_date: Annotated[
             StrictStr,
             Field(
-                ...,
-                description="date, yyyy-MM-dd     Specifies the start date of the query period.   The maximum range of the query period is 12 months. If the specified query period is more than 12 months the request will be rejected.",
+                description="date, yyyy-MM-dd     Specifies the start date of the query period.   The maximum range of the query period is 12 months. If the specified query period is more than 12 months the request will be rejected."
             ),
         ],
         to_date: Annotated[
             StrictStr,
             Field(
-                ...,
-                description="date, yyyy-MM-dd     Specifies the end date of the query period.   If the end date is a future date, the request will be rejected.",
+                description="date, yyyy-MM-dd     Specifies the end date of the query period.   If the end date is a future date, the request will be rejected."
             ),
         ],
         summary_only: Annotated[
@@ -492,7 +488,7 @@ class FinanceApi:
 
     async def get_cash_validation(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         balance_date: Annotated[
             StrictStr | None,
             Field(
@@ -523,7 +519,7 @@ class FinanceApi:
 
     async def get_cash_validation_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         balance_date: Annotated[
             StrictStr | None,
             Field(
@@ -601,7 +597,7 @@ class FinanceApi:
 
     async def get_financial_statement_balance_sheet(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         balance_date: Annotated[
             StrictStr | None,
             Field(
@@ -618,7 +614,7 @@ class FinanceApi:
 
     async def get_financial_statement_balance_sheet_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         balance_date: Annotated[
             StrictStr | None,
             Field(
@@ -682,7 +678,7 @@ class FinanceApi:
 
     async def get_financial_statement_cashflow(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         start_date: Annotated[
             StrictStr | None,
             Field(
@@ -707,7 +703,7 @@ class FinanceApi:
 
     async def get_financial_statement_cashflow_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         start_date: Annotated[
             StrictStr | None,
             Field(
@@ -779,7 +775,7 @@ class FinanceApi:
 
     async def get_financial_statement_contacts_expense(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         contact_ids: Annotated[
             list[StrictStr] | None,
             Field(
@@ -816,7 +812,7 @@ class FinanceApi:
 
     async def get_financial_statement_contacts_expense_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         contact_ids: Annotated[
             list[StrictStr] | None,
             Field(
@@ -905,7 +901,7 @@ class FinanceApi:
 
     async def get_financial_statement_contacts_revenue(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         contact_ids: Annotated[
             list[StrictStr] | None,
             Field(
@@ -942,7 +938,7 @@ class FinanceApi:
 
     async def get_financial_statement_contacts_revenue_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         contact_ids: Annotated[
             list[StrictStr] | None,
             Field(
@@ -1031,7 +1027,7 @@ class FinanceApi:
 
     async def get_financial_statement_profit_and_loss(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         start_date: Annotated[
             StrictStr | None,
             Field(
@@ -1056,7 +1052,7 @@ class FinanceApi:
 
     async def get_financial_statement_profit_and_loss_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         start_date: Annotated[
             StrictStr | None,
             Field(
@@ -1128,7 +1124,7 @@ class FinanceApi:
 
     async def get_financial_statement_trial_balance(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         end_date: Annotated[
             StrictStr | None,
             Field(
@@ -1145,7 +1141,7 @@ class FinanceApi:
 
     async def get_financial_statement_trial_balance_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         end_date: Annotated[
             StrictStr | None,
             Field(

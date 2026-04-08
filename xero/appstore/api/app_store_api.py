@@ -27,7 +27,7 @@ class AppStoreApi:
 
     async def get_subscription(
         self,
-        subscription_id: Annotated[StrictStr, Field(..., description="Unique identifier for Subscription object")],
+        subscription_id: Annotated[StrictStr, Field(description="Unique identifier for Subscription object")],
         **kwargs,
     ) -> Subscription:
         kwargs["_return_http_data_only"] = True
@@ -38,7 +38,7 @@ class AppStoreApi:
 
     async def get_subscription_with_http_info(
         self,
-        subscription_id: Annotated[StrictStr, Field(..., description="Unique identifier for Subscription object")],
+        subscription_id: Annotated[StrictStr, Field(description="Unique identifier for Subscription object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -92,7 +92,7 @@ class AppStoreApi:
 
     async def get_usage_records(
         self,
-        subscription_id: Annotated[StrictStr, Field(..., description="Unique identifier for Subscription object")],
+        subscription_id: Annotated[StrictStr, Field(description="Unique identifier for Subscription object")],
         **kwargs,
     ) -> UsageRecordsList:
         kwargs["_return_http_data_only"] = True
@@ -103,7 +103,7 @@ class AppStoreApi:
 
     async def get_usage_records_with_http_info(
         self,
-        subscription_id: Annotated[StrictStr, Field(..., description="Unique identifier for Subscription object")],
+        subscription_id: Annotated[StrictStr, Field(description="Unique identifier for Subscription object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -157,12 +157,10 @@ class AppStoreApi:
 
     async def post_usage_records(
         self,
-        subscription_id: Annotated[StrictStr, Field(..., description="Unique identifier for Subscription object")],
-        subscription_item_id: Annotated[
-            StrictStr, Field(..., description="The unique identifier of the subscriptionItem")
-        ],
+        subscription_id: Annotated[StrictStr, Field(description="Unique identifier for Subscription object")],
+        subscription_item_id: Annotated[StrictStr, Field(description="The unique identifier of the subscriptionItem")],
         create_usage_record: Annotated[
-            CreateUsageRecord, Field(..., description="Contains the quantity for the usage record to create")
+            CreateUsageRecord, Field(description="Contains the quantity for the usage record to create")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -182,12 +180,10 @@ class AppStoreApi:
 
     async def post_usage_records_with_http_info(
         self,
-        subscription_id: Annotated[StrictStr, Field(..., description="Unique identifier for Subscription object")],
-        subscription_item_id: Annotated[
-            StrictStr, Field(..., description="The unique identifier of the subscriptionItem")
-        ],
+        subscription_id: Annotated[StrictStr, Field(description="Unique identifier for Subscription object")],
+        subscription_item_id: Annotated[StrictStr, Field(description="The unique identifier of the subscriptionItem")],
         create_usage_record: Annotated[
-            CreateUsageRecord, Field(..., description="Contains the quantity for the usage record to create")
+            CreateUsageRecord, Field(description="Contains the quantity for the usage record to create")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -259,13 +255,11 @@ class AppStoreApi:
 
     async def put_usage_records(
         self,
-        subscription_id: Annotated[StrictStr, Field(..., description="Unique identifier for Subscription object")],
-        subscription_item_id: Annotated[
-            StrictStr, Field(..., description="The unique identifier of the subscriptionItem")
-        ],
-        usage_record_id: Annotated[StrictStr, Field(..., description="The unique identifier of the usage record")],
+        subscription_id: Annotated[StrictStr, Field(description="Unique identifier for Subscription object")],
+        subscription_item_id: Annotated[StrictStr, Field(description="The unique identifier of the subscriptionItem")],
+        usage_record_id: Annotated[StrictStr, Field(description="The unique identifier of the usage record")],
         update_usage_record: Annotated[
-            UpdateUsageRecord, Field(..., description="Contains the quantity for the usage record to update")
+            UpdateUsageRecord, Field(description="Contains the quantity for the usage record to update")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -285,13 +279,11 @@ class AppStoreApi:
 
     async def put_usage_records_with_http_info(
         self,
-        subscription_id: Annotated[StrictStr, Field(..., description="Unique identifier for Subscription object")],
-        subscription_item_id: Annotated[
-            StrictStr, Field(..., description="The unique identifier of the subscriptionItem")
-        ],
-        usage_record_id: Annotated[StrictStr, Field(..., description="The unique identifier of the usage record")],
+        subscription_id: Annotated[StrictStr, Field(description="Unique identifier for Subscription object")],
+        subscription_item_id: Annotated[StrictStr, Field(description="The unique identifier of the subscriptionItem")],
+        usage_record_id: Annotated[StrictStr, Field(description="The unique identifier of the usage record")],
         update_usage_record: Annotated[
-            UpdateUsageRecord, Field(..., description="Contains the quantity for the usage record to update")
+            UpdateUsageRecord, Field(description="Contains the quantity for the usage record to update")
         ],
         idempotency_key: Annotated[
             StrictStr | None,

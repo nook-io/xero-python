@@ -76,8 +76,8 @@ class AccountingApi:
 
     async def create_account(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        account: Annotated[Account, Field(..., description="Account object in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        account: Annotated[Account, Field(description="Account object in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -94,8 +94,8 @@ class AccountingApi:
 
     async def create_account_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        account: Annotated[Account, Field(..., description="Account object in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        account: Annotated[Account, Field(description="Account object in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -164,10 +164,10 @@ class AccountingApi:
 
     async def create_account_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for Account object")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        account_id: Annotated[StrictStr, Field(description="Unique identifier for Account object")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -186,10 +186,10 @@ class AccountingApi:
 
     async def create_account_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for Account object")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        account_id: Annotated[StrictStr, Field(description="Unique identifier for Account object")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -268,12 +268,12 @@ class AccountingApi:
 
     async def create_bank_transaction_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transaction_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transaction")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transaction")
         ],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -292,12 +292,12 @@ class AccountingApi:
 
     async def create_bank_transaction_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transaction_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transaction")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transaction")
         ],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -377,13 +377,13 @@ class AccountingApi:
 
     async def create_bank_transaction_history_record(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transaction_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transaction")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transaction")
         ],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -403,13 +403,13 @@ class AccountingApi:
 
     async def create_bank_transaction_history_record_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transaction_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transaction")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transaction")
         ],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -483,10 +483,10 @@ class AccountingApi:
 
     async def create_bank_transactions(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transactions: Annotated[
             BankTransactions,
-            Field(..., description="BankTransactions with an array of BankTransaction objects in body of request"),
+            Field(description="BankTransactions with an array of BankTransaction objects in body of request"),
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -518,10 +518,10 @@ class AccountingApi:
 
     async def create_bank_transactions_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transactions: Annotated[
             BankTransactions,
-            Field(..., description="BankTransactions with an array of BankTransaction objects in body of request"),
+            Field(description="BankTransactions with an array of BankTransaction objects in body of request"),
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -607,9 +607,9 @@ class AccountingApi:
 
     async def create_bank_transfer(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transfers: Annotated[
-            BankTransfers, Field(..., description="BankTransfers with array of BankTransfer objects in request body")
+            BankTransfers, Field(description="BankTransfers with array of BankTransfer objects in request body")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -627,9 +627,9 @@ class AccountingApi:
 
     async def create_bank_transfer_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transfers: Annotated[
-            BankTransfers, Field(..., description="BankTransfers with array of BankTransfer objects in request body")
+            BankTransfers, Field(description="BankTransfers with array of BankTransfer objects in request body")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -699,12 +699,12 @@ class AccountingApi:
 
     async def create_bank_transfer_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transfer_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transfer")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transfer")
         ],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -723,12 +723,12 @@ class AccountingApi:
 
     async def create_bank_transfer_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transfer_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transfer")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transfer")
         ],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -808,13 +808,13 @@ class AccountingApi:
 
     async def create_bank_transfer_history_record(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transfer_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transfer")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transfer")
         ],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -834,13 +834,13 @@ class AccountingApi:
 
     async def create_bank_transfer_history_record_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transfer_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transfer")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transfer")
         ],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -914,9 +914,9 @@ class AccountingApi:
 
     async def create_batch_payment(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         batch_payments: Annotated[
-            BatchPayments, Field(..., description="BatchPayments with an array of Payments in body of request")
+            BatchPayments, Field(description="BatchPayments with an array of Payments in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -942,9 +942,9 @@ class AccountingApi:
 
     async def create_batch_payment_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         batch_payments: Annotated[
-            BatchPayments, Field(..., description="BatchPayments with an array of Payments in body of request")
+            BatchPayments, Field(description="BatchPayments with an array of Payments in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -1022,11 +1022,11 @@ class AccountingApi:
 
     async def create_batch_payment_history_record(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        batch_payment_id: Annotated[StrictStr, Field(..., description="Unique identifier for BatchPayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        batch_payment_id: Annotated[StrictStr, Field(description="Unique identifier for BatchPayment")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1046,11 +1046,11 @@ class AccountingApi:
 
     async def create_batch_payment_history_record_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        batch_payment_id: Annotated[StrictStr, Field(..., description="Unique identifier for BatchPayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        batch_payment_id: Annotated[StrictStr, Field(description="Unique identifier for BatchPayment")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1124,11 +1124,10 @@ class AccountingApi:
 
     async def create_branding_theme_payment_services(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        branding_theme_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Branding Theme")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        branding_theme_id: Annotated[StrictStr, Field(description="Unique identifier for a Branding Theme")],
         payment_services: Annotated[
-            PaymentServices,
-            Field(..., description="PaymentServices array with PaymentService object in body of request"),
+            PaymentServices, Field(description="PaymentServices array with PaymentService object in body of request")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1148,11 +1147,10 @@ class AccountingApi:
 
     async def create_branding_theme_payment_services_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        branding_theme_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Branding Theme")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        branding_theme_id: Annotated[StrictStr, Field(description="Unique identifier for a Branding Theme")],
         payment_services: Annotated[
-            PaymentServices,
-            Field(..., description="PaymentServices array with PaymentService object in body of request"),
+            PaymentServices, Field(description="PaymentServices array with PaymentService object in body of request")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1226,10 +1224,10 @@ class AccountingApi:
 
     async def create_contact_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -1248,10 +1246,10 @@ class AccountingApi:
 
     async def create_contact_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -1330,9 +1328,9 @@ class AccountingApi:
 
     async def create_contact_group(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         contact_groups: Annotated[
-            ContactGroups, Field(..., description="ContactGroups with an array of names in request body")
+            ContactGroups, Field(description="ContactGroups with an array of names in request body")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1350,9 +1348,9 @@ class AccountingApi:
 
     async def create_contact_group_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         contact_groups: Annotated[
-            ContactGroups, Field(..., description="ContactGroups with an array of names in request body")
+            ContactGroups, Field(description="ContactGroups with an array of names in request body")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1422,13 +1420,12 @@ class AccountingApi:
 
     async def create_contact_group_contacts(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_group_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact Group")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_group_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact Group")],
         contacts: Annotated[
             Contacts,
             Field(
-                ...,
-                description="Contacts with array of contacts specifying the ContactID to be added to ContactGroup in body of request",
+                description="Contacts with array of contacts specifying the ContactID to be added to ContactGroup in body of request"
             ),
         ],
         idempotency_key: Annotated[
@@ -1449,13 +1446,12 @@ class AccountingApi:
 
     async def create_contact_group_contacts_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_group_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact Group")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_group_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact Group")],
         contacts: Annotated[
             Contacts,
             Field(
-                ...,
-                description="Contacts with array of contacts specifying the ContactID to be added to ContactGroup in body of request",
+                description="Contacts with array of contacts specifying the ContactID to be added to ContactGroup in body of request"
             ),
         ],
         idempotency_key: Annotated[
@@ -1530,11 +1526,11 @@ class AccountingApi:
 
     async def create_contact_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1554,11 +1550,11 @@ class AccountingApi:
 
     async def create_contact_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1630,9 +1626,9 @@ class AccountingApi:
 
     async def create_contacts(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         contacts: Annotated[
-            Contacts, Field(..., description="Contacts with an array of Contact objects to create in body of request")
+            Contacts, Field(description="Contacts with an array of Contact objects to create in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -1658,9 +1654,9 @@ class AccountingApi:
 
     async def create_contacts_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         contacts: Annotated[
-            Contacts, Field(..., description="Contacts with an array of Contact objects to create in body of request")
+            Contacts, Field(description="Contacts with an array of Contact objects to create in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -1738,10 +1734,10 @@ class AccountingApi:
 
     async def create_credit_note_allocation(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
         allocations: Annotated[
-            Allocations, Field(..., description="Allocations with array of Allocation object in body of request.")
+            Allocations, Field(description="Allocations with array of Allocation object in body of request.")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -1767,10 +1763,10 @@ class AccountingApi:
 
     async def create_credit_note_allocation_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
         allocations: Annotated[
-            Allocations, Field(..., description="Allocations with array of Allocation object in body of request.")
+            Allocations, Field(description="Allocations with array of Allocation object in body of request.")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -1852,10 +1848,10 @@ class AccountingApi:
 
     async def create_credit_note_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         include_online: Annotated[
             StrictBool | None,
             Field(description="Allows an attachment to be seen by the end customer within their online invoice"),
@@ -1878,10 +1874,10 @@ class AccountingApi:
 
     async def create_credit_note_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         include_online: Annotated[
             StrictBool | None,
             Field(description="Allows an attachment to be seen by the end customer within their online invoice"),
@@ -1966,11 +1962,11 @@ class AccountingApi:
 
     async def create_credit_note_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1990,11 +1986,11 @@ class AccountingApi:
 
     async def create_credit_note_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -2066,9 +2062,9 @@ class AccountingApi:
 
     async def create_credit_notes(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         credit_notes: Annotated[
-            CreditNotes, Field(..., description="Credit Notes with array of CreditNote object in body of request")
+            CreditNotes, Field(description="Credit Notes with array of CreditNote object in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -2100,9 +2096,9 @@ class AccountingApi:
 
     async def create_credit_notes_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         credit_notes: Annotated[
-            CreditNotes, Field(..., description="Credit Notes with array of CreditNote object in body of request")
+            CreditNotes, Field(description="Credit Notes with array of CreditNote object in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -2188,8 +2184,8 @@ class AccountingApi:
 
     async def create_currency(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        currency: Annotated[Currency, Field(..., description="Currency object in the body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        currency: Annotated[Currency, Field(description="Currency object in the body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -2206,8 +2202,8 @@ class AccountingApi:
 
     async def create_currency_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        currency: Annotated[Currency, Field(..., description="Currency object in the body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        currency: Annotated[Currency, Field(description="Currency object in the body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -2276,9 +2272,9 @@ class AccountingApi:
 
     async def create_employees(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         employees: Annotated[
-            Employees, Field(..., description="Employees with array of Employee object in body of request")
+            Employees, Field(description="Employees with array of Employee object in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -2304,9 +2300,9 @@ class AccountingApi:
 
     async def create_employees_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         employees: Annotated[
-            Employees, Field(..., description="Employees with array of Employee object in body of request")
+            Employees, Field(description="Employees with array of Employee object in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -2384,11 +2380,11 @@ class AccountingApi:
 
     async def create_expense_claim_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        expense_claim_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ExpenseClaim")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        expense_claim_id: Annotated[StrictStr, Field(description="Unique identifier for a ExpenseClaim")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -2408,11 +2404,11 @@ class AccountingApi:
 
     async def create_expense_claim_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        expense_claim_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ExpenseClaim")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        expense_claim_id: Annotated[StrictStr, Field(description="Unique identifier for a ExpenseClaim")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -2486,9 +2482,9 @@ class AccountingApi:
 
     async def create_expense_claims(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         expense_claims: Annotated[
-            ExpenseClaims, Field(..., description="ExpenseClaims with array of ExpenseClaim object in body of request")
+            ExpenseClaims, Field(description="ExpenseClaims with array of ExpenseClaim object in body of request")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -2508,9 +2504,9 @@ class AccountingApi:
 
     async def create_expense_claims_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         expense_claims: Annotated[
-            ExpenseClaims, Field(..., description="ExpenseClaims with array of ExpenseClaim object in body of request")
+            ExpenseClaims, Field(description="ExpenseClaims with array of ExpenseClaim object in body of request")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -2580,10 +2576,10 @@ class AccountingApi:
 
     async def create_invoice_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         include_online: Annotated[
             StrictBool | None,
             Field(description="Allows an attachment to be seen by the end customer within their online invoice"),
@@ -2606,10 +2602,10 @@ class AccountingApi:
 
     async def create_invoice_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         include_online: Annotated[
             StrictBool | None,
             Field(description="Allows an attachment to be seen by the end customer within their online invoice"),
@@ -2694,11 +2690,11 @@ class AccountingApi:
 
     async def create_invoice_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -2718,11 +2714,11 @@ class AccountingApi:
 
     async def create_invoice_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -2794,9 +2790,9 @@ class AccountingApi:
 
     async def create_invoices(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         invoices: Annotated[
-            Invoices, Field(..., description="Invoices with an array of invoice objects in body of request")
+            Invoices, Field(description="Invoices with an array of invoice objects in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -2828,9 +2824,9 @@ class AccountingApi:
 
     async def create_invoices_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         invoices: Annotated[
-            Invoices, Field(..., description="Invoices with an array of invoice objects in body of request")
+            Invoices, Field(description="Invoices with an array of invoice objects in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -2916,11 +2912,11 @@ class AccountingApi:
 
     async def create_item_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        item_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Item")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        item_id: Annotated[StrictStr, Field(description="Unique identifier for an Item")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -2940,11 +2936,11 @@ class AccountingApi:
 
     async def create_item_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        item_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Item")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        item_id: Annotated[StrictStr, Field(description="Unique identifier for an Item")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -3016,8 +3012,8 @@ class AccountingApi:
 
     async def create_items(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        items: Annotated[Items, Field(..., description="Items with an array of Item objects in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        items: Annotated[Items, Field(description="Items with an array of Item objects in body of request")],
         summarize_errors: Annotated[
             StrictBool | None,
             Field(
@@ -3048,8 +3044,8 @@ class AccountingApi:
 
     async def create_items_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        items: Annotated[Items, Field(..., description="Items with an array of Item objects in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        items: Annotated[Items, Field(description="Items with an array of Item objects in body of request")],
         summarize_errors: Annotated[
             StrictBool | None,
             Field(
@@ -3134,9 +3130,9 @@ class AccountingApi:
 
     async def create_linked_transaction(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         linked_transaction: Annotated[
-            LinkedTransaction, Field(..., description="LinkedTransaction object in body of request")
+            LinkedTransaction, Field(description="LinkedTransaction object in body of request")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -3156,9 +3152,9 @@ class AccountingApi:
 
     async def create_linked_transaction_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         linked_transaction: Annotated[
-            LinkedTransaction, Field(..., description="LinkedTransaction object in body of request")
+            LinkedTransaction, Field(description="LinkedTransaction object in body of request")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -3228,10 +3224,10 @@ class AccountingApi:
 
     async def create_manual_journal_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        manual_journal_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ManualJournal")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        manual_journal_id: Annotated[StrictStr, Field(description="Unique identifier for a ManualJournal")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -3250,10 +3246,10 @@ class AccountingApi:
 
     async def create_manual_journal_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        manual_journal_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ManualJournal")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        manual_journal_id: Annotated[StrictStr, Field(description="Unique identifier for a ManualJournal")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -3333,11 +3329,11 @@ class AccountingApi:
 
     async def create_manual_journal_history_record(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        manual_journal_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ManualJournal")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        manual_journal_id: Annotated[StrictStr, Field(description="Unique identifier for a ManualJournal")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -3357,11 +3353,11 @@ class AccountingApi:
 
     async def create_manual_journal_history_record_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        manual_journal_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ManualJournal")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        manual_journal_id: Annotated[StrictStr, Field(description="Unique identifier for a ManualJournal")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -3435,9 +3431,9 @@ class AccountingApi:
 
     async def create_manual_journals(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         manual_journals: Annotated[
-            ManualJournals, Field(..., description="ManualJournals array with ManualJournal object in body of request")
+            ManualJournals, Field(description="ManualJournals array with ManualJournal object in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -3463,9 +3459,9 @@ class AccountingApi:
 
     async def create_manual_journals_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         manual_journals: Annotated[
-            ManualJournals, Field(..., description="ManualJournals array with ManualJournal object in body of request")
+            ManualJournals, Field(description="ManualJournals array with ManualJournal object in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -3543,10 +3539,10 @@ class AccountingApi:
 
     async def create_overpayment_allocations(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        overpayment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Overpayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        overpayment_id: Annotated[StrictStr, Field(description="Unique identifier for a Overpayment")],
         allocations: Annotated[
-            Allocations, Field(..., description="Allocations array with Allocation object in body of request")
+            Allocations, Field(description="Allocations array with Allocation object in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -3572,10 +3568,10 @@ class AccountingApi:
 
     async def create_overpayment_allocations_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        overpayment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Overpayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        overpayment_id: Annotated[StrictStr, Field(description="Unique identifier for a Overpayment")],
         allocations: Annotated[
-            Allocations, Field(..., description="Allocations array with Allocation object in body of request")
+            Allocations, Field(description="Allocations array with Allocation object in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -3657,11 +3653,11 @@ class AccountingApi:
 
     async def create_overpayment_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        overpayment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Overpayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        overpayment_id: Annotated[StrictStr, Field(description="Unique identifier for a Overpayment")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -3681,11 +3677,11 @@ class AccountingApi:
 
     async def create_overpayment_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        overpayment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Overpayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        overpayment_id: Annotated[StrictStr, Field(description="Unique identifier for a Overpayment")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -3757,8 +3753,8 @@ class AccountingApi:
 
     async def create_payment(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        payment: Annotated[Payment, Field(..., description="Request body with a single Payment object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        payment: Annotated[Payment, Field(description="Request body with a single Payment object")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -3775,8 +3771,8 @@ class AccountingApi:
 
     async def create_payment_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        payment: Annotated[Payment, Field(..., description="Request body with a single Payment object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        payment: Annotated[Payment, Field(description="Request body with a single Payment object")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -3845,11 +3841,11 @@ class AccountingApi:
 
     async def create_payment_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        payment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Payment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        payment_id: Annotated[StrictStr, Field(description="Unique identifier for a Payment")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -3869,11 +3865,11 @@ class AccountingApi:
 
     async def create_payment_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        payment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Payment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        payment_id: Annotated[StrictStr, Field(description="Unique identifier for a Payment")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -3945,10 +3941,9 @@ class AccountingApi:
 
     async def create_payment_service(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         payment_services: Annotated[
-            PaymentServices,
-            Field(..., description="PaymentServices array with PaymentService object in body of request"),
+            PaymentServices, Field(description="PaymentServices array with PaymentService object in body of request")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -3968,10 +3963,9 @@ class AccountingApi:
 
     async def create_payment_service_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         payment_services: Annotated[
-            PaymentServices,
-            Field(..., description="PaymentServices array with PaymentService object in body of request"),
+            PaymentServices, Field(description="PaymentServices array with PaymentService object in body of request")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -4041,8 +4035,8 @@ class AccountingApi:
 
     async def create_payments(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        payments: Annotated[Payments, Field(..., description="Payments array with Payment object in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        payments: Annotated[Payments, Field(description="Payments array with Payment object in body of request")],
         summarize_errors: Annotated[
             StrictBool | None,
             Field(
@@ -4067,8 +4061,8 @@ class AccountingApi:
 
     async def create_payments_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        payments: Annotated[Payments, Field(..., description="Payments array with Payment object in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        payments: Annotated[Payments, Field(description="Payments array with Payment object in body of request")],
         summarize_errors: Annotated[
             StrictBool | None,
             Field(
@@ -4145,10 +4139,10 @@ class AccountingApi:
 
     async def create_prepayment_allocations(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        prepayment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a PrePayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        prepayment_id: Annotated[StrictStr, Field(description="Unique identifier for a PrePayment")],
         allocations: Annotated[
-            Allocations, Field(..., description="Allocations with an array of Allocation object in body of request")
+            Allocations, Field(description="Allocations with an array of Allocation object in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -4174,10 +4168,10 @@ class AccountingApi:
 
     async def create_prepayment_allocations_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        prepayment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a PrePayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        prepayment_id: Annotated[StrictStr, Field(description="Unique identifier for a PrePayment")],
         allocations: Annotated[
-            Allocations, Field(..., description="Allocations with an array of Allocation object in body of request")
+            Allocations, Field(description="Allocations with an array of Allocation object in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -4259,11 +4253,11 @@ class AccountingApi:
 
     async def create_prepayment_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        prepayment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a PrePayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        prepayment_id: Annotated[StrictStr, Field(description="Unique identifier for a PrePayment")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -4283,11 +4277,11 @@ class AccountingApi:
 
     async def create_prepayment_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        prepayment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a PrePayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        prepayment_id: Annotated[StrictStr, Field(description="Unique identifier for a PrePayment")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -4359,10 +4353,10 @@ class AccountingApi:
 
     async def create_purchase_order_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Purchase Order")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_id: Annotated[StrictStr, Field(description="Unique identifier for an Purchase Order")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -4381,10 +4375,10 @@ class AccountingApi:
 
     async def create_purchase_order_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Purchase Order")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_id: Annotated[StrictStr, Field(description="Unique identifier for an Purchase Order")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -4464,11 +4458,11 @@ class AccountingApi:
 
     async def create_purchase_order_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Purchase Order")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_id: Annotated[StrictStr, Field(description="Unique identifier for an Purchase Order")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -4488,11 +4482,11 @@ class AccountingApi:
 
     async def create_purchase_order_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Purchase Order")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_id: Annotated[StrictStr, Field(description="Unique identifier for an Purchase Order")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -4566,10 +4560,9 @@ class AccountingApi:
 
     async def create_purchase_orders(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         purchase_orders: Annotated[
-            PurchaseOrders,
-            Field(..., description="PurchaseOrders with an array of PurchaseOrder object in body of request"),
+            PurchaseOrders, Field(description="PurchaseOrders with an array of PurchaseOrder object in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -4595,10 +4588,9 @@ class AccountingApi:
 
     async def create_purchase_orders_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         purchase_orders: Annotated[
-            PurchaseOrders,
-            Field(..., description="PurchaseOrders with an array of PurchaseOrder object in body of request"),
+            PurchaseOrders, Field(description="PurchaseOrders with an array of PurchaseOrder object in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -4676,10 +4668,10 @@ class AccountingApi:
 
     async def create_quote_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quote_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Quote")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quote_id: Annotated[StrictStr, Field(description="Unique identifier for an Quote")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -4698,10 +4690,10 @@ class AccountingApi:
 
     async def create_quote_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quote_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Quote")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quote_id: Annotated[StrictStr, Field(description="Unique identifier for an Quote")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -4780,11 +4772,11 @@ class AccountingApi:
 
     async def create_quote_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quote_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Quote")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quote_id: Annotated[StrictStr, Field(description="Unique identifier for an Quote")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -4804,11 +4796,11 @@ class AccountingApi:
 
     async def create_quote_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quote_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Quote")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quote_id: Annotated[StrictStr, Field(description="Unique identifier for an Quote")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -4880,8 +4872,8 @@ class AccountingApi:
 
     async def create_quotes(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quotes: Annotated[Quotes, Field(..., description="Quotes with an array of Quote object in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quotes: Annotated[Quotes, Field(description="Quotes with an array of Quote object in body of request")],
         summarize_errors: Annotated[
             StrictBool | None,
             Field(
@@ -4906,8 +4898,8 @@ class AccountingApi:
 
     async def create_quotes_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quotes: Annotated[Quotes, Field(..., description="Quotes with an array of Quote object in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quotes: Annotated[Quotes, Field(description="Quotes with an array of Quote object in body of request")],
         summarize_errors: Annotated[
             StrictBool | None,
             Field(
@@ -4984,10 +4976,8 @@ class AccountingApi:
 
     async def create_receipt(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        receipts: Annotated[
-            Receipts, Field(..., description="Receipts with an array of Receipt object in body of request")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        receipts: Annotated[Receipts, Field(description="Receipts with an array of Receipt object in body of request")],
         unitdp: Annotated[
             StrictInt | None,
             Field(
@@ -5010,10 +5000,8 @@ class AccountingApi:
 
     async def create_receipt_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        receipts: Annotated[
-            Receipts, Field(..., description="Receipts with an array of Receipt object in body of request")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        receipts: Annotated[Receipts, Field(description="Receipts with an array of Receipt object in body of request")],
         unitdp: Annotated[
             StrictInt | None,
             Field(
@@ -5090,10 +5078,10 @@ class AccountingApi:
 
     async def create_receipt_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        receipt_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Receipt")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        receipt_id: Annotated[StrictStr, Field(description="Unique identifier for a Receipt")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -5112,10 +5100,10 @@ class AccountingApi:
 
     async def create_receipt_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        receipt_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Receipt")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        receipt_id: Annotated[StrictStr, Field(description="Unique identifier for a Receipt")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -5194,11 +5182,11 @@ class AccountingApi:
 
     async def create_receipt_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        receipt_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Receipt")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        receipt_id: Annotated[StrictStr, Field(description="Unique identifier for a Receipt")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -5218,11 +5206,11 @@ class AccountingApi:
 
     async def create_receipt_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        receipt_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Receipt")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        receipt_id: Annotated[StrictStr, Field(description="Unique identifier for a Receipt")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -5294,10 +5282,10 @@ class AccountingApi:
 
     async def create_repeating_invoice_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        repeating_invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Repeating Invoice")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        repeating_invoice_id: Annotated[StrictStr, Field(description="Unique identifier for a Repeating Invoice")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -5316,10 +5304,10 @@ class AccountingApi:
 
     async def create_repeating_invoice_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        repeating_invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Repeating Invoice")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        repeating_invoice_id: Annotated[StrictStr, Field(description="Unique identifier for a Repeating Invoice")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -5399,11 +5387,11 @@ class AccountingApi:
 
     async def create_repeating_invoice_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        repeating_invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Repeating Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        repeating_invoice_id: Annotated[StrictStr, Field(description="Unique identifier for a Repeating Invoice")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -5423,11 +5411,11 @@ class AccountingApi:
 
     async def create_repeating_invoice_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        repeating_invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Repeating Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        repeating_invoice_id: Annotated[StrictStr, Field(description="Unique identifier for a Repeating Invoice")],
         history_records: Annotated[
             HistoryRecords,
-            Field(..., description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
+            Field(description="HistoryRecords containing an array of HistoryRecord objects in body of request"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -5501,10 +5489,10 @@ class AccountingApi:
 
     async def create_repeating_invoices(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         repeating_invoices: Annotated[
             RepeatingInvoices,
-            Field(..., description="RepeatingInvoices with an array of repeating invoice objects in body of request"),
+            Field(description="RepeatingInvoices with an array of repeating invoice objects in body of request"),
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -5530,10 +5518,10 @@ class AccountingApi:
 
     async def create_repeating_invoices_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         repeating_invoices: Annotated[
             RepeatingInvoices,
-            Field(..., description="RepeatingInvoices with an array of repeating invoice objects in body of request"),
+            Field(description="RepeatingInvoices with an array of repeating invoice objects in body of request"),
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -5611,8 +5599,8 @@ class AccountingApi:
 
     async def create_tax_rates(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        tax_rates: Annotated[TaxRates, Field(..., description="TaxRates array with TaxRate object in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        tax_rates: Annotated[TaxRates, Field(description="TaxRates array with TaxRate object in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -5629,8 +5617,8 @@ class AccountingApi:
 
     async def create_tax_rates_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        tax_rates: Annotated[TaxRates, Field(..., description="TaxRates array with TaxRate object in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        tax_rates: Annotated[TaxRates, Field(description="TaxRates array with TaxRate object in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -5699,10 +5687,8 @@ class AccountingApi:
 
     async def create_tracking_category(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        tracking_category: Annotated[
-            TrackingCategory, Field(..., description="TrackingCategory object in body of request")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        tracking_category: Annotated[TrackingCategory, Field(description="TrackingCategory object in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -5721,10 +5707,8 @@ class AccountingApi:
 
     async def create_tracking_category_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        tracking_category: Annotated[
-            TrackingCategory, Field(..., description="TrackingCategory object in body of request")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        tracking_category: Annotated[TrackingCategory, Field(description="TrackingCategory object in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -5793,9 +5777,9 @@ class AccountingApi:
 
     async def create_tracking_options(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        tracking_category_id: Annotated[StrictStr, Field(..., description="Unique identifier for a TrackingCategory")],
-        tracking_option: Annotated[TrackingOption, Field(..., description="TrackingOption object in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        tracking_category_id: Annotated[StrictStr, Field(description="Unique identifier for a TrackingCategory")],
+        tracking_option: Annotated[TrackingOption, Field(description="TrackingOption object in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -5814,9 +5798,9 @@ class AccountingApi:
 
     async def create_tracking_options_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        tracking_category_id: Annotated[StrictStr, Field(..., description="Unique identifier for a TrackingCategory")],
-        tracking_option: Annotated[TrackingOption, Field(..., description="TrackingOption object in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        tracking_category_id: Annotated[StrictStr, Field(description="Unique identifier for a TrackingCategory")],
+        tracking_option: Annotated[TrackingOption, Field(description="TrackingOption object in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -5887,8 +5871,8 @@ class AccountingApi:
 
     async def delete_account(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for Account object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        account_id: Annotated[StrictStr, Field(description="Unique identifier for Account object")],
         **kwargs,
     ) -> Accounts:
         kwargs["_return_http_data_only"] = True
@@ -5899,8 +5883,8 @@ class AccountingApi:
 
     async def delete_account_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for Account object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        account_id: Annotated[StrictStr, Field(description="Unique identifier for Account object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -5956,7 +5940,7 @@ class AccountingApi:
 
     async def delete_batch_payment(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         batch_payment_delete: BatchPaymentDelete,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -5976,7 +5960,7 @@ class AccountingApi:
 
     async def delete_batch_payment_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         batch_payment_delete: BatchPaymentDelete,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -6046,8 +6030,8 @@ class AccountingApi:
 
     async def delete_batch_payment_by_url_param(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        batch_payment_id: Annotated[StrictStr, Field(..., description="Unique identifier for BatchPayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        batch_payment_id: Annotated[StrictStr, Field(description="Unique identifier for BatchPayment")],
         batch_payment_delete_by_url_param: BatchPaymentDeleteByUrlParam,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -6067,8 +6051,8 @@ class AccountingApi:
 
     async def delete_batch_payment_by_url_param_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        batch_payment_id: Annotated[StrictStr, Field(..., description="Unique identifier for BatchPayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        batch_payment_id: Annotated[StrictStr, Field(description="Unique identifier for BatchPayment")],
         batch_payment_delete_by_url_param: BatchPaymentDeleteByUrlParam,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -6142,9 +6126,9 @@ class AccountingApi:
 
     async def delete_contact_group_contact(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_group_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact Group")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_group_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact Group")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
         **kwargs,
     ) -> None:
         kwargs["_return_http_data_only"] = True
@@ -6157,9 +6141,9 @@ class AccountingApi:
 
     async def delete_contact_group_contact_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_group_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact Group")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_group_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact Group")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -6219,8 +6203,8 @@ class AccountingApi:
 
     async def delete_contact_group_contacts(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_group_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact Group")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_group_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact Group")],
         **kwargs,
     ) -> None:
         kwargs["_return_http_data_only"] = True
@@ -6231,8 +6215,8 @@ class AccountingApi:
 
     async def delete_contact_group_contacts_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_group_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact Group")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_group_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact Group")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -6289,9 +6273,9 @@ class AccountingApi:
 
     async def delete_credit_note_allocations(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
-        allocation_id: Annotated[StrictStr, Field(..., description="Unique identifier for Allocation object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
+        allocation_id: Annotated[StrictStr, Field(description="Unique identifier for Allocation object")],
         **kwargs,
     ) -> Allocation:
         kwargs["_return_http_data_only"] = True
@@ -6304,9 +6288,9 @@ class AccountingApi:
 
     async def delete_credit_note_allocations_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
-        allocation_id: Annotated[StrictStr, Field(..., description="Unique identifier for Allocation object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
+        allocation_id: Annotated[StrictStr, Field(description="Unique identifier for Allocation object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -6366,8 +6350,8 @@ class AccountingApi:
 
     async def delete_item(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        item_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Item")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        item_id: Annotated[StrictStr, Field(description="Unique identifier for an Item")],
         **kwargs,
     ) -> None:
         kwargs["_return_http_data_only"] = True
@@ -6378,8 +6362,8 @@ class AccountingApi:
 
     async def delete_item_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        item_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Item")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        item_id: Annotated[StrictStr, Field(description="Unique identifier for an Item")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -6435,10 +6419,8 @@ class AccountingApi:
 
     async def delete_linked_transaction(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        linked_transaction_id: Annotated[
-            StrictStr, Field(..., description="Unique identifier for a LinkedTransaction")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        linked_transaction_id: Annotated[StrictStr, Field(description="Unique identifier for a LinkedTransaction")],
         **kwargs,
     ) -> None:
         kwargs["_return_http_data_only"] = True
@@ -6449,10 +6431,8 @@ class AccountingApi:
 
     async def delete_linked_transaction_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        linked_transaction_id: Annotated[
-            StrictStr, Field(..., description="Unique identifier for a LinkedTransaction")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        linked_transaction_id: Annotated[StrictStr, Field(description="Unique identifier for a LinkedTransaction")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -6508,9 +6488,9 @@ class AccountingApi:
 
     async def delete_overpayment_allocations(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        overpayment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Overpayment")],
-        allocation_id: Annotated[StrictStr, Field(..., description="Unique identifier for Allocation object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        overpayment_id: Annotated[StrictStr, Field(description="Unique identifier for a Overpayment")],
+        allocation_id: Annotated[StrictStr, Field(description="Unique identifier for Allocation object")],
         **kwargs,
     ) -> Allocation:
         kwargs["_return_http_data_only"] = True
@@ -6523,9 +6503,9 @@ class AccountingApi:
 
     async def delete_overpayment_allocations_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        overpayment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Overpayment")],
-        allocation_id: Annotated[StrictStr, Field(..., description="Unique identifier for Allocation object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        overpayment_id: Annotated[StrictStr, Field(description="Unique identifier for a Overpayment")],
+        allocation_id: Annotated[StrictStr, Field(description="Unique identifier for Allocation object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -6585,8 +6565,8 @@ class AccountingApi:
 
     async def delete_payment(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        payment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Payment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        payment_id: Annotated[StrictStr, Field(description="Unique identifier for a Payment")],
         payment_delete: PaymentDelete,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -6606,8 +6586,8 @@ class AccountingApi:
 
     async def delete_payment_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        payment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Payment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        payment_id: Annotated[StrictStr, Field(description="Unique identifier for a Payment")],
         payment_delete: PaymentDelete,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -6679,9 +6659,9 @@ class AccountingApi:
 
     async def delete_prepayment_allocations(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        prepayment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a PrePayment")],
-        allocation_id: Annotated[StrictStr, Field(..., description="Unique identifier for Allocation object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        prepayment_id: Annotated[StrictStr, Field(description="Unique identifier for a PrePayment")],
+        allocation_id: Annotated[StrictStr, Field(description="Unique identifier for Allocation object")],
         **kwargs,
     ) -> Allocation:
         kwargs["_return_http_data_only"] = True
@@ -6694,9 +6674,9 @@ class AccountingApi:
 
     async def delete_prepayment_allocations_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        prepayment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a PrePayment")],
-        allocation_id: Annotated[StrictStr, Field(..., description="Unique identifier for Allocation object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        prepayment_id: Annotated[StrictStr, Field(description="Unique identifier for a PrePayment")],
+        allocation_id: Annotated[StrictStr, Field(description="Unique identifier for Allocation object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -6756,8 +6736,8 @@ class AccountingApi:
 
     async def delete_tracking_category(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        tracking_category_id: Annotated[StrictStr, Field(..., description="Unique identifier for a TrackingCategory")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        tracking_category_id: Annotated[StrictStr, Field(description="Unique identifier for a TrackingCategory")],
         **kwargs,
     ) -> TrackingCategories:
         kwargs["_return_http_data_only"] = True
@@ -6768,8 +6748,8 @@ class AccountingApi:
 
     async def delete_tracking_category_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        tracking_category_id: Annotated[StrictStr, Field(..., description="Unique identifier for a TrackingCategory")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        tracking_category_id: Annotated[StrictStr, Field(description="Unique identifier for a TrackingCategory")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -6825,9 +6805,9 @@ class AccountingApi:
 
     async def delete_tracking_options(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        tracking_category_id: Annotated[StrictStr, Field(..., description="Unique identifier for a TrackingCategory")],
-        tracking_option_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Tracking Option")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        tracking_category_id: Annotated[StrictStr, Field(description="Unique identifier for a TrackingCategory")],
+        tracking_option_id: Annotated[StrictStr, Field(description="Unique identifier for a Tracking Option")],
         **kwargs,
     ) -> TrackingOptions:
         kwargs["_return_http_data_only"] = True
@@ -6840,9 +6820,9 @@ class AccountingApi:
 
     async def delete_tracking_options_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        tracking_category_id: Annotated[StrictStr, Field(..., description="Unique identifier for a TrackingCategory")],
-        tracking_option_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Tracking Option")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        tracking_category_id: Annotated[StrictStr, Field(description="Unique identifier for a TrackingCategory")],
+        tracking_option_id: Annotated[StrictStr, Field(description="Unique identifier for a Tracking Option")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -6900,8 +6880,8 @@ class AccountingApi:
 
     async def email_invoice(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
         request_empty: RequestEmpty,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -6921,8 +6901,8 @@ class AccountingApi:
 
     async def email_invoice_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
         request_empty: RequestEmpty,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -6994,8 +6974,8 @@ class AccountingApi:
 
     async def get_account(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for Account object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        account_id: Annotated[StrictStr, Field(description="Unique identifier for Account object")],
         **kwargs,
     ) -> Accounts:
         kwargs["_return_http_data_only"] = True
@@ -7006,8 +6986,8 @@ class AccountingApi:
 
     async def get_account_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for Account object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        account_id: Annotated[StrictStr, Field(description="Unique identifier for Account object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -7063,15 +7043,12 @@ class AccountingApi:
 
     async def get_account_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for Account object")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        account_id: Annotated[StrictStr, Field(description="Unique identifier for Account object")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -7085,15 +7062,12 @@ class AccountingApi:
 
     async def get_account_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for Account object")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        account_id: Annotated[StrictStr, Field(description="Unique identifier for Account object")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -7156,15 +7130,12 @@ class AccountingApi:
 
     async def get_account_attachment_by_id(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for Account object")],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        account_id: Annotated[StrictStr, Field(description="Unique identifier for Account object")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -7178,15 +7149,12 @@ class AccountingApi:
 
     async def get_account_attachment_by_id_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for Account object")],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        account_id: Annotated[StrictStr, Field(description="Unique identifier for Account object")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -7249,8 +7217,8 @@ class AccountingApi:
 
     async def get_account_attachments(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for Account object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        account_id: Annotated[StrictStr, Field(description="Unique identifier for Account object")],
         **kwargs,
     ) -> Attachments:
         kwargs["_return_http_data_only"] = True
@@ -7261,8 +7229,8 @@ class AccountingApi:
 
     async def get_account_attachments_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for Account object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        account_id: Annotated[StrictStr, Field(description="Unique identifier for Account object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -7318,7 +7286,7 @@ class AccountingApi:
 
     async def get_accounts(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -7334,7 +7302,7 @@ class AccountingApi:
 
     async def get_accounts_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -7399,9 +7367,9 @@ class AccountingApi:
 
     async def get_bank_transaction(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transaction_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transaction")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transaction")
         ],
         unitdp: Annotated[
             StrictInt | None,
@@ -7419,9 +7387,9 @@ class AccountingApi:
 
     async def get_bank_transaction_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transaction_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transaction")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transaction")
         ],
         unitdp: Annotated[
             StrictInt | None,
@@ -7486,17 +7454,14 @@ class AccountingApi:
 
     async def get_bank_transaction_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transaction_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transaction")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transaction")
         ],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -7510,17 +7475,14 @@ class AccountingApi:
 
     async def get_bank_transaction_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transaction_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transaction")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transaction")
         ],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -7584,17 +7546,14 @@ class AccountingApi:
 
     async def get_bank_transaction_attachment_by_id(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transaction_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transaction")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transaction")
         ],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -7608,17 +7567,14 @@ class AccountingApi:
 
     async def get_bank_transaction_attachment_by_id_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transaction_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transaction")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transaction")
         ],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -7681,9 +7637,9 @@ class AccountingApi:
 
     async def get_bank_transaction_attachments(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transaction_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transaction")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transaction")
         ],
         **kwargs,
     ) -> Attachments:
@@ -7695,9 +7651,9 @@ class AccountingApi:
 
     async def get_bank_transaction_attachments_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transaction_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transaction")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transaction")
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -7756,7 +7712,7 @@ class AccountingApi:
 
     async def get_bank_transactions(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -7787,7 +7743,7 @@ class AccountingApi:
 
     async def get_bank_transactions_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -7871,9 +7827,9 @@ class AccountingApi:
 
     async def get_bank_transactions_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transaction_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transaction")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transaction")
         ],
         **kwargs,
     ) -> HistoryRecords:
@@ -7885,9 +7841,9 @@ class AccountingApi:
 
     async def get_bank_transactions_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transaction_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transaction")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transaction")
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -7946,9 +7902,9 @@ class AccountingApi:
 
     async def get_bank_transfer(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transfer_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transfer")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transfer")
         ],
         **kwargs,
     ) -> BankTransfers:
@@ -7960,9 +7916,9 @@ class AccountingApi:
 
     async def get_bank_transfer_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transfer_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transfer")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transfer")
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -8019,17 +7975,14 @@ class AccountingApi:
 
     async def get_bank_transfer_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transfer_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transfer")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transfer")
         ],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -8043,17 +7996,14 @@ class AccountingApi:
 
     async def get_bank_transfer_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transfer_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transfer")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transfer")
         ],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -8116,17 +8066,14 @@ class AccountingApi:
 
     async def get_bank_transfer_attachment_by_id(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transfer_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transfer")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transfer")
         ],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -8140,17 +8087,14 @@ class AccountingApi:
 
     async def get_bank_transfer_attachment_by_id_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transfer_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transfer")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transfer")
         ],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -8213,9 +8157,9 @@ class AccountingApi:
 
     async def get_bank_transfer_attachments(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transfer_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transfer")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transfer")
         ],
         **kwargs,
     ) -> Attachments:
@@ -8227,9 +8171,9 @@ class AccountingApi:
 
     async def get_bank_transfer_attachments_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transfer_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transfer")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transfer")
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -8288,9 +8232,9 @@ class AccountingApi:
 
     async def get_bank_transfer_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transfer_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transfer")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transfer")
         ],
         **kwargs,
     ) -> HistoryRecords:
@@ -8302,9 +8246,9 @@ class AccountingApi:
 
     async def get_bank_transfer_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transfer_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transfer")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transfer")
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -8361,7 +8305,7 @@ class AccountingApi:
 
     async def get_bank_transfers(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -8377,7 +8321,7 @@ class AccountingApi:
 
     async def get_bank_transfers_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -8442,8 +8386,8 @@ class AccountingApi:
 
     async def get_batch_payment(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        batch_payment_id: Annotated[StrictStr, Field(..., description="Unique identifier for BatchPayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        batch_payment_id: Annotated[StrictStr, Field(description="Unique identifier for BatchPayment")],
         **kwargs,
     ) -> BatchPayments:
         kwargs["_return_http_data_only"] = True
@@ -8454,8 +8398,8 @@ class AccountingApi:
 
     async def get_batch_payment_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        batch_payment_id: Annotated[StrictStr, Field(..., description="Unique identifier for BatchPayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        batch_payment_id: Annotated[StrictStr, Field(description="Unique identifier for BatchPayment")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -8511,8 +8455,8 @@ class AccountingApi:
 
     async def get_batch_payment_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        batch_payment_id: Annotated[StrictStr, Field(..., description="Unique identifier for BatchPayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        batch_payment_id: Annotated[StrictStr, Field(description="Unique identifier for BatchPayment")],
         **kwargs,
     ) -> HistoryRecords:
         kwargs["_return_http_data_only"] = True
@@ -8523,8 +8467,8 @@ class AccountingApi:
 
     async def get_batch_payment_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        batch_payment_id: Annotated[StrictStr, Field(..., description="Unique identifier for BatchPayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        batch_payment_id: Annotated[StrictStr, Field(description="Unique identifier for BatchPayment")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -8580,7 +8524,7 @@ class AccountingApi:
 
     async def get_batch_payments(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -8596,7 +8540,7 @@ class AccountingApi:
 
     async def get_batch_payments_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -8661,8 +8605,8 @@ class AccountingApi:
 
     async def get_branding_theme(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        branding_theme_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Branding Theme")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        branding_theme_id: Annotated[StrictStr, Field(description="Unique identifier for a Branding Theme")],
         **kwargs,
     ) -> BrandingThemes:
         kwargs["_return_http_data_only"] = True
@@ -8673,8 +8617,8 @@ class AccountingApi:
 
     async def get_branding_theme_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        branding_theme_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Branding Theme")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        branding_theme_id: Annotated[StrictStr, Field(description="Unique identifier for a Branding Theme")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -8730,8 +8674,8 @@ class AccountingApi:
 
     async def get_branding_theme_payment_services(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        branding_theme_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Branding Theme")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        branding_theme_id: Annotated[StrictStr, Field(description="Unique identifier for a Branding Theme")],
         **kwargs,
     ) -> PaymentServices:
         kwargs["_return_http_data_only"] = True
@@ -8744,8 +8688,8 @@ class AccountingApi:
 
     async def get_branding_theme_payment_services_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        branding_theme_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Branding Theme")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        branding_theme_id: Annotated[StrictStr, Field(description="Unique identifier for a Branding Theme")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -8802,7 +8746,7 @@ class AccountingApi:
         )
 
     async def get_branding_themes(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> BrandingThemes:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
@@ -8811,7 +8755,7 @@ class AccountingApi:
         return await self.get_branding_themes_with_http_info(xero_tenant_id, **kwargs)
 
     async def get_branding_themes_with_http_info(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> ApiResponse:
         _params = locals()
         _all_params = ["xero_tenant_id"]
@@ -8864,8 +8808,8 @@ class AccountingApi:
 
     async def get_budget(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        budget_id: Annotated[StrictStr, Field(..., description="Unique identifier for Budgets")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        budget_id: Annotated[StrictStr, Field(description="Unique identifier for Budgets")],
         date_to: Annotated[date | None, Field(description="Filter by start date")] = None,
         date_from: Annotated[date | None, Field(description="Filter by end date")] = None,
         **kwargs,
@@ -8878,8 +8822,8 @@ class AccountingApi:
 
     async def get_budget_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        budget_id: Annotated[StrictStr, Field(..., description="Unique identifier for Budgets")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        budget_id: Annotated[StrictStr, Field(description="Unique identifier for Budgets")],
         date_to: Annotated[date | None, Field(description="Filter by start date")] = None,
         date_from: Annotated[date | None, Field(description="Filter by end date")] = None,
         **kwargs,
@@ -8949,7 +8893,7 @@ class AccountingApi:
 
     async def get_budgets(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         ids: Annotated[
             list[StrictStr] | None,
             Field(description="Filter by BudgetID. Allows you to retrieve a specific individual budget."),
@@ -8966,7 +8910,7 @@ class AccountingApi:
 
     async def get_budgets_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         ids: Annotated[
             list[StrictStr] | None,
             Field(description="Filter by BudgetID. Allows you to retrieve a specific individual budget."),
@@ -9041,8 +8985,8 @@ class AccountingApi:
 
     async def get_contact(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
         **kwargs,
     ) -> Contacts:
         kwargs["_return_http_data_only"] = True
@@ -9053,8 +8997,8 @@ class AccountingApi:
 
     async def get_contact_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -9110,15 +9054,12 @@ class AccountingApi:
 
     async def get_contact_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -9132,15 +9073,12 @@ class AccountingApi:
 
     async def get_contact_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -9203,15 +9141,12 @@ class AccountingApi:
 
     async def get_contact_attachment_by_id(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -9225,15 +9160,12 @@ class AccountingApi:
 
     async def get_contact_attachment_by_id_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -9296,8 +9228,8 @@ class AccountingApi:
 
     async def get_contact_attachments(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
         **kwargs,
     ) -> Attachments:
         kwargs["_return_http_data_only"] = True
@@ -9308,8 +9240,8 @@ class AccountingApi:
 
     async def get_contact_attachments_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -9365,12 +9297,11 @@ class AccountingApi:
 
     async def get_contact_by_contact_number(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         contact_number: Annotated[
             StrictStr,
             Field(
-                ...,
-                description="This field is read only on the Xero contact screen, used to identify contacts in external systems (max length = 50).",
+                description="This field is read only on the Xero contact screen, used to identify contacts in external systems (max length = 50)."
             ),
         ],
         **kwargs,
@@ -9383,12 +9314,11 @@ class AccountingApi:
 
     async def get_contact_by_contact_number_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         contact_number: Annotated[
             StrictStr,
             Field(
-                ...,
-                description="This field is read only on the Xero contact screen, used to identify contacts in external systems (max length = 50).",
+                description="This field is read only on the Xero contact screen, used to identify contacts in external systems (max length = 50)."
             ),
         ],
         **kwargs,
@@ -9448,8 +9378,8 @@ class AccountingApi:
 
     async def get_contact_cis_settings(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
         **kwargs,
     ) -> CISSettings:
         kwargs["_return_http_data_only"] = True
@@ -9460,8 +9390,8 @@ class AccountingApi:
 
     async def get_contact_cis_settings_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -9517,8 +9447,8 @@ class AccountingApi:
 
     async def get_contact_group(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_group_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact Group")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_group_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact Group")],
         **kwargs,
     ) -> ContactGroups:
         kwargs["_return_http_data_only"] = True
@@ -9529,8 +9459,8 @@ class AccountingApi:
 
     async def get_contact_group_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_group_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact Group")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_group_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact Group")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -9586,7 +9516,7 @@ class AccountingApi:
 
     async def get_contact_groups(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         where: Annotated[StrictStr | None, Field(description="Filter by an any element")] = None,
         order: Annotated[StrictStr | None, Field(description="Order by an any element")] = None,
         **kwargs,
@@ -9599,7 +9529,7 @@ class AccountingApi:
 
     async def get_contact_groups_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         where: Annotated[StrictStr | None, Field(description="Filter by an any element")] = None,
         order: Annotated[StrictStr | None, Field(description="Order by an any element")] = None,
         **kwargs,
@@ -9659,8 +9589,8 @@ class AccountingApi:
 
     async def get_contact_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
         **kwargs,
     ) -> HistoryRecords:
         kwargs["_return_http_data_only"] = True
@@ -9671,8 +9601,8 @@ class AccountingApi:
 
     async def get_contact_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -9728,7 +9658,7 @@ class AccountingApi:
 
     async def get_contacts(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -9785,7 +9715,7 @@ class AccountingApi:
 
     async def get_contacts_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -9903,8 +9833,8 @@ class AccountingApi:
 
     async def get_credit_note(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
         unitdp: Annotated[
             StrictInt | None,
             Field(
@@ -9921,8 +9851,8 @@ class AccountingApi:
 
     async def get_credit_note_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
         unitdp: Annotated[
             StrictInt | None,
             Field(
@@ -9986,8 +9916,8 @@ class AccountingApi:
 
     async def get_credit_note_as_pdf(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
         **kwargs,
     ) -> bytearray:
         kwargs["_return_http_data_only"] = True
@@ -9998,8 +9928,8 @@ class AccountingApi:
 
     async def get_credit_note_as_pdf_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -10055,15 +9985,12 @@ class AccountingApi:
 
     async def get_credit_note_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -10077,15 +10004,12 @@ class AccountingApi:
 
     async def get_credit_note_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -10148,15 +10072,12 @@ class AccountingApi:
 
     async def get_credit_note_attachment_by_id(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -10170,15 +10091,12 @@ class AccountingApi:
 
     async def get_credit_note_attachment_by_id_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -10241,8 +10159,8 @@ class AccountingApi:
 
     async def get_credit_note_attachments(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
         **kwargs,
     ) -> Attachments:
         kwargs["_return_http_data_only"] = True
@@ -10253,8 +10171,8 @@ class AccountingApi:
 
     async def get_credit_note_attachments_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -10310,8 +10228,8 @@ class AccountingApi:
 
     async def get_credit_note_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
         **kwargs,
     ) -> HistoryRecords:
         kwargs["_return_http_data_only"] = True
@@ -10322,8 +10240,8 @@ class AccountingApi:
 
     async def get_credit_note_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -10379,7 +10297,7 @@ class AccountingApi:
 
     async def get_credit_notes(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -10410,7 +10328,7 @@ class AccountingApi:
 
     async def get_credit_notes_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -10494,7 +10412,7 @@ class AccountingApi:
 
     async def get_currencies(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         where: Annotated[StrictStr | None, Field(description="Filter by an any element")] = None,
         order: Annotated[StrictStr | None, Field(description="Order by an any element")] = None,
         **kwargs,
@@ -10507,7 +10425,7 @@ class AccountingApi:
 
     async def get_currencies_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         where: Annotated[StrictStr | None, Field(description="Filter by an any element")] = None,
         order: Annotated[StrictStr | None, Field(description="Order by an any element")] = None,
         **kwargs,
@@ -10567,8 +10485,8 @@ class AccountingApi:
 
     async def get_employee(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Employee")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Unique identifier for a Employee")],
         **kwargs,
     ) -> Employees:
         kwargs["_return_http_data_only"] = True
@@ -10579,8 +10497,8 @@ class AccountingApi:
 
     async def get_employee_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Employee")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Unique identifier for a Employee")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -10636,7 +10554,7 @@ class AccountingApi:
 
     async def get_employees(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -10652,7 +10570,7 @@ class AccountingApi:
 
     async def get_employees_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -10717,8 +10635,8 @@ class AccountingApi:
 
     async def get_expense_claim(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        expense_claim_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ExpenseClaim")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        expense_claim_id: Annotated[StrictStr, Field(description="Unique identifier for a ExpenseClaim")],
         **kwargs,
     ) -> ExpenseClaims:
         kwargs["_return_http_data_only"] = True
@@ -10729,8 +10647,8 @@ class AccountingApi:
 
     async def get_expense_claim_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        expense_claim_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ExpenseClaim")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        expense_claim_id: Annotated[StrictStr, Field(description="Unique identifier for a ExpenseClaim")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -10786,8 +10704,8 @@ class AccountingApi:
 
     async def get_expense_claim_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        expense_claim_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ExpenseClaim")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        expense_claim_id: Annotated[StrictStr, Field(description="Unique identifier for a ExpenseClaim")],
         **kwargs,
     ) -> HistoryRecords:
         kwargs["_return_http_data_only"] = True
@@ -10798,8 +10716,8 @@ class AccountingApi:
 
     async def get_expense_claim_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        expense_claim_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ExpenseClaim")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        expense_claim_id: Annotated[StrictStr, Field(description="Unique identifier for a ExpenseClaim")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -10855,7 +10773,7 @@ class AccountingApi:
 
     async def get_expense_claims(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -10871,7 +10789,7 @@ class AccountingApi:
 
     async def get_expense_claims_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -10936,8 +10854,8 @@ class AccountingApi:
 
     async def get_invoice(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
         unitdp: Annotated[
             StrictInt | None,
             Field(
@@ -10954,8 +10872,8 @@ class AccountingApi:
 
     async def get_invoice_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
         unitdp: Annotated[
             StrictInt | None,
             Field(
@@ -11019,8 +10937,8 @@ class AccountingApi:
 
     async def get_invoice_as_pdf(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
         **kwargs,
     ) -> bytearray:
         kwargs["_return_http_data_only"] = True
@@ -11031,8 +10949,8 @@ class AccountingApi:
 
     async def get_invoice_as_pdf_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -11088,15 +11006,12 @@ class AccountingApi:
 
     async def get_invoice_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -11110,15 +11025,12 @@ class AccountingApi:
 
     async def get_invoice_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -11181,15 +11093,12 @@ class AccountingApi:
 
     async def get_invoice_attachment_by_id(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -11203,15 +11112,12 @@ class AccountingApi:
 
     async def get_invoice_attachment_by_id_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -11274,8 +11180,8 @@ class AccountingApi:
 
     async def get_invoice_attachments(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
         **kwargs,
     ) -> Attachments:
         kwargs["_return_http_data_only"] = True
@@ -11286,8 +11192,8 @@ class AccountingApi:
 
     async def get_invoice_attachments_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -11343,8 +11249,8 @@ class AccountingApi:
 
     async def get_invoice_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
         **kwargs,
     ) -> HistoryRecords:
         kwargs["_return_http_data_only"] = True
@@ -11355,8 +11261,8 @@ class AccountingApi:
 
     async def get_invoice_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -11411,7 +11317,7 @@ class AccountingApi:
         )
 
     async def get_invoice_reminders(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> InvoiceReminders:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
@@ -11420,7 +11326,7 @@ class AccountingApi:
         return await self.get_invoice_reminders_with_http_info(xero_tenant_id, **kwargs)
 
     async def get_invoice_reminders_with_http_info(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> ApiResponse:
         _params = locals()
         _all_params = ["xero_tenant_id"]
@@ -11473,7 +11379,7 @@ class AccountingApi:
 
     async def get_invoices(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -11555,7 +11461,7 @@ class AccountingApi:
 
     async def get_invoices_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -11711,8 +11617,8 @@ class AccountingApi:
 
     async def get_item(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        item_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Item")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        item_id: Annotated[StrictStr, Field(description="Unique identifier for an Item")],
         unitdp: Annotated[
             StrictInt | None,
             Field(
@@ -11729,8 +11635,8 @@ class AccountingApi:
 
     async def get_item_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        item_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Item")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        item_id: Annotated[StrictStr, Field(description="Unique identifier for an Item")],
         unitdp: Annotated[
             StrictInt | None,
             Field(
@@ -11794,8 +11700,8 @@ class AccountingApi:
 
     async def get_item_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        item_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Item")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        item_id: Annotated[StrictStr, Field(description="Unique identifier for an Item")],
         **kwargs,
     ) -> HistoryRecords:
         kwargs["_return_http_data_only"] = True
@@ -11806,8 +11712,8 @@ class AccountingApi:
 
     async def get_item_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        item_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Item")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        item_id: Annotated[StrictStr, Field(description="Unique identifier for an Item")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -11863,7 +11769,7 @@ class AccountingApi:
 
     async def get_items(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -11885,7 +11791,7 @@ class AccountingApi:
 
     async def get_items_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -11958,8 +11864,8 @@ class AccountingApi:
 
     async def get_journal(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        journal_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Journal")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        journal_id: Annotated[StrictStr, Field(description="Unique identifier for a Journal")],
         **kwargs,
     ) -> Journals:
         kwargs["_return_http_data_only"] = True
@@ -11970,8 +11876,8 @@ class AccountingApi:
 
     async def get_journal_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        journal_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Journal")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        journal_id: Annotated[StrictStr, Field(description="Unique identifier for a Journal")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -12027,8 +11933,8 @@ class AccountingApi:
 
     async def get_journal_by_number(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        journal_number: Annotated[StrictInt, Field(..., description="Number of a Journal")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        journal_number: Annotated[StrictInt, Field(description="Number of a Journal")],
         **kwargs,
     ) -> Journals:
         kwargs["_return_http_data_only"] = True
@@ -12039,8 +11945,8 @@ class AccountingApi:
 
     async def get_journal_by_number_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        journal_number: Annotated[StrictInt, Field(..., description="Number of a Journal")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        journal_number: Annotated[StrictInt, Field(description="Number of a Journal")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -12096,7 +12002,7 @@ class AccountingApi:
 
     async def get_journals(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -12124,7 +12030,7 @@ class AccountingApi:
 
     async def get_journals_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -12199,10 +12105,8 @@ class AccountingApi:
 
     async def get_linked_transaction(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        linked_transaction_id: Annotated[
-            StrictStr, Field(..., description="Unique identifier for a LinkedTransaction")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        linked_transaction_id: Annotated[StrictStr, Field(description="Unique identifier for a LinkedTransaction")],
         **kwargs,
     ) -> LinkedTransactions:
         kwargs["_return_http_data_only"] = True
@@ -12213,10 +12117,8 @@ class AccountingApi:
 
     async def get_linked_transaction_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        linked_transaction_id: Annotated[
-            StrictStr, Field(..., description="Unique identifier for a LinkedTransaction")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        linked_transaction_id: Annotated[StrictStr, Field(description="Unique identifier for a LinkedTransaction")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -12272,7 +12174,7 @@ class AccountingApi:
 
     async def get_linked_transactions(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -12325,7 +12227,7 @@ class AccountingApi:
 
     async def get_linked_transactions_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -12432,8 +12334,8 @@ class AccountingApi:
 
     async def get_manual_journal(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        manual_journal_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ManualJournal")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        manual_journal_id: Annotated[StrictStr, Field(description="Unique identifier for a ManualJournal")],
         **kwargs,
     ) -> ManualJournals:
         kwargs["_return_http_data_only"] = True
@@ -12444,8 +12346,8 @@ class AccountingApi:
 
     async def get_manual_journal_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        manual_journal_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ManualJournal")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        manual_journal_id: Annotated[StrictStr, Field(description="Unique identifier for a ManualJournal")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -12501,15 +12403,12 @@ class AccountingApi:
 
     async def get_manual_journal_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        manual_journal_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ManualJournal")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        manual_journal_id: Annotated[StrictStr, Field(description="Unique identifier for a ManualJournal")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -12523,15 +12422,12 @@ class AccountingApi:
 
     async def get_manual_journal_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        manual_journal_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ManualJournal")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        manual_journal_id: Annotated[StrictStr, Field(description="Unique identifier for a ManualJournal")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -12594,15 +12490,12 @@ class AccountingApi:
 
     async def get_manual_journal_attachment_by_id(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        manual_journal_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ManualJournal")],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        manual_journal_id: Annotated[StrictStr, Field(description="Unique identifier for a ManualJournal")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -12616,15 +12509,12 @@ class AccountingApi:
 
     async def get_manual_journal_attachment_by_id_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        manual_journal_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ManualJournal")],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        manual_journal_id: Annotated[StrictStr, Field(description="Unique identifier for a ManualJournal")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -12687,8 +12577,8 @@ class AccountingApi:
 
     async def get_manual_journal_attachments(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        manual_journal_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ManualJournal")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        manual_journal_id: Annotated[StrictStr, Field(description="Unique identifier for a ManualJournal")],
         **kwargs,
     ) -> Attachments:
         kwargs["_return_http_data_only"] = True
@@ -12699,8 +12589,8 @@ class AccountingApi:
 
     async def get_manual_journal_attachments_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        manual_journal_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ManualJournal")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        manual_journal_id: Annotated[StrictStr, Field(description="Unique identifier for a ManualJournal")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -12758,7 +12648,7 @@ class AccountingApi:
 
     async def get_manual_journals(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -12783,7 +12673,7 @@ class AccountingApi:
 
     async def get_manual_journals_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -12859,8 +12749,8 @@ class AccountingApi:
 
     async def get_manual_journals_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        manual_journal_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ManualJournal")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        manual_journal_id: Annotated[StrictStr, Field(description="Unique identifier for a ManualJournal")],
         **kwargs,
     ) -> HistoryRecords:
         kwargs["_return_http_data_only"] = True
@@ -12871,8 +12761,8 @@ class AccountingApi:
 
     async def get_manual_journals_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        manual_journal_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ManualJournal")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        manual_journal_id: Annotated[StrictStr, Field(description="Unique identifier for a ManualJournal")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -12928,8 +12818,8 @@ class AccountingApi:
 
     async def get_online_invoice(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
         **kwargs,
     ) -> OnlineInvoices:
         kwargs["_return_http_data_only"] = True
@@ -12940,8 +12830,8 @@ class AccountingApi:
 
     async def get_online_invoice_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -12996,7 +12886,7 @@ class AccountingApi:
         )
 
     async def get_organisation_actions(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> Actions:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
@@ -13005,7 +12895,7 @@ class AccountingApi:
         return await self.get_organisation_actions_with_http_info(xero_tenant_id, **kwargs)
 
     async def get_organisation_actions_with_http_info(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> ApiResponse:
         _params = locals()
         _all_params = ["xero_tenant_id"]
@@ -13058,8 +12948,8 @@ class AccountingApi:
 
     async def get_organisation_cis_settings(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        organisation_id: Annotated[StrictStr, Field(..., description="The unique Xero identifier for an organisation")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        organisation_id: Annotated[StrictStr, Field(description="The unique Xero identifier for an organisation")],
         **kwargs,
     ) -> CISOrgSettings:
         kwargs["_return_http_data_only"] = True
@@ -13070,8 +12960,8 @@ class AccountingApi:
 
     async def get_organisation_cis_settings_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        organisation_id: Annotated[StrictStr, Field(..., description="The unique Xero identifier for an organisation")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        organisation_id: Annotated[StrictStr, Field(description="The unique Xero identifier for an organisation")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -13128,7 +13018,7 @@ class AccountingApi:
         )
 
     async def get_organisations(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> Organisations:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
@@ -13137,7 +13027,7 @@ class AccountingApi:
         return await self.get_organisations_with_http_info(xero_tenant_id, **kwargs)
 
     async def get_organisations_with_http_info(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> ApiResponse:
         _params = locals()
         _all_params = ["xero_tenant_id"]
@@ -13190,8 +13080,8 @@ class AccountingApi:
 
     async def get_overpayment(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        overpayment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Overpayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        overpayment_id: Annotated[StrictStr, Field(description="Unique identifier for a Overpayment")],
         **kwargs,
     ) -> Overpayments:
         kwargs["_return_http_data_only"] = True
@@ -13202,8 +13092,8 @@ class AccountingApi:
 
     async def get_overpayment_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        overpayment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Overpayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        overpayment_id: Annotated[StrictStr, Field(description="Unique identifier for a Overpayment")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -13259,8 +13149,8 @@ class AccountingApi:
 
     async def get_overpayment_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        overpayment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Overpayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        overpayment_id: Annotated[StrictStr, Field(description="Unique identifier for a Overpayment")],
         **kwargs,
     ) -> HistoryRecords:
         kwargs["_return_http_data_only"] = True
@@ -13271,8 +13161,8 @@ class AccountingApi:
 
     async def get_overpayment_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        overpayment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Overpayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        overpayment_id: Annotated[StrictStr, Field(description="Unique identifier for a Overpayment")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -13328,7 +13218,7 @@ class AccountingApi:
 
     async def get_overpayments(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -13359,7 +13249,7 @@ class AccountingApi:
 
     async def get_overpayments_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -13443,8 +13333,8 @@ class AccountingApi:
 
     async def get_payment(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        payment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Payment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        payment_id: Annotated[StrictStr, Field(description="Unique identifier for a Payment")],
         **kwargs,
     ) -> Payments:
         kwargs["_return_http_data_only"] = True
@@ -13455,8 +13345,8 @@ class AccountingApi:
 
     async def get_payment_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        payment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Payment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        payment_id: Annotated[StrictStr, Field(description="Unique identifier for a Payment")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -13512,8 +13402,8 @@ class AccountingApi:
 
     async def get_payment_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        payment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Payment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        payment_id: Annotated[StrictStr, Field(description="Unique identifier for a Payment")],
         **kwargs,
     ) -> HistoryRecords:
         kwargs["_return_http_data_only"] = True
@@ -13524,8 +13414,8 @@ class AccountingApi:
 
     async def get_payment_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        payment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Payment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        payment_id: Annotated[StrictStr, Field(description="Unique identifier for a Payment")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -13580,7 +13470,7 @@ class AccountingApi:
         )
 
     async def get_payment_services(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> PaymentServices:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
@@ -13589,7 +13479,7 @@ class AccountingApi:
         return await self.get_payment_services_with_http_info(xero_tenant_id, **kwargs)
 
     async def get_payment_services_with_http_info(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> ApiResponse:
         _params = locals()
         _all_params = ["xero_tenant_id"]
@@ -13642,7 +13532,7 @@ class AccountingApi:
 
     async def get_payments(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -13664,7 +13554,7 @@ class AccountingApi:
 
     async def get_payments_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -13737,8 +13627,8 @@ class AccountingApi:
 
     async def get_prepayment(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        prepayment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a PrePayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        prepayment_id: Annotated[StrictStr, Field(description="Unique identifier for a PrePayment")],
         **kwargs,
     ) -> Prepayments:
         kwargs["_return_http_data_only"] = True
@@ -13749,8 +13639,8 @@ class AccountingApi:
 
     async def get_prepayment_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        prepayment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a PrePayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        prepayment_id: Annotated[StrictStr, Field(description="Unique identifier for a PrePayment")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -13806,8 +13696,8 @@ class AccountingApi:
 
     async def get_prepayment_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        prepayment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a PrePayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        prepayment_id: Annotated[StrictStr, Field(description="Unique identifier for a PrePayment")],
         **kwargs,
     ) -> HistoryRecords:
         kwargs["_return_http_data_only"] = True
@@ -13818,8 +13708,8 @@ class AccountingApi:
 
     async def get_prepayment_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        prepayment_id: Annotated[StrictStr, Field(..., description="Unique identifier for a PrePayment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        prepayment_id: Annotated[StrictStr, Field(description="Unique identifier for a PrePayment")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -13875,7 +13765,7 @@ class AccountingApi:
 
     async def get_prepayments(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -13906,7 +13796,7 @@ class AccountingApi:
 
     async def get_prepayments_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -13990,8 +13880,8 @@ class AccountingApi:
 
     async def get_purchase_order(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Purchase Order")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_id: Annotated[StrictStr, Field(description="Unique identifier for an Purchase Order")],
         **kwargs,
     ) -> PurchaseOrders:
         kwargs["_return_http_data_only"] = True
@@ -14002,8 +13892,8 @@ class AccountingApi:
 
     async def get_purchase_order_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Purchase Order")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_id: Annotated[StrictStr, Field(description="Unique identifier for an Purchase Order")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -14059,8 +13949,8 @@ class AccountingApi:
 
     async def get_purchase_order_as_pdf(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Purchase Order")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_id: Annotated[StrictStr, Field(description="Unique identifier for an Purchase Order")],
         **kwargs,
     ) -> bytearray:
         kwargs["_return_http_data_only"] = True
@@ -14071,8 +13961,8 @@ class AccountingApi:
 
     async def get_purchase_order_as_pdf_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Purchase Order")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_id: Annotated[StrictStr, Field(description="Unique identifier for an Purchase Order")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -14128,15 +14018,12 @@ class AccountingApi:
 
     async def get_purchase_order_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Purchase Order")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_id: Annotated[StrictStr, Field(description="Unique identifier for an Purchase Order")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -14150,15 +14037,12 @@ class AccountingApi:
 
     async def get_purchase_order_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Purchase Order")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_id: Annotated[StrictStr, Field(description="Unique identifier for an Purchase Order")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -14221,15 +14105,12 @@ class AccountingApi:
 
     async def get_purchase_order_attachment_by_id(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Purchase Order")],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_id: Annotated[StrictStr, Field(description="Unique identifier for an Purchase Order")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -14243,15 +14124,12 @@ class AccountingApi:
 
     async def get_purchase_order_attachment_by_id_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Purchase Order")],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_id: Annotated[StrictStr, Field(description="Unique identifier for an Purchase Order")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -14314,8 +14192,8 @@ class AccountingApi:
 
     async def get_purchase_order_attachments(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Purchase Order")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_id: Annotated[StrictStr, Field(description="Unique identifier for an Purchase Order")],
         **kwargs,
     ) -> Attachments:
         kwargs["_return_http_data_only"] = True
@@ -14326,8 +14204,8 @@ class AccountingApi:
 
     async def get_purchase_order_attachments_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Purchase Order")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_id: Annotated[StrictStr, Field(description="Unique identifier for an Purchase Order")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -14385,8 +14263,8 @@ class AccountingApi:
 
     async def get_purchase_order_by_number(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_number: Annotated[StrictStr, Field(..., description="Unique identifier for a PurchaseOrder")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_number: Annotated[StrictStr, Field(description="Unique identifier for a PurchaseOrder")],
         **kwargs,
     ) -> PurchaseOrders:
         kwargs["_return_http_data_only"] = True
@@ -14397,8 +14275,8 @@ class AccountingApi:
 
     async def get_purchase_order_by_number_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_number: Annotated[StrictStr, Field(..., description="Unique identifier for a PurchaseOrder")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_number: Annotated[StrictStr, Field(description="Unique identifier for a PurchaseOrder")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -14456,8 +14334,8 @@ class AccountingApi:
 
     async def get_purchase_order_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Purchase Order")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_id: Annotated[StrictStr, Field(description="Unique identifier for an Purchase Order")],
         **kwargs,
     ) -> HistoryRecords:
         kwargs["_return_http_data_only"] = True
@@ -14468,8 +14346,8 @@ class AccountingApi:
 
     async def get_purchase_order_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Purchase Order")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_id: Annotated[StrictStr, Field(description="Unique identifier for an Purchase Order")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -14525,7 +14403,7 @@ class AccountingApi:
 
     async def get_purchase_orders(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -14562,7 +14440,7 @@ class AccountingApi:
 
     async def get_purchase_orders_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -14663,8 +14541,8 @@ class AccountingApi:
 
     async def get_quote(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quote_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Quote")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quote_id: Annotated[StrictStr, Field(description="Unique identifier for an Quote")],
         **kwargs,
     ) -> Quotes:
         kwargs["_return_http_data_only"] = True
@@ -14675,8 +14553,8 @@ class AccountingApi:
 
     async def get_quote_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quote_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Quote")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quote_id: Annotated[StrictStr, Field(description="Unique identifier for an Quote")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -14732,8 +14610,8 @@ class AccountingApi:
 
     async def get_quote_as_pdf(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quote_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Quote")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quote_id: Annotated[StrictStr, Field(description="Unique identifier for an Quote")],
         **kwargs,
     ) -> bytearray:
         kwargs["_return_http_data_only"] = True
@@ -14744,8 +14622,8 @@ class AccountingApi:
 
     async def get_quote_as_pdf_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quote_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Quote")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quote_id: Annotated[StrictStr, Field(description="Unique identifier for an Quote")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -14801,15 +14679,12 @@ class AccountingApi:
 
     async def get_quote_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quote_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Quote")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quote_id: Annotated[StrictStr, Field(description="Unique identifier for an Quote")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -14823,15 +14698,12 @@ class AccountingApi:
 
     async def get_quote_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quote_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Quote")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quote_id: Annotated[StrictStr, Field(description="Unique identifier for an Quote")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -14894,15 +14766,12 @@ class AccountingApi:
 
     async def get_quote_attachment_by_id(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quote_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Quote")],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quote_id: Annotated[StrictStr, Field(description="Unique identifier for an Quote")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -14916,15 +14785,12 @@ class AccountingApi:
 
     async def get_quote_attachment_by_id_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quote_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Quote")],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quote_id: Annotated[StrictStr, Field(description="Unique identifier for an Quote")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -14985,8 +14851,8 @@ class AccountingApi:
 
     async def get_quote_attachments(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quote_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Quote")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quote_id: Annotated[StrictStr, Field(description="Unique identifier for an Quote")],
         **kwargs,
     ) -> Attachments:
         kwargs["_return_http_data_only"] = True
@@ -14997,8 +14863,8 @@ class AccountingApi:
 
     async def get_quote_attachments_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quote_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Quote")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quote_id: Annotated[StrictStr, Field(description="Unique identifier for an Quote")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -15054,8 +14920,8 @@ class AccountingApi:
 
     async def get_quote_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quote_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Quote")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quote_id: Annotated[StrictStr, Field(description="Unique identifier for an Quote")],
         **kwargs,
     ) -> HistoryRecords:
         kwargs["_return_http_data_only"] = True
@@ -15066,8 +14932,8 @@ class AccountingApi:
 
     async def get_quote_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quote_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Quote")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quote_id: Annotated[StrictStr, Field(description="Unique identifier for an Quote")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -15123,7 +14989,7 @@ class AccountingApi:
 
     async def get_quotes(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -15171,7 +15037,7 @@ class AccountingApi:
 
     async def get_quotes_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -15299,8 +15165,8 @@ class AccountingApi:
 
     async def get_receipt(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        receipt_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Receipt")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        receipt_id: Annotated[StrictStr, Field(description="Unique identifier for a Receipt")],
         unitdp: Annotated[
             StrictInt | None,
             Field(
@@ -15317,8 +15183,8 @@ class AccountingApi:
 
     async def get_receipt_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        receipt_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Receipt")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        receipt_id: Annotated[StrictStr, Field(description="Unique identifier for a Receipt")],
         unitdp: Annotated[
             StrictInt | None,
             Field(
@@ -15382,15 +15248,12 @@ class AccountingApi:
 
     async def get_receipt_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        receipt_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Receipt")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        receipt_id: Annotated[StrictStr, Field(description="Unique identifier for a Receipt")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -15404,15 +15267,12 @@ class AccountingApi:
 
     async def get_receipt_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        receipt_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Receipt")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        receipt_id: Annotated[StrictStr, Field(description="Unique identifier for a Receipt")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -15475,15 +15335,12 @@ class AccountingApi:
 
     async def get_receipt_attachment_by_id(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        receipt_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Receipt")],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        receipt_id: Annotated[StrictStr, Field(description="Unique identifier for a Receipt")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -15497,15 +15354,12 @@ class AccountingApi:
 
     async def get_receipt_attachment_by_id_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        receipt_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Receipt")],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        receipt_id: Annotated[StrictStr, Field(description="Unique identifier for a Receipt")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -15568,8 +15422,8 @@ class AccountingApi:
 
     async def get_receipt_attachments(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        receipt_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Receipt")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        receipt_id: Annotated[StrictStr, Field(description="Unique identifier for a Receipt")],
         **kwargs,
     ) -> Attachments:
         kwargs["_return_http_data_only"] = True
@@ -15580,8 +15434,8 @@ class AccountingApi:
 
     async def get_receipt_attachments_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        receipt_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Receipt")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        receipt_id: Annotated[StrictStr, Field(description="Unique identifier for a Receipt")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -15637,8 +15491,8 @@ class AccountingApi:
 
     async def get_receipt_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        receipt_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Receipt")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        receipt_id: Annotated[StrictStr, Field(description="Unique identifier for a Receipt")],
         **kwargs,
     ) -> HistoryRecords:
         kwargs["_return_http_data_only"] = True
@@ -15649,8 +15503,8 @@ class AccountingApi:
 
     async def get_receipt_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        receipt_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Receipt")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        receipt_id: Annotated[StrictStr, Field(description="Unique identifier for a Receipt")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -15706,7 +15560,7 @@ class AccountingApi:
 
     async def get_receipts(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -15728,7 +15582,7 @@ class AccountingApi:
 
     async def get_receipts_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -15801,8 +15655,8 @@ class AccountingApi:
 
     async def get_repeating_invoice(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        repeating_invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Repeating Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        repeating_invoice_id: Annotated[StrictStr, Field(description="Unique identifier for a Repeating Invoice")],
         **kwargs,
     ) -> RepeatingInvoices:
         kwargs["_return_http_data_only"] = True
@@ -15813,8 +15667,8 @@ class AccountingApi:
 
     async def get_repeating_invoice_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        repeating_invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Repeating Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        repeating_invoice_id: Annotated[StrictStr, Field(description="Unique identifier for a Repeating Invoice")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -15870,15 +15724,12 @@ class AccountingApi:
 
     async def get_repeating_invoice_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        repeating_invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Repeating Invoice")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        repeating_invoice_id: Annotated[StrictStr, Field(description="Unique identifier for a Repeating Invoice")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -15892,15 +15743,12 @@ class AccountingApi:
 
     async def get_repeating_invoice_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        repeating_invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Repeating Invoice")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        repeating_invoice_id: Annotated[StrictStr, Field(description="Unique identifier for a Repeating Invoice")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -15964,15 +15812,12 @@ class AccountingApi:
 
     async def get_repeating_invoice_attachment_by_id(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        repeating_invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Repeating Invoice")],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        repeating_invoice_id: Annotated[StrictStr, Field(description="Unique identifier for a Repeating Invoice")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> bytearray:
@@ -15986,15 +15831,12 @@ class AccountingApi:
 
     async def get_repeating_invoice_attachment_by_id_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        repeating_invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Repeating Invoice")],
-        attachment_id: Annotated[StrictStr, Field(..., description="Unique identifier for Attachment object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        repeating_invoice_id: Annotated[StrictStr, Field(description="Unique identifier for a Repeating Invoice")],
+        attachment_id: Annotated[StrictStr, Field(description="Unique identifier for Attachment object")],
         content_type: Annotated[
             StrictStr,
-            Field(
-                ...,
-                description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf",
-            ),
+            Field(description="The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -16057,8 +15899,8 @@ class AccountingApi:
 
     async def get_repeating_invoice_attachments(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        repeating_invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Repeating Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        repeating_invoice_id: Annotated[StrictStr, Field(description="Unique identifier for a Repeating Invoice")],
         **kwargs,
     ) -> Attachments:
         kwargs["_return_http_data_only"] = True
@@ -16071,8 +15913,8 @@ class AccountingApi:
 
     async def get_repeating_invoice_attachments_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        repeating_invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Repeating Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        repeating_invoice_id: Annotated[StrictStr, Field(description="Unique identifier for a Repeating Invoice")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -16130,8 +15972,8 @@ class AccountingApi:
 
     async def get_repeating_invoice_history(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        repeating_invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Repeating Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        repeating_invoice_id: Annotated[StrictStr, Field(description="Unique identifier for a Repeating Invoice")],
         **kwargs,
     ) -> HistoryRecords:
         kwargs["_return_http_data_only"] = True
@@ -16142,8 +15984,8 @@ class AccountingApi:
 
     async def get_repeating_invoice_history_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        repeating_invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Repeating Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        repeating_invoice_id: Annotated[StrictStr, Field(description="Unique identifier for a Repeating Invoice")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -16201,7 +16043,7 @@ class AccountingApi:
 
     async def get_repeating_invoices(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         where: Annotated[StrictStr | None, Field(description="Filter by an any element")] = None,
         order: Annotated[StrictStr | None, Field(description="Order by an any element")] = None,
         **kwargs,
@@ -16214,7 +16056,7 @@ class AccountingApi:
 
     async def get_repeating_invoices_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         where: Annotated[StrictStr | None, Field(description="Filter by an any element")] = None,
         order: Annotated[StrictStr | None, Field(description="Order by an any element")] = None,
         **kwargs,
@@ -16274,8 +16116,8 @@ class AccountingApi:
 
     async def get_report_aged_payables_by_contact(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
         var_date: Annotated[date | None, Field(description="The date of the Aged Payables By Contact report")] = None,
         from_date: Annotated[
             date | None, Field(description="filter by the from date of the report e.g. 2021-02-01")
@@ -16295,8 +16137,8 @@ class AccountingApi:
 
     async def get_report_aged_payables_by_contact_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
         var_date: Annotated[date | None, Field(description="The date of the Aged Payables By Contact report")] = None,
         from_date: Annotated[
             date | None, Field(description="filter by the from date of the report e.g. 2021-02-01")
@@ -16378,8 +16220,8 @@ class AccountingApi:
 
     async def get_report_aged_receivables_by_contact(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
         var_date: Annotated[
             date | None, Field(description="The date of the Aged Receivables By Contact report")
         ] = None,
@@ -16401,8 +16243,8 @@ class AccountingApi:
 
     async def get_report_aged_receivables_by_contact_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
         var_date: Annotated[
             date | None, Field(description="The date of the Aged Receivables By Contact report")
         ] = None,
@@ -16486,7 +16328,7 @@ class AccountingApi:
 
     async def get_report_balance_sheet(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         var_date: Annotated[date | None, Field(description="The date of the Balance Sheet report")] = None,
         periods: Annotated[
             StrictInt | None, Field(description="The number of periods for the Balance Sheet report")
@@ -16526,7 +16368,7 @@ class AccountingApi:
 
     async def get_report_balance_sheet_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         var_date: Annotated[date | None, Field(description="The date of the Balance Sheet report")] = None,
         periods: Annotated[
             StrictInt | None, Field(description="The number of periods for the Balance Sheet report")
@@ -16625,7 +16467,7 @@ class AccountingApi:
 
     async def get_report_bank_summary(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         from_date: Annotated[
             date | None, Field(description="filter by the from date of the report e.g. 2021-02-01")
         ] = None,
@@ -16642,7 +16484,7 @@ class AccountingApi:
 
     async def get_report_bank_summary_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         from_date: Annotated[
             date | None, Field(description="filter by the from date of the report e.g. 2021-02-01")
         ] = None,
@@ -16714,7 +16556,7 @@ class AccountingApi:
 
     async def get_report_budget_summary(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         var_date: Annotated[
             date | None, Field(description="The date for the Bank Summary report e.g. 2018-03-31")
         ] = None,
@@ -16736,7 +16578,7 @@ class AccountingApi:
 
     async def get_report_budget_summary_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         var_date: Annotated[
             date | None, Field(description="The date for the Bank Summary report e.g. 2018-03-31")
         ] = None,
@@ -16808,7 +16650,7 @@ class AccountingApi:
 
     async def get_report_executive_summary(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         var_date: Annotated[
             date | None, Field(description="The date for the Bank Summary report e.g. 2018-03-31")
         ] = None,
@@ -16822,7 +16664,7 @@ class AccountingApi:
 
     async def get_report_executive_summary_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         var_date: Annotated[
             date | None, Field(description="The date for the Bank Summary report e.g. 2018-03-31")
         ] = None,
@@ -16886,8 +16728,8 @@ class AccountingApi:
 
     async def get_report_from_id(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        report_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Report")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        report_id: Annotated[StrictStr, Field(description="Unique identifier for a Report")],
         **kwargs,
     ) -> ReportWithRows:
         kwargs["_return_http_data_only"] = True
@@ -16898,8 +16740,8 @@ class AccountingApi:
 
     async def get_report_from_id_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        report_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Report")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        report_id: Annotated[StrictStr, Field(description="Unique identifier for a Report")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -16955,7 +16797,7 @@ class AccountingApi:
 
     async def get_report_profit_and_loss(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         from_date: Annotated[
             date | None, Field(description="filter by the from date of the report e.g. 2021-02-01")
         ] = None,
@@ -17009,7 +16851,7 @@ class AccountingApi:
 
     async def get_report_profit_and_loss_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         from_date: Annotated[
             date | None, Field(description="filter by the from date of the report e.g. 2021-02-01")
         ] = None,
@@ -17133,7 +16975,7 @@ class AccountingApi:
 
     async def get_report_ten_ninety_nine(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         report_year: Annotated[StrictStr | None, Field(description="The year of the 1099 report")] = None,
         **kwargs,
     ) -> Reports:
@@ -17145,7 +16987,7 @@ class AccountingApi:
 
     async def get_report_ten_ninety_nine_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         report_year: Annotated[StrictStr | None, Field(description="The year of the 1099 report")] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -17202,7 +17044,7 @@ class AccountingApi:
 
     async def get_report_trial_balance(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         var_date: Annotated[
             date | None, Field(description="The date for the Trial Balance report e.g. 2018-03-31")
         ] = None,
@@ -17219,7 +17061,7 @@ class AccountingApi:
 
     async def get_report_trial_balance_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         var_date: Annotated[
             date | None, Field(description="The date for the Trial Balance report e.g. 2018-03-31")
         ] = None,
@@ -17285,7 +17127,7 @@ class AccountingApi:
         )
 
     async def get_reports_list(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> ReportWithRows:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
@@ -17294,7 +17136,7 @@ class AccountingApi:
         return await self.get_reports_list_with_http_info(xero_tenant_id, **kwargs)
 
     async def get_reports_list_with_http_info(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> ApiResponse:
         _params = locals()
         _all_params = ["xero_tenant_id"]
@@ -17347,8 +17189,8 @@ class AccountingApi:
 
     async def get_tax_rate_by_tax_type(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        tax_type: Annotated[StrictStr, Field(..., description="A valid TaxType code")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        tax_type: Annotated[StrictStr, Field(description="A valid TaxType code")],
         **kwargs,
     ) -> TaxRates:
         kwargs["_return_http_data_only"] = True
@@ -17359,8 +17201,8 @@ class AccountingApi:
 
     async def get_tax_rate_by_tax_type_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        tax_type: Annotated[StrictStr, Field(..., description="A valid TaxType code")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        tax_type: Annotated[StrictStr, Field(description="A valid TaxType code")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -17416,7 +17258,7 @@ class AccountingApi:
 
     async def get_tax_rates(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         where: Annotated[StrictStr | None, Field(description="Filter by an any element")] = None,
         order: Annotated[StrictStr | None, Field(description="Order by an any element")] = None,
         **kwargs,
@@ -17429,7 +17271,7 @@ class AccountingApi:
 
     async def get_tax_rates_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         where: Annotated[StrictStr | None, Field(description="Filter by an any element")] = None,
         order: Annotated[StrictStr | None, Field(description="Order by an any element")] = None,
         **kwargs,
@@ -17489,7 +17331,7 @@ class AccountingApi:
 
     async def get_tracking_categories(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         where: Annotated[StrictStr | None, Field(description="Filter by an any element")] = None,
         order: Annotated[StrictStr | None, Field(description="Order by an any element")] = None,
         include_archived: Annotated[
@@ -17510,7 +17352,7 @@ class AccountingApi:
 
     async def get_tracking_categories_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         where: Annotated[StrictStr | None, Field(description="Filter by an any element")] = None,
         order: Annotated[StrictStr | None, Field(description="Order by an any element")] = None,
         include_archived: Annotated[
@@ -17578,8 +17420,8 @@ class AccountingApi:
 
     async def get_tracking_category(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        tracking_category_id: Annotated[StrictStr, Field(..., description="Unique identifier for a TrackingCategory")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        tracking_category_id: Annotated[StrictStr, Field(description="Unique identifier for a TrackingCategory")],
         **kwargs,
     ) -> TrackingCategories:
         kwargs["_return_http_data_only"] = True
@@ -17590,8 +17432,8 @@ class AccountingApi:
 
     async def get_tracking_category_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        tracking_category_id: Annotated[StrictStr, Field(..., description="Unique identifier for a TrackingCategory")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        tracking_category_id: Annotated[StrictStr, Field(description="Unique identifier for a TrackingCategory")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -17647,8 +17489,8 @@ class AccountingApi:
 
     async def get_user(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        user_id: Annotated[StrictStr, Field(..., description="Unique identifier for a User")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        user_id: Annotated[StrictStr, Field(description="Unique identifier for a User")],
         **kwargs,
     ) -> Users:
         kwargs["_return_http_data_only"] = True
@@ -17659,8 +17501,8 @@ class AccountingApi:
 
     async def get_user_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        user_id: Annotated[StrictStr, Field(..., description="Unique identifier for a User")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        user_id: Annotated[StrictStr, Field(description="Unique identifier for a User")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -17716,7 +17558,7 @@ class AccountingApi:
 
     async def get_users(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -17732,7 +17574,7 @@ class AccountingApi:
 
     async def get_users_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         if_modified_since: Annotated[
             datetime | None, Field(description="Only records created or modified since this timestamp will be returned")
         ] = None,
@@ -17797,12 +17639,11 @@ class AccountingApi:
 
     async def post_setup(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         setup: Annotated[
             Setup,
             Field(
-                ...,
-                description="Object including an accounts array, a conversion balances array and a conversion date object in body of request",
+                description="Object including an accounts array, a conversion balances array and a conversion date object in body of request"
             ),
         ],
         idempotency_key: Annotated[
@@ -17821,12 +17662,11 @@ class AccountingApi:
 
     async def post_setup_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         setup: Annotated[
             Setup,
             Field(
-                ...,
-                description="Object including an accounts array, a conversion balances array and a conversion date object in body of request",
+                description="Object including an accounts array, a conversion balances array and a conversion date object in body of request"
             ),
         ],
         idempotency_key: Annotated[
@@ -17897,9 +17737,9 @@ class AccountingApi:
 
     async def update_account(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for Account object")],
-        accounts: Annotated[Accounts, Field(..., description="Request of type Accounts array with one Account")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        account_id: Annotated[StrictStr, Field(description="Unique identifier for Account object")],
+        accounts: Annotated[Accounts, Field(description="Request of type Accounts array with one Account")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -17916,9 +17756,9 @@ class AccountingApi:
 
     async def update_account_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for Account object")],
-        accounts: Annotated[Accounts, Field(..., description="Request of type Accounts array with one Account")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        account_id: Annotated[StrictStr, Field(description="Unique identifier for Account object")],
+        accounts: Annotated[Accounts, Field(description="Request of type Accounts array with one Account")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -17989,10 +17829,10 @@ class AccountingApi:
 
     async def update_account_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for Account object")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        account_id: Annotated[StrictStr, Field(description="Unique identifier for Account object")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -18011,10 +17851,10 @@ class AccountingApi:
 
     async def update_account_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        account_id: Annotated[StrictStr, Field(..., description="Unique identifier for Account object")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        account_id: Annotated[StrictStr, Field(description="Unique identifier for Account object")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -18093,9 +17933,9 @@ class AccountingApi:
 
     async def update_bank_transaction(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transaction_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transaction")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transaction")
         ],
         bank_transactions: BankTransactions,
         unitdp: Annotated[
@@ -18122,9 +17962,9 @@ class AccountingApi:
 
     async def update_bank_transaction_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transaction_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transaction")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transaction")
         ],
         bank_transactions: BankTransactions,
         unitdp: Annotated[
@@ -18205,12 +18045,12 @@ class AccountingApi:
 
     async def update_bank_transaction_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transaction_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transaction")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transaction")
         ],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -18229,12 +18069,12 @@ class AccountingApi:
 
     async def update_bank_transaction_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transaction_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transaction")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transaction")
         ],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -18314,12 +18154,12 @@ class AccountingApi:
 
     async def update_bank_transfer_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transfer_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transfer")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transfer")
         ],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -18338,12 +18178,12 @@ class AccountingApi:
 
     async def update_bank_transfer_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transfer_id: Annotated[
-            StrictStr, Field(..., description="Xero generated unique identifier for a bank transfer")
+            StrictStr, Field(description="Xero generated unique identifier for a bank transfer")
         ],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -18423,11 +18263,11 @@ class AccountingApi:
 
     async def update_contact(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
         contacts: Annotated[
             Contacts,
-            Field(..., description="an array of Contacts containing single Contact object with properties to update"),
+            Field(description="an array of Contacts containing single Contact object with properties to update"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -18445,11 +18285,11 @@ class AccountingApi:
 
     async def update_contact_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
         contacts: Annotated[
             Contacts,
-            Field(..., description="an array of Contacts containing single Contact object with properties to update"),
+            Field(description="an array of Contacts containing single Contact object with properties to update"),
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -18521,10 +18361,10 @@ class AccountingApi:
 
     async def update_contact_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -18543,10 +18383,10 @@ class AccountingApi:
 
     async def update_contact_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -18625,10 +18465,10 @@ class AccountingApi:
 
     async def update_contact_group(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_group_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact Group")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_group_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact Group")],
         contact_groups: Annotated[
-            ContactGroups, Field(..., description="an array of Contact groups with Name of specific group to update")
+            ContactGroups, Field(description="an array of Contact groups with Name of specific group to update")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -18648,10 +18488,10 @@ class AccountingApi:
 
     async def update_contact_group_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        contact_group_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Contact Group")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        contact_group_id: Annotated[StrictStr, Field(description="Unique identifier for a Contact Group")],
         contact_groups: Annotated[
-            ContactGroups, Field(..., description="an array of Contact groups with Name of specific group to update")
+            ContactGroups, Field(description="an array of Contact groups with Name of specific group to update")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -18723,10 +18563,10 @@ class AccountingApi:
 
     async def update_credit_note(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
         credit_notes: Annotated[
-            CreditNotes, Field(..., description="an array of Credit Notes containing credit note details to update")
+            CreditNotes, Field(description="an array of Credit Notes containing credit note details to update")
         ],
         unitdp: Annotated[
             StrictInt | None,
@@ -18752,10 +18592,10 @@ class AccountingApi:
 
     async def update_credit_note_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
         credit_notes: Annotated[
-            CreditNotes, Field(..., description="an array of Credit Notes containing credit note details to update")
+            CreditNotes, Field(description="an array of Credit Notes containing credit note details to update")
         ],
         unitdp: Annotated[
             StrictInt | None,
@@ -18835,10 +18675,10 @@ class AccountingApi:
 
     async def update_credit_note_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -18857,10 +18697,10 @@ class AccountingApi:
 
     async def update_credit_note_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        credit_note_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Credit Note")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        credit_note_id: Annotated[StrictStr, Field(description="Unique identifier for a Credit Note")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -18939,8 +18779,8 @@ class AccountingApi:
 
     async def update_expense_claim(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        expense_claim_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ExpenseClaim")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        expense_claim_id: Annotated[StrictStr, Field(description="Unique identifier for a ExpenseClaim")],
         expense_claims: ExpenseClaims,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -18960,8 +18800,8 @@ class AccountingApi:
 
     async def update_expense_claim_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        expense_claim_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ExpenseClaim")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        expense_claim_id: Annotated[StrictStr, Field(description="Unique identifier for a ExpenseClaim")],
         expense_claims: ExpenseClaims,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -19033,8 +18873,8 @@ class AccountingApi:
 
     async def update_invoice(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
         invoices: Invoices,
         unitdp: Annotated[
             StrictInt | None,
@@ -19060,8 +18900,8 @@ class AccountingApi:
 
     async def update_invoice_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
         invoices: Invoices,
         unitdp: Annotated[
             StrictInt | None,
@@ -19141,10 +18981,10 @@ class AccountingApi:
 
     async def update_invoice_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -19163,10 +19003,10 @@ class AccountingApi:
 
     async def update_invoice_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Invoice")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        invoice_id: Annotated[StrictStr, Field(description="Unique identifier for an Invoice")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -19245,8 +19085,8 @@ class AccountingApi:
 
     async def update_item(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        item_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Item")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        item_id: Annotated[StrictStr, Field(description="Unique identifier for an Item")],
         items: Items,
         unitdp: Annotated[
             StrictInt | None,
@@ -19270,8 +19110,8 @@ class AccountingApi:
 
     async def update_item_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        item_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Item")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        item_id: Annotated[StrictStr, Field(description="Unique identifier for an Item")],
         items: Items,
         unitdp: Annotated[
             StrictInt | None,
@@ -19351,10 +19191,8 @@ class AccountingApi:
 
     async def update_linked_transaction(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        linked_transaction_id: Annotated[
-            StrictStr, Field(..., description="Unique identifier for a LinkedTransaction")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        linked_transaction_id: Annotated[StrictStr, Field(description="Unique identifier for a LinkedTransaction")],
         linked_transactions: LinkedTransactions,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -19374,10 +19212,8 @@ class AccountingApi:
 
     async def update_linked_transaction_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        linked_transaction_id: Annotated[
-            StrictStr, Field(..., description="Unique identifier for a LinkedTransaction")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        linked_transaction_id: Annotated[StrictStr, Field(description="Unique identifier for a LinkedTransaction")],
         linked_transactions: LinkedTransactions,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -19449,8 +19285,8 @@ class AccountingApi:
 
     async def update_manual_journal(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        manual_journal_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ManualJournal")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        manual_journal_id: Annotated[StrictStr, Field(description="Unique identifier for a ManualJournal")],
         manual_journals: ManualJournals,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -19470,8 +19306,8 @@ class AccountingApi:
 
     async def update_manual_journal_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        manual_journal_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ManualJournal")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        manual_journal_id: Annotated[StrictStr, Field(description="Unique identifier for a ManualJournal")],
         manual_journals: ManualJournals,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -19543,10 +19379,10 @@ class AccountingApi:
 
     async def update_manual_journal_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        manual_journal_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ManualJournal")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        manual_journal_id: Annotated[StrictStr, Field(description="Unique identifier for a ManualJournal")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -19565,10 +19401,10 @@ class AccountingApi:
 
     async def update_manual_journal_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        manual_journal_id: Annotated[StrictStr, Field(..., description="Unique identifier for a ManualJournal")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        manual_journal_id: Annotated[StrictStr, Field(description="Unique identifier for a ManualJournal")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -19648,7 +19484,7 @@ class AccountingApi:
 
     async def update_or_create_bank_transactions(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transactions: BankTransactions,
         summarize_errors: Annotated[
             StrictBool | None,
@@ -19680,7 +19516,7 @@ class AccountingApi:
 
     async def update_or_create_bank_transactions_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         bank_transactions: BankTransactions,
         summarize_errors: Annotated[
             StrictBool | None,
@@ -19768,7 +19604,7 @@ class AccountingApi:
 
     async def update_or_create_contacts(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         contacts: Contacts,
         summarize_errors: Annotated[
             StrictBool | None,
@@ -19794,7 +19630,7 @@ class AccountingApi:
 
     async def update_or_create_contacts_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         contacts: Contacts,
         summarize_errors: Annotated[
             StrictBool | None,
@@ -19872,9 +19708,9 @@ class AccountingApi:
 
     async def update_or_create_credit_notes(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         credit_notes: Annotated[
-            CreditNotes, Field(..., description="an array of Credit Notes with a single CreditNote object.")
+            CreditNotes, Field(description="an array of Credit Notes with a single CreditNote object.")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -19906,9 +19742,9 @@ class AccountingApi:
 
     async def update_or_create_credit_notes_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         credit_notes: Annotated[
-            CreditNotes, Field(..., description="an array of Credit Notes with a single CreditNote object.")
+            CreditNotes, Field(description="an array of Credit Notes with a single CreditNote object.")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -19996,9 +19832,9 @@ class AccountingApi:
 
     async def update_or_create_employees(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         employees: Annotated[
-            Employees, Field(..., description="Employees with array of Employee object in body of request")
+            Employees, Field(description="Employees with array of Employee object in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -20024,9 +19860,9 @@ class AccountingApi:
 
     async def update_or_create_employees_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         employees: Annotated[
-            Employees, Field(..., description="Employees with array of Employee object in body of request")
+            Employees, Field(description="Employees with array of Employee object in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -20104,7 +19940,7 @@ class AccountingApi:
 
     async def update_or_create_invoices(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         invoices: Invoices,
         summarize_errors: Annotated[
             StrictBool | None,
@@ -20136,7 +19972,7 @@ class AccountingApi:
 
     async def update_or_create_invoices_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         invoices: Invoices,
         summarize_errors: Annotated[
             StrictBool | None,
@@ -20222,7 +20058,7 @@ class AccountingApi:
 
     async def update_or_create_items(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         items: Items,
         summarize_errors: Annotated[
             StrictBool | None,
@@ -20254,7 +20090,7 @@ class AccountingApi:
 
     async def update_or_create_items_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         items: Items,
         summarize_errors: Annotated[
             StrictBool | None,
@@ -20340,9 +20176,9 @@ class AccountingApi:
 
     async def update_or_create_manual_journals(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         manual_journals: Annotated[
-            ManualJournals, Field(..., description="ManualJournals array with ManualJournal object in body of request")
+            ManualJournals, Field(description="ManualJournals array with ManualJournal object in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -20368,9 +20204,9 @@ class AccountingApi:
 
     async def update_or_create_manual_journals_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         manual_journals: Annotated[
-            ManualJournals, Field(..., description="ManualJournals array with ManualJournal object in body of request")
+            ManualJournals, Field(description="ManualJournals array with ManualJournal object in body of request")
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -20450,7 +20286,7 @@ class AccountingApi:
 
     async def update_or_create_purchase_orders(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         purchase_orders: PurchaseOrders,
         summarize_errors: Annotated[
             StrictBool | None,
@@ -20476,7 +20312,7 @@ class AccountingApi:
 
     async def update_or_create_purchase_orders_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         purchase_orders: PurchaseOrders,
         summarize_errors: Annotated[
             StrictBool | None,
@@ -20556,7 +20392,7 @@ class AccountingApi:
 
     async def update_or_create_quotes(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         quotes: Quotes,
         summarize_errors: Annotated[
             StrictBool | None,
@@ -20582,7 +20418,7 @@ class AccountingApi:
 
     async def update_or_create_quotes_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         quotes: Quotes,
         summarize_errors: Annotated[
             StrictBool | None,
@@ -20660,10 +20496,10 @@ class AccountingApi:
 
     async def update_or_create_repeating_invoices(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         repeating_invoices: Annotated[
             RepeatingInvoices,
-            Field(..., description="RepeatingInvoices with an array of repeating invoice objects in body of request"),
+            Field(description="RepeatingInvoices with an array of repeating invoice objects in body of request"),
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -20689,10 +20525,10 @@ class AccountingApi:
 
     async def update_or_create_repeating_invoices_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         repeating_invoices: Annotated[
             RepeatingInvoices,
-            Field(..., description="RepeatingInvoices with an array of repeating invoice objects in body of request"),
+            Field(description="RepeatingInvoices with an array of repeating invoice objects in body of request"),
         ],
         summarize_errors: Annotated[
             StrictBool | None,
@@ -20772,8 +20608,8 @@ class AccountingApi:
 
     async def update_purchase_order(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Purchase Order")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_id: Annotated[StrictStr, Field(description="Unique identifier for an Purchase Order")],
         purchase_orders: PurchaseOrders,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -20793,8 +20629,8 @@ class AccountingApi:
 
     async def update_purchase_order_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Purchase Order")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_id: Annotated[StrictStr, Field(description="Unique identifier for an Purchase Order")],
         purchase_orders: PurchaseOrders,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -20866,10 +20702,10 @@ class AccountingApi:
 
     async def update_purchase_order_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Purchase Order")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_id: Annotated[StrictStr, Field(description="Unique identifier for an Purchase Order")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -20888,10 +20724,10 @@ class AccountingApi:
 
     async def update_purchase_order_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        purchase_order_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Purchase Order")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        purchase_order_id: Annotated[StrictStr, Field(description="Unique identifier for an Purchase Order")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -20971,8 +20807,8 @@ class AccountingApi:
 
     async def update_quote(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quote_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Quote")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quote_id: Annotated[StrictStr, Field(description="Unique identifier for an Quote")],
         quotes: Quotes,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -20990,8 +20826,8 @@ class AccountingApi:
 
     async def update_quote_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quote_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Quote")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quote_id: Annotated[StrictStr, Field(description="Unique identifier for an Quote")],
         quotes: Quotes,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -21063,10 +20899,10 @@ class AccountingApi:
 
     async def update_quote_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quote_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Quote")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quote_id: Annotated[StrictStr, Field(description="Unique identifier for an Quote")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -21085,10 +20921,10 @@ class AccountingApi:
 
     async def update_quote_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        quote_id: Annotated[StrictStr, Field(..., description="Unique identifier for an Quote")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        quote_id: Annotated[StrictStr, Field(description="Unique identifier for an Quote")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -21167,8 +21003,8 @@ class AccountingApi:
 
     async def update_receipt(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        receipt_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Receipt")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        receipt_id: Annotated[StrictStr, Field(description="Unique identifier for a Receipt")],
         receipts: Receipts,
         unitdp: Annotated[
             StrictInt | None,
@@ -21194,8 +21030,8 @@ class AccountingApi:
 
     async def update_receipt_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        receipt_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Receipt")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        receipt_id: Annotated[StrictStr, Field(description="Unique identifier for a Receipt")],
         receipts: Receipts,
         unitdp: Annotated[
             StrictInt | None,
@@ -21275,10 +21111,10 @@ class AccountingApi:
 
     async def update_receipt_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        receipt_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Receipt")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        receipt_id: Annotated[StrictStr, Field(description="Unique identifier for a Receipt")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -21297,10 +21133,10 @@ class AccountingApi:
 
     async def update_receipt_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        receipt_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Receipt")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        receipt_id: Annotated[StrictStr, Field(description="Unique identifier for a Receipt")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -21379,8 +21215,8 @@ class AccountingApi:
 
     async def update_repeating_invoice(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        repeating_invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Repeating Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        repeating_invoice_id: Annotated[StrictStr, Field(description="Unique identifier for a Repeating Invoice")],
         repeating_invoices: RepeatingInvoices,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -21400,8 +21236,8 @@ class AccountingApi:
 
     async def update_repeating_invoice_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        repeating_invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Repeating Invoice")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        repeating_invoice_id: Annotated[StrictStr, Field(description="Unique identifier for a Repeating Invoice")],
         repeating_invoices: RepeatingInvoices,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -21473,10 +21309,10 @@ class AccountingApi:
 
     async def update_repeating_invoice_attachment_by_file_name(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        repeating_invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Repeating Invoice")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        repeating_invoice_id: Annotated[StrictStr, Field(description="Unique identifier for a Repeating Invoice")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -21495,10 +21331,10 @@ class AccountingApi:
 
     async def update_repeating_invoice_attachment_by_file_name_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        repeating_invoice_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Repeating Invoice")],
-        file_name: Annotated[StrictStr, Field(..., description="Name of the attachment")],
-        body: Annotated[StrictBytes | StrictStr, Field(..., description="Byte array of file in body of request")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        repeating_invoice_id: Annotated[StrictStr, Field(description="Unique identifier for a Repeating Invoice")],
+        file_name: Annotated[StrictStr, Field(description="Name of the attachment")],
+        body: Annotated[StrictBytes | StrictStr, Field(description="Byte array of file in body of request")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -21578,7 +21414,7 @@ class AccountingApi:
 
     async def update_tax_rate(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         tax_rates: TaxRates,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -21596,7 +21432,7 @@ class AccountingApi:
 
     async def update_tax_rate_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         tax_rates: TaxRates,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -21666,8 +21502,8 @@ class AccountingApi:
 
     async def update_tracking_category(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        tracking_category_id: Annotated[StrictStr, Field(..., description="Unique identifier for a TrackingCategory")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        tracking_category_id: Annotated[StrictStr, Field(description="Unique identifier for a TrackingCategory")],
         tracking_category: TrackingCategory,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -21687,8 +21523,8 @@ class AccountingApi:
 
     async def update_tracking_category_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        tracking_category_id: Annotated[StrictStr, Field(..., description="Unique identifier for a TrackingCategory")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        tracking_category_id: Annotated[StrictStr, Field(description="Unique identifier for a TrackingCategory")],
         tracking_category: TrackingCategory,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -21760,9 +21596,9 @@ class AccountingApi:
 
     async def update_tracking_options(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        tracking_category_id: Annotated[StrictStr, Field(..., description="Unique identifier for a TrackingCategory")],
-        tracking_option_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Tracking Option")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        tracking_category_id: Annotated[StrictStr, Field(description="Unique identifier for a TrackingCategory")],
+        tracking_option_id: Annotated[StrictStr, Field(description="Unique identifier for a Tracking Option")],
         tracking_option: TrackingOption,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -21782,9 +21618,9 @@ class AccountingApi:
 
     async def update_tracking_options_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        tracking_category_id: Annotated[StrictStr, Field(..., description="Unique identifier for a TrackingCategory")],
-        tracking_option_id: Annotated[StrictStr, Field(..., description="Unique identifier for a Tracking Option")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        tracking_category_id: Annotated[StrictStr, Field(description="Unique identifier for a TrackingCategory")],
+        tracking_option_id: Annotated[StrictStr, Field(description="Unique identifier for a Tracking Option")],
         tracking_option: TrackingOption,
         idempotency_key: Annotated[
             StrictStr | None,

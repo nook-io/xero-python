@@ -84,8 +84,8 @@ class PayrollUkApi:
 
     async def approve_timesheet(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(description="Identifier for the timesheet")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -102,8 +102,8 @@ class PayrollUkApi:
 
     async def approve_timesheet_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(description="Identifier for the timesheet")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -167,7 +167,7 @@ class PayrollUkApi:
 
     async def create_benefit(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         benefit: Benefit,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -185,7 +185,7 @@ class PayrollUkApi:
 
     async def create_benefit_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         benefit: Benefit,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -255,7 +255,7 @@ class PayrollUkApi:
 
     async def create_deduction(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         deduction: Deduction,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -273,7 +273,7 @@ class PayrollUkApi:
 
     async def create_deduction_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         deduction: Deduction,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -343,7 +343,7 @@ class PayrollUkApi:
 
     async def create_earnings_rate(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         earnings_rate: EarningsRate,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -361,7 +361,7 @@ class PayrollUkApi:
 
     async def create_earnings_rate_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         earnings_rate: EarningsRate,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -431,7 +431,7 @@ class PayrollUkApi:
 
     async def create_employee(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         employee: Employee,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -449,7 +449,7 @@ class PayrollUkApi:
 
     async def create_employee_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         employee: Employee,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -519,8 +519,8 @@ class PayrollUkApi:
 
     async def create_employee_earnings_template(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         earnings_template: EarningsTemplate,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -540,8 +540,8 @@ class PayrollUkApi:
 
     async def create_employee_earnings_template_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         earnings_template: EarningsTemplate,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -615,8 +615,8 @@ class PayrollUkApi:
 
     async def create_employee_leave(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         employee_leave: EmployeeLeave,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -636,8 +636,8 @@ class PayrollUkApi:
 
     async def create_employee_leave_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         employee_leave: EmployeeLeave,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -709,8 +709,8 @@ class PayrollUkApi:
 
     async def create_employee_leave_type(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         employee_leave_type: EmployeeLeaveType,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -730,8 +730,8 @@ class PayrollUkApi:
 
     async def create_employee_leave_type_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         employee_leave_type: EmployeeLeaveType,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -803,8 +803,8 @@ class PayrollUkApi:
 
     async def create_employee_opening_balances(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         employee_opening_balances: EmployeeOpeningBalances,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -824,8 +824,8 @@ class PayrollUkApi:
 
     async def create_employee_opening_balances_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         employee_opening_balances: EmployeeOpeningBalances,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -899,8 +899,8 @@ class PayrollUkApi:
 
     async def create_employee_payment_method(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         payment_method: PaymentMethod,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -920,8 +920,8 @@ class PayrollUkApi:
 
     async def create_employee_payment_method_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         payment_method: PaymentMethod,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -995,8 +995,8 @@ class PayrollUkApi:
 
     async def create_employee_salary_and_wage(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         salary_and_wage: SalaryAndWage,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1016,8 +1016,8 @@ class PayrollUkApi:
 
     async def create_employee_salary_and_wage_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         salary_and_wage: SalaryAndWage,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1091,7 +1091,7 @@ class PayrollUkApi:
 
     async def create_employee_statutory_sick_leave(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         employee_statutory_sick_leave: EmployeeStatutorySickLeave,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1111,7 +1111,7 @@ class PayrollUkApi:
 
     async def create_employee_statutory_sick_leave_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         employee_statutory_sick_leave: EmployeeStatutorySickLeave,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1183,8 +1183,8 @@ class PayrollUkApi:
 
     async def create_employment(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         employment: Employment,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1204,8 +1204,8 @@ class PayrollUkApi:
 
     async def create_employment_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         employment: Employment,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1277,7 +1277,7 @@ class PayrollUkApi:
 
     async def create_leave_type(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         leave_type: LeaveType,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1295,7 +1295,7 @@ class PayrollUkApi:
 
     async def create_leave_type_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         leave_type: LeaveType,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1365,8 +1365,8 @@ class PayrollUkApi:
 
     async def create_multiple_employee_earnings_template(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         earnings_template: Annotated[list[EarningsTemplate], Field()],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1386,8 +1386,8 @@ class PayrollUkApi:
 
     async def create_multiple_employee_earnings_template_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         earnings_template: Annotated[list[EarningsTemplate], Field()],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1461,7 +1461,7 @@ class PayrollUkApi:
 
     async def create_pay_run_calendar(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         pay_run_calendar: PayRunCalendar,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1481,7 +1481,7 @@ class PayrollUkApi:
 
     async def create_pay_run_calendar_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         pay_run_calendar: PayRunCalendar,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1551,7 +1551,7 @@ class PayrollUkApi:
 
     async def create_reimbursement(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         reimbursement: Reimbursement,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1569,7 +1569,7 @@ class PayrollUkApi:
 
     async def create_reimbursement_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         reimbursement: Reimbursement,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1639,7 +1639,7 @@ class PayrollUkApi:
 
     async def create_timesheet(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         timesheet: Timesheet,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1657,7 +1657,7 @@ class PayrollUkApi:
 
     async def create_timesheet_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         timesheet: Timesheet,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1727,8 +1727,8 @@ class PayrollUkApi:
 
     async def create_timesheet_line(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(description="Identifier for the timesheet")],
         timesheet_line: TimesheetLine,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1748,8 +1748,8 @@ class PayrollUkApi:
 
     async def create_timesheet_line_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(description="Identifier for the timesheet")],
         timesheet_line: TimesheetLine,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1821,11 +1821,9 @@ class PayrollUkApi:
 
     async def delete_employee_earnings_template(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
-        pay_template_earning_id: Annotated[
-            StrictStr, Field(..., description="Id for single pay template earnings object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
+        pay_template_earning_id: Annotated[StrictStr, Field(description="Id for single pay template earnings object")],
         **kwargs,
     ) -> None:
         kwargs["_return_http_data_only"] = True
@@ -1838,11 +1836,9 @@ class PayrollUkApi:
 
     async def delete_employee_earnings_template_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
-        pay_template_earning_id: Annotated[
-            StrictStr, Field(..., description="Id for single pay template earnings object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
+        pay_template_earning_id: Annotated[StrictStr, Field(description="Id for single pay template earnings object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -1901,9 +1897,9 @@ class PayrollUkApi:
 
     async def delete_employee_leave(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
-        leave_id: Annotated[StrictStr, Field(..., description="Leave id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
+        leave_id: Annotated[StrictStr, Field(description="Leave id for single object")],
         **kwargs,
     ) -> EmployeeLeaveObject:
         kwargs["_return_http_data_only"] = True
@@ -1914,9 +1910,9 @@ class PayrollUkApi:
 
     async def delete_employee_leave_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
-        leave_id: Annotated[StrictStr, Field(..., description="Leave id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
+        leave_id: Annotated[StrictStr, Field(description="Leave id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -1974,9 +1970,9 @@ class PayrollUkApi:
 
     async def delete_employee_salary_and_wage(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
-        salary_and_wages_id: Annotated[StrictStr, Field(..., description="Id for single salary and wages object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
+        salary_and_wages_id: Annotated[StrictStr, Field(description="Id for single salary and wages object")],
         **kwargs,
     ) -> None:
         kwargs["_return_http_data_only"] = True
@@ -1989,9 +1985,9 @@ class PayrollUkApi:
 
     async def delete_employee_salary_and_wage_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
-        salary_and_wages_id: Annotated[StrictStr, Field(..., description="Id for single salary and wages object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
+        salary_and_wages_id: Annotated[StrictStr, Field(description="Id for single salary and wages object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -2050,8 +2046,8 @@ class PayrollUkApi:
 
     async def delete_timesheet(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(description="Identifier for the timesheet")],
         **kwargs,
     ) -> TimesheetLine:
         kwargs["_return_http_data_only"] = True
@@ -2062,8 +2058,8 @@ class PayrollUkApi:
 
     async def delete_timesheet_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(description="Identifier for the timesheet")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -2119,9 +2115,9 @@ class PayrollUkApi:
 
     async def delete_timesheet_line(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
-        timesheet_line_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet line")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(description="Identifier for the timesheet")],
+        timesheet_line_id: Annotated[StrictStr, Field(description="Identifier for the timesheet line")],
         **kwargs,
     ) -> TimesheetLine:
         kwargs["_return_http_data_only"] = True
@@ -2134,9 +2130,9 @@ class PayrollUkApi:
 
     async def delete_timesheet_line_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
-        timesheet_line_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet line")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(description="Identifier for the timesheet")],
+        timesheet_line_id: Annotated[StrictStr, Field(description="Identifier for the timesheet line")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -2194,8 +2190,8 @@ class PayrollUkApi:
 
     async def get_benefit(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        id: Annotated[StrictStr, Field(..., description="Identifier for the benefit")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        id: Annotated[StrictStr, Field(description="Identifier for the benefit")],
         **kwargs,
     ) -> BenefitObject:
         kwargs["_return_http_data_only"] = True
@@ -2206,8 +2202,8 @@ class PayrollUkApi:
 
     async def get_benefit_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        id: Annotated[StrictStr, Field(..., description="Identifier for the benefit")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        id: Annotated[StrictStr, Field(description="Identifier for the benefit")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -2263,7 +2259,7 @@ class PayrollUkApi:
 
     async def get_benefits(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -2280,7 +2276,7 @@ class PayrollUkApi:
 
     async def get_benefits_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -2342,8 +2338,8 @@ class PayrollUkApi:
 
     async def get_deduction(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        deduction_id: Annotated[StrictStr, Field(..., description="Identifier for the deduction")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        deduction_id: Annotated[StrictStr, Field(description="Identifier for the deduction")],
         **kwargs,
     ) -> DeductionObject:
         kwargs["_return_http_data_only"] = True
@@ -2354,8 +2350,8 @@ class PayrollUkApi:
 
     async def get_deduction_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        deduction_id: Annotated[StrictStr, Field(..., description="Identifier for the deduction")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        deduction_id: Annotated[StrictStr, Field(description="Identifier for the deduction")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -2411,7 +2407,7 @@ class PayrollUkApi:
 
     async def get_deductions(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -2428,7 +2424,7 @@ class PayrollUkApi:
 
     async def get_deductions_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -2490,8 +2486,8 @@ class PayrollUkApi:
 
     async def get_earnings_order(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        id: Annotated[StrictStr, Field(..., description="Identifier for the deduction")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        id: Annotated[StrictStr, Field(description="Identifier for the deduction")],
         **kwargs,
     ) -> EarningsOrderObject:
         kwargs["_return_http_data_only"] = True
@@ -2502,8 +2498,8 @@ class PayrollUkApi:
 
     async def get_earnings_order_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        id: Annotated[StrictStr, Field(..., description="Identifier for the deduction")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        id: Annotated[StrictStr, Field(description="Identifier for the deduction")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -2559,7 +2555,7 @@ class PayrollUkApi:
 
     async def get_earnings_orders(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -2576,7 +2572,7 @@ class PayrollUkApi:
 
     async def get_earnings_orders_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -2638,8 +2634,8 @@ class PayrollUkApi:
 
     async def get_earnings_rate(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        earnings_rate_id: Annotated[StrictStr, Field(..., description="Identifier for the earnings rate")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        earnings_rate_id: Annotated[StrictStr, Field(description="Identifier for the earnings rate")],
         **kwargs,
     ) -> EarningsRateObject:
         kwargs["_return_http_data_only"] = True
@@ -2650,8 +2646,8 @@ class PayrollUkApi:
 
     async def get_earnings_rate_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        earnings_rate_id: Annotated[StrictStr, Field(..., description="Identifier for the earnings rate")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        earnings_rate_id: Annotated[StrictStr, Field(description="Identifier for the earnings rate")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -2707,7 +2703,7 @@ class PayrollUkApi:
 
     async def get_earnings_rates(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -2724,7 +2720,7 @@ class PayrollUkApi:
 
     async def get_earnings_rates_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -2786,8 +2782,8 @@ class PayrollUkApi:
 
     async def get_employee(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         **kwargs,
     ) -> EmployeeObject:
         kwargs["_return_http_data_only"] = True
@@ -2798,8 +2794,8 @@ class PayrollUkApi:
 
     async def get_employee_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -2855,9 +2851,9 @@ class PayrollUkApi:
 
     async def get_employee_leave(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
-        leave_id: Annotated[StrictStr, Field(..., description="Leave id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
+        leave_id: Annotated[StrictStr, Field(description="Leave id for single object")],
         **kwargs,
     ) -> EmployeeLeaveObject:
         kwargs["_return_http_data_only"] = True
@@ -2868,9 +2864,9 @@ class PayrollUkApi:
 
     async def get_employee_leave_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
-        leave_id: Annotated[StrictStr, Field(..., description="Leave id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
+        leave_id: Annotated[StrictStr, Field(description="Leave id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -2928,8 +2924,8 @@ class PayrollUkApi:
 
     async def get_employee_leave_balances(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         **kwargs,
     ) -> EmployeeLeaveBalances:
         kwargs["_return_http_data_only"] = True
@@ -2940,8 +2936,8 @@ class PayrollUkApi:
 
     async def get_employee_leave_balances_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -2997,8 +2993,8 @@ class PayrollUkApi:
 
     async def get_employee_leave_periods(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         start_date: Annotated[date | None, Field(description="Filter by start date")] = None,
         end_date: Annotated[date | None, Field(description="Filter by end date")] = None,
         **kwargs,
@@ -3013,8 +3009,8 @@ class PayrollUkApi:
 
     async def get_employee_leave_periods_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         start_date: Annotated[date | None, Field(description="Filter by start date")] = None,
         end_date: Annotated[date | None, Field(description="Filter by end date")] = None,
         **kwargs,
@@ -3086,8 +3082,8 @@ class PayrollUkApi:
 
     async def get_employee_leave_types(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         **kwargs,
     ) -> EmployeeLeaveTypes:
         kwargs["_return_http_data_only"] = True
@@ -3098,8 +3094,8 @@ class PayrollUkApi:
 
     async def get_employee_leave_types_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -3155,8 +3151,8 @@ class PayrollUkApi:
 
     async def get_employee_leaves(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         **kwargs,
     ) -> EmployeeLeaves:
         kwargs["_return_http_data_only"] = True
@@ -3167,8 +3163,8 @@ class PayrollUkApi:
 
     async def get_employee_leaves_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -3224,8 +3220,8 @@ class PayrollUkApi:
 
     async def get_employee_opening_balances(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         **kwargs,
     ) -> EmployeeOpeningBalancesObject:
         kwargs["_return_http_data_only"] = True
@@ -3236,8 +3232,8 @@ class PayrollUkApi:
 
     async def get_employee_opening_balances_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -3295,8 +3291,8 @@ class PayrollUkApi:
 
     async def get_employee_pay_template(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         **kwargs,
     ) -> EmployeePayTemplateObject:
         kwargs["_return_http_data_only"] = True
@@ -3307,8 +3303,8 @@ class PayrollUkApi:
 
     async def get_employee_pay_template_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -3364,8 +3360,8 @@ class PayrollUkApi:
 
     async def get_employee_payment_method(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         **kwargs,
     ) -> PaymentMethodObject:
         kwargs["_return_http_data_only"] = True
@@ -3376,8 +3372,8 @@ class PayrollUkApi:
 
     async def get_employee_payment_method_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -3433,9 +3429,9 @@ class PayrollUkApi:
 
     async def get_employee_salary_and_wage(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
-        salary_and_wages_id: Annotated[StrictStr, Field(..., description="Id for single pay template earnings object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
+        salary_and_wages_id: Annotated[StrictStr, Field(description="Id for single pay template earnings object")],
         **kwargs,
     ) -> SalaryAndWages:
         kwargs["_return_http_data_only"] = True
@@ -3448,9 +3444,9 @@ class PayrollUkApi:
 
     async def get_employee_salary_and_wage_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
-        salary_and_wages_id: Annotated[StrictStr, Field(..., description="Id for single pay template earnings object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
+        salary_and_wages_id: Annotated[StrictStr, Field(description="Id for single pay template earnings object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -3510,8 +3506,8 @@ class PayrollUkApi:
 
     async def get_employee_salary_and_wages(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -3528,8 +3524,8 @@ class PayrollUkApi:
 
     async def get_employee_salary_and_wages_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -3595,8 +3591,8 @@ class PayrollUkApi:
 
     async def get_employee_statutory_leave_balances(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         leave_type: Annotated[StrictStr | None, Field(description="Filter by the type of statutory leave")] = None,
         as_of_date: Annotated[
             date | None,
@@ -3616,8 +3612,8 @@ class PayrollUkApi:
 
     async def get_employee_statutory_leave_balances_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         leave_type: Annotated[StrictStr | None, Field(description="Filter by the type of statutory leave")] = None,
         as_of_date: Annotated[
             date | None,
@@ -3691,10 +3687,8 @@ class PayrollUkApi:
 
     async def get_employee_statutory_sick_leave(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        statutory_sick_leave_id: Annotated[
-            StrictStr, Field(..., description="Statutory sick leave id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        statutory_sick_leave_id: Annotated[StrictStr, Field(description="Statutory sick leave id for single object")],
         **kwargs,
     ) -> EmployeeStatutorySickLeaveObject:
         kwargs["_return_http_data_only"] = True
@@ -3707,10 +3701,8 @@ class PayrollUkApi:
 
     async def get_employee_statutory_sick_leave_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        statutory_sick_leave_id: Annotated[
-            StrictStr, Field(..., description="Statutory sick leave id for single object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        statutory_sick_leave_id: Annotated[StrictStr, Field(description="Statutory sick leave id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -3768,8 +3760,8 @@ class PayrollUkApi:
 
     async def get_employee_tax(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         **kwargs,
     ) -> EmployeeTaxObject:
         kwargs["_return_http_data_only"] = True
@@ -3780,8 +3772,8 @@ class PayrollUkApi:
 
     async def get_employee_tax_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -3837,7 +3829,7 @@ class PayrollUkApi:
 
     async def get_employees(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         filter: Annotated[
             StrictStr | None,
             Field(description="Filter by first name, lastname, and/or whether they are an off-payroll worker"),
@@ -3858,7 +3850,7 @@ class PayrollUkApi:
 
     async def get_employees_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         filter: Annotated[
             StrictStr | None,
             Field(description="Filter by first name, lastname, and/or whether they are an off-payroll worker"),
@@ -3926,8 +3918,8 @@ class PayrollUkApi:
 
     async def get_leave_type(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        leave_type_id: Annotated[StrictStr, Field(..., description="Identifier for the leave type")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        leave_type_id: Annotated[StrictStr, Field(description="Identifier for the leave type")],
         **kwargs,
     ) -> LeaveTypeObject:
         kwargs["_return_http_data_only"] = True
@@ -3938,8 +3930,8 @@ class PayrollUkApi:
 
     async def get_leave_type_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        leave_type_id: Annotated[StrictStr, Field(..., description="Identifier for the leave type")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        leave_type_id: Annotated[StrictStr, Field(description="Identifier for the leave type")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -3995,7 +3987,7 @@ class PayrollUkApi:
 
     async def get_leave_types(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -4016,7 +4008,7 @@ class PayrollUkApi:
 
     async def get_leave_types_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -4084,8 +4076,8 @@ class PayrollUkApi:
 
     async def get_pay_run(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        pay_run_id: Annotated[StrictStr, Field(..., description="Identifier for the pay run")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        pay_run_id: Annotated[StrictStr, Field(description="Identifier for the pay run")],
         **kwargs,
     ) -> PayRunObject:
         kwargs["_return_http_data_only"] = True
@@ -4096,8 +4088,8 @@ class PayrollUkApi:
 
     async def get_pay_run_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        pay_run_id: Annotated[StrictStr, Field(..., description="Identifier for the pay run")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        pay_run_id: Annotated[StrictStr, Field(description="Identifier for the pay run")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -4153,8 +4145,8 @@ class PayrollUkApi:
 
     async def get_pay_run_calendar(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        pay_run_calendar_id: Annotated[StrictStr, Field(..., description="Identifier for the payrun calendars")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        pay_run_calendar_id: Annotated[StrictStr, Field(description="Identifier for the payrun calendars")],
         **kwargs,
     ) -> PayRunCalendarObject:
         kwargs["_return_http_data_only"] = True
@@ -4165,8 +4157,8 @@ class PayrollUkApi:
 
     async def get_pay_run_calendar_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        pay_run_calendar_id: Annotated[StrictStr, Field(..., description="Identifier for the payrun calendars")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        pay_run_calendar_id: Annotated[StrictStr, Field(description="Identifier for the payrun calendars")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -4222,7 +4214,7 @@ class PayrollUkApi:
 
     async def get_pay_run_calendars(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -4239,7 +4231,7 @@ class PayrollUkApi:
 
     async def get_pay_run_calendars_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -4301,7 +4293,7 @@ class PayrollUkApi:
 
     async def get_pay_runs(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -4324,7 +4316,7 @@ class PayrollUkApi:
 
     async def get_pay_runs_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -4394,8 +4386,8 @@ class PayrollUkApi:
 
     async def get_pay_slip(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        payslip_id: Annotated[StrictStr, Field(..., description="Identifier for the payslip")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        payslip_id: Annotated[StrictStr, Field(description="Identifier for the payslip")],
         **kwargs,
     ) -> PayslipObject:
         kwargs["_return_http_data_only"] = True
@@ -4406,8 +4398,8 @@ class PayrollUkApi:
 
     async def get_pay_slip_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        payslip_id: Annotated[StrictStr, Field(..., description="Identifier for the payslip")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        payslip_id: Annotated[StrictStr, Field(description="Identifier for the payslip")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -4463,12 +4455,11 @@ class PayrollUkApi:
 
     async def get_pay_slips(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         pay_run_id: Annotated[
             StrictStr,
             Field(
-                ...,
-                description="PayrunID which specifies the containing payrun of payslips to retrieve. By default, the API does not group payslips by payrun.",
+                description="PayrunID which specifies the containing payrun of payslips to retrieve. By default, the API does not group payslips by payrun."
             ),
         ],
         page: Annotated[
@@ -4487,12 +4478,11 @@ class PayrollUkApi:
 
     async def get_pay_slips_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         pay_run_id: Annotated[
             StrictStr,
             Field(
-                ...,
-                description="PayrunID which specifies the containing payrun of payslips to retrieve. By default, the API does not group payslips by payrun.",
+                description="PayrunID which specifies the containing payrun of payslips to retrieve. By default, the API does not group payslips by payrun."
             ),
         ],
         page: Annotated[
@@ -4558,8 +4548,8 @@ class PayrollUkApi:
 
     async def get_reimbursement(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        reimbursement_id: Annotated[StrictStr, Field(..., description="Identifier for the reimbursement")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        reimbursement_id: Annotated[StrictStr, Field(description="Identifier for the reimbursement")],
         **kwargs,
     ) -> ReimbursementObject:
         kwargs["_return_http_data_only"] = True
@@ -4570,8 +4560,8 @@ class PayrollUkApi:
 
     async def get_reimbursement_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        reimbursement_id: Annotated[StrictStr, Field(..., description="Identifier for the reimbursement")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        reimbursement_id: Annotated[StrictStr, Field(description="Identifier for the reimbursement")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -4627,7 +4617,7 @@ class PayrollUkApi:
 
     async def get_reimbursements(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -4644,7 +4634,7 @@ class PayrollUkApi:
 
     async def get_reimbursements_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -4705,7 +4695,7 @@ class PayrollUkApi:
         )
 
     async def get_settings(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> Settings:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
@@ -4714,7 +4704,7 @@ class PayrollUkApi:
         return await self.get_settings_with_http_info(xero_tenant_id, **kwargs)
 
     async def get_settings_with_http_info(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> ApiResponse:
         _params = locals()
         _all_params = ["xero_tenant_id"]
@@ -4767,8 +4757,8 @@ class PayrollUkApi:
 
     async def get_statutory_leave_summary(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         active_only: Annotated[
             StrictBool | None,
             Field(
@@ -4785,8 +4775,8 @@ class PayrollUkApi:
 
     async def get_statutory_leave_summary_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         active_only: Annotated[
             StrictBool | None,
             Field(
@@ -4850,8 +4840,8 @@ class PayrollUkApi:
 
     async def get_timesheet(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(description="Identifier for the timesheet")],
         **kwargs,
     ) -> TimesheetObject:
         kwargs["_return_http_data_only"] = True
@@ -4862,8 +4852,8 @@ class PayrollUkApi:
 
     async def get_timesheet_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(description="Identifier for the timesheet")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -4919,7 +4909,7 @@ class PayrollUkApi:
 
     async def get_timesheets(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -4956,7 +4946,7 @@ class PayrollUkApi:
 
     async def get_timesheets_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -5045,7 +5035,7 @@ class PayrollUkApi:
         )
 
     async def get_tracking_categories(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> TrackingCategories:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
@@ -5054,7 +5044,7 @@ class PayrollUkApi:
         return await self.get_tracking_categories_with_http_info(xero_tenant_id, **kwargs)
 
     async def get_tracking_categories_with_http_info(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> ApiResponse:
         _params = locals()
         _all_params = ["xero_tenant_id"]
@@ -5107,8 +5097,8 @@ class PayrollUkApi:
 
     async def revert_timesheet(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(description="Identifier for the timesheet")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -5125,8 +5115,8 @@ class PayrollUkApi:
 
     async def revert_timesheet_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(description="Identifier for the timesheet")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -5190,8 +5180,8 @@ class PayrollUkApi:
 
     async def update_employee(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         employee: Employee,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -5211,8 +5201,8 @@ class PayrollUkApi:
 
     async def update_employee_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         employee: Employee,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -5284,11 +5274,9 @@ class PayrollUkApi:
 
     async def update_employee_earnings_template(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
-        pay_template_earning_id: Annotated[
-            StrictStr, Field(..., description="Id for single pay template earnings object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
+        pay_template_earning_id: Annotated[StrictStr, Field(description="Id for single pay template earnings object")],
         earnings_template: EarningsTemplate,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -5308,11 +5296,9 @@ class PayrollUkApi:
 
     async def update_employee_earnings_template_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
-        pay_template_earning_id: Annotated[
-            StrictStr, Field(..., description="Id for single pay template earnings object")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
+        pay_template_earning_id: Annotated[StrictStr, Field(description="Id for single pay template earnings object")],
         earnings_template: EarningsTemplate,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -5394,9 +5380,9 @@ class PayrollUkApi:
 
     async def update_employee_leave(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
-        leave_id: Annotated[StrictStr, Field(..., description="Leave id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
+        leave_id: Annotated[StrictStr, Field(description="Leave id for single object")],
         employee_leave: EmployeeLeave,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -5416,9 +5402,9 @@ class PayrollUkApi:
 
     async def update_employee_leave_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
-        leave_id: Annotated[StrictStr, Field(..., description="Leave id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
+        leave_id: Annotated[StrictStr, Field(description="Leave id for single object")],
         employee_leave: EmployeeLeave,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -5492,8 +5478,8 @@ class PayrollUkApi:
 
     async def update_employee_opening_balances(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         employee_opening_balances: EmployeeOpeningBalances,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -5513,8 +5499,8 @@ class PayrollUkApi:
 
     async def update_employee_opening_balances_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
         employee_opening_balances: EmployeeOpeningBalances,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -5588,9 +5574,9 @@ class PayrollUkApi:
 
     async def update_employee_salary_and_wage(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
-        salary_and_wages_id: Annotated[StrictStr, Field(..., description="Id for single pay template earnings object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
+        salary_and_wages_id: Annotated[StrictStr, Field(description="Id for single pay template earnings object")],
         salary_and_wage: SalaryAndWage,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -5610,9 +5596,9 @@ class PayrollUkApi:
 
     async def update_employee_salary_and_wage_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        employee_id: Annotated[StrictStr, Field(..., description="Employee id for single object")],
-        salary_and_wages_id: Annotated[StrictStr, Field(..., description="Id for single pay template earnings object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        employee_id: Annotated[StrictStr, Field(description="Employee id for single object")],
+        salary_and_wages_id: Annotated[StrictStr, Field(description="Id for single pay template earnings object")],
         salary_and_wage: SalaryAndWage,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -5688,8 +5674,8 @@ class PayrollUkApi:
 
     async def update_pay_run(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        pay_run_id: Annotated[StrictStr, Field(..., description="Identifier for the pay run")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        pay_run_id: Annotated[StrictStr, Field(description="Identifier for the pay run")],
         pay_run: PayRun,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -5707,8 +5693,8 @@ class PayrollUkApi:
 
     async def update_pay_run_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        pay_run_id: Annotated[StrictStr, Field(..., description="Identifier for the pay run")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        pay_run_id: Annotated[StrictStr, Field(description="Identifier for the pay run")],
         pay_run: PayRun,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -5780,9 +5766,9 @@ class PayrollUkApi:
 
     async def update_timesheet_line(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
-        timesheet_line_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet line")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(description="Identifier for the timesheet")],
+        timesheet_line_id: Annotated[StrictStr, Field(description="Identifier for the timesheet line")],
         timesheet_line: TimesheetLine,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -5802,9 +5788,9 @@ class PayrollUkApi:
 
     async def update_timesheet_line_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        timesheet_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet")],
-        timesheet_line_id: Annotated[StrictStr, Field(..., description="Identifier for the timesheet line")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        timesheet_id: Annotated[StrictStr, Field(description="Identifier for the timesheet")],
+        timesheet_line_id: Annotated[StrictStr, Field(description="Identifier for the timesheet line")],
         timesheet_line: TimesheetLine,
         idempotency_key: Annotated[
             StrictStr | None,

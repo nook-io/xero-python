@@ -35,9 +35,9 @@ class ProjectApi:
 
     async def create_project(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_create_or_update: Annotated[
-            ProjectCreateOrUpdate, Field(..., description="Create a new project with ProjectCreateOrUpdate object")
+            ProjectCreateOrUpdate, Field(description="Create a new project with ProjectCreateOrUpdate object")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -57,9 +57,9 @@ class ProjectApi:
 
     async def create_project_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_create_or_update: Annotated[
-            ProjectCreateOrUpdate, Field(..., description="Create a new project with ProjectCreateOrUpdate object")
+            ProjectCreateOrUpdate, Field(description="Create a new project with ProjectCreateOrUpdate object")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -129,11 +129,9 @@ class ProjectApi:
 
     async def create_task(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        project_id: Annotated[StrictStr, Field(..., description="You can create a task on a specified projectId")],
-        task_create_or_update: Annotated[
-            TaskCreateOrUpdate, Field(..., description="The task object you are creating")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        project_id: Annotated[StrictStr, Field(description="You can create a task on a specified projectId")],
+        task_create_or_update: Annotated[TaskCreateOrUpdate, Field(description="The task object you are creating")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -152,11 +150,9 @@ class ProjectApi:
 
     async def create_task_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        project_id: Annotated[StrictStr, Field(..., description="You can create a task on a specified projectId")],
-        task_create_or_update: Annotated[
-            TaskCreateOrUpdate, Field(..., description="The task object you are creating")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        project_id: Annotated[StrictStr, Field(description="You can create a task on a specified projectId")],
+        task_create_or_update: Annotated[TaskCreateOrUpdate, Field(description="The task object you are creating")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -227,13 +223,13 @@ class ProjectApi:
 
     async def create_time_entry(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
         time_entry_create_or_update: Annotated[
-            TimeEntryCreateOrUpdate, Field(..., description="The time entry object you are creating")
+            TimeEntryCreateOrUpdate, Field(description="The time entry object you are creating")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -253,13 +249,13 @@ class ProjectApi:
 
     async def create_time_entry_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
         time_entry_create_or_update: Annotated[
-            TimeEntryCreateOrUpdate, Field(..., description="The time entry object you are creating")
+            TimeEntryCreateOrUpdate, Field(description="The time entry object you are creating")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -331,13 +327,13 @@ class ProjectApi:
 
     async def delete_task(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
         task_id: Annotated[
-            StrictStr, Field(..., description="You can specify an individual task by appending the id to the endpoint")
+            StrictStr, Field(description="You can specify an individual task by appending the id to the endpoint")
         ],
         **kwargs,
     ) -> None:
@@ -349,13 +345,13 @@ class ProjectApi:
 
     async def delete_task_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
         task_id: Annotated[
-            StrictStr, Field(..., description="You can specify an individual task by appending the id to the endpoint")
+            StrictStr, Field(description="You can specify an individual task by appending the id to the endpoint")
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -414,13 +410,13 @@ class ProjectApi:
 
     async def delete_time_entry(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
         time_entry_id: Annotated[
-            StrictStr, Field(..., description="You can specify an individual task by appending the id to the endpoint")
+            StrictStr, Field(description="You can specify an individual task by appending the id to the endpoint")
         ],
         **kwargs,
     ) -> None:
@@ -432,13 +428,13 @@ class ProjectApi:
 
     async def delete_time_entry_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
         time_entry_id: Annotated[
-            StrictStr, Field(..., description="You can specify an individual task by appending the id to the endpoint")
+            StrictStr, Field(description="You can specify an individual task by appending the id to the endpoint")
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -497,10 +493,10 @@ class ProjectApi:
 
     async def get_project(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
         **kwargs,
     ) -> Project:
@@ -512,10 +508,10 @@ class ProjectApi:
 
     async def get_project_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -572,7 +568,7 @@ class ProjectApi:
 
     async def get_project_users(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -595,7 +591,7 @@ class ProjectApi:
 
     async def get_project_users_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         page: Annotated[
             StrictInt | None,
             Field(
@@ -665,7 +661,7 @@ class ProjectApi:
 
     async def get_projects(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_ids: Annotated[
             list[StrictStr] | None,
             Field(description="Search for all projects that match a comma separated list of projectIds"),
@@ -698,7 +694,7 @@ class ProjectApi:
 
     async def get_projects_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_ids: Annotated[
             list[StrictStr] | None,
             Field(description="Search for all projects that match a comma separated list of projectIds"),
@@ -783,16 +779,15 @@ class ProjectApi:
 
     async def get_task(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
         task_id: Annotated[
             StrictStr,
             Field(
-                ...,
-                description="You can specify an individual task by appending the taskId to the endpoint, i.e. GET https://.../tasks/{taskID}",
+                description="You can specify an individual task by appending the taskId to the endpoint, i.e. GET https://.../tasks/{taskID}"
             ),
         ],
         **kwargs,
@@ -805,16 +800,15 @@ class ProjectApi:
 
     async def get_task_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
         task_id: Annotated[
             StrictStr,
             Field(
-                ...,
-                description="You can specify an individual task by appending the taskId to the endpoint, i.e. GET https://.../tasks/{taskID}",
+                description="You can specify an individual task by appending the taskId to the endpoint, i.e. GET https://.../tasks/{taskID}"
             ),
         ],
         **kwargs,
@@ -874,10 +868,10 @@ class ProjectApi:
 
     async def get_tasks(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
         page: Annotated[
             StrictInt | None,
@@ -910,10 +904,10 @@ class ProjectApi:
 
     async def get_tasks_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
         page: Annotated[
             StrictInt | None,
@@ -997,12 +991,11 @@ class ProjectApi:
 
     async def get_time_entries(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
             Field(
-                ...,
-                description="Identifier of the project, that the task (which the time entry is logged against) belongs to.",
+                description="Identifier of the project, that the task (which the time entry is logged against) belongs to."
             ),
         ],
         user_id: Annotated[
@@ -1073,12 +1066,11 @@ class ProjectApi:
 
     async def get_time_entries_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
             Field(
-                ...,
-                description="Identifier of the project, that the task (which the time entry is logged against) belongs to.",
+                description="Identifier of the project, that the task (which the time entry is logged against) belongs to."
             ),
         ],
         user_id: Annotated[
@@ -1227,14 +1219,13 @@ class ProjectApi:
 
     async def get_time_entry(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
         time_entry_id: Annotated[
-            StrictStr,
-            Field(..., description="You can specify an individual time entry by appending the id to the endpoint"),
+            StrictStr, Field(description="You can specify an individual time entry by appending the id to the endpoint")
         ],
         **kwargs,
     ) -> TimeEntry:
@@ -1246,14 +1237,13 @@ class ProjectApi:
 
     async def get_time_entry_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
         time_entry_id: Annotated[
-            StrictStr,
-            Field(..., description="You can specify an individual time entry by appending the id to the endpoint"),
+            StrictStr, Field(description="You can specify an individual time entry by appending the id to the endpoint")
         ],
         **kwargs,
     ) -> ApiResponse:
@@ -1312,12 +1302,12 @@ class ProjectApi:
 
     async def patch_project(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
-        project_patch: Annotated[ProjectPatch, Field(..., description="Update the status of an existing Project")],
+        project_patch: Annotated[ProjectPatch, Field(description="Update the status of an existing Project")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -1336,12 +1326,12 @@ class ProjectApi:
 
     async def patch_project_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
-        project_patch: Annotated[ProjectPatch, Field(..., description="Update the status of an existing Project")],
+        project_patch: Annotated[ProjectPatch, Field(description="Update the status of an existing Project")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -1412,13 +1402,13 @@ class ProjectApi:
 
     async def update_project(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
         project_create_or_update: Annotated[
-            ProjectCreateOrUpdate, Field(..., description="Request of type ProjectCreateOrUpdate")
+            ProjectCreateOrUpdate, Field(description="Request of type ProjectCreateOrUpdate")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1438,13 +1428,13 @@ class ProjectApi:
 
     async def update_project_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
         project_create_or_update: Annotated[
-            ProjectCreateOrUpdate, Field(..., description="Request of type ProjectCreateOrUpdate")
+            ProjectCreateOrUpdate, Field(description="Request of type ProjectCreateOrUpdate")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1516,17 +1506,15 @@ class ProjectApi:
 
     async def update_task(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
         task_id: Annotated[
-            StrictStr, Field(..., description="You can specify an individual task by appending the id to the endpoint")
+            StrictStr, Field(description="You can specify an individual task by appending the id to the endpoint")
         ],
-        task_create_or_update: Annotated[
-            TaskCreateOrUpdate, Field(..., description="The task object you are updating")
-        ],
+        task_create_or_update: Annotated[TaskCreateOrUpdate, Field(description="The task object you are updating")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -1545,17 +1533,15 @@ class ProjectApi:
 
     async def update_task_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
         task_id: Annotated[
-            StrictStr, Field(..., description="You can specify an individual task by appending the id to the endpoint")
+            StrictStr, Field(description="You can specify an individual task by appending the id to the endpoint")
         ],
-        task_create_or_update: Annotated[
-            TaskCreateOrUpdate, Field(..., description="The task object you are updating")
-        ],
+        task_create_or_update: Annotated[TaskCreateOrUpdate, Field(description="The task object you are updating")],
         idempotency_key: Annotated[
             StrictStr | None,
             Field(
@@ -1628,17 +1614,16 @@ class ProjectApi:
 
     async def update_time_entry(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
         time_entry_id: Annotated[
-            StrictStr,
-            Field(..., description="You can specify an individual time entry by appending the id to the endpoint"),
+            StrictStr, Field(description="You can specify an individual time entry by appending the id to the endpoint")
         ],
         time_entry_create_or_update: Annotated[
-            TimeEntryCreateOrUpdate, Field(..., description="The time entry object you are updating")
+            TimeEntryCreateOrUpdate, Field(description="The time entry object you are updating")
         ],
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1658,17 +1643,16 @@ class ProjectApi:
 
     async def update_time_entry_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         project_id: Annotated[
             StrictStr,
-            Field(..., description="You can specify an individual project by appending the projectId to the endpoint"),
+            Field(description="You can specify an individual project by appending the projectId to the endpoint"),
         ],
         time_entry_id: Annotated[
-            StrictStr,
-            Field(..., description="You can specify an individual time entry by appending the id to the endpoint"),
+            StrictStr, Field(description="You can specify an individual time entry by appending the id to the endpoint")
         ],
         time_entry_create_or_update: Annotated[
-            TimeEntryCreateOrUpdate, Field(..., description="The time entry object you are updating")
+            TimeEntryCreateOrUpdate, Field(description="The time entry object you are updating")
         ],
         idempotency_key: Annotated[
             StrictStr | None,

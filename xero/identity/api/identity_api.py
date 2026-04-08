@@ -22,9 +22,7 @@ class IdentityApi:
         return ModelFinder(self.models_module)
 
     async def delete_connection(
-        self,
-        id: Annotated[StrictStr, Field(..., description="Unique identifier for retrieving single object")],
-        **kwargs,
+        self, id: Annotated[StrictStr, Field(description="Unique identifier for retrieving single object")], **kwargs
     ) -> None:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
@@ -33,9 +31,7 @@ class IdentityApi:
         return await self.delete_connection_with_http_info(id, **kwargs)
 
     async def delete_connection_with_http_info(
-        self,
-        id: Annotated[StrictStr, Field(..., description="Unique identifier for retrieving single object")],
-        **kwargs,
+        self, id: Annotated[StrictStr, Field(description="Unique identifier for retrieving single object")], **kwargs
     ) -> ApiResponse:
         _params = locals()
         _all_params = ["id"]

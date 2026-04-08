@@ -26,8 +26,8 @@ class FilesApi:
 
     async def create_file_association(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(description="File id for single object")],
         association: Association,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -47,8 +47,8 @@ class FilesApi:
 
     async def create_file_association_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(description="File id for single object")],
         association: Association,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -120,7 +120,7 @@ class FilesApi:
 
     async def create_folder(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         folder: Folder,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -138,7 +138,7 @@ class FilesApi:
 
     async def create_folder_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         folder: Folder,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -208,8 +208,8 @@ class FilesApi:
 
     async def delete_file(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(description="File id for single object")],
         **kwargs,
     ) -> None:
         kwargs["_return_http_data_only"] = True
@@ -220,8 +220,8 @@ class FilesApi:
 
     async def delete_file_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(description="File id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -276,9 +276,9 @@ class FilesApi:
 
     async def delete_file_association(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
-        object_id: Annotated[StrictStr, Field(..., description="Object id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(description="File id for single object")],
+        object_id: Annotated[StrictStr, Field(description="Object id for single object")],
         **kwargs,
     ) -> None:
         kwargs["_return_http_data_only"] = True
@@ -289,9 +289,9 @@ class FilesApi:
 
     async def delete_file_association_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
-        object_id: Annotated[StrictStr, Field(..., description="Object id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(description="File id for single object")],
+        object_id: Annotated[StrictStr, Field(description="Object id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -348,8 +348,8 @@ class FilesApi:
 
     async def delete_folder(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        folder_id: Annotated[StrictStr, Field(..., description="Folder id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        folder_id: Annotated[StrictStr, Field(description="Folder id for single object")],
         **kwargs,
     ) -> None:
         kwargs["_return_http_data_only"] = True
@@ -360,8 +360,8 @@ class FilesApi:
 
     async def delete_folder_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        folder_id: Annotated[StrictStr, Field(..., description="Folder id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        folder_id: Annotated[StrictStr, Field(description="Folder id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -416,8 +416,8 @@ class FilesApi:
 
     async def get_associations_by_object(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        object_id: Annotated[StrictStr, Field(..., description="Object id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        object_id: Annotated[StrictStr, Field(description="Object id for single object")],
         pagesize: Annotated[
             Annotated[int, Field(strict=True, le=100)] | None, Field(description="pass an optional page size value")
         ] = None,
@@ -439,8 +439,8 @@ class FilesApi:
 
     async def get_associations_by_object_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        object_id: Annotated[StrictStr, Field(..., description="Object id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        object_id: Annotated[StrictStr, Field(description="Object id for single object")],
         pagesize: Annotated[
             Annotated[int, Field(strict=True, le=100)] | None, Field(description="pass an optional page size value")
         ] = None,
@@ -513,8 +513,8 @@ class FilesApi:
 
     async def get_associations_count(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        object_ids: Annotated[list[StrictStr], Field(..., description="A comma-separated list of object ids")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        object_ids: Annotated[list[StrictStr], Field(description="A comma-separated list of object ids")],
         **kwargs,
     ) -> object:
         kwargs["_return_http_data_only"] = True
@@ -525,8 +525,8 @@ class FilesApi:
 
     async def get_associations_count_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        object_ids: Annotated[list[StrictStr], Field(..., description="A comma-separated list of object ids")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        object_ids: Annotated[list[StrictStr], Field(description="A comma-separated list of object ids")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -583,8 +583,8 @@ class FilesApi:
 
     async def get_file(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(description="File id for single object")],
         **kwargs,
     ) -> FileObject:
         kwargs["_return_http_data_only"] = True
@@ -595,8 +595,8 @@ class FilesApi:
 
     async def get_file_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(description="File id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -652,8 +652,8 @@ class FilesApi:
 
     async def get_file_associations(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(description="File id for single object")],
         **kwargs,
     ) -> list[Association]:
         kwargs["_return_http_data_only"] = True
@@ -664,8 +664,8 @@ class FilesApi:
 
     async def get_file_associations_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(description="File id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -721,8 +721,8 @@ class FilesApi:
 
     async def get_file_content(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(description="File id for single object")],
         **kwargs,
     ) -> bytearray:
         kwargs["_return_http_data_only"] = True
@@ -733,8 +733,8 @@ class FilesApi:
 
     async def get_file_content_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(description="File id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -790,7 +790,7 @@ class FilesApi:
 
     async def get_files(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         pagesize: Annotated[
             Annotated[int, Field(strict=True, le=100)] | None, Field(description="pass an optional page size value")
         ] = None,
@@ -809,7 +809,7 @@ class FilesApi:
 
     async def get_files_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         pagesize: Annotated[
             Annotated[int, Field(strict=True, le=100)] | None, Field(description="pass an optional page size value")
         ] = None,
@@ -877,8 +877,8 @@ class FilesApi:
 
     async def get_folder(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        folder_id: Annotated[StrictStr, Field(..., description="Folder id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        folder_id: Annotated[StrictStr, Field(description="Folder id for single object")],
         **kwargs,
     ) -> Folder:
         kwargs["_return_http_data_only"] = True
@@ -889,8 +889,8 @@ class FilesApi:
 
     async def get_folder_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        folder_id: Annotated[StrictStr, Field(..., description="Folder id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        folder_id: Annotated[StrictStr, Field(description="Folder id for single object")],
         **kwargs,
     ) -> ApiResponse:
         _params = locals()
@@ -946,7 +946,7 @@ class FilesApi:
 
     async def get_folders(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         sort: Annotated[StrictStr | None, Field(description="values to sort by")] = None,
         **kwargs,
     ) -> list[Folder]:
@@ -958,7 +958,7 @@ class FilesApi:
 
     async def get_folders_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         sort: Annotated[StrictStr | None, Field(description="values to sort by")] = None,
         **kwargs,
     ) -> ApiResponse:
@@ -1014,7 +1014,7 @@ class FilesApi:
         )
 
     async def get_inbox(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> Folder:
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
@@ -1023,7 +1023,7 @@ class FilesApi:
         return await self.get_inbox_with_http_info(xero_tenant_id, **kwargs)
 
     async def get_inbox_with_http_info(
-        self, xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")], **kwargs
+        self, xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")], **kwargs
     ) -> ApiResponse:
         _params = locals()
         _all_params = ["xero_tenant_id"]
@@ -1076,8 +1076,8 @@ class FilesApi:
 
     async def update_file(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(description="File id for single object")],
         file_object: FileObject,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1095,8 +1095,8 @@ class FilesApi:
 
     async def update_file_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        file_id: Annotated[StrictStr, Field(..., description="File id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        file_id: Annotated[StrictStr, Field(description="File id for single object")],
         file_object: FileObject,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1168,8 +1168,8 @@ class FilesApi:
 
     async def update_folder(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        folder_id: Annotated[StrictStr, Field(..., description="Folder id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        folder_id: Annotated[StrictStr, Field(description="Folder id for single object")],
         folder: Folder,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1187,8 +1187,8 @@ class FilesApi:
 
     async def update_folder_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        folder_id: Annotated[StrictStr, Field(..., description="Folder id for single object")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        folder_id: Annotated[StrictStr, Field(description="Folder id for single object")],
         folder: Folder,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1260,9 +1260,9 @@ class FilesApi:
 
     async def upload_file(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         body: StrictBytes | StrictStr,
-        name: Annotated[StrictStr, Field(..., description="exact name of the file you are uploading")],
+        name: Annotated[StrictStr, Field(description="exact name of the file you are uploading")],
         filename: StrictStr,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1283,9 +1283,9 @@ class FilesApi:
 
     async def upload_file_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
         body: StrictBytes | StrictStr,
-        name: Annotated[StrictStr, Field(..., description="exact name of the file you are uploading")],
+        name: Annotated[StrictStr, Field(description="exact name of the file you are uploading")],
         filename: StrictStr,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1362,12 +1362,10 @@ class FilesApi:
 
     async def upload_file_to_folder(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        folder_id: Annotated[
-            StrictStr, Field(..., description="pass required folder id to save file to specific folder")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        folder_id: Annotated[StrictStr, Field(description="pass required folder id to save file to specific folder")],
         body: StrictBytes | StrictStr,
-        name: Annotated[StrictStr, Field(..., description="exact name of the file you are uploading")],
+        name: Annotated[StrictStr, Field(description="exact name of the file you are uploading")],
         filename: StrictStr,
         idempotency_key: Annotated[
             StrictStr | None,
@@ -1388,12 +1386,10 @@ class FilesApi:
 
     async def upload_file_to_folder_with_http_info(
         self,
-        xero_tenant_id: Annotated[StrictStr, Field(..., description="Xero identifier for Tenant")],
-        folder_id: Annotated[
-            StrictStr, Field(..., description="pass required folder id to save file to specific folder")
-        ],
+        xero_tenant_id: Annotated[StrictStr, Field(description="Xero identifier for Tenant")],
+        folder_id: Annotated[StrictStr, Field(description="pass required folder id to save file to specific folder")],
         body: StrictBytes | StrictStr,
-        name: Annotated[StrictStr, Field(..., description="exact name of the file you are uploading")],
+        name: Annotated[StrictStr, Field(description="exact name of the file you are uploading")],
         filename: StrictStr,
         idempotency_key: Annotated[
             StrictStr | None,
