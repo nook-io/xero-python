@@ -103,7 +103,7 @@ def serialize_date_ms(value, explicit_type=None):
     elif isinstance(value, date):
         datetime_value = datetime.combine(value, time(tzinfo=tz.UTC))
     else:
-        raise ValueError("Can't serialize {!r} into Microsoft date json format")  # noqa: TRY004
+        raise ValueError(f"Can't serialize {value!r} into Microsoft date json format")  # noqa: TRY004
     timestamp_s = datetime_value.timestamp()
     timestamp_ms = int(timestamp_s * 1000)
     return f"/Date({timestamp_ms})/"
